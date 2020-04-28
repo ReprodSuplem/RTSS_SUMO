@@ -1,0 +1,8 @@
+This is MaxSAT 2018 version based on qmaxsat14.07-glucose3.0.
+
+How to install:
+(1) Download Glucose-3.0 and expand it.
+(2) Put this directory in the top directory of Glucose-3.0, that is, the same level of "core" and "simp" directory in Glucose-3.0.
+(3) run "make rs" in the directory.
+
+Usage is in ./bin/starexec_run_default

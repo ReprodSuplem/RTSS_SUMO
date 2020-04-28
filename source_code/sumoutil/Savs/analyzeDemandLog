@@ -1,0 +1,376 @@
+#! /usr/bin/env ruby
+# coding: utf-8
+## -*- mode: ruby -*-
+## = sample
+## Author:: Anonymous3
+## Version:: 0.0 2018/02/16 Anonymous3
+##
+## === History
+## * [2018/02/16]: Create This File.
+## * [YYYY/MM/DD]: add more
+## == Usage
+## * ...
+
+def $LOAD_PATH.addIfNeed(path)
+  self.unshift(path) if(!self.include?(path)) ;
+end
+
+$LOAD_PATH.addIfNeed("~/lib/ruby");
+$LOAD_PATH.addIfNeed(File.dirname(__FILE__));
+
+require 'optparse' ;
+require 'pp' ;
+require 'json' ;
+
+require 'WithConfParam.rb' ;
+require 'Stat/StatInfo.rb' ;
+require 'Geo2D.rb' ;
+
+require 'SavUtil.rb' ;
+
+#--######################################################################
+#--######################################################################
+#++
+=begin rdoc
+= analyzeDemandLog
++runSavSimRandom+ のログを解析し、デマンドの処理の結果の統計を出力する。
+
+== 概要
++analyzeDemandLog+ は、
++runSavSimRandom+ のデマンド処理のログ出力(savSim_.demandLog.json)
+に記録されたデマンド処理状況を読み込み、
+各種統計値を出力する。
+
+=== 読み込みと分析
+デマンド処理のログ(savSim_.demandLog.json)をデマンド毎に読み込み、
+デマンド処理時間、実質移動距離、実質移動速度、待ち時間を求める。
+
+デマンド処理時間は、
+乗車要求時刻(現時点ではデマンド発生時刻と同じ)と実際の降車時刻の差である。
+実質移動距離には、乗車地点から降車地点の平均マンハッタン距離を用いる。
+平均マンハッタン距離とは、
+格子状道路網の格子がある方向である確率を均等であるとみなし、
+その格子における2点間のマンハッタン距離の期待値をもとめたものである。
+この実質移動距離をデマンド処理時間で割ることで実質移動速度を求める。
+また、乗車要求時刻と実際の乗車時刻の差を待ち時間とする。
+
+このようにして求めたデマンド単位の値を、
+ログ全体にわたって集め、
+各々の統計値(平均(average)、分散(variance)、
+標準偏差(sdev)、最大値(max)、最小値(min))を求める。
+また、デマンド毎の実質移動距離と処理時間の総和(totalDistance と totalTime)を求め、
+それからログ全体の平均速度(totalSpeed)も求める。
+
+さらに、乗り合いに関する統計(shareCountHistgram)も求める。
+乗り合いの統計は以下の通りである。
+各デマンドに対し、
+そのデマンドの乗車中に乗りあった別のデマンドの数を、
+そのデマンドの乗り合い数とする。
+乗り合いが発生しなかったデマンドについては、
+乗り合い数0として扱う。
+この乗り合い数を集め、
+乗り合い数毎のデマンドの度数分布としてまとめる。
+
+=== 出力
+以下に、分析結果の出力例を示す。
+    { "completeCount": 127,
+      "cancelCount": 0,
+      "totalDistance": 72187.07,
+      "totalTime": 58146.0,
+      "totalSpeed": 1.24147,
+      "speedStat": {
+        "average": 1.35820,
+        "variance": 0.54908,
+        "sdev": 0.74100,
+        "n": 127,
+        "min": 0.08689,
+        "max": 3.46630
+      },
+      "waitStat": {
+        "average": 253.48,
+        "variance": 32052.04,
+        "sdev": 179.03,
+        "n": 127,
+        "min": 16.0,
+        "max": 997.0
+      },
+      "shareCountHistgram": [ 95, 28, 3, null, 1 ],
+      "dropOffMarginStat": {
+        "average": 204166.94,
+        "variance": 13647097220.89,
+        "sdev": 116820.79,
+        "n": 127,
+        "min": 10084.35,
+        "max": 492674.23
+      }
+    }
+
+== 使い方
++analyzeDemandLog+ は、コマンドラインより以下のように指定して起動する。
+
+        $ ./analyzeDemandLog <DemandLogFile>
+
+* _DemandLogFile_ には、+runSavSimRandom+ で出力された demandLog.json を
+  指定する。
+
+=end
+module Doc_analyzeDemandLog ; end ;
+#--######################################################################
+#--######################################################################
+
+
+#------------------------------------------------------------------------
+#++
+$conf = {
+  :foo => false,
+  :bar => 1,
+  :baz => "test",
+} ;
+
+#----------------------------------------------------------------------
+#++
+## help
+def help()
+  puts($op) ;
+  puts("Defaults:") ;
+  pp $conf ;
+  exit(1) ;
+end
+
+#------------------------------------------------------------------------
+#++
+$op = OptionParser.new() {|op|
+  op.banner = <<_END_
+  Usage: #{$0} [Options]* <DemandLogFile>
+_END_
+
+  op.separator("Options:") ;
+  op.set_summary_indent("") ;
+  op.set_summary_width(60) ;
+  sep = "\n\t\t" ;
+
+  op.on("-f","--[no-]foo", sep + "switch foo.") {|foo|
+    $conf[:foo] = foo ;
+  }
+  op.on("-b","--bar BarVal", Integer, sep + "bar int value.") {|bar|
+    $conf[:bar] = bar ;
+  }
+  op.on("-z","--baz BazVal", String, sep + "baz str value.") {|baz|
+    $conf[:baz] = baz ;
+  }
+  op.on_tail("--help", sep + "show this message.") { |h|
+    help() ;
+  }
+}
+
+$op.parse!(ARGV) ;
+$restArg = ARGV ;
+# p [:rest, ARGV], [:conf,$conf] ;
+help() if(ARGV.size != 1) ;
+  
+$inFile = ARGV[0] ;
+
+#--======================================================================
+module Sav
+  #--======================================================================
+  #++
+  ## description of class Foo.
+  class DemandLogAnalyzer < WithConfParam
+    #--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+    #++
+    ## description of DefaultValues.
+    DefaultValues = { :foo => :bar } ;
+    ## description of DefaultOptsions.
+    DefaultConf = { :bar => :baz } ;
+
+    #--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+    #++
+    ## log file name
+    attr_accessor :logFileName ;
+    ## speed statistics
+    attr_accessor :speedStatInfo ;
+    ## wait statistics
+    attr_accessor :waitTimeStatInfo ;
+    ## total distance
+    attr_accessor :totalDistance ;
+    ## total time
+    attr_accessor :totalTime ;
+    ## shared with histogram
+    attr_accessor :shareCountHistgram ;
+    ## cancel count
+    attr_accessor :cancelCount ;
+    ## completed count
+    attr_accessor :completeCount ;
+    ## dropOff margin
+    attr_accessor :dropOffMarginStatInfo ;
+
+    #--------------------------------------------------------------
+    #++
+    ## description of method initialize
+    ## _baz_:: about argument baz.
+    def initialize(logFileName, conf = {})
+      super(conf) ;
+      @logFileName = logFileName ;
+      setup() ;
+    end
+
+    #--------------------------------------------------------------
+    #++
+    ## setup parameters.
+    def setup()
+    end
+
+    #--------------------------------------------------------------
+    #++
+    ## scan log file.
+    def scanLogFile(fileName = @logFileName)
+      open(fileName, "r"){|strm|
+        scanLogStream(strm) ;
+      }
+    end
+
+    #--------------------------------------------------------------
+    #++
+    ## scan log stream.
+    def scanLogStream(strm)
+      scanLogInit() ;
+      while(line = strm.gets())
+        json = JSON.parse(line) ;
+        scanLogJson(json) ;
+      end
+    end
+    
+    #--------------------------------------------------------------
+    #++
+    ## scan log stream.
+    def scanLogInit()
+      @speedStatInfo = Stat::StatInfo.new() ;
+      @waitTimeStatInfo = Stat::StatInfo.new() ;
+      @totalDistance = 0.0 ;
+      @totalTime = 0.0 ;
+      @shareCountHistgram = [] ;
+      @cancelCount = 0 ;
+      @completeCount = 0 ;
+      @dropOffMarginStatInfo = Stat::StatInfo.new() ;
+    end
+
+    #--------------------------------------------------------------
+    #++
+    ## scan log stream.
+    def scanLogJson(json)
+      if(json['status'] == 'cancel') then
+        @cancelCount += 1 ;
+      else
+        @completeCount += 1 ;
+        # speed, dist, time
+        scanDistTimeSpeed(json) ;
+        # share count
+        scanShareCount(json) ;
+        # dropOff margin
+        scanDropOffMargin(json) ;
+      end
+    end
+        
+    #--------------------------------------------------------------
+    #++
+    ## scan distance, time, and speed
+    def scanDistTimeSpeed(json)
+      tripPos = json['tripPos'] ;
+      pickUpPos = Geo2D::Point.sureGeoObj([tripPos['pickUp']['x'],
+                                           tripPos['pickUp']['y']]) ;
+      dropOffPos = Geo2D::Point.sureGeoObj([tripPos['dropOff']['x'],
+                                            tripPos['dropOff']['y']]) ; 
+      dist = Sav::Util::averageManhattanDistance(pickUpPos, dropOffPos) ;
+      @totalDistance += dist ;
+
+      if(json['tripTime']['pickUp'].nil? ||
+         json['tripTime']['dropOff'].nil?) then
+        ##### ?????
+        ##### なぜこのようなケースがあるか不明。
+      else
+#        time = json['tripTime']['dropOff'] - json['tripTime']['pickUp'] ;
+        time = (json['tripTime']['dropOff'] -
+                json['tripRequiredTime']['pickUp']) ;
+        waitTime = (json['tripTime']['pickUp'] -
+                    json['tripRequiredTime']['pickUp'])
+        @totalTime += time ;
+        @waitTimeStatInfo.put(waitTime) ;
+
+        speed = dist / time ;
+        @speedStatInfo.put(speed) ;
+      end
+    end
+
+    #--------------------------------------------------------------
+    #++
+    ## scan drop off margin
+    def scanDropOffMargin(json)
+      margin = (json['tripRequiredTime']['dropOff'] -
+                json['tripTime']['dropOff']) ;
+      @dropOffMarginStatInfo.put(margin) ;
+    end
+    
+    #--------------------------------------------------------------
+    #++
+    ## scan share count
+    def scanShareCount(json)
+      shareCount = json['sharedWithList'].size ;
+
+      if(@shareCountHistgram[shareCount].nil?)
+        @shareCountHistgram[shareCount] = 0 ;
+      end
+
+      @shareCountHistgram[shareCount] += 1 ;
+    end
+
+    #--------------------------------------------------------------
+    #++
+    ## scan share count
+    def toJson()
+      { 'completeCount' => @completeCount,
+        'cancelCount' => @cancelCount,
+        'totalDistance' => @totalDistance,
+        'totalTime' => @totalTime,
+        'totalSpeed' => @totalDistance / @totalTime,
+        'speedStat' => @speedStatInfo.to_h(),
+        'waitStat' => @waitTimeStatInfo.to_h(),
+        'shareCountHistgram' => @shareCountHistgram,
+        'dropOffMarginStat' => @dropOffMarginStatInfo.to_h(),
+      }
+    end
+
+    #--------------------------------------------------------------
+    #++
+    ## output result
+    def outputResult(prettyP = true, strm = $stdout)
+      json = toJson() ;
+      if(prettyP) then
+        strm << JSON.pretty_generate(json) << "\n" ;
+      else
+        strm << JSON.generate(json) << "\n" ;
+      end
+    end
+
+    #--------------------------------------------------------------
+    #++
+    ## output result
+    def run(logfile = @logFileName, prettyP = true, strm = $stdout)
+      scanLogFile(logfile) ;
+      outputResult(prettyP, strm) ;
+    end
+    
+    #--============================================================
+    #--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+    #--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+    #--------------------------------------------------------------
+  end # class DemandLogAnalyzer
+
+end # module Sav
+
+########################################################################
+########################################################################
+########################################################################
+
+analyzer = Sav::DemandLogAnalyzer.new($inFile) ;
+analyzer.run() ;
+

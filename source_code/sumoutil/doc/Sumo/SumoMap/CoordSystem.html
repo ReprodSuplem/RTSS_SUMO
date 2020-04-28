@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Sumo::SumoMap::CoordSystem - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+</script>
+
+<script src="../../js/jquery.js"></script>
+<script src="../../js/darkfish.js"></script>
+
+<link href="../../css/fonts.css" rel="stylesheet">
+<link href="../../css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../table_of_contents.html#pages">Pages</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="../../Object.html">Object</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-scanJson">#scanJson</a>
+    
+    <li ><a href="#method-i-scanXml">#scanXml</a>
+    
+    <li ><a href="#method-i-toJson">#toJson</a>
+    
+    <li ><a href="#method-i-transformLonLat2XY">#transformLonLat2XY</a>
+    
+    <li ><a href="#method-i-transformXY2LonLat">#transformXY2LonLat</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Sumo::SumoMap::CoordSystem">
+  <h1 id="class-Sumo::SumoMap::CoordSystem" class="class">
+    class Sumo::SumoMap::CoordSystem
+  </h1>
+
+  <section class="description">
+    
+<p>coordinate system information. about X-Y coord.</p>
+
+<pre>X : west to east   (same as lon)
+Y : south to north (same as lat)</pre>
+
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+    <section class="constants-list">
+      <header>
+        <h3>Constants</h3>
+      </header>
+      <dl>
+      
+        <dt id="InvProjCommand">InvProjCommand
+        
+        <dd>
+        
+      
+        <dt id="ProjCommand">ProjCommand
+        
+        <dd><p>Proj command (projection converter)</p>
+        
+      
+      </dl>
+    </section>
+    
+
+    
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-bboxLonLat" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">bboxLonLat</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>bbox in lon-lat</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-bboxXY" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">bboxXY</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>bbox in XY</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-offset" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">offset</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p><a href="CoordSystem.html#attribute-i-offset">#offset</a> in XY</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-projParam" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">projParam</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>projection parameter</p>
+        
+        </div>
+      </div>
+      
+    </section>
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(xml = nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>initialize</p>
+<dl class="rdoc-list note-list"><dt><em>xml</em>
+<dd>
+<p>XML element</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMapCoordSystem.rb, line 73</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">xml</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">scanXml</span>(<span class="ruby-identifier">xml</span>) <span class="ruby-keyword">if</span>(<span class="ruby-operator">!</span><span class="ruby-identifier">xml</span>.<span class="ruby-identifier">nil?</span>) ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-scanJson" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">scanJson</span><span
+            class="method-args">(json)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>convert to JSON object (hash)</p>
+<dl class="rdoc-list note-list"><dt><em>json</em> 
+<dd>
+<p>JSON for one <a href="Lane.html">Lane</a>.</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="scanJson-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMapCoordSystem.rb, line 118</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">scanJson</span>(<span class="ruby-identifier">json</span>)
+  <span class="ruby-ivar">@offset</span> = <span class="ruby-constant">Geo2D</span><span class="ruby-operator">::</span><span class="ruby-constant">Point</span>.<span class="ruby-identifier">sureGeoObj</span>(<span class="ruby-identifier">json</span>[<span class="ruby-string">&#39;netOffset&#39;</span>]) ;
+
+  <span class="ruby-identifier">_bboxXY</span> = <span class="ruby-identifier">json</span>[<span class="ruby-string">&#39;convBoundary&#39;</span>] ;
+  <span class="ruby-ivar">@bboxXY</span> = <span class="ruby-constant">Geo2D</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">_bboxXY</span>) ;
+    
+  <span class="ruby-identifier">_bboxLonLat</span> = <span class="ruby-identifier">json</span>[<span class="ruby-string">&#39;origBoundary&#39;</span>] ;
+  <span class="ruby-ivar">@bboxLonLat</span> = <span class="ruby-constant">Geo2D</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">_bboxLonLat</span>) ;
+
+  <span class="ruby-ivar">@projParam</span> = <span class="ruby-identifier">json</span>[<span class="ruby-string">&#39;projParameter&#39;</span>] ;
+
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-scanXml" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">scanXml</span><span
+            class="method-args">(xml)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>scan XML definition</p>
+<dl class="rdoc-list note-list"><dt><em>xml</em>
+<dd>
+<p>XML element</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="scanXml-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMapCoordSystem.rb, line 81</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">scanXml</span>(<span class="ruby-identifier">xml</span>)
+  <span class="ruby-identifier">_offset</span> =
+    <span class="ruby-constant">SumoMap</span>.<span class="ruby-identifier">getAttrVal</span>(<span class="ruby-identifier">xml</span>, <span class="ruby-string">&quot;netOffset&quot;</span>).<span class="ruby-identifier">split</span>(<span class="ruby-string">&#39;,&#39;</span>).<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">to_f</span>} ;
+  <span class="ruby-ivar">@offset</span> = <span class="ruby-constant">Geo2D</span><span class="ruby-operator">::</span><span class="ruby-constant">Point</span>.<span class="ruby-identifier">sureGeoObj</span>(<span class="ruby-identifier">_offset</span>) ;
+
+  <span class="ruby-identifier">_bboxXY</span> =
+    <span class="ruby-constant">SumoMap</span>.<span class="ruby-identifier">getAttrVal</span>(<span class="ruby-identifier">xml</span>, <span class="ruby-string">&quot;convBoundary&quot;</span>).<span class="ruby-identifier">split</span>(<span class="ruby-string">&#39;,&#39;</span>).<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">to_f</span>} ;
+  <span class="ruby-ivar">@bboxXY</span> = <span class="ruby-constant">Geo2D</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">_bboxXY</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">1</span>], <span class="ruby-identifier">_bboxXY</span>[<span class="ruby-value">2</span><span class="ruby-operator">..</span><span class="ruby-value">3</span>]) 
+    
+  <span class="ruby-identifier">_bboxLonLat</span> = 
+    <span class="ruby-constant">SumoMap</span>.<span class="ruby-identifier">getAttrVal</span>(<span class="ruby-identifier">xml</span>, <span class="ruby-string">&quot;origBoundary&quot;</span>).<span class="ruby-identifier">split</span>(<span class="ruby-string">&#39;,&#39;</span>).<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">to_f</span>} ;
+  <span class="ruby-ivar">@bboxLonLat</span> = <span class="ruby-constant">Geo2D</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">_bboxLonLat</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">1</span>], <span class="ruby-identifier">_bboxLonLat</span>[<span class="ruby-value">2</span><span class="ruby-operator">..</span><span class="ruby-value">3</span>]) ;
+
+  <span class="ruby-ivar">@projParam</span> = <span class="ruby-constant">SumoMap</span>.<span class="ruby-identifier">getAttrVal</span>(<span class="ruby-identifier">xml</span>, <span class="ruby-string">&quot;projParameter&quot;</span>) ;
+  
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-toJson" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">toJson</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>convert to JSON object (hash)</p>
+          
+          
+
+          
+          <div class="method-source-code" id="toJson-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMapCoordSystem.rb, line 102</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">toJson</span>()
+  <span class="ruby-identifier">json</span> = { <span class="ruby-string">&#39;class&#39;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">to_s</span> }
+  <span class="ruby-identifier">json</span>[<span class="ruby-string">&#39;netOffset&#39;</span>] = [<span class="ruby-ivar">@offset</span>.<span class="ruby-identifier">x</span>, <span class="ruby-ivar">@offset</span>.<span class="ruby-identifier">y</span>] ;
+  <span class="ruby-identifier">json</span>[<span class="ruby-string">&#39;convBoundary&#39;</span>] = [[<span class="ruby-ivar">@bboxXY</span>.<span class="ruby-identifier">minPos</span>.<span class="ruby-identifier">x</span>, <span class="ruby-ivar">@bboxXY</span>.<span class="ruby-identifier">minPos</span>.<span class="ruby-identifier">y</span>],
+                          [<span class="ruby-ivar">@bboxXY</span>.<span class="ruby-identifier">maxPos</span>.<span class="ruby-identifier">x</span>, <span class="ruby-ivar">@bboxXY</span>.<span class="ruby-identifier">maxPos</span>.<span class="ruby-identifier">y</span>]] ;
+  <span class="ruby-identifier">json</span>[<span class="ruby-string">&#39;origBoundary&#39;</span>] = [[<span class="ruby-ivar">@bboxLonLat</span>.<span class="ruby-identifier">minPos</span>.<span class="ruby-identifier">x</span>, <span class="ruby-ivar">@bboxLonLat</span>.<span class="ruby-identifier">minPos</span>.<span class="ruby-identifier">y</span>],
+                          [<span class="ruby-ivar">@bboxLonLat</span>.<span class="ruby-identifier">maxPos</span>.<span class="ruby-identifier">x</span>, <span class="ruby-ivar">@bboxLonLat</span>.<span class="ruby-identifier">maxPos</span>.<span class="ruby-identifier">y</span>]] ;
+  <span class="ruby-identifier">json</span>[<span class="ruby-string">&#39;projParameter&#39;</span>] = <span class="ruby-ivar">@projParam</span> ;
+
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">json</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-transformLonLat2XY" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">transformLonLat2XY</span><span
+            class="method-args">(lonlat)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>transpormation of coordinate system from LonLat to X-Y</p>
+<dl class="rdoc-list note-list"><dt><em>lonlat</em> 
+<dd>
+<p>longitude and latitude in Geo2D::Point object</p>
+</dd><dt>*return_ 
+<dd>
+<p>X-Y position in Geo2D::Point object</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="transformLonLat2XY-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMapCoordSystem.rb, line 137</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">transformLonLat2XY</span>(<span class="ruby-identifier">lonlat</span>)
+  <span class="ruby-identifier">lonlat</span> = <span class="ruby-constant">Geo2D</span><span class="ruby-operator">::</span><span class="ruby-constant">Point</span>.<span class="ruby-identifier">sureGeoObj</span>(<span class="ruby-identifier">lonlat</span>) ;
+
+  <span class="ruby-identifier">xyPos</span> = <span class="ruby-keyword">nil</span> ;
+  <span class="ruby-identifier">com</span> = <span class="ruby-node">&quot;|echo #{lonlat.x} #{lonlat.y} | #{ProjCommand} #{@projParam}&quot;</span> ;
+
+  <span class="ruby-identifier">open</span>(<span class="ruby-identifier">com</span>, <span class="ruby-string">&#39;r&#39;</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">strm</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">ret</span> = <span class="ruby-identifier">strm</span>.<span class="ruby-identifier">read</span>().<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;\s&quot;</span>).<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">to_f</span>} ;
+    <span class="ruby-identifier">xyPos</span> = <span class="ruby-constant">Geo2D</span><span class="ruby-operator">::</span><span class="ruby-constant">Point</span>.<span class="ruby-identifier">sureGeoObj</span>(<span class="ruby-identifier">ret</span>) ;
+    <span class="ruby-identifier">xyPos</span>.<span class="ruby-identifier">inc</span>(<span class="ruby-ivar">@offset</span>) ;
+  }
+
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">xyPos</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-transformXY2LonLat" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">transformXY2LonLat</span><span
+            class="method-args">(xyPos)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>transpormation of coordinate system from X-Y to LonLat</p>
+<dl class="rdoc-list note-list"><dt><em>xyPos</em> 
+<dd>
+<p>X-Y position in Geo2D::Point object</p>
+</dd><dt>*return_ 
+<dd>
+<p>Lon-Lat position in Geo2D::Point object</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="transformXY2LonLat-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMapCoordSystem.rb, line 157</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">transformXY2LonLat</span>(<span class="ruby-identifier">xyPos</span>)
+  <span class="ruby-keyword">if</span>(<span class="ruby-identifier">xyPos</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Array</span>))
+    <span class="ruby-identifier">xyPos</span> = <span class="ruby-constant">Geo2D</span><span class="ruby-operator">::</span><span class="ruby-constant">Point</span>.<span class="ruby-identifier">sureGeoObj</span>(<span class="ruby-identifier">xyPos</span>) ;
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">xyPos</span> = <span class="ruby-identifier">xyPos</span>.<span class="ruby-identifier">dup</span>() ;
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">xyPos</span>.<span class="ruby-identifier">dec</span>(<span class="ruby-ivar">@offset</span>) ;
+
+  <span class="ruby-identifier">lonlat</span> = <span class="ruby-keyword">nil</span> ;
+  <span class="ruby-identifier">com</span> = <span class="ruby-node">&quot;|echo #{xyPos.x} #{xyPos.y} | #{InvProjCommand} #{@projParam}&quot;</span> ;
+
+  <span class="ruby-identifier">open</span>(<span class="ruby-identifier">com</span>, <span class="ruby-string">&#39;r&#39;</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">strm</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">str</span> = <span class="ruby-identifier">strm</span>.<span class="ruby-identifier">read</span>() ;
+    <span class="ruby-identifier">ret</span> = <span class="ruby-identifier">str</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;\s&quot;</span>).<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">to_f</span>} ;
+    <span class="ruby-identifier">lonlat</span> = <span class="ruby-constant">Geo2D</span><span class="ruby-operator">::</span><span class="ruby-constant">Point</span>.<span class="ruby-identifier">sureGeoObj</span>(<span class="ruby-identifier">ret</span>) ;
+  }
+
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">lonlat</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

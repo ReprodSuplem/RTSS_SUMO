@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>loggingBody (Sumo::Traci::Client)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File TraciClient.rb, line 142</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">loggingBody</span>(<span class="ruby-identifier">tag</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">messageList</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">body</span>)
+        <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">if</span>(<span class="ruby-ivar">@logStreamList</span>.<span class="ruby-identifier">empty?</span>) ; <span class="ruby-comment cmt">## reduce time</span>
+        <span class="ruby-comment cmt"># append results of body</span>
+        <span class="ruby-keyword kw">if</span>(<span class="ruby-identifier">body</span>)
+          <span class="ruby-identifier">bodyResult</span> = <span class="ruby-identifier">body</span>.<span class="ruby-identifier">call</span>() ;
+          <span class="ruby-keyword kw">if</span>(<span class="ruby-identifier">bodyResult</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Array</span>)) <span class="ruby-keyword kw">then</span>
+            <span class="ruby-identifier">messageList</span>.<span class="ruby-identifier">concat</span>(<span class="ruby-identifier">bodyResult</span>)
+          <span class="ruby-keyword kw">else</span>
+            <span class="ruby-identifier">messageList</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">bodyResult</span>) ;
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-comment cmt"># output</span>
+        <span class="ruby-identifier">timestr</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">strftime</span>(<span class="ruby-value str">&quot;[%Y-%m-%dT%H:%M:%S]&quot;</span>) ;
+        <span class="ruby-ivar">@logStreamList</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">strm</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">strm</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;-----\n[&quot;</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">tag</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;]:&quot;</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">timestr</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;: &quot;</span> ;
+          <span class="ruby-identifier">first</span> = <span class="ruby-keyword kw">true</span> ;
+          <span class="ruby-identifier">messageList</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">message</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">strm</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">message</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;\n&quot;</span> ;
+          }
+        }
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

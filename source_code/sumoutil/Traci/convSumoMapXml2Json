@@ -1,0 +1,110 @@
+#! /usr/bin/env ruby
+## -*- mode: ruby -*-
+## = convert Sumo MapNet XML to simplified JSON
+## Author:: Anonymous3
+## Version:: 0.0 2018/01/11 Anonymous3
+##
+## === History
+## * [2018/01/11]: Create This File. for speed up to read MapNet
+## * [YYYY/MM/DD]: add more
+## == Usage
+## * ...
+
+require 'optparse' ;
+require 'pp' ;
+
+def $LOAD_PATH.addIfNeed(path)
+  self.unshift(path) if(!self.include?(path)) ;
+end
+
+$LOAD_PATH.addIfNeed("~/lib/ruby");
+$LOAD_PATH.addIfNeed(File.dirname(__FILE__));
+
+require 'SumoMap.rb' ;
+
+#------------------------------------------------------------------------
+#++
+$conf = {
+  :infile => nil,
+  :outfile => nil,
+  :dumpfile => nil,
+  :permitType => :private,
+  :excludeTypeList =>
+  ['highway.motorway', 'highway.motorway_link'], ## excluding road type.
+} ;
+
+#------------------------------------------------------------------------
+#++
+$op = OptionParser.new() {|op|
+  op.banner = <<_END_
+  Usage: #{$0} [Options]* <infile.xml> <outfile.json> [<dumpfile.dump>]
+    If <dumpfile.dump> is specified, create a dump of SumoMap data
+    with RTree.
+_END_
+
+  op.separator("Options:") ;
+  op.set_summary_indent("") ;
+  op.set_summary_width(60) ;
+  sep = "\n\t\t" ;
+
+  op.on("--type <VehicleType>", String,
+        sep + "specify type to filter edges." +
+        sep + "Can be one of {private, taxi, bus, delivery}." +
+        sep + "If nil, not filtered.") { |type|
+    vtype = ((type == "nil") ? nil : type.intern) ;
+    $conf[:permitType] = vtype ;
+  }
+  op.on("-m","--[no-]motorway", sep + "include motorway.") {|flag|
+    if(flag) then
+      $conf[:excludeTypeList].delete('highway.motorway') ;
+      $conf[:excludeTypeList].delete('highway.motorway_link') ;
+    else
+      $conf[:excludeTypeList].push('highway.motorway') ;
+      $conf[:excludeTypeList].push('highway.motorway_link') ;
+    end
+  }
+  op.on_tail("--help", sep + "show this message.") { |h|
+    puts(op)
+    puts("Defaults:")
+    pp $conf ;
+    exit(1)
+  }
+}
+
+$op.parse!(ARGV) ;
+
+if(ARGV.size < 2 || ARGV.size > 3) then
+  puts($op) ;
+  exit(1) ;
+end
+
+$conf[:infile] = ARGV[0] ;
+$conf[:outfile] = ARGV[1] ;
+$conf[:dumpfile] = ARGV[2] ;
+
+p [:rest, ARGV], [:conf,$conf] ;
+
+########################################################################
+########################################################################
+########################################################################
+
+# load XML file.
+map = Sumo::SumoMap.new() ;
+map.loadXmlFile($conf[:infile], $conf[:permitType], $conf[:excludeTypeList]) ;
+
+p [:mapLength, map.edgeTable.size, map.laneTable.size,
+   map.originalIdTable.size] ;
+
+# save Json file.
+map.saveJsonFile($conf[:outfile]) ;
+
+## create dump file.
+if(! $conf[:dumpfile].nil?) then
+  p [:buildRTrees, Time.now] ;
+  map.buildRTrees() ;
+  p [:dumpSumoMap, Time.now] ;
+  map.dumpToFile($conf[:dumpfile]) ;
+  p [:done, Time.now] ;
+end
+
+

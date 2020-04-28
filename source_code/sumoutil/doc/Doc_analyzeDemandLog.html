@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>module Doc_analyzeDemandLog - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="module">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+<div class="nav-section">
+  <h3>Table of Contents</h3>
+
+  <ul class="link-list" role="directory">
+    <li><a href="#module-Doc_analyzeDemandLog-label-analyzeDemandLog">analyzeDemandLog</a>
+    <li><a href="#module-Doc_analyzeDemandLog-label-E6-A6-82-E8-A6-81">概要</a>
+    <li><a href="#module-Doc_analyzeDemandLog-label-E8-AA-AD-E3-81-BF-E8-BE-BC-E3-81-BF-E3-81-A8-E5-88-86-E6-9E-90">読み込みと分析</a>
+    <li><a href="#module-Doc_analyzeDemandLog-label-E5-87-BA-E5-8A-9B">出力</a>
+    <li><a href="#module-Doc_analyzeDemandLog-label-E4-BD-BF-E3-81-84-E6-96-B9">使い方</a>
+  </ul>
+</div>
+
+
+  <div id="class-metadata">
+    
+    
+    
+    
+    
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="module-Doc_analyzeDemandLog">
+  <h1 id="module-Doc_analyzeDemandLog" class="module">
+    module Doc_analyzeDemandLog
+  </h1>
+
+  <section class="description">
+    
+<h1 id="module-Doc_analyzeDemandLog-label-analyzeDemandLog">analyzeDemandLog<span><a href="#module-Doc_analyzeDemandLog-label-analyzeDemandLog">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<p><code>runSavSimRandom</code> のログを解析し、デマンドの処理の結果の統計を出力する。</p>
+
+<h2 id="module-Doc_analyzeDemandLog-label-E6-A6-82-E8-A6-81">概要<span><a href="#module-Doc_analyzeDemandLog-label-E6-A6-82-E8-A6-81">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p><code>analyzeDemandLog</code> は、 <code>runSavSimRandom</code>
+のデマンド処理のログ出力(savSim_.demandLog.json) に記録されたデマンド処理状況を読み込み、 各種統計値を出力する。</p>
+
+<h3 id="module-Doc_analyzeDemandLog-label-E8-AA-AD-E3-81-BF-E8-BE-BC-E3-81-BF-E3-81-A8-E5-88-86-E6-9E-90">読み込みと分析<span><a href="#module-Doc_analyzeDemandLog-label-E8-AA-AD-E3-81-BF-E8-BE-BC-E3-81-BF-E3-81-A8-E5-88-86-E6-9E-90">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>デマンド処理のログ(savSim_.demandLog.json)をデマンド毎に読み込み、
+デマンド処理時間、実質移動距離、実質移動速度、待ち時間を求める。</p>
+
+<p>デマンド処理時間は、 乗車要求時刻(現時点ではデマンド発生時刻と同じ)と実際の降車時刻の差である。
+実質移動距離には、乗車地点から降車地点の平均マンハッタン距離を用いる。 平均マンハッタン距離とは、
+格子状道路網の格子がある方向である確率を均等であるとみなし、 その格子における2点間のマンハッタン距離の期待値をもとめたものである。
+この実質移動距離をデマンド処理時間で割ることで実質移動速度を求める。 また、乗車要求時刻と実際の乗車時刻の差を待ち時間とする。</p>
+
+<p>このようにして求めたデマンド単位の値を、 ログ全体にわたって集め、 各々の統計値(平均(average)、分散(variance)、
+標準偏差(sdev)、最大値(max)、最小値(min))を求める。 また、デマンド毎の実質移動距離と処理時間の総和(totalDistance と
+totalTime)を求め、 それからログ全体の平均速度(totalSpeed)も求める。</p>
+
+<p>さらに、乗り合いに関する統計(shareCountHistgram)も求める。 乗り合いの統計は以下の通りである。 各デマンドに対し、
+そのデマンドの乗車中に乗りあった別のデマンドの数を、 そのデマンドの乗り合い数とする。 乗り合いが発生しなかったデマンドについては、
+乗り合い数0として扱う。 この乗り合い数を集め、 乗り合い数毎のデマンドの度数分布としてまとめる。</p>
+
+<h3 id="module-Doc_analyzeDemandLog-label-E5-87-BA-E5-8A-9B">出力<span><a href="#module-Doc_analyzeDemandLog-label-E5-87-BA-E5-8A-9B">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>以下に、分析結果の出力例を示す。</p>
+
+<pre class="ruby">{ <span class="ruby-string">&quot;completeCount&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">127</span>,
+  <span class="ruby-string">&quot;cancelCount&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">0</span>,
+  <span class="ruby-string">&quot;totalDistance&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">72187.07</span>,
+  <span class="ruby-string">&quot;totalTime&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">58146.0</span>,
+  <span class="ruby-string">&quot;totalSpeed&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">1.24147</span>,
+  <span class="ruby-string">&quot;speedStat&quot;</span><span class="ruby-operator">:</span> {
+    <span class="ruby-string">&quot;average&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">1.35820</span>,
+    <span class="ruby-string">&quot;variance&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">0.54908</span>,
+    <span class="ruby-string">&quot;sdev&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">0.74100</span>,
+    <span class="ruby-string">&quot;n&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">127</span>,
+    <span class="ruby-string">&quot;min&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">0.08689</span>,
+    <span class="ruby-string">&quot;max&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">3.46630</span>
+  },
+  <span class="ruby-string">&quot;waitStat&quot;</span><span class="ruby-operator">:</span> {
+    <span class="ruby-string">&quot;average&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">253.48</span>,
+    <span class="ruby-string">&quot;variance&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">32052.04</span>,
+    <span class="ruby-string">&quot;sdev&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">179.03</span>,
+    <span class="ruby-string">&quot;n&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">127</span>,
+    <span class="ruby-string">&quot;min&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">16.0</span>,
+    <span class="ruby-string">&quot;max&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">997.0</span>
+  },
+  <span class="ruby-string">&quot;shareCountHistgram&quot;</span><span class="ruby-operator">:</span> [ <span class="ruby-value">95</span>, <span class="ruby-value">28</span>, <span class="ruby-value">3</span>, <span class="ruby-identifier">null</span>, <span class="ruby-value">1</span> ],
+  <span class="ruby-string">&quot;dropOffMarginStat&quot;</span><span class="ruby-operator">:</span> {
+    <span class="ruby-string">&quot;average&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">204166.94</span>,
+    <span class="ruby-string">&quot;variance&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">13647097220.89</span>,
+    <span class="ruby-string">&quot;sdev&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">116820.79</span>,
+    <span class="ruby-string">&quot;n&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">127</span>,
+    <span class="ruby-string">&quot;min&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">10084.35</span>,
+    <span class="ruby-string">&quot;max&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">492674.23</span>
+  }
+}
+</pre>
+
+<h2 id="module-Doc_analyzeDemandLog-label-E4-BD-BF-E3-81-84-E6-96-B9">使い方<span><a href="#module-Doc_analyzeDemandLog-label-E4-BD-BF-E3-81-84-E6-96-B9">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p><code>analyzeDemandLog</code> は、コマンドラインより以下のように指定して起動する。</p>
+
+<pre>$ ./analyzeDemandLog &lt;DemandLogFile&gt;</pre>
+<ul><li>
+<p><em>DemandLogFile</em> には、<code>runSavSimRandom</code> で出力された
+demandLog.json を 指定する。</p>
+</li></ul>
+
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

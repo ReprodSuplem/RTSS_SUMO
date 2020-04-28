@@ -1,0 +1,190 @@
+#! /usr/bin/env ruby
+# coding: utf-8
+## -*- mode: ruby -*-
+## = plot Freq. and Prob. table
+## Author:: Anonymous3
+## Version:: 0.0 2018/12/25 Anonymous3
+##
+## === History
+## * [2018/12/25]: Create This File.
+## * [YYYY/MM/DD]: add more
+## == Usage
+## * ...
+
+def $LOAD_PATH.addIfNeed(path)
+  self.unshift(path) if(!self.include?(path)) ;
+end
+
+$LOAD_PATH.addIfNeed("~/lib/ruby");
+$LOAD_PATH.addIfNeed(File.dirname(__FILE__));
+
+require 'optparse' ;
+require 'pp' ;
+
+require 'SavsLog.rb' ;
+
+#------------------------------------------------------------------------
+#++
+$conf = {
+  :inFile => nil,
+  :outFile => nil,
+  :resultDir => "../Summary",
+  :baseFreq => "freqTable",
+  :baseFreqFact => "freqFactor",
+  :baseProb => "probTable",
+  :baseProbFact => "probFactor",
+  :baseProbMixture => "probMixture",
+  :baseDistHourly => "distHourlyProb",
+  :nSingular => 5,
+  :cbMax => nil,
+  :dayTypeP => false,
+  :distHourly => true,
+} ;
+
+#----------------------------------------------------------------------
+#++
+## help
+def help()
+  puts($op) ;
+  puts("Defaults:") ;
+  pp $conf ;
+  exit(1) ;
+end
+
+#------------------------------------------------------------------------
+#++
+$op = OptionParser.new() {|op|
+  op.banner = <<_END_
+  Usage: #{$0} [Options]* LogFile.json [Dump.json]
+    LogFile.json を読み込み、 O-D の各々の分布に分け、
+    さらに特異的に高いODの組み合わせについては、個別に取り出し、
+    最終的にそれらの混合分布として表現する。
+    それらの確率分布を表示し、
+    さらに得られた混合分布を、Dump.json に出力する。
+_END_
+
+  op.separator("Options:") ;
+  op.set_summary_indent("") ;
+  op.set_summary_width(60) ;
+  sep = "\n\t\t" ;
+
+  op.on("--resultDir Dir", String,
+        sep + "specify directory to save plot files.") {|dirname|
+    $conf[:resultDir] = dirname ;
+  }
+  op.on("--baseFreq BaseName", String,
+        sep + "specify basename for freq. plot.") {|basename|
+    $conf[:baseFreq] = basename ;
+  }
+  op.on("--baseFreqFact BaseName", String,
+        sep + "specify basename for freq. fact. plot.") {|basename|
+    $conf[:baseFreqFact] = basename ;
+  }
+  op.on("--baseProb BaseName", String,
+        sep + "specify basename for prob. plot.") {|basename|
+    $conf[:baseProb] = basename ;
+  }
+  op.on("--baseProbFact BaseName", String,
+        sep + "specify basename for prob. plot.") {|basename|
+    $conf[:baseProbFact] = basename ;
+  }
+  op.on("-n", "--nSingle N", Integer,
+        sep + "the number of singular prob. for mixture.") {|n|
+    $conf[:nSingular] = n ;
+  }
+  op.on("-c", "--cbMax CBMax", Float,
+        sep + "set max Z value for color bar.") {|cbMax|
+    $conf[:cbMax] = cbMax ;
+  }
+  op.on("-d", "--dayType", 
+        sep + "plot by day type.") {
+    $conf[:dayTypeP] = true ;
+  }
+##  op.on("-f","--[no-]foo", sep + "switch foo.") {|foo|
+##    $conf[:foo] = foo ;
+##  }
+##  op.on("-b","--bar BarVal", Integer, sep + "bar int value.") {|bar|
+##    $conf[:bar] = bar ;
+##  }
+##  op.on("-z","--baz BazVal", String, sep + "baz str value.") {|baz|
+##    $conf[:baz] = baz ;
+##  }
+  op.on_tail("--help", sep + "show this message.") { |h|
+    help() ;
+  }
+}
+
+$op.parse!(ARGV) ;
+$conf[:inFile] = ARGV[0]
+$conf[:outFile] = ARGV[1]
+p [:rest, ARGV], [:conf,$conf] ;
+
+if($conf[:inFile].nil?) then
+  puts "Error: no input is specified." ;
+  help() ;
+end
+
+########################################################################
+########################################################################
+########################################################################
+
+
+slog = SavsLog.new({ :name => "whole" }) ;
+slog.scanJsonFile($conf[:inFile]) ;
+
+slog.procAll($conf[:nSingular]) ;
+
+#slog.plotFreqTable($conf[:resultDir] + "/" + $conf[:baseFreq]) ;
+#slog.plotFreqFactored($conf[:resultDir] + "/" + $conf[:baseFreqFact]) ;
+
+##
+## plotting
+##
+suffixK = "%02d" % $conf[:nSingular] ;
+plotConf = { :cbMax => $conf[:cbMax] } ;
+slog.plotProbTable($conf[:resultDir] + "/" + $conf[:baseProb],
+                  plotConf) ;
+slog.plotProbFactored($conf[:resultDir] + "/" + $conf[:baseProbFact],
+                     plotConf) ;
+
+
+slog.plotProbMixture($conf[:resultDir] + "/" + $conf[:baseProbMixture] +
+                     suffixK,
+                    plotConf) ;
+
+##
+## save mixture
+##
+pp [:singularList, slog.getSingularListInMixtureProb() ] ;
+if($conf[:outFile]) then
+  slog.saveProbMixture($conf[:outFile]) ;
+end
+
+##
+## filtering by day type.
+##
+if($conf[:dayTypeP]) then
+  slogW = slog.genFilteredSavsLogByDayType(:weekday, true) ;
+  slogW.plotProbTable($conf[:resultDir] + "/" + $conf[:baseProb] +
+                      "_weekday",
+                      plotConf) ;
+  slogW.plotProbMixture($conf[:resultDir] + "/" + $conf[:baseProbMixture] +
+                        suffixK + "_weekday",
+                        plotConf) ;
+  
+  slogH = slog.genFilteredSavsLogByDayType(:holiday, true) ;
+  slogH.plotProbTable($conf[:resultDir] + "/" + $conf[:baseProb] +
+                      "_holiday",
+                      plotConf) ;
+  slogH.plotProbMixture($conf[:resultDir] + "/" + $conf[:baseProbMixture] +
+                        suffixK + "_holiday",
+                        plotConf) ;
+end
+
+##
+## plot dist hourly
+##
+if($conf[:distHourly]) then
+  slog.plotDistAmongHourlyProb($conf[:resultDir] + "/" +
+                               $conf[:baseDistHourly]);
+end

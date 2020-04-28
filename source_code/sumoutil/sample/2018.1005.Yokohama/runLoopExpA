@@ -1,0 +1,100 @@
+#! /usr/bin/env ruby
+## -*- mode: ruby -*-
+## = Loop run SavSimulator with Random Demands
+## Author:: Anonymous3
+## Version:: 0.0 2018/04/17 Anonymous3
+##
+## === History
+## * [2018/04/17]: Create This File.
+## * [YYYY/MM/DD]: add more
+## == Usage
+
+def $LOAD_PATH.addIfNeed(path)
+  self.unshift(path) if(!self.include?(path)) ;
+end
+
+$LOAD_PATH.addIfNeed("~/lib/ruby");
+$LOAD_PATH.addIfNeed(File.dirname(__FILE__));
+
+require 'optparse' ;
+require 'pp' ;
+
+require 'ItkThreadPool.rb' ;
+
+#------------------------------------------------------------------------
+#++
+$conf = {
+} ;
+
+#----------------------------------------------------------------------
+#++
+## help
+def help()
+  puts($op) ;
+  puts("Defaults:") ;
+  pp $conf ;
+  exit(1) ;
+end
+
+#------------------------------------------------------------------------
+#++
+$op = OptionParser.new() {|op|
+  op.banner = <<_END_
+  Usage: #{$0} [Options]*
+    Cases: a
+_END_
+
+  op.separator("Options:") ;
+  op.set_summary_indent("") ;
+  op.set_summary_width(60) ;
+  sep = "\n\t\t" ;
+
+  op.on("-f","--foo", sep + "map conversion.") {
+    $conf[:mode] = :map ;
+  }
+  op.on("-c","--case Case", String, sep + "specify case.") {|caseStr|
+    $conf[:case] = caseStr.intern ;
+  }
+  op.on_tail("--help", sep + "show this message.") { |h|
+    help() ;
+  }
+}
+
+#----------------------------------------------------------------------
+#++
+## arg processing
+$op.parse!(ARGV) ;
+$restArg = ARGV ;
+p [:rest, ARGV], [:conf,$conf] ;
+help() if(ARGV.length > 0) ;
+
+#----------------------------------------------------------------------
+#++
+## parameter list
+
+$intervalList = [10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 70].reverse ;
+
+#$nSavsList = [20, 25, 30, 35, 38, 40, 45, 50, 55, 60, 70, 100].reverse ;
+$nSavsList = [38, 40, 45, 50, 55, 60, 70, 100] ;
+#$nSavsList = [20, 25, 30, 35].reverse ;
+
+$nThread = 6 ;
+
+########################################################################
+########################################################################
+########################################################################
+
+tpool = Itk::ThreadPool.new($nThread) ;
+
+$intervalList.each{|interval|
+  $nSavsList.each{|nSavs|
+    tpool.fork([interval, nSavs]){|param|
+      com = "./runExpA -i #{param[0]} -n #{param[1]} -t"
+      p [:run, :expC, param]
+      system(com) ;
+    }
+    sleep(2) ;
+  }
+}
+
+

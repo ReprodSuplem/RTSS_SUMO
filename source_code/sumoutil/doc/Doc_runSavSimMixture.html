@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>module Doc_runSavSimMixture - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="module">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+<div class="nav-section">
+  <h3>Table of Contents</h3>
+
+  <ul class="link-list" role="directory">
+    <li><a href="#module-Doc_runSavSimMixture-label-runSavSimMixture">runSavSimMixture</a>
+    <li><a href="#module-Doc_runSavSimMixture-label-E6-A6-82-E8-A6-81">概要</a>
+    <li><a href="#module-Doc_runSavSimMixture-label-SavsConfigFile">SavsConfigFile</a>
+    <li><a href="#module-Doc_runSavSimMixture-label-E3-83-87-E3-83-9E-E3-83-B3-E3-83-89-E7-99-BA-E7-94-9F">デマンド発生</a>
+    <li><a href="#module-Doc_runSavSimMixture-label-E9-85-8D-E8-BB-8A">配車</a>
+    <li><a href="#module-Doc_runSavSimMixture-label-E8-B5-B0-E8-A1-8C">走行</a>
+    <li><a href="#module-Doc_runSavSimMixture-label-E7-B5-90-E6-9E-9C-E5-87-BA-E5-8A-9B">結果出力</a>
+    <li><a href="#module-Doc_runSavSimMixture-label-E4-BD-BF-E3-81-84-E6-96-B9">使い方</a>
+  </ul>
+</div>
+
+
+  <div id="class-metadata">
+    
+    
+    
+    
+    
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="module-Doc_runSavSimMixture">
+  <h1 id="module-Doc_runSavSimMixture" class="module">
+    module Doc_runSavSimMixture
+  </h1>
+
+  <section class="description">
+    
+<h1 id="module-Doc_runSavSimMixture-label-runSavSimMixture">runSavSimMixture<span><a href="#module-Doc_runSavSimMixture-label-runSavSimMixture">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<p>指定された混合分布をデマンド発生分布として、SAVの運行シミュレーションを行う。</p>
+
+<h2 id="module-Doc_runSavSimMixture-label-E6-A6-82-E8-A6-81">概要<span><a href="#module-Doc_runSavSimMixture-label-E6-A6-82-E8-A6-81">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p><code>runSavSimMixture</code> では、 第一引数で指定された <em>SavsConfigFile</em> に従い、
+地図、デマンド分布、運行規模などを設定し、 指定されたポリシーでSAVの配車計画を行い、 その配車計画どおりの運行を SUMO
+を用いて求めるものである。</p>
+
+<h3 id="module-Doc_runSavSimMixture-label-SavsConfigFile">SavsConfigFile<span><a href="#module-Doc_runSavSimMixture-label-SavsConfigFile">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p><em>SavConfigFile</em> には シミュレーション条件を設定するパラメータを記述する。 記述は以下のような JSON 形式を用いる。</p>
+
+<pre class="ruby">{
+  <span class="ruby-string">&quot;sumoConfig&quot;</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;foo.bar.sumocfg&quot;</span>,
+  <span class="ruby-string">&quot;jsonMap&quot;</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;Foo.Bar.net.json&quot;</span>,
+  <span class="ruby-string">&quot;dumpedMap&quot;</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;Foo.Bar.net.dump&quot;</span>,
+  <span class="ruby-string">&quot;featureTable&quot;</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;Foo.Bar.feature.json&quot;</span>,
+  <span class="ruby-string">&quot;demandConfig&quot;</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;foo.bar.demandConf.json&quot;</span>,
+
+  <span class="ruby-string">&quot;savN&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">10</span>,
+  <span class="ruby-string">&quot;savCapacity&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">5</span>,
+  <span class="ruby-string">&quot;walkSpeed&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">0.1</span>,
+  <span class="ruby-string">&quot;until&quot;</span><span class="ruby-operator">:</span><span class="ruby-value">43200</span>,
+  <span class="ruby-string">&quot;allocMode&quot;</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;seqOpt&quot;</span>,
+  <span class="ruby-string">&quot;tripGap&quot;</span><span class="ruby-operator">:</span> { <span class="ruby-string">&quot;pickUp&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">20</span>, <span class="ruby-string">&quot;dropOff&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">10</span> },
+  <span class="ruby-string">&quot;stopMargin&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">12</span>,
+
+  <span class="ruby-string">&quot;savBase&quot;</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;MWS_Hidaka_Ohta_DayTrainCenter_Parking&quot;</span>
+}
+</pre>
+
+<p>JSON の各キー・バリュー対の意味は以下のとおりである。</p>
+<dl class="rdoc-list note-list"><dt>“sumoConfig”
+<dd>
+<p>SUMO の設定ファイルを指定する。</p>
+</dd><dt>“jsonMap”
+<dd>
+<p>JSON 形式で記述された地図ファイルを指定する。 この地図ファイルは <code>Traci/convSumoMapXml2Json</code>
+により作成する。 <code>SumoMap</code> において、R-Tree を作成するのに使われる。</p>
+</dd><dt>“dumpedMap”
+<dd>
+<p><code>SumoMap</code> で用いる R-tree をダンプした地図データファイルを指定する。 この地図ファイルは
+<code>Traci/convSumoMapXml2Json</code> により作成する。 これを指定されたとき、“jsonMap”
+は用いられなくなる。</p>
+</dd><dt>“featureTable”
+<dd>
+<p>地図中の地物(feature)を記述したファイルを指定する。 <code>Tool/filterSavsTagInOsm</code>
+を用いてOSMファイルから作成する。 <code>Tool/filterSavsTagInOsm</code> は、 OSM ファイル中の、
+“savs:poi” というタグを持つ点地物 (node) と、 “savs:zone” というタグを持つ面地物 (閉じた way) を抜き出し、
+JSON形式で出力する。</p>
+</dd><dt>“demandConfig”
+<dd>
+<p>デマンド発生を、混合分布の形式で記述したファイルを指定する。 ( <a
+href="Sav/SavDemandFactoryMixture.html">Sav::SavDemandFactoryMixture</a>
+参照)</p>
+</dd><dt>“savN”
+<dd>
+<p>運行するSAVの台数を指定する。</p>
+</dd><dt>“savCapacity”
+<dd>
+<p>一台のSAVの乗車人数を指定する。</p>
+</dd><dt>“walkSpeed”
+<dd>
+<p>利用者の歩行速度を指定する。 締め切り時刻を決める際に用いる。</p>
+</dd><dt>“until”
+<dd>
+<p>シミュレーションの時間を秒数で指定する。</p>
+</dd><dt>“allocMode”
+<dd>
+<p>配車アルゴリズムを指定する。 現状では、+“seqOpt”+ , +“random”+ が指定できる。</p>
+</dd><dt>“tripGap”
+<dd>
+<p>乗車、降車にかかる時間を秒数で指定する。 指定の形式は、以下の通り。</p>
+
+<pre class="ruby">{ <span class="ruby-string">&quot;pickUp&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">20</span>, <span class="ruby-string">&quot;dropOff&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">10</span> }
+</pre>
+</dd><dt>“stopMargin”
+<dd>
+<p>乗車・降車位置に対し、どこまで誤差を許すかを m で指定する。</p>
+</dd><dt>“savBase”
+<dd>
+<p>SAV の基地を地物名で指定する。 この地物は “featureTable” に含まれていないといけない。</p>
+</dd></dl>
+
+<h3 id="module-Doc_runSavSimMixture-label-E3-83-87-E3-83-9E-E3-83-B3-E3-83-89-E7-99-BA-E7-94-9F">デマンド発生<span><a href="#module-Doc_runSavSimMixture-label-E3-83-87-E3-83-9E-E3-83-B3-E3-83-89-E7-99-BA-E7-94-9F">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>デマンドの発生条件は “demandConfig” で指定したファイルに記載する。 <a
+href="Sav/SavDemandFactoryMixture.html">Sav::SavDemandFactoryMixture</a>
+参照。</p>
+
+<h3 id="module-Doc_runSavSimMixture-label-E9-85-8D-E8-BB-8A">配車<span><a href="#module-Doc_runSavSimMixture-label-E9-85-8D-E8-BB-8A">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>このデマンドに対して、random もしくは seqOpt いずれかの配車ポリシーで SAV配車を行う。</p>
+<dl class="rdoc-list label-list"><dt>random
+<dd>
+<p>新しいデマンドが送られてきた時、N台あるSAVから均等に1台を選び、 そのデマンドを選ばれたSAVを配車する。
+配車されたSAVは、現在の待ち行列の最後尾にそのデマンドを追加する。 ただし、配車にあたって、
+新しいデマンド追加によりそのSAVの最大の待ち行列数を超える場合、 配車失敗の回答を返し、配車を行わない。</p>
+</dd><dt>seqOpt
+<dd>
+<p>新しいデマンドが送られてきた時、 各々のSAVに対し、以下の評価値を求める。</p>
+<ol><li>
+<p>現在の経由点待ち行列(配分されている既存のデマンドの乗車・降車地点の列) に対し、新しいデマンドの乗車・降車地点を挿入する。
+挿入する箇所は、乗車・降車の順を保ちながら、乗車・降車の各々の地点を、 すべての可能な箇所に挿入を試みる。</p>
+</li><li>
+<p>新しいデマンドの乗降車地点のある挿入の組み合わせについて、 既存のデマンドが、挿入によりどれだけ時間的ロスが起きるかを求める。
+また、新しいデマンドについて、降車時刻を求める。 その際、既存及び新しいデマンドのいずれかで締め切り時刻を過ぎる場合、 その挿入方法は候補から省く。</p>
+</li><li>
+<p>すべての挿入方法について、2. で求めた時間的ロスの総和と降車時刻を足しあわせ、 その値が最小となる組み合わせを求め、それを最終的な配車とする。</p>
+</li><li>
+<p>もし2. においてすべての挿入方法が棄却された場合、 新しいデマンドについては配車失敗の回答を返し、配車を行わない。</p>
+</li></ol>
+</dd></dl>
+
+<p>以上のいずれかの配車の手順を、新規のデマンドが発生する毎に行い、 配車計画及び走行計画を策定する。</p>
+
+<h3 id="module-Doc_runSavSimMixture-label-E8-B5-B0-E8-A1-8C">走行<span><a href="#module-Doc_runSavSimMixture-label-E8-B5-B0-E8-A1-8C">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>走行については、 すべてSUMOによりシミュレーションする。</p>
+
+<p>SUMOに対しては、 各SAVについて現時点の経由点待ち行列の先頭を仮の目的地とした走行を指示する。 その仮目的地に到着した場合、
+その仮目的地に対応する経由点を待ち行列から除き、 次の経由点を借り目的地に設定する。</p>
+
+<p>経由点の待ち行列が空になった場合、 まず現地点の道路リンクの終点(交差点)を次の仮目的地とする。 その交差点に到達地した際、まだ待ち行列が空の場合、
+その交差点から伸びるリンクについて、 交差点に最も近い終点を持つリンクを選択して、 仮目的地とする。</p>
+
+<p>待ち行列が空の時に、最寄りの交差点を次々の仮目的地とするのは、 交通の障害になることを防止するためである。
+SUMOでは、道路リンク上に車両を停止させることはできるが、 その場合、その車両は障害物となり、 シミュレーションの阻害要因となる。
+また、実世界の交通においても、路上駐車と同じ状態であり、 状況としては避けるべき状態である。
+このため、SAVシミュレーションにおいては、車両は絶えず移動させる 必要が有り、上記のような形で絶えず仮目的地をもたせるようにしている。</p>
+
+<h3 id="module-Doc_runSavSimMixture-label-E7-B5-90-E6-9E-9C-E5-87-BA-E5-8A-9B">結果出力<span><a href="#module-Doc_runSavSimMixture-label-E7-B5-90-E6-9E-9C-E5-87-BA-E5-8A-9B">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>シミュレーションの結果はログ出力として記録される。</p>
+
+<p>本シミュレータのログ出力は以下の4種類である。</p>
+<dl class="rdoc-list label-list"><dt>config.json
+<dd>
+<p>シミュレーションの設定を JSON 形式で記録する。 以下で述べる各種設定を含め、 すべてのシミュレーションパラメータについて、 その値等を JSON
+のオブジェクト形式で記録したものである。 以下はそのログのサンプルである。</p>
+
+<pre class="ruby">  {
+  <span class="ruby-string">&quot;openClient&quot;</span><span class="ruby-operator">:</span> <span class="ruby-keyword">true</span>,
+  <span class="ruby-string">&quot;sumoConfigFile&quot;</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;foo.sumocfg&quot;</span>,
+  <span class="ruby-string">&quot;guiMode&quot;</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;cui&quot;</span>,
+  <span class="ruby-string">&quot;portScanFrom&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">12345</span>,
+  <span class="ruby-string">&quot;traciClient&quot;</span><span class="ruby-operator">:</span> <span class="ruby-identifier">null</span>,
+  <span class="ruby-string">&quot;traciClientConf&quot;</span><span class="ruby-operator">:</span> {
+    <span class="ruby-string">&quot;logDev&quot;</span><span class="ruby-operator">:</span> [
+      <span class="ruby-string">&quot;stdout&quot;</span>,
+      <span class="ruby-string">&quot;file&quot;</span>
+    ],
+    <span class="ruby-string">&quot;logLevel&quot;</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;info&quot;</span>,
+    <span class="ruby-string">&quot;logDir&quot;</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;.&quot;</span>,
+    <span class="ruby-string">&quot;logFilename&quot;</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;,Log/foo/savSim_.traci.log&quot;</span>
+  },
+  <span class="ruby-string">&quot;vehicleManager&quot;</span><span class="ruby-operator">:</span> <span class="ruby-identifier">null</span>,
+  <span class="ruby-string">&quot;vehicleManagerConf&quot;</span><span class="ruby-operator">:</span> {
+    <span class="ruby-string">&quot;defaultVehicleClass&quot;</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;Sav::SavVehicle&quot;</span>,
+    <span class="ruby-string">&quot;vehicleIdPrefix&quot;</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;sav&quot;</span>,
+    <span class="ruby-string">&quot;vehicleConf&quot;</span><span class="ruby-operator">:</span> {
+      <span class="ruby-string">&quot;color&quot;</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;DodgerBlue&quot;</span>,
+      <span class="ruby-string">&quot;capacity&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">3</span>
+    }
+  },
+  <span class="ruby-string">&quot;vehicleConf&quot;</span><span class="ruby-operator">:</span> {
+    <span class="ruby-string">&quot;capacity&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">3</span>
+  },
+  <span class="ruby-string">&quot;poiManager&quot;</span><span class="ruby-operator">:</span> <span class="ruby-identifier">null</span>,
+  <span class="ruby-string">&quot;poiManagerConf&quot;</span><span class="ruby-operator">:</span> {
+    <span class="ruby-string">&quot;defaultPoiClass&quot;</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;Sumo::Traci::GroundedPoi&quot;</span>
+  },
+  <span class="ruby-string">&quot;mapFile&quot;</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;./foo.net.json&quot;</span>,
+  <span class="ruby-string">&quot;mapConf&quot;</span><span class="ruby-operator">:</span> {
+    <span class="ruby-string">&quot;buildRTrees&quot;</span><span class="ruby-operator">:</span> <span class="ruby-keyword">true</span>
+  },
+  <span class="ruby-string">&quot;loopConf&quot;</span><span class="ruby-operator">:</span> {
+    <span class="ruby-string">&quot;until&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">36000</span>
+  },
+  <span class="ruby-string">&quot;timeOrigin&quot;</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;00:00:00&quot;</span>,
+  <span class="ruby-string">&quot;vehicleType&quot;</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;savBase&quot;</span>,
+  <span class="ruby-string">&quot;demandFactoryClass&quot;</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;Sav::SavDemandFactoryRandom&quot;</span>,
+  <span class="ruby-string">&quot;demandFactoryConf&quot;</span><span class="ruby-operator">:</span> {
+    <span class="ruby-string">&quot;center&quot;</span><span class="ruby-operator">:</span> <span class="ruby-node">&quot;#Point[2850.0,7800.0]&quot;</span>,
+    <span class="ruby-string">&quot;offset&quot;</span><span class="ruby-operator">:</span> <span class="ruby-node">&quot;#V[0,0]&quot;</span>,
+    <span class="ruby-string">&quot;rangeSize&quot;</span><span class="ruby-operator">:</span> <span class="ruby-node">&quot;#V[1100.0,700.0]&quot;</span>,
+    <span class="ruby-string">&quot;frequency&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">0.05</span>,
+    <span class="ruby-string">&quot;walkSpeed&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">0.0027777777777777775</span>,
+    <span class="ruby-string">&quot;demandConf&quot;</span><span class="ruby-operator">:</span> {
+      <span class="ruby-string">&quot;tripGapDuration&quot;</span><span class="ruby-operator">:</span> <span class="ruby-node">&quot;#&lt;Sav::Trip&gt;&quot;</span>
+    },
+    <span class="ruby-string">&quot;logFile&quot;</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;,Log/foo/savSim_.demandLog.json&quot;</span>
+  },
+  <span class="ruby-string">&quot;allocatorClass&quot;</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;Sav::SavAllocatorSeqOpt&quot;</span>,
+  <span class="ruby-string">&quot;allocatorConf&quot;</span><span class="ruby-operator">:</span> {
+  },
+  <span class="ruby-string">&quot;reporterClass&quot;</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;Sav::SavReporter&quot;</span>,
+  <span class="ruby-string">&quot;reporterConf&quot;</span><span class="ruby-operator">:</span> {
+    <span class="ruby-string">&quot;reportInterval&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">60000</span>
+  },
+  <span class="ruby-string">&quot;trailLogFile&quot;</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;,Log/foo/savSim_.trailLog.json&quot;</span>,
+  <span class="ruby-string">&quot;configLogFile&quot;</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;,Log/foo/savSim_.config.json&quot;</span>,
+}
+</pre>
+</dd><dt>demandLog.json
+<dd>
+<p>デマンド毎に、 デマンドのIDや発生時刻、乗降車地点、 配車結果、実際の乗降車時刻、 および降車までの計画変更履歴を記録したものである。
+1デマンドにつき一行、1つのJSONオブジェクトとして出力される 計画変更履歴は、配車時点での予定乗降車時刻から始まり、
+降車までに同じ配車SAVが受け取った別のデマンドにより変更された予定乗降車時刻を 並べたものである。 これにより、1つのデマンドを処理する間に、
+どれくらい遅延が生じたかなどを調べることができる。 いかがその1デマンド分のサンプルである。</p>
+
+<pre class="ruby">  {
+  <span class="ruby-string">&quot;id&quot;</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;demand_00000030_foo&quot;</span>,
+  <span class="ruby-string">&quot;passenger&quot;</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;foo&quot;</span>,
+  <span class="ruby-string">&quot;numPassenger&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">1</span>,
+  <span class="ruby-string">&quot;status&quot;</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;afterDropOff&quot;</span>,
+  <span class="ruby-string">&quot;sav&quot;</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;sav_00006&quot;</span>,
+  <span class="ruby-string">&quot;arisedTime&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">556.0</span>,
+  <span class="ruby-string">&quot;sharedWithList&quot;</span><span class="ruby-operator">:</span> [<span class="ruby-string">&quot;demand_00000013_foo&quot;</span>,<span class="ruby-string">&quot;demand_00000031_foo&quot;</span>],
+  <span class="ruby-string">&quot;tripPos&quot;</span><span class="ruby-operator">:</span> {
+    <span class="ruby-string">&quot;pickUp&quot;</span><span class="ruby-operator">:</span> { <span class="ruby-string">&quot;x&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">2405.30</span>, <span class="ruby-string">&quot;y&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">7706.78</span> },
+    <span class="ruby-string">&quot;dropOff&quot;</span><span class="ruby-operator">:</span> { <span class="ruby-string">&quot;x&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">2601.21</span>, <span class="ruby-string">&quot;y&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">7708.64</span> }
+  },
+  <span class="ruby-string">&quot;tripViaPoint&quot;</span><span class="ruby-operator">:</span> {
+    <span class="ruby-string">&quot;pickUp&quot;</span><span class="ruby-operator">:</span> { <span class="ruby-string">&quot;pos&quot;</span><span class="ruby-operator">:</span> { <span class="ruby-string">&quot;x&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">2405.30</span>, <span class="ruby-string">&quot;y&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">7706.78</span> } },
+    <span class="ruby-string">&quot;dropOff&quot;</span><span class="ruby-operator">:</span> { <span class="ruby-string">&quot;pos&quot;</span><span class="ruby-operator">:</span> { <span class="ruby-string">&quot;x&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">2601.21</span>, <span class="ruby-string">&quot;y&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">7708.64</span> } }
+  },
+  <span class="ruby-string">&quot;tripTime&quot;</span><span class="ruby-operator">:</span> { <span class="ruby-string">&quot;pickUp&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">1022.0</span>, <span class="ruby-string">&quot;dropOff&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">1258.0</span> },
+  <span class="ruby-string">&quot;tripRequiredTime&quot;</span><span class="ruby-operator">:</span> { <span class="ruby-string">&quot;pickUp&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">556.0</span>, <span class="ruby-string">&quot;dropOff&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">9357.44</span> },
+  <span class="ruby-string">&quot;tripPlannedTimeList&quot;</span><span class="ruby-operator">:</span> [
+    { <span class="ruby-string">&quot;pickUp&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">578.24</span> },
+    { <span class="ruby-string">&quot;pickUp&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">578.24</span>, <span class="ruby-string">&quot;dropOff&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">608.17</span> },
+    { <span class="ruby-string">&quot;pickUp&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">621.83</span>, <span class="ruby-string">&quot;dropOff&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">608.17</span> },
+    { <span class="ruby-string">&quot;pickUp&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">621.83</span>, <span class="ruby-string">&quot;dropOff&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">672.15</span> },
+    { <span class="ruby-string">&quot;pickUp&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">624.83</span>, <span class="ruby-string">&quot;dropOff&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">672.15</span> },
+    { <span class="ruby-string">&quot;pickUp&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">624.83</span>, <span class="ruby-string">&quot;dropOff&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">675.15</span> },
+    { <span class="ruby-string">&quot;pickUp&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">639.57</span>, <span class="ruby-string">&quot;dropOff&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">675.15</span> },
+    { <span class="ruby-string">&quot;pickUp&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">639.57</span>, <span class="ruby-string">&quot;dropOff&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">689.89</span> }
+  ]
+}
+</pre>
+</dd><dt>trailLog.json
+<dd>
+<p>SAV毎に、 そのSAVの基本情報と共に、 経由点にたどり着く毎に、 時刻、その場所、処理したデマンドのID等をJSON
+オブジェクト形式で記録したものである。 1SAVあたり、一行のJSONで出力される。 以下はそのSAV1台分のサンプル。</p>
+
+<pre>{
+  &quot;id&quot;: &quot;sav_00000&quot;,
+  &quot;base&quot;: &quot;SavBase_00000&quot;,
+  &quot;capacity&quot;: 3,
+  &quot;viaPointIndex&quot;: 323,
+  &quot;viaPointList&quot;: [
+    { &quot;pos&quot;: { &quot;x&quot;: 2838.84, &quot;y&quot;: 7890.29 },
+      &quot;demandId&quot;: null,
+      &quot;mode&quot;: &quot;dummy&quot;,
+      &quot;duration&quot;: 0,
+      &quot;time&quot;: 16.0
+    },
+    { &quot;pos&quot;: { &quot;x&quot;: 3358.65, &quot;y&quot;: 7966.16 },
+      &quot;demandId&quot;: &quot;demand_00000001_foo&quot;,
+      &quot;mode&quot;: &quot;pickUp&quot;,
+      &quot;duration&quot;: 0.0,
+      &quot;time&quot;: 204.0
+    },
+    { &quot;pos&quot;: { &quot;x&quot;: 2757.98, &quot;y&quot;: 7926.43 },
+      &quot;demandId&quot;: &quot;demand_00000011_foo&quot;,
+      &quot;mode&quot;: &quot;pickUp&quot;,
+      &quot;duration&quot;: 0.0,
+      &quot;time&quot;: 549.0
+    },
+    ...
+  ],
+  &quot;onBoardList&quot;: [&quot;demand_00000702_foo&quot;, ...],
+  &quot;assignedDemandList&quot;: [
+    { &quot;id&quot;: &quot;demand_00000001_foo&quot;,
+      &quot;passenger&quot;: &quot;foo&quot;,
+      &quot;numPassenger&quot;: 1,
+      &quot;tripPos&quot;: {
+        &quot;pickUp&quot;: { &quot;x&quot;: 3358.65, &quot;y&quot;: 7966.16 },
+        &quot;dropOff&quot;: { &quot;x&quot;: 2439.76, &quot;y&quot;: 7766.37 }
+      },
+      &quot;arisedTime&quot;: 26.0,
+      &quot;tripRequiredTime&quot;: { &quot;pickUp&quot;: 26.0, &quot;dropOff&quot;: 1053.05 },
+      &quot;tripTime&quot;: { &quot;pickUp&quot;: 204.0, &quot;dropOff&quot;: 673.0 }
+    },
+    { &quot;id&quot;: &quot;demand_00000011_foo&quot;,
+      &quot;passenger&quot;: &quot;foo&quot;,
+      &quot;numPassenger&quot;: 1,
+      &quot;tripPos&quot;: {
+        &quot;pickUp&quot;: { &quot;x&quot;: 2757.98, &quot;y&quot;: 7926.43 },
+        &quot;dropOff&quot;: { &quot;x&quot;: 2341.81, &quot;y&quot;: 8010.95 }
+      },
+      &quot;arisedTime&quot;: 256.0,
+      &quot;tripRequiredTime&quot;: { &quot;pickUp&quot;: 256.0, &quot;dropOff&quot;: 4908.02 },
+      &quot;tripTime&quot;: { &quot;pickUp&quot;: 549.0, &quot;dropOff&quot;: 914.0 }
+    },
+    ...
+  ],
+}</pre>
+</dd><dt>traci.json
+<dd>
+<p>SUMO に対する制御コマンドを記録したもの。 主として debug のために用いる。</p>
+</dd></dl>
+
+<h2 id="module-Doc_runSavSimMixture-label-E4-BD-BF-E3-81-84-E6-96-B9">使い方<span><a href="#module-Doc_runSavSimMixture-label-E4-BD-BF-E3-81-84-E6-96-B9">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p><code>runSavSimMixture</code> は、コマンドラインより以下のように指定して起動する。</p>
+
+<pre>$ ./runSavSimMixture [Options]* SavsConfigFile 
+Options:</pre>
+
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

@@ -1,0 +1,726 @@
+#! /usr/bin/env ruby
+## -*- mode: ruby -*-
+## = run Osaka Senba's script
+## Author:: Anonymous3
+## Version:: 0.0 2018/04/17 Anonymous3
+##
+## === History
+## * [2018/04/17]: Create This File.
+## * [YYYY/MM/DD]: add more
+## == Usage
+## * ...
+
+def $LOAD_PATH.addIfNeed(path)
+  self.unshift(path) if(!self.include?(path)) ;
+end
+
+$LOAD_PATH.addIfNeed("~/lib/ruby");
+# $LOAD_PATH.addIfNeed(File.dirname(__FILE__));
+
+require 'optparse' ;
+require 'pp' ;
+require 'json' ;
+require 'csv' ;
+
+require 'WithConfParam.rb' ;
+require 'gnuplot.rb' ;
+
+#------------------------------------------------------------------------
+#++
+$conf = {
+  :logDir => ",Log",
+  :resultDir => "Result",
+  :exp => "expA",
+  :mode => :scanLog,
+  :csvColSep => :comma,   # :tab, :space
+} ;
+
+#----------------------------------------------------------------------
+#++
+## help
+def help()
+  puts($op) ;
+  puts("Defaults:") ;
+  pp $conf ;
+  exit(1) ;
+end
+
+#------------------------------------------------------------------------
+#++
+$op = OptionParser.new() {|op|
+
+  modeList = [:scan, :csvSummary, :csvSpeed,
+              :plotSpeed, :plotShareRatio, :plotCumulativeShare] ;
+  
+  op.banner = <<_END_
+  Usage: #{$0} [Options]*
+	possible mode: #{modeList.map{|mode| mode.to_s}.join(",")}
+_END_
+
+  op.separator("Options:") ;
+  op.set_summary_indent("") ;
+  op.set_summary_width(60) ;
+  sep = "\n\t\t" ;
+
+  op.on("-x", "--exp ExpName", String, sep + "exp. name.") {|exp|
+    $conf[:exp] = exp ;
+  }
+  op.on("-m", "--mode Mode", String, sep + "analyze mode. [#{modeList.join(",")}].") {|modeStr|
+    mode = modeStr.intern ;
+    if(modeList.include?(mode)) then
+      $conf[:mode] = mode ;
+    else
+      help() ;
+    end
+  }
+  op.on("--csvMode Mode", String, sep + "choose csv separator. [comma, space, tab].") {|modeStr|
+    mode = modeStr.intern ;
+    $conf[:csvColSep] = mode ;
+  }
+  op.on_tail("--help", sep + "show this message.") { |h|
+    help() ;
+  }
+}
+
+#----------------------------------------------------------------------
+#++
+## arg processing
+$op.parse!(ARGV) ;
+$restArg = ARGV ;
+
+help() if(ARGV.length > 0) ;
+
+p [:conf,$conf] ;
+
+#--======================================================================
+#--======================================================================
+#--======================================================================
+#++
+## AnalyzerExpA
+class AnalyzerExpA
+  #--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+  #++
+  ## description of DefaultValues.
+  DefaultValues = { :foo => :bar } ;
+  ## description of DefaultOptsions.
+  DefaultConf = { :logDir => "./,Log",
+                  :resultDir => "./Result",
+                } ;
+
+  #--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  #++
+  ## base name of log files.
+  attr_accessor :basename ;
+  ## base path of log files.
+  attr_accessor :basePath ;
+  ## scanned config.
+  attr_accessor :config ;
+  ## number of SAVs
+  attr_accessor :nSavs ;
+  ## result of analyzeDemandLog
+  attr_accessor :demandStat ;
+
+  #--------------------------------------------------------------
+  #++
+  ## description of method initialize
+  ## _baz_:: about argument baz.
+  def initialize(_logDir, _basename)
+    @logDir = _logDir ;
+    setBasename(_basename) ;
+  end
+
+  #--------------------------------------------------------------
+  #++
+  ## set basename
+  ## __basename_:: basename
+  def setBasename(_basename)
+    @basename = _basename ;
+    @basePath = @logDir + "/" + @basename if(!@basename.nil?) ;
+  end
+
+  #--------------------------------------------------------------
+  #++
+  ## scan log files.
+  ## *return*:: ??
+  def scan()
+    scanConfig() ;
+    scanTrailLog() ;
+    analyzeDemandLog() ;
+  end
+  
+  #--------------------------------------------------------------
+  #++
+  ## scan config file.
+  ## *return*:: scanned config.
+  def scanConfig()
+    configFile = @basePath + ".config.json" ;
+    open(configFile,"r"){|strm|
+      @config = JSON.load(strm.read()) ;
+    }
+    return @config ;
+  end
+
+  #--------------------------------------------------------------
+  #++
+  ## scan trail logs to get number of SAVs.
+  ## *return*:: the number of savs.
+  def scanTrailLog()
+    trailLogFile = @basePath + ".trailLog.json" ;
+    @nSavs = `wc #{trailLogFile}`.split()[0].to_i ;
+    @config[:nSavs] = @nSavs ;
+    return @nSavs ;
+  end
+  
+  #--------------------------------------------------------------
+  #++
+  ## analyze demandLogs to get statistics of demand.
+  ## *return*:: statistics
+  def analyzeDemandLog()
+    demandLogFile = @basePath + ".demandLog.json" ;
+    com = "../Savs/analyzeDemandLog #{demandLogFile}" ;
+    p [:com, com] ;
+    jsonStr = `#{com}` ;
+    @demandStat = JSON.load(jsonStr) ;
+    return @demandStat ;
+  end
+
+  #--------------------------------------------------------------
+  #++
+  ## generate Hash for Json
+  ## *return*:: statistics
+  def toJson()
+    return ({"basename" => @basename,
+             "config" => @config,
+             "demandStat" => @demandStat,
+            }) ;
+  end
+
+  #--------------------------------------------------------------
+  #++
+  ## scan Json
+  ## *return*:: statistics
+  def scanResultJson(result)
+    setBasename(result["basename"]) ;
+    @config = result["config"] ;
+    @demandStat = result["demandStat"] ;
+  end
+
+  #--------------------------------------------------------------
+  #++
+  ## get nSav value
+  def getNSavs()
+    @config["nSavs"]
+  end
+  
+  #--------------------------------------------------------------
+  #++
+  ## get frequency value
+  def getFrequency()
+#    @config["demandFactoryConf"]["frequency"]
+    interval = @config["demandFactoryConf"]["configList"][0]["interval"] ;
+    return 60 * 60 / interval.to_f ;
+  end
+  
+  #--------------------------------------------------------------
+  #++
+  ## get average speed
+  def getAveSpeed()
+    @demandStat["speedStat"]["average"]
+  end
+  
+  #--------------------------------------------------------------
+  #++
+  ## get shared ratio
+  def getShareRatio()
+    countList = @demandStat["shareCountHistgram"] ;
+    sum = 0 ;
+    single = nil ;
+    countList.each{|count|
+      c = (count.nil? ? 0 : count) ;
+      single = c if(single.nil?) ;
+      sum += c ;
+    }
+
+    shared = sum - single ;
+    return shared.to_f / sum ;
+  end
+
+  #--------------------------------------------------------------
+  #++
+  ## get cumulative share
+  def getCumulativeShare()
+    countList = @demandStat["shareCountHistgram"] ;
+    sum = 0 ;
+    cum = 0 ;
+    n = 0 ;
+    countList.each{|count|
+      n += 1;
+      c = (count.nil? ? 0 : count) ;
+      sum += c ;
+      cum += (n-1) * c ;
+    }
+    return cum.to_f / sum ;
+  end
+
+  #--------------------------------------------------------------
+  #++
+  ## conf index
+  ## *return*:: [nSavs, freq]
+  def configIndex()
+    return [getNSavs(), getFrequency()] ;
+  end
+
+  #--------------------------------------------------------------
+  #++
+  ## gen average speed row for CSV
+  ## *return*:: [nSavs, freq, aveSpeed]
+  def genCsvRowSpeed()
+    row = configIndex() ;
+    row.push(getAveSpeed()) ;
+    return row ;
+  end
+
+  #--------------------------------------------------------------
+  #++
+  ## gen CSV row for summary
+  ## *return*:: [nSavs, freq, aveSpeed]
+  def genCsvRowSummary()
+    row = configIndex() ;
+
+    row.push(getAveSpeed()) ;
+    row.push(getShareRatio()) ;
+    row.push(getCumulativeShare()) ;
+    return row ;
+  end
+  
+  #--------------------------------------------------------------
+  #++
+  ## gen CSV title line
+  ## *return*:: [nSavs, freq, aveSpeed, shareRatio, cumulativeSahre]
+  def self.genCsvTitleRow()
+    return ["nSavs", "frequency", "aveSpeed", "shareRatio", "cumulativeShare"] ;
+  end
+  
+  #--============================================================
+  #--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+  #--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  #--------------------------------------------------------------
+end # class AnalyzerExpA
+
+#--======================================================================
+#++
+## AnalyzerExpATable
+class AnalyzerTableExpA < WithConfParam
+
+  #--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+  #++
+  ## description of DefaultOptsions.
+  DefaultConf = { :logDir => "./,Log",
+                  :resultDir => "./Result",
+                  :scannedResultFile => "scannedResult.json",
+                  :csvColSep => :comma,
+                  :basenameSpeed => "aveSpeed",
+                  :basenameSummary => "summary",
+                } ;
+  
+  #--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  #++
+  ## log dir
+  attr_accessor :logDir ;
+  ## exp name
+  attr_accessor :exp ;
+  
+  ## basenameList
+  attr_accessor :basenameList ;
+  ## analyzerTable
+  attr_accessor :analyzerTable ;
+
+  #--------------------------------------------------------------
+  #++
+  ## init
+  ## *return*:: statistics
+  def initialize(_exp, _conf = {})
+    super(_conf) ;
+    @logDir = getConf(:logDir) ;
+    @resultDir = getConf(:resultDir) ;
+    @exp = _exp ;
+    @basenameList = [] ;
+    @analyzerTable = {} ;
+    @logBaseDir = "#{@logDir}/#{@exp}" ;
+    @resultBaseDir = "#{@resultDir}/#{@exp}"
+  end
+  
+  #--------------------------------------------------------------
+  #++
+  ## init
+  ## *return*:: statistics
+  def scan()
+    scanDir() ;
+    scanLogs() ;
+  end
+  
+  #--------------------------------------------------------------
+  #++
+  ## init
+  ## *return*:: statistics
+  def scanDir()
+    suffix = ".config.json"
+    Dir.glob("#{@logBaseDir}/*/*#{suffix}") {|path|
+      #basename = File.basename(path, ".config.json") ;
+      basename = path.gsub(/^#{@logBaseDir}\//,'').gsub(/#{suffix}$/,'') ;
+      p [:basename, basename] ;
+      @basenameList.push(basename) ;
+    }
+    @basenameList.sort!() ;
+    return @basenameList ;
+  end
+
+  #--------------------------------------------------------------
+  #++
+  ## init
+  ## *return*:: statistics
+  def scanLogs()
+    @basenameList.each{|basename|
+      analyzer = AnalyzerExpA.new(@logBaseDir, basename) ;
+      @analyzerTable[basename] = analyzer ;
+      analyzer.scan() ;
+    }
+  end
+  
+  #--------------------------------------------------------------
+  #++
+  ## init
+  ## *return*:: statistics
+  def loadResult()
+    json = nil ;
+    file = scannedResultFilename() ;
+    open(file,"r"){|strm|
+      json = JSON.load(strm.read()) ;
+    }
+
+    json.each{|result|
+      analyzer = AnalyzerExpA.new(@logBaseDir, nil) ;
+      analyzer.scanResultJson(result) ;
+      basename = analyzer.basename ;
+      @basenameList.push(basename) ;
+      @analyzerTable[basename] = analyzer ;
+    }
+  end
+  
+  #--------------------------------------------------------------
+  #++
+  ## to Json
+  ## *return*:: statistics
+  def to_a()
+    array = @basenameList.map{|basename|
+      @analyzerTable[basename] ;
+    }
+    return array ;
+  end
+  
+  #--------------------------------------------------------------
+  #++
+  ## to Json
+  ## *return*:: statistics
+  def toJson()
+    json = to_a().map{|analyzer|
+      analyzer.toJson() ;
+    }
+    return json ;
+  end
+
+  #--------------------------------------------------------------
+  #++
+  ## scannedResultFileName
+  ## *return*:: the file name
+  def scannedResultFilename()
+    return "#{@resultBaseDir}/#{getConf(:scannedResultFile)}" ;
+  end
+    
+  #--------------------------------------------------------------
+  #++
+  ## scannedResultFileName
+  ## *return*:: the file name
+  def pathBaseSummary()
+    return "#{@resultBaseDir}/#{getConf(:basenameSummary)}" ;
+  end
+  
+  #--------------------------------------------------------------
+  #++
+  ## scannedResultFileName
+  ## *return*:: the file name
+  def pathBaseSpeed()
+    return "#{@resultBaseDir}/#{getConf(:basenameSpeed)}" ;
+  end
+  
+  #--------------------------------------------------------------
+  #++
+  ## scannedResultFileName
+  ## *return*:: the file name
+  def csvFilenameSummary()
+    return pathBaseSummary() + ".csv" ;
+  end
+    
+  #--------------------------------------------------------------
+  #++
+  ## scannedResultFileName
+  ## *return*:: the file name
+  def csvFilenameSpeed()
+    return pathBaseSpeed() + ".csv" ;
+  end
+    
+  #--------------------------------------------------------------
+  #++
+  ## to Json
+  ## *return*:: statistics
+  def dumpScannedResult()
+    file = scannedResultFilename() ;
+    system("mkdir -p #{File::dirname(file)}") ;
+    open(file, "w") {|strm|
+      strm << JSON.pretty_generate(toJson()) << "\n" ;
+    }
+  end
+
+  #--------------------------------------------------------------
+  #++
+  ## gen csv for average speed stat
+  ## *return*:: matrix
+  def genCsvSummary()
+    csv = [] ;
+    to_a.each{|analyzer|
+      csv.push(analyzer.genCsvRowSummary()) ;
+    }
+    return csv ;
+  end
+
+  #--------------------------------------------------------------
+  #++
+  ## gen csv for average speed stat
+  ## *return*:: matrix
+  def genCsvSpeed()
+    csv = [] ;
+    to_a.each{|analyzer|
+      csv.push(analyzer.genCsvRowSpeed()) ;
+    }
+    return csv ;
+  end
+
+  #--------------------------------------------------------------
+  #++
+  ## gen csv for average speed stat
+  ## *return*:: matrix
+  def csvColSepChar()
+    c = getConf(:csvColSep)
+    case(c)
+    when :comma, nil ; return "," ;
+    when :tab ; return "\t" ;
+    when :space ; return " " ;
+    else
+      if(c.is_a?(String)) then
+        return c ;
+      else
+        raise "unknown CSV column separator: '#{c}'" ;
+      end
+    end
+  end
+  
+  #--------------------------------------------------------------
+  #++
+  ## gen csv for average speed stat
+  ## *return*:: matrix
+  def dumpCsvSpeed()
+    CSV.open(csvFilenameSpeed(), "w", { :col_sep => csvColSepChar() }) { |csv|
+      csv << AnalyzerExpA.genCsvTitleRow() ;
+      genCsvSpeed().each{|row|
+        csv << row ;
+      }
+    }
+  end
+
+  #--------------------------------------------------------------
+  #++
+  ## gen csv for average speed stat
+  ## *return*:: matrix
+  def dumpCsvSummary()
+    CSV.open(csvFilenameSummary(), "w", { :col_sep => csvColSepChar() }) { |csv|
+      csv << AnalyzerExpA.genCsvTitleRow() ;
+      genCsvSummary().each{|row|
+        csv << row ;
+      }
+    }
+  end
+
+  #--------------------------------------------------------------
+  #++
+  ## plot 3d generic
+  ## _title_ :: gnuplot title
+  ## _label_ :: label of plotted value
+  ## _index_ :: index of value in CSV row
+  ## _pathBase_ :: file name path base for output.
+  def plot3dGeneric(title, label, index, baseName)
+    pathBase = "#{@resultBaseDir}/#{baseName}" ;
+    Gnuplot::directDgrid3dPlot({ :pathBase => pathBase,
+                                 :title => title,
+#                                 :xlabel => '# of Savs (log)',
+#                                 :ylabel => 'frequency (log)',
+                                 :xlabel => '# of Savs',
+                                 :ylabel => 'frequency',
+                                 :zlabel => label,
+#                                 :logscale => :xy,
+                                 :logscale => nil,
+                                 :contour => true,
+                                 :noztics => true,
+                                 :view => [0, 359.9999],
+                                 :tgif => true,
+                                 nil => nil}) {|gplot|
+      to_a.each{|analyzer|
+        row = analyzer.genCsvRowSummary() ;
+        gplot.dpDgrid3dPlot(row[0], row[1], row[index]) ;
+      }
+    }
+  end
+  
+  #--------------------------------------------------------------
+  #++
+  ## plot 3d generic
+  ## _title_ :: gnuplot title
+  ## _label_ :: label of plotted value
+  ## _index_ :: index of value in CSV row
+  ## _pathBase_ :: file name path base for output.
+  def plot3dGeneric_old(title, label, index, baseName)
+    index += 1;
+    pathBase = "#{@resultBaseDir}/#{baseName}" ;
+    begin
+      gplot = Gnuplot.new(:gplot, pathBase) ;
+      gplot.setTitle(title) ;
+      gplot.setXYLabel("# of Savs (log)", "frequency (log)") ;
+      gplot.command("set ylabel rotate parallel") ;
+      gplot.command("set dgrid3d 100,100 spline") ;
+      gplot.command("set pm3d at b") ;
+      gplot.command("set cblabel \"#{label}\" offset -10") ;
+      gplot.command("set logscale xy") ;
+      gplot.command("set contour") ;
+      gplot.command("unset ztics") ;
+      gplot.command("set view 0,359.9999") ;  # to show y label at left.
+
+      gplot.command("$MyData << EOD") ;
+      to_a.each{|analyzer|
+        gplot.command(analyzer.genCsvRowSummary().join(" ")) ;
+      }
+      gplot.command("EOD") ;
+
+#      gplot.command("splot $MyData u 1:2:#{index} w lines palette notitle") ;
+      gplot.command("splot $MyData u 1:2:#{index} w pm3d t '#{label}'") ;
+
+      gplot.close() ;
+
+      #gplot = Gnuplot.new("qt") ;
+      gplot = Gnuplot.new("wxt") ;
+      gplot.command("load \"#{pathBase}.gpl\"") ;
+      gplot.setTerm(:tgif, "#{pathBase}") ;
+      gplot.command("replot") ;
+
+    ensure
+      gplot.close() ;
+    end
+  end
+  
+  #--------------------------------------------------------------
+  #++
+  ## plot speed
+  def plotSpeed()
+    plot3dGeneric("Average Speed","Average Speed", 2, "aveSpeed") ;
+  end
+  
+  #--------------------------------------------------------------
+  #++
+  ## plot speed
+  def plotShareRatio()
+    plot3dGeneric("Share Ratio","Share Ratio", 3, "shareRatio") ;
+  end
+  
+  #--------------------------------------------------------------
+  #++
+  ## plot speed
+  def plotCumulativeShare()
+    plot3dGeneric("Cumulative Share","Cumulative Share", 4, "cumulativeShare") ;
+  end
+  
+  #--------------------------------------------------------------
+  #++
+  ## plot speed
+  def plotSpeed_old()
+    begin
+      gplot = Gnuplot.new(:gplot, pathBaseSpeed()) ;
+      gplot.setTitle("Average Speed") ;
+#      gplot.setXYLabel("# of Savs (log)", "frequency (log)") ;
+      gplot.setXYLabel("# of Savs", "frequency") ;
+      gplot.command("set ylabel rotate parallel") ;
+      gplot.command("set dgrid3d 100,100 spline") ;
+      gplot.command("set pm3d at b") ;
+      gplot.command("set cblabel \"ave. speed\" offset -10") ;
+#      gplot.command("set logscale xy") ;
+      gplot.command("unset ztics") ;
+      gplot.command("set view 0,359.9999") ;  # to show y label at left.
+
+      gplot.command("$MyData << EOD") ;
+      to_a.each{|analyzer|
+        gplot.command(analyzer.genCsvRowSpeed().join(" ")) ;
+      }
+      gplot.command("EOD") ;
+
+      gplot.command("splot $MyData u 1:2:3 w lines palette notitle") ;
+
+      gplot.close() ;
+
+      gplot = Gnuplot.new("qt") ;
+      gplot.command("load \"#{pathBaseSpeed()}.gpl\"") ;
+      gplot.setTerm(:tgif, "#{pathBaseSpeed()}") ;
+      gplot.command("replot") ;
+      
+    ensure
+      gplot.close() ;
+    end
+  end
+
+  #--============================================================
+  #--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+  #--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  #--------------------------------------------------------------
+end # class AnalyzerTableExpA
+
+
+########################################################################
+########################################################################
+########################################################################
+
+aConf = { :logDir => $conf[:logDir],
+          :resultDir => $conf[:resultDir],
+          :csvColSep => $conf[:csvColSep],
+        } ;
+
+aTable = AnalyzerTableExpA.new($conf[:exp], aConf) ;
+
+case($conf[:mode])
+when :scan ;
+  aTable.scan() ;
+  aTable.dumpScannedResult() ;
+when :csvSummary ;
+  aTable.loadResult() ;
+  aTable.dumpCsvSummary() ;
+when :csvSpeed ;
+  aTable.loadResult() ;
+  aTable.dumpCsvSpeed() ;
+when :plotSpeed ;
+  aTable.loadResult() ;
+  aTable.plotSpeed() ;
+when :plotShareRatio ;
+  aTable.loadResult() ;
+  aTable.plotShareRatio() ;
+when :plotCumulativeShare ;
+  aTable.loadResult() ;
+  aTable.plotCumulativeShare() ;
+else
+  STDERR << "Unknown mode:" << $conf[:mode] << "\n" ;
+  help() ;
+end

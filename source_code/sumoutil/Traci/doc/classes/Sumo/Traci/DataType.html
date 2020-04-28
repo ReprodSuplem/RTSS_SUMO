@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: Sumo::Traci::DataType</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">Sumo::Traci::DataType</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../files/TraciDataType_rb.html">
+                TraciDataType.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Util::NamedIdEntry
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+<a href="DataType.html">DataType</a>
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000024">actualSize</a>&nbsp;&nbsp;
+      <a href="#M000025">actualSizeComposed</a>&nbsp;&nbsp;
+      <a href="#M000026">actualSizeComposedList</a>&nbsp;&nbsp;
+      <a href="#M000020">new</a>&nbsp;&nbsp;
+      <a href="#M000027">pack</a>&nbsp;&nbsp;
+      <a href="#M000028">packComposed</a>&nbsp;&nbsp;
+      <a href="#M000029">packComposedList</a>&nbsp;&nbsp;
+      <a href="#M000030">packCompound</a>&nbsp;&nbsp;
+      <a href="#M000021">unpack!</a>&nbsp;&nbsp;
+      <a href="#M000022">unpackComposed!</a>&nbsp;&nbsp;
+      <a href="#M000023">unpackComposedList!</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+    <div id="attribute-list">
+      <h3 class="section-bar">Attributes</h3>
+
+      <div class="name-list">
+        <table>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">components</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc">
+components. if nil, it is atomic type.
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">packTemplate</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc">
+template used in <a href="DataType.html#M000027">pack</a> and unpack
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">size</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc">
+size in message. if nil, it can be variable.
+
+</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000020" class="method-detail">
+        <a name="M000020"></a>
+
+        <div class="method-heading">
+          <a href="DataType.src/M000020.html" target="Code" class="method-signature"
+            onclick="popupCode('DataType.src/M000020.html');return false;">
+          <span class="method-name">new</span><span class="method-args">(name, cname, size, packTemp, components = nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+initialization
+</p>
+<table>
+<tr><td valign="top"><em>name</em>:</td><td>name of data type. should be Symbol.
+
+</td></tr>
+<tr><td valign="top"><em>cname</em>:</td><td>name in Constant table. should be String.
+
+</td></tr>
+<tr><td valign="top"><em>size</em>:</td><td>size in message.
+
+</td></tr>
+<tr><td valign="top"><em>packTemp</em>:</td><td>template for pack/unpack
+
+</td></tr>
+<tr><td valign="top"><em>components</em>:</td><td>components
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000024" class="method-detail">
+        <a name="M000024"></a>
+
+        <div class="method-heading">
+          <a href="DataType.src/M000024.html" target="Code" class="method-signature"
+            onclick="popupCode('DataType.src/M000024.html');return false;">
+          <span class="method-name">actualSize</span><span class="method-args">(value)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+actual size of value
+</p>
+<table>
+<tr><td valign="top"><em>value</em>:</td><td>the data to encode
+
+</td></tr>
+<tr><td valign="top"><b>return</b>:</td><td>actual length of packed data
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M000025" class="method-detail">
+        <a name="M000025"></a>
+
+        <div class="method-heading">
+          <a href="DataType.src/M000025.html" target="Code" class="method-signature"
+            onclick="popupCode('DataType.src/M000025.html');return false;">
+          <span class="method-name">actualSizeComposed</span><span class="method-args">(value)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+actual size for composed data
+</p>
+<table>
+<tr><td valign="top"><em>value</em>:</td><td>value. should be a hash table
+
+</td></tr>
+<tr><td valign="top"><b>return</b>:</td><td>length of packed data
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M000026" class="method-detail">
+        <a name="M000026"></a>
+
+        <div class="method-heading">
+          <a href="DataType.src/M000026.html" target="Code" class="method-signature"
+            onclick="popupCode('DataType.src/M000026.html');return false;">
+          <span class="method-name">actualSizeComposedList</span><span class="method-args">(value)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+actual size for composed list
+</p>
+<table>
+<tr><td valign="top"><em>value</em>:</td><td>value. should be a list of data
+
+</td></tr>
+<tr><td valign="top"><b>return</b>:</td><td>length of packed data
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M000027" class="method-detail">
+        <a name="M000027"></a>
+
+        <div class="method-heading">
+          <a href="DataType.src/M000027.html" target="Code" class="method-signature"
+            onclick="popupCode('DataType.src/M000027.html');return false;">
+          <span class="method-name">pack</span><span class="method-args">(value, withTypeTag = false)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="DataType.html#M000027">pack</a> value to byte string
+</p>
+<table>
+<tr><td valign="top"><em>value</em>:</td><td>value
+
+</td></tr>
+<tr><td valign="top"><em>withTypeTag</em>:</td><td>if true, <a href="DataType.html#M000027">pack</a> with value type byte at
+head.
+
+</td></tr>
+<tr><td valign="top"><b>return</b>:</td><td>packed string
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M000028" class="method-detail">
+        <a name="M000028"></a>
+
+        <div class="method-heading">
+          <a href="DataType.src/M000028.html" target="Code" class="method-signature"
+            onclick="popupCode('DataType.src/M000028.html');return false;">
+          <span class="method-name">packComposed</span><span class="method-args">(value, withTypeTag = false)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="DataType.html#M000027">pack</a> composed value to byte string
+</p>
+<table>
+<tr><td valign="top"><em>value</em>:</td><td>value to <a href="DataType.html#M000027">pack</a>. should be a hash
+
+</td></tr>
+<tr><td valign="top"><b>return</b>:</td><td>packed byte string
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M000029" class="method-detail">
+        <a name="M000029"></a>
+
+        <div class="method-heading">
+          <a href="DataType.src/M000029.html" target="Code" class="method-signature"
+            onclick="popupCode('DataType.src/M000029.html');return false;">
+          <span class="method-name">packComposedList</span><span class="method-args">(value, withTypeTag = false)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="DataType.html#M000027">pack</a> composed value list to a byte
+string
+</p>
+<table>
+<tr><td valign="top"><em>value</em>:</td><td>value. should be a list of hash
+
+</td></tr>
+<tr><td valign="top"><b>return</b>:</td><td>packed byte string
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M000030" class="method-detail">
+        <a name="M000030"></a>
+
+        <div class="method-heading">
+          <a href="DataType.src/M000030.html" target="Code" class="method-signature"
+            onclick="popupCode('DataType.src/M000030.html');return false;">
+          <span class="method-name">packCompound</span><span class="method-args">(value, withTypeTag = false)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="DataType.html#M000027">pack</a> compound value list to a byte
+string
+</p>
+<table>
+<tr><td valign="top"><em>value</em>:</td><td>value. should be an Array or Hash of data
+
+<dl>
+<dt>val1, val2, val3&#8230;</dt><dd>or
+
+</dd>
+</dl>
+<p>
+{ :slot1 =&gt; val1, :slot2 =&gt; val2, &#8230;}
+</p>
+</td></tr>
+<tr><td valign="top"><b>return</b>:</td><td>packed byte string
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M000021" class="method-detail">
+        <a name="M000021"></a>
+
+        <div class="method-heading">
+          <a href="DataType.src/M000021.html" target="Code" class="method-signature"
+            onclick="popupCode('DataType.src/M000021.html');return false;">
+          <span class="method-name">unpack!</span><span class="method-args">(buffer)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+slice and unpack data from a byte string
+</p>
+<table>
+<tr><td valign="top"><em>buffer</em>:</td><td>buffer
+
+</td></tr>
+<tr><td valign="top"><b>return</b>:</td><td>scanned value
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M000022" class="method-detail">
+        <a name="M000022"></a>
+
+        <div class="method-heading">
+          <a href="DataType.src/M000022.html" target="Code" class="method-signature"
+            onclick="popupCode('DataType.src/M000022.html');return false;">
+          <span class="method-name">unpackComposed!</span><span class="method-args">(buffer)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+slice and unpack composed data from a byte string
+</p>
+<table>
+<tr><td valign="top"><em>buffer</em>:</td><td>buffer
+
+</td></tr>
+<tr><td valign="top"><b>return</b>:</td><td>scanned value. a Hash instance.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M000023" class="method-detail">
+        <a name="M000023"></a>
+
+        <div class="method-heading">
+          <a href="DataType.src/M000023.html" target="Code" class="method-signature"
+            onclick="popupCode('DataType.src/M000023.html');return false;">
+          <span class="method-name">unpackComposedList!</span><span class="method-args">(buffer)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+slice and unpack composed data list from a byte string
+</p>
+<table>
+<tr><td valign="top"><em>buffer</em>:</td><td>buffer
+
+</td></tr>
+<tr><td valign="top"><b>return</b>:</td><td>scanned value. an Array with @dataType instance variable.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

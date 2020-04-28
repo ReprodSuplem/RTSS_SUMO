@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: Sumo::Traci</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">Sumo::Traci</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/TraciClient_rb.html">
+                TraciClient.rb
+                </a>
+        <br />
+                <a href="../../files/TraciCommand_rb.html">
+                TraciCommand.rb
+                </a>
+        <br />
+                <a href="../../files/TraciConstants_rb.html">
+                TraciConstants.rb
+                </a>
+        <br />
+                <a href="../../files/TraciDataType_rb.html">
+                TraciDataType.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+module for <a href="Traci.html">Traci</a>
+</p>
+
+    </div>
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+    <div id="class-list">
+      <h3 class="section-bar">Classes and Modules</h3>
+
+      Module <a href="Traci/DataType_String.html" class="link">Sumo::Traci::DataType_String</a><br />
+Module <a href="Traci/DataType_StringList.html" class="link">Sumo::Traci::DataType_StringList</a><br />
+Class <a href="Traci/Client.html" class="link">Sumo::Traci::Client</a><br />
+Class <a href="Traci/CommandBase.html" class="link">Sumo::Traci::CommandBase</a><br />
+Class <a href="Traci/Command_Close.html" class="link">Sumo::Traci::Command_Close</a><br />
+Class <a href="Traci/Command_GetVariable.html" class="link">Sumo::Traci::Command_GetVariable</a><br />
+Class <a href="Traci/Command_GetVersion.html" class="link">Sumo::Traci::Command_GetVersion</a><br />
+Class <a href="Traci/Command_SetVariable.html" class="link">Sumo::Traci::Command_SetVariable</a><br />
+Class <a href="Traci/Command_SimulationStep.html" class="link">Sumo::Traci::Command_SimulationStep</a><br />
+Class <a href="Traci/DataType.html" class="link">Sumo::Traci::DataType</a><br />
+Class <a href="Traci/DataTypeTable.html" class="link">Sumo::Traci::DataTypeTable</a><br />
+Class <a href="Traci/DomainId.html" class="link">Sumo::Traci::DomainId</a><br />
+Class <a href="Traci/DomainIdTable.html" class="link">Sumo::Traci::DomainIdTable</a><br />
+Class <a href="Traci/ResultCodeDesc.html" class="link">Sumo::Traci::ResultCodeDesc</a><br />
+Class <a href="Traci/ResultCodeDescTable.html" class="link">Sumo::Traci::ResultCodeDescTable</a><br />
+Class <a href="Traci/TrafficLightPhase.html" class="link">Sumo::Traci::TrafficLightPhase</a><br />
+Class <a href="Traci/TrafficLightPhaseTable.html" class="link">Sumo::Traci::TrafficLightPhaseTable</a><br />
+Class <a href="Traci/VariableId.html" class="link">Sumo::Traci::VariableId</a><br />
+Class <a href="Traci/VariableIdTable.html" class="link">Sumo::Traci::VariableIdTable</a><br />
+
+    </div>
+
+    <div id="constants-list">
+      <h3 class="section-bar">Constants</h3>
+
+      <div class="name-list">
+        <table summary="Constants">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">Constant</td>
+          <td>=</td>
+          <td class="context-item-value">{} ;</td>
+          <td width="3em">&nbsp;</td>
+          <td class="context-item-desc">
+Constant table defined in SUMO&#8216;s source.
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">DataType_UByte</td>
+          <td>=</td>
+          <td class="context-item-value">DataTypeTable.getByName(:ubyte) ;</td>
+          <td width="3em">&nbsp;</td>
+          <td class="context-item-desc">
+short cut
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">DataType_Byte</td>
+          <td>=</td>
+          <td class="context-item-value">DataTypeTable.getByName(:byte) ;</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">DataType_Integer</td>
+          <td>=</td>
+          <td class="context-item-value">DataTypeTable.getByName(:integer) ;</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">DataType_Float</td>
+          <td>=</td>
+          <td class="context-item-value">DataTypeTable.getByName(:float) ;</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">DataType_Double</td>
+          <td>=</td>
+          <td class="context-item-value">DataTypeTable.getByName(:double) ;</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">DataType_String</td>
+          <td>=</td>
+          <td class="context-item-value">DataTypeTable.getByName(:string) ;</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">DataType_StringList</td>
+          <td>=</td>
+          <td class="context-item-value">DataTypeTable.getByName(:stringList) ;</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">DataType_Compound</td>
+          <td>=</td>
+          <td class="context-item-value">DataTypeTable.getByName(:compound) ;</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">DomainIdDiff_Get_Response</td>
+          <td>=</td>
+          <td class="context-item-value">0x10 ;</td>
+          <td width="3em">&nbsp;</td>
+          <td class="context-item-desc">
+Difference between CMD_GET_* and RESPONSE_GET_*
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">DomainIdDiff_Get_Set</td>
+          <td>=</td>
+          <td class="context-item-value">0x20 ;</td>
+          <td width="3em">&nbsp;</td>
+          <td class="context-item-desc">
+Difference between CMD_GET_* and CMD_SET_*
+
+</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+#! /usr/bin/env ruby
+## -*- mode: ruby -*-
+## = convert SAVS log from CSV format to JSON format
+## Author:: Anonymous3
+## Version:: 0.0 2018/12/23 Anonymous3
+##
+## === History
+## * [2018/12/23]: Create This File.
+## * [YYYY/MM/DD]: add more
+## == Usage
+## * ...
+
+def $LOAD_PATH.addIfNeed(path)
+  self.unshift(path) if(!self.include?(path)) ;
+end
+
+$LOAD_PATH.addIfNeed("~/lib/ruby");
+$LOAD_PATH.addIfNeed(File.dirname(__FILE__));
+
+require 'optparse' ;
+require 'pp' ;
+
+require 'SavsLog.rb' ;
+
+#------------------------------------------------------------------------
+#++
+$conf = {
+  :inGlob => nil,
+  :outFile => nil,
+  :prettyP => :line,
+} ;
+
+#----------------------------------------------------------------------
+#++
+## help
+def help()
+  puts($op) ;
+  puts("Defaults:") ;
+  pp $conf ;
+  exit(1) ;
+end
+
+#------------------------------------------------------------------------
+#++
+$op = OptionParser.new() {|op|
+  op.banner = <<_END_
+  Usage: #{$0} [Options]* GlobForInputCSV [OutFileForJson]
+_END_
+
+  op.separator("Options:") ;
+  op.set_summary_indent("") ;
+  op.set_summary_width(60) ;
+  sep = "\n\t\t" ;
+
+  op.on("-l", sep + "output json per each line.") {
+    $conf[:prettyP] = :line ;
+  }
+  op.on("-p", sep + "output json in pretty printing.") {
+    $conf[:prettyP] = true ;
+  }
+  op.on("-n", sep + "output json in non-pretty printing.") {
+    $conf[:prettyP] = false ;
+  }
+##  op.on("-f","--[no-]foo", sep + "switch foo.") {|foo|
+##    $conf[:foo] = foo ;
+##  }
+##  op.on("-b","--bar BarVal", Integer, sep + "bar int value.") {|bar|
+##    $conf[:bar] = bar ;
+##  }
+##  op.on("-z","--baz BazVal", String, sep + "baz str value.") {|baz|
+##    $conf[:baz] = baz ;
+##  }
+  op.on_tail("--help", sep + "show this message.") { |h|
+    help() ;
+  }
+}
+
+$op.parse!(ARGV) ;
+$conf[:inGlob] = ARGV[0]
+$conf[:outFile] = ARGV[1] ;
+p [:rest, ARGV], [:conf,$conf] ;
+
+if($conf[:inGlob].nil?) then
+  puts "Error: no input is specified." ;
+  $conf.help() ;
+end
+
+########################################################################
+########################################################################
+########################################################################
+
+savsLog = SavsLog.new() ;
+savsLog.scanCsvGlob($conf[:inGlob]) ;
+if($conf[:outFile].nil?) then
+  savsLog.saveJsonStream($stdout, $conf[:prettyP]) ;
+else
+  p [:size, savsLog.size] ;
+  savsLog.saveJsonFile($conf[:outFile], $conf[:prettyP]) ;
+end
+
+
+

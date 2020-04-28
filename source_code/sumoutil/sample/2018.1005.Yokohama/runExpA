@@ -1,0 +1,153 @@
+#! /usr/bin/env ruby
+## -*- mode: ruby -*-
+## = run Osaka Senba's script
+## Author:: Anonymous3
+## Version:: 0.0 2018/04/17 Anonymous3
+##
+## === History
+## * [2018/04/17]: Create This File.
+## * [YYYY/MM/DD]: add more
+## == Usage
+## * ...
+
+def $LOAD_PATH.addIfNeed(path)
+  self.unshift(path) if(!self.include?(path)) ;
+end
+
+$LOAD_PATH.addIfNeed("~/lib/ruby");
+# $LOAD_PATH.addIfNeed(File.dirname(__FILE__));
+
+require 'optparse' ;
+require 'pp' ;
+require 'json' ;
+
+#------------------------------------------------------------------------
+#++
+$conf = {
+  :interval => 60,
+  :nSavs => 10,
+  :expIndex => nil,
+} ;
+
+#----------------------------------------------------------------------
+#++
+## help
+def help()
+  puts($op) ;
+  puts("Defaults:") ;
+  pp $conf ;
+  exit(1) ;
+end
+
+#------------------------------------------------------------------------
+#++
+$op = OptionParser.new() {|op|
+  op.banner = <<_END_
+  Usage: #{$0} [Options]* [_input_.json]
+_END_
+
+  op.separator("Options:") ;
+  op.set_summary_indent("") ;
+  op.set_summary_width(60) ;
+  sep = "\n\t\t" ;
+
+  op.on("-n", "--nSavs N", Integer, sep + "number of Sav.") {|n|
+    $conf[:nSavs] = n ;
+  }
+  op.on("-i", "--interval Int", Float, sep + "demand interval.") {|int|
+    $conf[:interval] = int ;
+  }
+  op.on("-e", "--exp Name", String, sep + "exp. index name.") {|name|
+    $conf[:expIndex] = name ;
+  }
+  op.on("-t", "--byTimestamp", sep + "use timestamp as exp. index name.") {
+    $conf[:expIndex] = (`hostname`.strip + "_" +
+                        Time.now.strftime("%Y_%m%d_%H%M%S.%6N")) ;
+  }
+  op.on_tail("--help", sep + "show this message.") { |h|
+    help() ;
+  }
+}
+
+#----------------------------------------------------------------------
+#++
+## arg processing
+$op.parse!(ARGV) ;
+$restArg = ARGV ;
+
+if(ARGV.length > 1) then
+  help() ;
+elsif(ARGV.length == 1) then
+  open(ARGV[0],"r"){|strm|
+    json = JSON.load(strm.read()) ;
+    json.each{|key,value|
+      $conf[key.intern] = value ;
+    }
+  }
+end
+p [:conf,$conf] ;
+
+########################################################################
+########################################################################
+########################################################################
+
+#----------------------------------------------------------------------
+$workFiles = ["YokohamaMinatoMirai.01.stops.net.xml",
+              "YokohamaMinatoMirai.01.stops.net.json",
+              "YokohamaMinatoMirai.01.stops.net.dump",
+              "YokohamaMinatoMirai.01.stops.feature.json",
+              "yokohamaNedo.00.sumocfg",
+              "standard.guiView.cfg",
+              "savBase.route.xml",
+             ]
+              
+$savCfgBase = "yokohamaNedo.01.savSimConf.json" ;
+$savDemBase = "yokohamaNedo.01.demandConf.json" ;
+
+$comDir = "../Savs" ;
+$workDir = ",Log/expA" ;
+$comDir = "../../" + $comDir ;
+if($conf[:expIndex]) then
+  $workDir += "/" + $conf[:expIndex] ;
+  $comDir = "../" + $comDir ;
+end
+
+$simCom =<<"________________________________________ComEnd__"
+mkdir -p #{$workDir} ;
+ln -sr #{$workFiles.join(" ")} #{$workDir} ;
+cd #{$workDir} ;
+#{$comDir}/runSavSimMixture --no-gui --logDir . #{$savCfgBase}
+________________________________________ComEnd__
+
+#----------------------------------------------------------------------
+#----------------------------------------------------------------------
+#----------------------------------------------------------------------
+#++
+## main
+
+system("mkdir -p #{$workDir}") ;
+
+open($savCfgBase,"r"){|strm|
+  $savCfgJson = JSON.parse(strm.read(),{:symbolize_names => true}) ;
+}
+$savCfgJson[:savN] = $conf[:nSavs] ;
+open("#{$workDir}/#{$savCfgBase}","w"){|strm|
+  strm << JSON.pretty_generate($savCfgJson) ;
+}
+
+open($savDemBase,"r"){|strm|
+  $savDemJson = JSON.parse(strm.read(),{:symbolize_names => true}) ;
+}
+$savDemJson.each{|rule| rule[:interval] = $conf[:interval] ;}
+open("#{$workDir}/#{$savDemBase}","w"){|strm|
+  strm << JSON.pretty_generate($savDemJson) ;
+}
+
+system($simCom) ;
+
+  
+      
+            
+           
+           
+           

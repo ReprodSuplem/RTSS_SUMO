@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>addBody (Sumo::Util::NamedIdTable)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File TraciUtil.rb, line 244</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">addBody</span>(<span class="ruby-identifier">checkDuplicate</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+        <span class="ruby-identifier">entry</span> = <span class="ruby-identifier">entryClass</span>.<span class="ruby-identifier">new</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+        <span class="ruby-ivar">@list</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">entry</span>) ;
+        <span class="ruby-comment cmt"># check and add to @tableByName</span>
+        <span class="ruby-keyword kw">if</span>(<span class="ruby-ivar">@tableByName</span>[<span class="ruby-identifier">entry</span>.<span class="ruby-identifier">name</span>]) <span class="ruby-keyword kw">then</span>
+          <span class="ruby-keyword kw">if</span>(<span class="ruby-identifier">checkDuplicate</span>)
+            <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Warning!!!: already defined name: #{entry.shortName} for #{self}.&quot;</span>
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-ivar">@tableByName</span>[<span class="ruby-identifier">entry</span>.<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">entry</span> ;
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-comment cmt"># check and add to @tableById</span>
+        <span class="ruby-keyword kw">if</span>(<span class="ruby-ivar">@tableById</span>[<span class="ruby-identifier">entry</span>.<span class="ruby-identifier">id</span>]) <span class="ruby-keyword kw">then</span>
+          <span class="ruby-keyword kw">if</span>(<span class="ruby-identifier">checkDuplicate</span>)
+            <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Warning!!!: already defined id: #{entry.shortName} for #{self}.&quot;</span>
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-ivar">@tableById</span>[<span class="ruby-identifier">entry</span>.<span class="ruby-identifier">id</span>] = <span class="ruby-identifier">entry</span> ;
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-comment cmt"># check and add to @tableByNameInConstant</span>
+        <span class="ruby-keyword kw">if</span>(<span class="ruby-ivar">@tableByNameInConstant</span>[<span class="ruby-identifier">entry</span>.<span class="ruby-identifier">nameInConstant</span>])
+          <span class="ruby-keyword kw">if</span>(<span class="ruby-identifier">checkDuplicate</span>)
+            <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Warning!!!: already defined name in constant: #{entry.shortName} for #{self}.&quot;</span>
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-ivar">@tableByNameInConstant</span>[<span class="ruby-identifier">entry</span>.<span class="ruby-identifier">nameInConstant</span>] = <span class="ruby-identifier">entry</span> ;
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">entry</span> ;
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

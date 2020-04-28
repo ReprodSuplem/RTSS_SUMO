@@ -1,0 +1,140 @@
+%%  -*- Mode: Memo -*-
+=begin
+
+= 2018年みなとみらい実証実験ログデータ解析
+
+== [2019/01/04 18:34]
+
+   * ./bin/ の上での実行を仮定。
+
+=== ログファイルまとめ上げ。
+
+    % ./convCsvLog2Json '../2018.*.fromDoCoMo/delogA-*.csv' ../Summary/delog.all.json
+
+    * 第1引数は、ログのパターン。第2引数は、まとめ上げた JSON ファイル。
+
+=== OD 表プロット。
+
+    % ./plotFreqTable -n 10 ../Summary/delog.all.json ~/Desktop/dump.json
+
+    * これで、../Summary/ に、
+
+      * probTable.*     : ODデータをそのまま plot
+      * probFactor.*    : ODを、Oごと、Dごとに集計し、その直積として plot
+      * probMixture10.* : 直積＋ n 個の単峰の混合として plot。
+
+      * ~/Desktop/dump.json には、混合分布の定義が save。
+
+=== 時間毎の分布同士の距離相関。
+
+    * plotFreqTable で、デフォルトでプロットするようにした。
+
+    * Result/distHourlyProb.* がそれ。
+
+    * 15時は全てから似ている。
+      一方、15時から似ているのは、12-16時。
+      なので、9-11, 12-16, 17-20 と分けるのが妥当か。
+
+== [2019/02/10 23:22]
+
+   * histgram を作るプログラム。
+     "bin/convLog2Hist"
+
+     % bin/convLog2Hist Summary2/delog.all.json Summary2/delog.hist.json
+
+     % lib/genMatrixProb --histgram Summary2/delog.hist.json Summary2/delog.prob.json
+     % lib/factorizeMatrixProb Summary2/delog.prob.json Summary2/delog.factored_5.json -n 5 -l 1000
+
+     % lib/plotMatrixProb Summary2/delog.prob.json -C green -m 0.01
+
+
+== [2019/02/11 19:33]
+
+   * histgram 作るのに、総和を求める追加。
+
+     * その結果、2018年秋の実験のトータルは 28300.
+
+       [:total, 28300]
+
+
+   * AIC の変化を調査。
+
+     % bin/scanAic -c 30 -s 28300 -t 10 Summary2/delog.prob.json Summary2/delog.aic.json
+
+     * この結果、nComp = 15, or 16 で、AIC最小。
+
+     * グラフ化：
+       % bin/plotAicResult Summary2/delog.aic.json -t
+       % bin/plotAicResult Summary2/delog.aic.json -r 10:24 -t
+
+   * nComp=15 で推定。
+
+     % lib/plotMatrixProb Summary2/delog.prob.json -m 0.016 -C rgb -X from -Y to
+     
+     % lib/factorizeMatrixProb -n 15 -l 1000 Summary2/delog.prob.json Summary2/Factored.f15a/delog.factored.f15.json
+     % lib/plotMatrixProb Summary2/Factored.f15a/delog.factored.f15.json -m 0.016 -C rgb -X from -Y to
+     % lib/plotMatrixProb Summary2/Factored.f15a/delog.factored.f15.json -m 0.016 -C rgb -X from -Y to -f -c 0-14 
+     
+     % lib/factorizeMatrixProb -n 15 -l 1000 Summary2/delog.prob.json Summary2/Factored.f15b/delog.factored.f15.json
+     % lib/plotMatrixProb Summary2/Factored.f15b/delog.factored.f15.json -m 0.016 -C rgb -X from -Y to
+     % lib/plotMatrixProb Summary2/Factored.f15b/delog.factored.f15.json -m 0.016 -C rgb -X from -Y to -f -c 0-14 
+
+== [2019/02/14 00:40]
+
+   * BIC も加えてやってみる。
+     AIC よりも BIC のほうが、シンプルなものを選びやすいらしい。
+     ただ、混合モデルには共に良くない、という話もある。
+
+     % bin/scanAic -c 30 -s 28300 -t 10 Summary2/delog.prob.json Summary2/delog.aic.json
+     % bin/plotAicResult Summary2/delog.aic.json -t
+     % bin/plotAicResult Summary2/delog.aic.json -a -r 10:24 -t
+       => delog.aic.onlyAic.10_24.* に手動で変更。
+     % bin/plotAicResult Summary2/delog.aic.json -b -r 2:10 -t
+       => delog.aic.onlyBic.2_10.* に手動で変更。
+
+== [2019/02/14 17:48]
+
+   * nComp=5 で推定。 (BIC が最低)
+
+     % lib/factorizeMatrixProb -n 5 -l 1000 Summary2/delog.prob.json Summary2/Factored.f05a/delog.factored.f05.json
+     % lib/factorizeMatrixProb -n 5 -l 1000 Summary2/delog.prob.json Summary2/Factored.f05b/delog.factored.f05.json
+
+   * グラフ作成。
+     % lib/plotMatrixProb Summary2/Factored.f05a/delog.factored.f05.json -m 0.016 -C rgb -X from -Y to
+     % foreach i (0 1 2 3 4)
+         lib/plotMatrixProb Summary2/Factored.f05a/delog.factored.f05.json -m 0.016 -C rgb -X from -Y to -f -c $i
+       end
+
+     % lib/plotMatrixProb Summary2/Factored.f05b/delog.factored.f05.json -m 0.016 -C rgb -X from -Y to
+     % foreach i (0 1 2 3 4)
+         lib/plotMatrixProb Summary2/Factored.f05/delog.factored.f05.json -m 0.016 -C rgb -X from -Y to -f -c $i
+       end
+
+   * 比較のため、1要素でもやっておく。
+
+     % lib/factorizeMatrixProb -n 1 -l 10 Summary2/delog.prob.json Summary2/delog.factored.f01.json
+
+
+
+== [2019/02/14 20:34]
+
+   * weekday と holiday の分離
+
+     % bin/convLog2Hist -d Summary2/delog.all.json Summary2/delog.hist.json
+
+     * [:total, {:weekday=>17619, :holiday=>10681}]
+
+     % lib/genMatrixProb --histgram Summary2/delog_holiday.hist.json Summary2/delog_holiday.prob.json
+     % lib/factorizeMatrixProb -b Summary2/Factored.f05a/delog.factored.f05.json -l 1000 -r Summary2/delog_holiday.prob.json Summary2/Factored.f05a/delog_holiday.based.factored.f05.json
+     % lib/plotMatrixProb Summary2/delog_holiday.prob.json -C rgb -m 0.02 -X from -Y to
+     % lib/plotMatrixProb Summary2/Factored.f05a/delog_holiday.based.factored.f05.json -C rgb -m 0.02 -X from -Y to
+
+     % lib/genMatrixProb --histgram Summary2/delog_weekday.hist.json Summary2/delog_weekday.prob.json
+     % lib/factorizeMatrixProb -b Summary2/Factored.f05a/delog.factored.f05.json -l 1000 -r Summary2/delog_weekday.prob.json Summary2/Factored.f05a/delog_weekday.based.factored.f05.json
+     % lib/plotMatrixProb Summary2/delog_weekday.prob.json -C rgb -m 0.02 -X from -Y to
+
+   * lib/pickFactor で、r を取り出す。
+     まとめを、Summary2/Factored.f05a/delog__dayFactors.f05.csv にまとめる。
+     ods でグラフ化。
+
+

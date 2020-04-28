@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>test_a (TC_TraciClient)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File TraciClient.rb, line 405</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_a</span>
+      <span class="ruby-comment cmt">## SUMO を TraCI モードで立ち上げ。TraCI サーバのポートは port</span>
+      <span class="ruby-identifier">port</span> = <span class="ruby-identifier">prepareServer</span>()
+      <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Util</span><span class="ruby-operator">::</span><span class="ruby-identifier">waitTcpPortIsReady</span>(<span class="ruby-identifier">port</span>) ;
+
+      <span class="ruby-comment cmt">## クライアント作成。TraCI サーバのポートは port</span>
+      <span class="ruby-comment cmt">## ログは、$stdout に吐き出す。</span>
+      <span class="ruby-identifier">traci</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">Client</span>.<span class="ruby-identifier">new</span>({ <span class="ruby-identifier">:port</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">port</span>, 
+                                        <span class="ruby-identifier">:logLevel</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:debug</span>,
+<span class="ruby-comment cmt">#                                        :logLevel =&gt; :info,</span>
+                                        <span class="ruby-identifier">:logDev</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-identifier">:stdout</span>,<span class="ruby-identifier">:file</span>] }) ;
+
+      <span class="ruby-comment cmt">## バージョン情報をゲット。</span>
+      <span class="ruby-comment cmt">## 多重コマンドを送れるテスト。</span>
+      <span class="ruby-identifier">com0</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">Command_GetVersion</span>.<span class="ruby-identifier">new</span>() ;
+      <span class="ruby-identifier">com1</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">Command_GetVersion</span>.<span class="ruby-identifier">new</span>() ;
+      <span class="ruby-identifier">traci</span>.<span class="ruby-identifier">execCommands</span>(<span class="ruby-identifier">com0</span>,<span class="ruby-identifier">com1</span>) ;
+
+      <span class="ruby-comment cmt">## Variable の値を取ってくるテスト。</span>
+      <span class="ruby-comment cmt">## この例は、シミュレーションステップを取りに行く。</span>
+      <span class="ruby-comment cmt">## ドメイン・変数指定は、数字でもできる。</span>
+      <span class="ruby-identifier">com2</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">Command_GetVariable</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">0xab</span>, <span class="ruby-value">0x70</span>, <span class="ruby-value str">&quot;&quot;</span>)
+      <span class="ruby-identifier">traci</span>.<span class="ruby-identifier">execCommands</span>(<span class="ruby-identifier">com2</span>) ;
+
+      <span class="ruby-comment cmt">## シミュレーションを進める。100000ms まで。</span>
+      <span class="ruby-identifier">com3</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">Command_SimulationStep</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">100000</span>) ;
+      <span class="ruby-identifier">traci</span>.<span class="ruby-identifier">execCommands</span>(<span class="ruby-identifier">com3</span>) ;
+
+      <span class="ruby-comment cmt">## ふたたびシミュレーションステップを取りに行く。</span>
+      <span class="ruby-identifier">com4</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">Command_GetVariable</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">0xab</span>, <span class="ruby-value">0x70</span>, <span class="ruby-value str">&quot;&quot;</span>)
+      <span class="ruby-identifier">traci</span>.<span class="ruby-identifier">execCommands</span>(<span class="ruby-identifier">com4</span>) ;
+
+      <span class="ruby-comment cmt">## 同じく、シミュレーションステップを取りに行く。</span>
+      <span class="ruby-comment cmt">## 今度はドメイン・変数指定をシンボルでやってみる。</span>
+      <span class="ruby-identifier">com5</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">Command_GetVariable</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">:sim</span>, <span class="ruby-identifier">:timeStep</span>, <span class="ruby-value str">&quot;&quot;</span>)
+      <span class="ruby-identifier">traci</span>.<span class="ruby-identifier">execCommands</span>(<span class="ruby-identifier">com5</span>) ;
+
+      <span class="ruby-comment cmt">## エッジのIDリストを取ってきてみる。</span>
+      <span class="ruby-identifier">com6</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">Command_GetVariable</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">:edge</span>, <span class="ruby-identifier">:idList</span>, <span class="ruby-value str">&quot;&quot;</span>)
+      <span class="ruby-identifier">traci</span>.<span class="ruby-identifier">execCommands</span>(<span class="ruby-identifier">com6</span>) ;
+
+      <span class="ruby-comment cmt">## シミュレーション終了</span>
+      <span class="ruby-identifier">comE</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">Command_Close</span>.<span class="ruby-identifier">new</span>() ;
+      <span class="ruby-identifier">traci</span>.<span class="ruby-identifier">execCommands</span>(<span class="ruby-identifier">comE</span>) ;
+
+      <span class="ruby-comment cmt">## コネクションを close</span>
+      <span class="ruby-identifier">traci</span>.<span class="ruby-identifier">close</span>() ;
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

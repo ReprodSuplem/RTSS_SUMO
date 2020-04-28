@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Sumo::SumoMap::Edge - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+</script>
+
+<script src="../../js/jquery.js"></script>
+<script src="../../js/darkfish.js"></script>
+
+<link href="../../css/fonts.css" rel="stylesheet">
+<link href="../../css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../table_of_contents.html#pages">Pages</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="../../Object.html">Object</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-checkPermissionFor">#checkPermissionFor</a>
+    
+    <li ><a href="#method-i-firstLane">#firstLane</a>
+    
+    <li ><a href="#method-i-footPointFrom">#footPointFrom</a>
+    
+    <li ><a href="#method-i-footPointSpanFrom">#footPointSpanFrom</a>
+    
+    <li ><a href="#method-i-geoObject">#geoObject</a>
+    
+    <li ><a href="#method-i-getConnectedEdgeIds">#getConnectedEdgeIds</a>
+    
+    <li ><a href="#method-i-getConnectedEdges">#getConnectedEdges</a>
+    
+    <li ><a href="#method-i-getEdgeForUTurn">#getEdgeForUTurn</a>
+    
+    <li ><a href="#method-i-getEndPoint">#getEndPoint</a>
+    
+    <li ><a href="#method-i-getOppositeEdge">#getOppositeEdge</a>
+    
+    <li ><a href="#method-i-getPointForUTurn">#getPointForUTurn</a>
+    
+    <li ><a href="#method-i-getStartPoint">#getStartPoint</a>
+    
+    <li ><a href="#method-i-inspect">#inspect</a>
+    
+    <li ><a href="#method-i-inspect_original">#inspect_original</a>
+    
+    <li ><a href="#method-i-isOppositeEdge">#isOppositeEdge</a>
+    
+    <li ><a href="#method-i-length">#length</a>
+    
+    <li ><a href="#method-i-originalId">#originalId</a>
+    
+    <li ><a href="#method-i-scanJson">#scanJson</a>
+    
+    <li ><a href="#method-i-scanXml">#scanXml</a>
+    
+    <li ><a href="#method-i-shape">#shape</a>
+    
+    <li ><a href="#method-i-shouldBeExcluded">#shouldBeExcluded</a>
+    
+    <li ><a href="#method-i-speed">#speed</a>
+    
+    <li ><a href="#method-i-toJson">#toJson</a>
+    
+    <li ><a href="#method-i-validSpan">#validSpan</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Sumo::SumoMap::Edge">
+  <h1 id="class-Sumo::SumoMap::Edge" class="class">
+    class Sumo::SumoMap::Edge
+  </h1>
+
+  <section class="description">
+    
+<p>edge</p>
+
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+    <section class="constants-list">
+      <header>
+        <h3>Constants</h3>
+      </header>
+      <dl>
+      
+        <dt id="MinSpanForStop">MinSpanForStop
+        
+        <dd><p>Minimum Span for Stop position</p>
+        
+      
+        <dt id="StandardLaneWidth">StandardLaneWidth
+        
+        <dd><p>Standard <a href="Lane.html">Lane</a> Width</p>
+        
+      
+      </dl>
+    </section>
+    
+
+    
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-from" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">from</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p><a href="Edge.html#attribute-i-from">#from</a> junction</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-fromId" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">fromId</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p><a href="Edge.html#attribute-i-from">#from</a> junction ID</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-id" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">id</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p><a href="Edge.html#attribute-i-id">#id</a></p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-laneList" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">laneList</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>lane list.</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-to" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">to</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p><a href="Edge.html#attribute-i-to">#to</a> junction</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-toId" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">toId</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p><a href="Edge.html#attribute-i-to">#to</a> junction ID</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-type" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">type</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p><a href="Edge.html#attribute-i-type">#type</a></p>
+        
+        </div>
+      </div>
+      
+    </section>
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(xml = nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>initialize</p>
+<dl class="rdoc-list note-list"><dt><em>xml</em>
+<dd>
+<p>XML element</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMapEdge.rb, line 70</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">xml</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">scanXml</span>(<span class="ruby-identifier">xml</span>) <span class="ruby-keyword">if</span>(<span class="ruby-operator">!</span><span class="ruby-identifier">xml</span>.<span class="ruby-identifier">nil?</span>) ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-checkPermissionFor" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">checkPermissionFor</span><span
+            class="method-args">(type = :private)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>check permission for a certain <a
+href="Edge.html#attribute-i-type">#type</a></p>
+<dl class="rdoc-list note-list"><dt><em>type</em> 
+<dd>
+<p><a href="Edge.html#attribute-i-type">#type</a> symbol.  Nomally :private
+(private car).</p>
+</dd><dt><strong>return</strong> 
+<dd>
+<p>true if has permission</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="checkPermissionFor-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMapEdge.rb, line 250</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">checkPermissionFor</span>(<span class="ruby-identifier">type</span> = <span class="ruby-value">:private</span>)
+  <span class="ruby-ivar">@laneList</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">lane</span><span class="ruby-operator">|</span>
+    <span class="ruby-comment"># if one of lane is permitted, true.</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span> <span class="ruby-keyword">if</span>(<span class="ruby-identifier">lane</span>.<span class="ruby-identifier">checkPermissionFor</span>(<span class="ruby-identifier">type</span>)) ;
+  }
+  <span class="ruby-comment"># all lanes are not permitted, false.</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-firstLane" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">firstLane</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>first lane</p>
+          
+          
+
+          
+          <div class="method-source-code" id="firstLane-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMapEdge.rb, line 132</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">firstLane</span>()
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@laneList</span>.<span class="ruby-identifier">first</span>() ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-footPointFrom" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">footPointFrom</span><span
+            class="method-args">(reference)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>get foot point <a href="Edge.html#attribute-i-from">#from</a> the reference
+point.</p>
+<dl class="rdoc-list note-list"><dt><em>reference</em> 
+<dd>
+<p>reference point</p>
+</dd><dt><strong>return</strong> 
+<dd>
+<p>foot point</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="footPointFrom-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMapEdge.rb, line 178</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">footPointFrom</span>(<span class="ruby-identifier">reference</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">geoObject</span>().<span class="ruby-identifier">footPointFrom</span>(<span class="ruby-identifier">reference</span>) ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-footPointSpanFrom" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">footPointSpanFrom</span><span
+            class="method-args">(reference, forStop = false)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>get the span of foot point <a href="Edge.html#attribute-i-from">#from</a>
+the reference point.</p>
+<dl class="rdoc-list note-list"><dt><em>reference</em> 
+<dd>
+<p>reference point</p>
+</dd><dt><em>forStop</em> 
+<dd>
+<p>if true, adjust span for stop position.</p>
+</dd><dt><strong>return</strong> 
+<dd>
+<p>span</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="footPointSpanFrom-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMapEdge.rb, line 188</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">footPointSpanFrom</span>(<span class="ruby-identifier">reference</span>, <span class="ruby-identifier">forStop</span> = <span class="ruby-keyword">false</span>)
+  <span class="ruby-identifier">span</span> = <span class="ruby-identifier">geoObject</span>().<span class="ruby-identifier">footPointSpanFrom</span>(<span class="ruby-identifier">reference</span>) ;
+  <span class="ruby-identifier">span</span> = <span class="ruby-identifier">length</span>() <span class="ruby-keyword">if</span>(<span class="ruby-identifier">span</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">length</span>()) ;
+  <span class="ruby-keyword">if</span>(<span class="ruby-identifier">forStop</span>) <span class="ruby-keyword">then</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">validSpan</span>(<span class="ruby-identifier">span</span>) ;
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">span</span> ;
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-geoObject" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">geoObject</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>get GeoObject. used in RTree.</p>
+<dl class="rdoc-list note-list"><dt><strong>return</strong> 
+<dd>
+<p>Geo2D::GeoObject for RTree</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="geoObject-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMapEdge.rb, line 169</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">geoObject</span>()
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">firstLane</span>().<span class="ruby-identifier">geoObject</span>() ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-getConnectedEdgeIds" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getConnectedEdgeIds</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>get connected edge ids <a href="Edge.html#attribute-i-from">#from</a> this
+edge.</p>
+<dl class="rdoc-list note-list"><dt><strong>return</strong> 
+<dd>
+<p>the list of edge.</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="getConnectedEdgeIds-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMapEdge.rb, line 272</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">getConnectedEdgeIds</span>()
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@to</span>.<span class="ruby-identifier">edgeIdListOut</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-getConnectedEdges" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getConnectedEdges</span><span
+            class="method-args">(map)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>get connected edges <a href="Edge.html#attribute-i-from">#from</a> this
+edge.</p>
+<dl class="rdoc-list note-list"><dt><em>map</em> 
+<dd>
+<p>mother map</p>
+</dd><dt><strong>return</strong> 
+<dd>
+<p>the list of edge.</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="getConnectedEdges-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMapEdge.rb, line 281</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">getConnectedEdges</span>(<span class="ruby-identifier">map</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">getConnectedEdgeIds</span>().<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">edgeId</span><span class="ruby-operator">|</span> <span class="ruby-identifier">map</span>.<span class="ruby-identifier">edgeTable</span>[<span class="ruby-identifier">edgeId</span>]} ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-getEdgeForUTurn" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getEdgeForUTurn</span><span
+            class="method-args">(map)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>get target edge for U-turn</p>
+<dl class="rdoc-list note-list"><dt><em>map</em>
+<dd>
+<p>mother map.</p>
+</dd><dt><strong>return</strong> 
+<dd>
+<p>edge</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="getEdgeForUTurn-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMapEdge.rb, line 326</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">getEdgeForUTurn</span>(<span class="ruby-identifier">map</span>)
+  <span class="ruby-identifier">edge</span> = (<span class="ruby-identifier">getOppositeEdge</span>(<span class="ruby-identifier">map</span>) <span class="ruby-operator">||</span>
+          <span class="ruby-identifier">getConnectedEdges</span>(<span class="ruby-identifier">map</span>).<span class="ruby-identifier">sample</span>()) ;
+
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">edge</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-getEndPoint" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getEndPoint</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>get exit end of the lane 0</p>
+<dl class="rdoc-list note-list"><dt><strong>return</strong> 
+<dd>
+<p>Geo2D::Point instance</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="getEndPoint-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMapEdge.rb, line 241</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">getEndPoint</span>()
+  <span class="ruby-identifier">shape</span>().<span class="ruby-identifier">lastPoint</span>() ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-getOppositeEdge" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getOppositeEdge</span><span
+            class="method-args">(map)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>get opposite edge</p>
+<dl class="rdoc-list note-list"><dt><em>map</em>
+<dd>
+<p>mother map.</p>
+</dd><dt><strong>return</strong> 
+<dd>
+<p>opposite edge if exists.  otherwise, nil.</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="getOppositeEdge-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMapEdge.rb, line 313</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">getOppositeEdge</span>(<span class="ruby-identifier">map</span>)
+  <span class="ruby-identifier">edgeList</span> = <span class="ruby-identifier">getConnectedEdges</span>(<span class="ruby-identifier">map</span>) ;
+  <span class="ruby-identifier">edgeList</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">edge</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">edge</span> <span class="ruby-keyword">if</span>(<span class="ruby-identifier">isOppositeEdge</span>(<span class="ruby-identifier">edge</span>)) ;
+  }
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-getPointForUTurn" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getPointForUTurn</span><span
+            class="method-args">(map)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>get target Pointfor U-turn</p>
+<dl class="rdoc-list note-list"><dt><em>map</em>
+<dd>
+<p>mother map.</p>
+</dd><dt><strong>return</strong> 
+<dd>
+<p>Geo2D::Point</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="getPointForUTurn-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMapEdge.rb, line 338</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">getPointForUTurn</span>(<span class="ruby-identifier">map</span>)
+  <span class="ruby-identifier">edge</span> = <span class="ruby-identifier">getEdgeForUTurn</span>(<span class="ruby-identifier">map</span>) ;
+
+  <span class="ruby-keyword">if</span>(<span class="ruby-identifier">edge</span>.<span class="ruby-identifier">nil?</span>) <span class="ruby-keyword">then</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">SumoException</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;The edge is dead-end:&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">inspect</span>(),
+                            { <span class="ruby-value">:edge</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">self</span> }) ;
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">edge</span>.<span class="ruby-identifier">getEndPoint</span>() ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-getStartPoint" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getStartPoint</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>get exit end of the lane 0</p>
+<dl class="rdoc-list note-list"><dt><strong>return</strong> 
+<dd>
+<p>Geo2D::Point instance</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="getStartPoint-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMapEdge.rb, line 233</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">getStartPoint</span>()
+  <span class="ruby-identifier">shape</span>().<span class="ruby-identifier">firstPoint</span>() ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-inspect" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">inspect</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="inspect-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMapEdge.rb, line 353</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">inspect</span>()
+  <span class="ruby-identifier">dummy</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">dup</span> ;
+  <span class="ruby-identifier">dummy</span>.<span class="ruby-identifier">remove_instance_variable</span>(<span class="ruby-string">&#39;@from&#39;</span>) ;
+  <span class="ruby-identifier">dummy</span>.<span class="ruby-identifier">remove_instance_variable</span>(<span class="ruby-string">&#39;@to&#39;</span>) ;
+  <span class="ruby-identifier">dummy</span>.<span class="ruby-identifier">laneList</span> = <span class="ruby-ivar">@laneList</span>.<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">lane</span><span class="ruby-operator">|</span> <span class="ruby-identifier">lane</span>.<span class="ruby-identifier">id</span>}
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">dummy</span>.<span class="ruby-identifier">inspect_original</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+        <div class="aliases">
+          Also aliased as: <a href="Edge.html#method-i-inspect_original">inspect_original</a>
+        </div>
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-inspect_original" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">inspect_original</span><span
+            class="method-args">()</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>re-define <a href="Edge.html#method-i-inspect">#inspect</a></p>
+          
+          
+
+          
+        </div>
+
+        
+
+        
+        <div class="aliases">
+          Alias for: <a href="Edge.html#method-i-inspect">inspect</a>
+        </div>
+        
+      </div>
+
+    
+      <div id="method-i-isOppositeEdge" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">isOppositeEdge</span><span
+            class="method-args">(edge)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>check the edge is opposite</p>
+<dl class="rdoc-list note-list"><dt><strong>return</strong> 
+<dd>
+<p>true if the given edge is opposite.</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="isOppositeEdge-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMapEdge.rb, line 289</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">isOppositeEdge</span>(<span class="ruby-identifier">edge</span>)
+  <span class="ruby-keyword">if</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">to</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">edge</span>.<span class="ruby-identifier">from</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">edge</span>.<span class="ruby-identifier">to</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">from</span>) <span class="ruby-keyword">then</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span> ;
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">margin</span> = (<span class="ruby-constant">StandardLaneWidth</span> <span class="ruby-operator">*</span>
+              (<span class="ruby-keyword">self</span>.<span class="ruby-identifier">laneList</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">edge</span>.<span class="ruby-identifier">laneList</span>.<span class="ruby-identifier">size</span>)) ;
+    
+    <span class="ruby-keyword">if</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">getStartPoint</span>().<span class="ruby-identifier">distanceTo</span>(<span class="ruby-identifier">edge</span>.<span class="ruby-identifier">getEndPoint</span>()) <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">margin</span> <span class="ruby-operator">&amp;&amp;</span>
+       <span class="ruby-keyword">self</span>.<span class="ruby-identifier">getEndPoint</span>().<span class="ruby-identifier">distanceTo</span>(<span class="ruby-identifier">edge</span>.<span class="ruby-identifier">getStartPoint</span>()) <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">margin</span>) <span class="ruby-keyword">then</span>
+      <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span> ;
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> ;
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-length" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">length</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>get <a href="Edge.html#method-i-length">#length</a></p>
+          
+          
+
+          
+          <div class="method-source-code" id="length-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMapEdge.rb, line 139</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">length</span>()
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">firstLane</span>().<span class="ruby-identifier">length</span>() ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-originalId" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">originalId</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>get <a href="Edge.html#method-i-originalId">#originalId</a></p>
+          
+          
+
+          
+          <div class="method-source-code" id="originalId-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMapEdge.rb, line 160</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">originalId</span>()
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">firstLane</span>().<span class="ruby-identifier">originalId</span>() ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-scanJson" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">scanJson</span><span
+            class="method-args">(json)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>scan JSON object (hash)</p>
+<dl class="rdoc-list note-list"><dt><em>json</em> 
+<dd>
+<p>JSON for one <a href="Edge.html">Edge</a>.</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="scanJson-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMapEdge.rb, line 112</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">scanJson</span>(<span class="ruby-identifier">json</span>)
+  <span class="ruby-ivar">@id</span> = <span class="ruby-identifier">json</span>[<span class="ruby-string">&#39;id&#39;</span>] ;
+  <span class="ruby-ivar">@fromId</span> = <span class="ruby-identifier">json</span>[<span class="ruby-string">&#39;from&#39;</span>] ;
+  <span class="ruby-ivar">@toId</span> = <span class="ruby-identifier">json</span>[<span class="ruby-string">&#39;to&#39;</span>] ;
+  <span class="ruby-ivar">@type</span> = <span class="ruby-identifier">json</span>[<span class="ruby-string">&#39;type&#39;</span>] ;
+
+  <span class="ruby-identifier">_laneList</span> = <span class="ruby-identifier">json</span>[<span class="ruby-string">&#39;laneList&#39;</span>] ;
+
+  <span class="ruby-ivar">@laneList</span> = <span class="ruby-identifier">_laneList</span>.<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">laneJson</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">lane</span> = <span class="ruby-constant">Lane</span>.<span class="ruby-identifier">new</span>() ;
+    <span class="ruby-identifier">lane</span>.<span class="ruby-identifier">scanJson</span>(<span class="ruby-identifier">laneJson</span>, <span class="ruby-keyword">self</span>) ;
+    <span class="ruby-identifier">lane</span> ;
+  }
+
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-scanXml" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">scanXml</span><span
+            class="method-args">(xml)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>scan XML definition</p>
+<dl class="rdoc-list note-list"><dt><em>xml</em>
+<dd>
+<p>XML element</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="scanXml-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMapEdge.rb, line 78</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">scanXml</span>(<span class="ruby-identifier">xml</span>)
+  <span class="ruby-ivar">@id</span> = <span class="ruby-constant">SumoMap</span>.<span class="ruby-identifier">getAttrVal</span>(<span class="ruby-identifier">xml</span>, <span class="ruby-string">&quot;id&quot;</span>) ;
+  <span class="ruby-ivar">@fromId</span> = <span class="ruby-constant">SumoMap</span>.<span class="ruby-identifier">getAttrVal</span>(<span class="ruby-identifier">xml</span>, <span class="ruby-string">&quot;from&quot;</span>) ;
+  <span class="ruby-ivar">@toId</span> = <span class="ruby-constant">SumoMap</span>.<span class="ruby-identifier">getAttrVal</span>(<span class="ruby-identifier">xml</span>, <span class="ruby-string">&quot;to&quot;</span>) ;
+  <span class="ruby-ivar">@type</span> = <span class="ruby-constant">SumoMap</span>.<span class="ruby-identifier">getAttrVal</span>(<span class="ruby-identifier">xml</span>, <span class="ruby-string">&quot;type&quot;</span>) ;
+  <span class="ruby-ivar">@laneList</span> = [] ;
+  <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">each_element</span>(<span class="ruby-string">&quot;lane&quot;</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">laneXml</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">lane</span> = <span class="ruby-constant">Lane</span>.<span class="ruby-identifier">new</span>() ;
+    <span class="ruby-identifier">lane</span>.<span class="ruby-identifier">scanXml</span>(<span class="ruby-identifier">laneXml</span>, <span class="ruby-keyword">self</span>) ;
+    <span class="ruby-ivar">@laneList</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">lane</span>) ;
+  }
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-shape" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">shape</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>get <a href="Edge.html#method-i-shape">#shape</a></p>
+          
+          
+
+          
+          <div class="method-source-code" id="shape-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMapEdge.rb, line 153</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">shape</span>()
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">firstLane</span>().<span class="ruby-identifier">shape</span>() ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-shouldBeExcluded" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">shouldBeExcluded</span><span
+            class="method-args">(excludeTypeList)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>check the <a href="Edge.html#attribute-i-type">#type</a> is included in the
+excludeTypeList.</p>
+<dl class="rdoc-list note-list"><dt><em>excludeTypeList</em> 
+<dd>
+<p>array of <a href="Edge.html#attribute-i-type">#type</a> symbol.</p>
+</dd><dt><strong>return</strong> 
+<dd>
+<p>true if the edge is included in the excludeTypeList.</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="shouldBeExcluded-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMapEdge.rb, line 264</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">shouldBeExcluded</span>(<span class="ruby-identifier">excludeTypeList</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">excludeTypeList</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-ivar">@type</span>) ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-speed" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">speed</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>get <a href="Edge.html#method-i-speed">#speed</a></p>
+          
+          
+
+          
+          <div class="method-source-code" id="speed-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMapEdge.rb, line 146</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">speed</span>()
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">firstLane</span>().<span class="ruby-identifier">speed</span>() ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-toJson" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">toJson</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>convert <a href="Edge.html#attribute-i-to">#to</a> JSON object (hash)</p>
+          
+          
+
+          
+          <div class="method-source-code" id="toJson-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMapEdge.rb, line 95</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">toJson</span>()
+  <span class="ruby-identifier">json</span> = { <span class="ruby-string">&#39;class&#39;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">to_s</span> }
+  <span class="ruby-identifier">json</span>[<span class="ruby-string">&#39;id&#39;</span>] = <span class="ruby-ivar">@id</span> ;
+  <span class="ruby-identifier">json</span>[<span class="ruby-string">&#39;type&#39;</span>] = <span class="ruby-ivar">@type</span> ;
+  <span class="ruby-identifier">json</span>[<span class="ruby-string">&#39;from&#39;</span>] = <span class="ruby-ivar">@fromId</span> ;
+  <span class="ruby-identifier">json</span>[<span class="ruby-string">&#39;to&#39;</span>] = <span class="ruby-ivar">@toId</span> ;
+
+  <span class="ruby-identifier">_laneList</span> = <span class="ruby-ivar">@laneList</span>.<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">lane</span><span class="ruby-operator">|</span> <span class="ruby-identifier">lane</span>.<span class="ruby-identifier">toJson</span>() ;}
+  <span class="ruby-identifier">json</span>[<span class="ruby-string">&#39;laneList&#39;</span>] = <span class="ruby-identifier">_laneList</span> ;
+
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">json</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-validSpan" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">validSpan</span><span
+            class="method-args">(span)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>get valid span for stop the vehicle. if span is zero, increase it <a
+href="Edge.html#attribute-i-to">#to</a> <a
+href="Edge.html#MinSpanForStop">MinSpanForStop</a>. if <a
+href="Edge.html#MinSpanForStop">MinSpanForStop</a> is too large for the
+edge, use the mid point of the edge.</p>
+<dl class="rdoc-list note-list"><dt><em>span</em> 
+<dd>
+<p>original span.</p>
+</dd><dt><strong>return</strong> 
+<dd>
+<p>span</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="validSpan-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMapEdge.rb, line 206</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">validSpan</span>(<span class="ruby-identifier">span</span>)
+  <span class="ruby-keyword">if</span>(<span class="ruby-identifier">span</span> <span class="ruby-operator">&lt;</span> <span class="ruby-constant">MinSpanForStop</span>) <span class="ruby-keyword">then</span>
+    <span class="ruby-keyword">if</span>(<span class="ruby-constant">MinSpanForStop</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">length</span>()) <span class="ruby-keyword">then</span>
+      <span class="ruby-keyword">return</span> <span class="ruby-identifier">length</span>() <span class="ruby-operator">/</span> <span class="ruby-value">2.0</span> ;
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-keyword">return</span> <span class="ruby-constant">MinSpanForStop</span> ;
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">span</span> ;
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

@@ -1,0 +1,423 @@
+{
+  "savsPoi": [
+    {
+      "id": "-39084",
+      "tag": {
+        "man_made": "beacon",
+        "name": "p001",
+        "savs:poi": "p001"
+      },
+      "type": "node",
+      "lonlat": [
+        139.62872768727,
+        35.45846558801
+      ]
+    },
+    {
+      "id": "-39086",
+      "tag": {
+        "man_made": "beacon",
+        "name": "p002",
+        "savs:poi": "p002"
+      },
+      "type": "node",
+      "lonlat": [
+        139.62516518413,
+        35.45859944659
+      ]
+    },
+    {
+      "id": "-39088",
+      "tag": {
+        "man_made": "beacon",
+        "name": "p003",
+        "savs:poi": "p003"
+      },
+      "type": "node",
+      "lonlat": [
+        139.6369276745,
+        35.45824064747
+      ]
+    },
+    {
+      "id": "-39090",
+      "tag": {
+        "man_made": "beacon",
+        "name": "p004",
+        "savs:poi": "p004"
+      },
+      "type": "node",
+      "lonlat": [
+        139.6353469738,
+        35.45659429009
+      ]
+    },
+    {
+      "id": "-39092",
+      "tag": {
+        "man_made": "beacon",
+        "name": "p005",
+        "savs:poi": "p005"
+      },
+      "type": "node",
+      "lonlat": [
+        139.63151297275,
+        35.45395908037
+      ]
+    },
+    {
+      "id": "-39094",
+      "tag": {
+        "man_made": "beacon",
+        "name": "p006",
+        "savs:poi": "p006"
+      },
+      "type": "node",
+      "lonlat": [
+        139.63217202039,
+        35.45438759304
+      ]
+    },
+    {
+      "id": "-39096",
+      "tag": {
+        "man_made": "beacon",
+        "name": "p007",
+        "savs:poi": "p007"
+      },
+      "type": "node",
+      "lonlat": [
+        139.63808312458,
+        35.45562136496
+      ]
+    },
+    {
+      "id": "-39098",
+      "tag": {
+        "man_made": "beacon",
+        "name": "p008",
+        "savs:poi": "p008"
+      },
+      "type": "node",
+      "lonlat": [
+        139.6404253753,
+        35.45423302469
+      ]
+    },
+    {
+      "id": "-39100",
+      "tag": {
+        "man_made": "beacon",
+        "name": "p009",
+        "savs:poi": "p009"
+      },
+      "type": "node",
+      "lonlat": [
+        139.63115379894,
+        35.452347828
+      ]
+    },
+    {
+      "id": "-39102",
+      "tag": {
+        "man_made": "beacon",
+        "name": "p010",
+        "savs:poi": "p010"
+      },
+      "type": "node",
+      "lonlat": [
+        139.63248460336,
+        35.45055574478
+      ]
+    },
+    {
+      "id": "-39104",
+      "tag": {
+        "man_made": "beacon",
+        "name": "p011",
+        "savs:poi": "p011"
+      },
+      "type": "node",
+      "lonlat": [
+        139.63589166382,
+        35.45049639905
+      ]
+    },
+    {
+      "id": "-39106",
+      "tag": {
+        "man_made": "beacon",
+        "name": "p012",
+        "savs:poi": "p012"
+      },
+      "type": "node",
+      "lonlat": [
+        139.63576438678,
+        35.44850208041
+      ]
+    },
+    {
+      "id": "-39108",
+      "tag": {
+        "man_made": "beacon",
+        "name": "p013",
+        "savs:poi": "p013"
+      },
+      "type": "node",
+      "lonlat": [
+        139.63671759135,
+        35.4488174494
+      ]
+    },
+    {
+      "id": "-39110",
+      "tag": {
+        "man_made": "beacon",
+        "name": "p014",
+        "savs:poi": "p014"
+      },
+      "type": "node",
+      "lonlat": [
+        139.64474307389,
+        35.44731443824
+      ]
+    },
+    {
+      "id": "-39112",
+      "tag": {
+        "man_made": "beacon",
+        "name": "p015",
+        "savs:poi": "p015"
+      },
+      "type": "node",
+      "lonlat": [
+        139.64281167299,
+        35.44587764858
+      ]
+    },
+    {
+      "id": "-39114",
+      "tag": {
+        "man_made": "beacon",
+        "name": "p016",
+        "savs:poi": "p016"
+      },
+      "type": "node",
+      "lonlat": [
+        139.6477291235,
+        35.44595218005
+      ]
+    },
+    {
+      "id": "-39116",
+      "tag": {
+        "man_made": "beacon",
+        "name": "p017",
+        "savs:poi": "p017"
+      },
+      "type": "node",
+      "lonlat": [
+        139.64189086873,
+        35.443562998
+      ]
+    },
+    {
+      "id": "-39118",
+      "tag": {
+        "man_made": "beacon",
+        "name": "p018",
+        "savs:poi": "p018"
+      },
+      "type": "node",
+      "lonlat": [
+        139.65140725789,
+        35.44381972461
+      ]
+    },
+    {
+      "id": "-39120",
+      "tag": {
+        "man_made": "beacon",
+        "name": "p019",
+        "savs:poi": "p019"
+      },
+      "type": "node",
+      "lonlat": [
+        139.65254492044,
+        35.4432068927
+      ]
+    },
+    {
+      "id": "-39122",
+      "tag": {
+        "man_made": "beacon",
+        "name": "p020",
+        "savs:poi": "p020"
+      },
+      "type": "node",
+      "lonlat": [
+        139.65027340689,
+        35.44272759535
+      ]
+    },
+    {
+      "id": "-39124",
+      "tag": {
+        "man_made": "beacon",
+        "name": "p021",
+        "savs:poi": "p021"
+      },
+      "type": "node",
+      "lonlat": [
+        139.65064062693,
+        35.44115373077
+      ]
+    },
+    {
+      "id": "-39126",
+      "tag": {
+        "man_made": "beacon",
+        "name": "p022",
+        "savs:poi": "p022"
+      },
+      "type": "node",
+      "lonlat": [
+        139.64204080565,
+        35.45289986694
+      ]
+    },
+    {
+      "id": "-39128",
+      "tag": {
+        "man_made": "beacon",
+        "name": "p023",
+        "savs:poi": "p023"
+      },
+      "type": "node",
+      "lonlat": [
+        139.64724966149,
+        35.45085385292
+      ]
+    },
+    {
+      "id": "-39130",
+      "tag": {
+        "man_made": "beacon",
+        "name": "p024",
+        "savs:poi": "p024"
+      },
+      "type": "node",
+      "lonlat": [
+        139.64843899835,
+        35.44137250709
+      ]
+    },
+    {
+      "id": "-39132",
+      "tag": {
+        "man_made": "beacon",
+        "name": "p025",
+        "savs:poi": "p025"
+      },
+      "type": "node",
+      "lonlat": [
+        139.6385354809,
+        35.45368789598
+      ]
+    },
+    {
+      "id": "-39134",
+      "tag": {
+        "man_made": "beacon",
+        "name": "p026",
+        "savs:poi": "p026"
+      },
+      "type": "node",
+      "lonlat": [
+        139.64398152642,
+        35.44773539392
+      ]
+    },
+    {
+      "id": "-39136",
+      "tag": {
+        "man_made": "beacon",
+        "name": "p027",
+        "savs:poi": "p027"
+      },
+      "type": "node",
+      "lonlat": [
+        139.64263886378,
+        35.45415367029
+      ]
+    },
+    {
+      "id": "-39138",
+      "tag": {
+        "man_made": "beacon",
+        "name": "p028",
+        "savs:poi": "p028"
+      },
+      "type": "node",
+      "lonlat": [
+        139.63262945765,
+        35.46283730023
+      ]
+    },
+    {
+      "id": "-39140",
+      "tag": {
+        "man_made": "beacon",
+        "name": "p029",
+        "savs:poi": "p029"
+      },
+      "type": "node",
+      "lonlat": [
+        139.6466998901,
+        35.44390702492
+      ]
+    },
+    {
+      "id": "-39142",
+      "tag": {
+        "man_made": "beacon",
+        "name": "p030",
+        "savs:poi": "p030"
+      },
+      "type": "node",
+      "lonlat": [
+        139.6356993699,
+        35.44362787055
+      ]
+    },
+    {
+      "id": "-39144",
+      "tag": {
+        "man_made": "beacon",
+        "name": "p031",
+        "savs:poi": "p031"
+      },
+      "type": "node",
+      "lonlat": [
+        139.65074058544,
+        35.44375554303
+      ]
+    },
+    {
+      "id": "-168105",
+      "tag": {
+        "man_made": "beacon",
+        "name": "ai-bus-base",
+        "savs:poi": "ai-bus-base"
+      },
+      "type": "node",
+      "lonlat": [
+        139.64053595294,
+        35.45384689213
+      ]
+    }
+  ],
+  "savsZone": [
+
+  ]
+}

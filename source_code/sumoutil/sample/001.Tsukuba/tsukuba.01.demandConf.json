@@ -1,0 +1,96 @@
+[ 
+  {
+      "type": "parties",
+      "name": "Parties_foo",
+      "mixtureConfig": [
+	  {
+	      "type": "directed",
+	      "from": { "type": "zone", "zone": "Area_Namiki" },
+	      "to": { "type": "circle", "center": "TX_Tsukuba", "radius": 20 },
+	      "since": 100,
+	      "until": 11000,
+	      "interval": 120,
+	      "___":null
+	  },
+	  {
+	      "type": "directed",
+	      "from": { "type": "circle", "center": "TX_KenkyuGakuen",
+			"radius": 20 },
+	      "to": { "type": "zone", "zone": "Area_Matsushiro" },
+	      "since": 100,
+	      "until": 11000,
+	      "interval": 120,
+	      "___":null
+	  }
+      ],
+      "partyList": [
+	  { "type": "softmax",
+	    "weight": 1.0,
+	    "name": "foo_00",
+	    "temperature": 0.01,
+	    "___":null
+	  },
+	  { "type": "softmax",
+	    "weight": 1.0,
+	    "name": "foo_01",
+	    "temperature": 0.01,
+	    "___":null
+	  }
+      ]
+  },
+  {
+      "type": "parties",
+      "name": "Parties_bar",
+      "mixtureConfig": [
+	  {
+	      "type": "directed",
+	      "from": {
+		  "type": "list",
+		  "name": "stationList",
+		  "list": [
+		      {"type": "circle", "radius": 5, "center": "TX_Tsukuba"},
+		      {"type": "circle", "radius": 5,
+		       "center": "TX_KenkyuGakuen"}
+		  ]
+	      },
+	      "to": {
+		  "type": "list",
+		  "name": "areaList",
+		  "list": [
+		      {"type": "zone", "zone": "TsukubaUniversity"},
+		      {"type": "circle", "radius": 1, "center": "JAXA"},
+		      {"type": "circle", "radius": 1,
+		       "center": "AIST_Central_MainGate"},
+		      {"type": "circle", "radius": 1,
+		       "center": "AIST_West_MainGate"},
+		      {"type": "circle", "radius": 1,
+		       "center": "AIST_East_MainGate"},
+		      {"type": "circle", "radius": 1,
+		       "center": "NIMS_North_MainGate"},
+		      {"type": "circle", "radius": 1,
+		       "center": "NIMS_South_MainGate"}
+		  ]
+	      },
+	      "since": 1000,
+	      "until": 26000,
+	      "interval": 200,
+	      "___":null
+	  }
+      ],
+      "partyList": [
+	  { "type": "softmax",
+	    "weight": 3.0,
+	    "name": "bar_00",
+	    "temperature": 0.01,
+	    "___":null
+	  },
+	  { "type": "softmax",
+	    "weight": 1.0,
+	    "name": "bar_01",
+	    "temperature": 0.01,
+	    "___":null
+	  }
+      ]
+  }
+]
+   

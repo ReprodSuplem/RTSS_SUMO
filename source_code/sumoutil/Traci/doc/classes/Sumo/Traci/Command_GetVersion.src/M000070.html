@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>scanResponse (Sumo::Traci::Command_GetVersion)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File TraciCommand.rb, line 319</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">scanResponse</span>(<span class="ruby-identifier">buffer</span>)
+<span class="ruby-comment cmt">#        pp [:resBuffer] ;</span>
+<span class="ruby-comment cmt">#        puts Util::octalDump(buffer) ;</span>
+        <span class="ruby-comment cmt"># get result code</span>
+        <span class="ruby-identifier">scanResultCode</span>(<span class="ruby-identifier">buffer</span>) ;
+        <span class="ruby-comment cmt"># get rest result</span>
+        <span class="ruby-identifier">resBodyLen</span> = <span class="ruby-constant">DataType_UByte</span>.<span class="ruby-identifier">unpack!</span>(<span class="ruby-identifier">buffer</span>) ;
+        <span class="ruby-identifier">resComId</span> = <span class="ruby-constant">DataType_UByte</span>.<span class="ruby-identifier">unpack!</span>(<span class="ruby-identifier">buffer</span>) ;
+        <span class="ruby-identifier">apiVersion</span> = <span class="ruby-constant">DataType_Integer</span>.<span class="ruby-identifier">unpack!</span>(<span class="ruby-identifier">buffer</span>) ;
+        <span class="ruby-identifier">sumoVersion</span> = <span class="ruby-constant">DataType_String</span>.<span class="ruby-identifier">unpack!</span>(<span class="ruby-identifier">buffer</span>) ;
+        <span class="ruby-comment cmt">#</span>
+        <span class="ruby-ivar">@_response</span> = ({ <span class="ruby-identifier">:comId</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">resComId</span>, 
+                       <span class="ruby-identifier">:apiVersion</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">apiVersion</span>, 
+                       <span class="ruby-identifier">:sumoVersion</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">sumoVersion</span> }) ;
+<span class="ruby-comment cmt">#        pp [self.class, @_response] ;</span>
+        <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@_response</span> ;
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,200 @@
+%%  -*- Mode: Memo -*-
+=begin
+
+= Development Memo
+
+%%----------------------------------------------------------------------
+== [2014/06/29]
+
+   * sumo-gui の起動。
+     起動時に、-S オプションで run mode にしておかないと、--remote-port で
+     TraCI-server にしても、コマンドの処理が進まない。
+
+   * バイトオーダーはネットワークバイトオーダ（ビッグエンディアン）。
+
+   * TCP socket の IO は、send, recv を使ったほうがいい。read/write は
+     うまく機能しない。
+
+   * GetVersion の Response 。
+
+     * 例
+                00 00 00 20 07 00 00 00  : nul nul nul  sp bel nul nul nul 
+                00 00 00 15 00 00 00 00  : nul nul nul nak nul nul nul nul 
+                08 00 00 00 0b 53 55 4d  :  bs nul nul nul  vt   S   U   M 
+                4f 20 30 2e 32 30 2e 30  :   O  sp   0   .   2   0   .   0 
+       この例では、
+       * 4byte [00 00 00 20] : (int) 全体の長さ (=32)
+       * 7byte [07 00 00 00 00 00 00]
+         * 07: 当該commandの res の長さ?ちょっと違うか。
+         * 00: 何のコマンドへのresか？ この場合、GetVersion は 00        
+         * 00: result code
+         * 00 00 00 00 : (int) result code のメッセージの長さ
+       * 1byte [15] : (ubyte) res の長さ(?)
+       * 1byte [00] : 謎? <- ふたたび command id か？
+       * 4byte [00 00 00 08] : (int) API version (= 8)
+       * 4byte [00 00 00 0b] : (int) 文字列の長さ (=11)
+       * 11byte [53 55 4d 4f 20 30 2e 32 30 2e 30] : (str) Identifier
+                (SUMO のバージョン) (= "SUMO 0.20.0")
+
+   * SimStep の Response 。
+
+     * 例
+                00 00 00 0f 07 02 00 00 
+                00 00 00 00 00 00 00
+
+       * 4byte [00 00 00 0f] : (int) 全体の長さ (=15)
+       * 7byte [07 02 00 00 00 00 00] : result code
+         * 1byte [07] : (int) 長さ
+         * 1byte [02] : もとのコマンドID        
+         * 1byte [00] : result code
+         * 4byte [00 00 00 00] : (int) result message の長さ
+       * 4byte [00 00 00 00] : (int) 続く following subscription
+                               responses の数 (=0)
+       * 本来はこのあと、subscription response が続く
+
+   * Close の Response 。
+
+     * 例
+                00 00 00 0b 07 7f 00 00
+                00 00 00
+
+       * 4byte [00 00 00 0b] : (int) 全体の長さ(=11)
+       * 7byte [07 7f 00 00 00 00 00] : result code
+         * 07 : (ubyte) result code の長さ
+         * 7f : close の id
+         * 00 : result code
+         * 00 00 00 00 : (int) result code のメッセージの長さ (=0)
+
+   * 2連続の GetVersion のresponse。
+                00 00 00 3c 07 00 00 00  : nul nul nul   < bel nul nul nul 
+                00 00 00 15 00 00 00 00  : nul nul nul nak nul nul nul nul 
+                08 00 00 00 0b 53 55 4d  :  bs nul nul nul  vt   S   U   M 
+                4f 20 30 2e 32 30 2e 30  :   O  sp   0   .   2   0   .   0 
+                07 00 00 00 00 00 00 15  : bel nul nul nul nul nul nul nak 
+                00 00 00 00 08 00 00 00  : nul nul nul nul  bs nul nul nul 
+                0b 53 55 4d 4f 20 30 2e  :  vt   S   U   M   O  sp   0   . 
+                32 30 2e 30              :   2   0   .   0              
+
+     * 4byte [00 00 00 3c] : (int) 全体の長さ
+     * 7byte [07 00 00 00 00 00 00] result code field
+       * [07] : (ubyte) field の長さ
+       * [00] : (ubyte) command ID
+       * [00] : (ubyte) result code
+       * [00 00 00 00] : (int) result code のメッセージの長さ
+     * 15, 00 ...
+
+        [total length] [result code] [response] [result code] [response]
+
+
+%%----------------------------------------------------------------------
+== [2014/06/30]
+
+   * TCP で通信されている内容をチェックする方法： tcpdump
+
+        % sudo tcpdump -X -nn -i lo
+
+
+
+%%----------------------------------------------------------------------
+== [2018/01/02 01:06]
+
+   * SUMO-0.32 のインストール (on oak)
+
+     * 必要なもの
+
+       * libfox 関係の _dev パッケージ
+
+     * configure して make
+
+   * on elm
+
+     * synaptic でインストールすべきもの：
+
+       * libfox
+       * PROJ のために
+         * libproj-dev
+       * PYTHON のために
+         * libpython-all-dev
+       * OSG のために
+         * libosgearth-dev
+       * FFMPEG のために
+         * libavcodec-dev
+         * libavformat-dev
+         * libavutil-dev
+         * libswscale-dev
+
+     * configure の実行
+
+        % ./configure --with-python --with-osg --with-ffmpeg
+
+
+        Optional features summary
+        -------------------------
+        Enabled: TRACI PROJ GDAL GUI Python OSG ffmpeg
+        Disabled: Debug Profiling Coverage PIC UnitTests
+
+        % make
+        % sudo make install
+
+=== 地図などの作り方
+
+    * OSM から取ってくる。
+
+      % env SUMO_HOME=/opt/sumo/home /opt/sumo/home/tools/osmWebWizard.py
+      
+      * chrome とかでGUI で OSM から地図をダウンロード。
+        もしかしたら、JOSMとかでもできるかも。
+
+    * OSM ファイルの変換
+
+        % netconvert --osm-files TsukubaCentral.small.osm.xml --lefthand -o TsukubaCentral.small.net.xml --osm.all-attributes true --junctions.join true --junctions.join-dist 20 --output.street-names true --output.original-names true
+
+      * --output.original-names true により、各 lane には、
+          <param key="origId" value="xxxxx"/>
+        という要素が追加される。
+
+
+=== route ファイルの作り方
+
+    * duarouter を使う。
+
+      * flow.xml ファイルを作る。
+
+      * sample:
+        /home/noda/work/iss/SAVS/Data/2018.0104.Tsukuba/tsukuba.00.duarcfg
+        /home/noda/work/iss/SAVS/Data/2018.0104.Tsukuba/tsukuba.00.flows.xml
+
+      * あるいは、
+
+        % duarouter -n <NetFile> -t <TripFile> -o <OutFile>
+
+     * route ファイルには、vehicle element の代わりに、trip element があっても
+       よい。その場合、sumo の実行中に計算される。
+
+
+=== 座標変換
+        
+    * 座標変換には、proj.4 を使っている。
+
+      * proj.4 にはコマンドラインのものがある。
+
+          $ proj +proj=utm +zone=54 +ellps=WGS84 +datum=WGS84 +units=m +no_defs
+
+        これで、標準入力から、 Lon, Lat （経度・緯度）の順番で入力。
+	これで X-Y に変換。X-Y は、
+
+		X: west to east
+		Y: south to north
+
+	このX,Yの値に、location の netOffset の値を足すと、
+	net.xml の各値になる。
+
+                
+
+
+
+
+
+
+
+

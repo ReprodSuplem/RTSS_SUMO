@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Sumo::SumoManager - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script src="../js/jquery.js"></script>
+<script src="../js/darkfish.js"></script>
+
+<link href="../css/fonts.css" rel="stylesheet">
+<link href="../css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../table_of_contents.html#pages">Pages</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link">WithConfParam
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li class="calls-super" ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-__cycleCheckVehicles_notGood">#__cycleCheckVehicles_notGood</a>
+    
+    <li ><a href="#method-i-currentTimeInString">#currentTimeInString</a>
+    
+    <li ><a href="#method-i-eachVehicle">#eachVehicle</a>
+    
+    <li ><a href="#method-i-fetchSimulationTimeInSec">#fetchSimulationTimeInSec</a>
+    
+    <li ><a href="#method-i-logging">#logging</a>
+    
+    <li ><a href="#method-i-run">#run</a>
+    
+    <li ><a href="#method-i-setup">#setup</a>
+    
+    <li ><a href="#method-i-setupMap">#setupMap</a>
+    
+    <li ><a href="#method-i-setupPoiManager">#setupPoiManager</a>
+    
+    <li ><a href="#method-i-setupTraciClientWithServer">#setupTraciClientWithServer</a>
+    
+    <li ><a href="#method-i-setupVehicleManager">#setupVehicleManager</a>
+    
+    <li ><a href="#method-i-submitNewVehicle">#submitNewVehicle</a>
+    
+    <li ><a href="#method-i-vehicleList">#vehicleList</a>
+    
+    <li ><a href="#method-i-vehicleTable">#vehicleTable</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Sumo::SumoManager">
+  <h1 id="class-Sumo::SumoManager" class="class">
+    class Sumo::SumoManager
+  </h1>
+
+  <section class="description">
+    
+<p><a href="SumoManager.html">Sumo::SumoManager</a></p>
+
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+    <section class="constants-list">
+      <header>
+        <h3>Constants</h3>
+      </header>
+      <dl>
+      
+        <dt id="DefaultConf">DefaultConf
+        
+        <dd><p>description of Default Config</p>
+        
+      
+        <dt id="DefaultLoopConf">DefaultLoopConf
+        
+        <dd><p>description of Default Loop Config</p>
+        
+      
+        <dt id="TimeStrFormat">TimeStrFormat
+        
+        <dd><p><a href="../Time.html">Time</a> String Format</p>
+        
+      
+      </dl>
+    </section>
+    
+
+    
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-currentTime" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">currentTime</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>current time (in sec)</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-cycleCount" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">cycleCount</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>cycle count (the number of steps in the simulation <a
+href="SumoManager.html#method-i-run">#run</a>).</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-map" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">map</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p><a href="../Sumo.html">Sumo</a> Map</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-poiManager" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">poiManager</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>PoI manager.</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-timeOrigin" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">timeOrigin</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>origin of time.</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-traciClient" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">traciClient</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>traci client.</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-vehicleManager" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">vehicleManager</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>vehicle manager.</p>
+        
+        </div>
+      </div>
+      
+    </section>
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(conf = {})</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>description of method initialize</p>
+<dl class="rdoc-list note-list"><dt><em>conf</em>
+<dd>
+<p>configulation</p>
+</dd></dl>
+          
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              
+            </div>
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File Traci/SumoManager.rb, line 88</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">conf</span> = {})
+  <span class="ruby-keyword">super</span>(<span class="ruby-identifier">conf</span>) ;
+  <span class="ruby-identifier">setup</span>() ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-__cycleCheckVehicles_notGood" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">__cycleCheckVehicles_notGood</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>cycle to check vehicle existense. (obsolute.  this is not perfect.  use
+Vehicle#isAlive())</p>
+          
+          
+
+          
+          <div class="method-source-code" id="__cycleCheckVehicles_notGood-source">
+            <pre><span class="ruby-comment"># File Traci/SumoManager.rb, line 263</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">__cycleCheckVehicles_notGood</span>()
+  <span class="ruby-identifier">vList</span> = <span class="ruby-identifier">vehicleManager</span>.<span class="ruby-identifier">fetchVehicleIdList</span>() ;
+  <span class="ruby-identifier">vList</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">vid</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">vehicleManager</span>.<span class="ruby-identifier">vehicleTable</span>[<span class="ruby-identifier">vid</span>].<span class="ruby-identifier">setRunningCheckTime</span>(<span class="ruby-ivar">@currentTime</span>) ;
+  }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-currentTimeInString" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">currentTimeInString</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>current time in String</p>
+          
+          
+
+          
+          <div class="method-source-code" id="currentTimeInString-source">
+            <pre><span class="ruby-comment"># File Traci/SumoManager.rb, line 117</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">currentTimeInString</span>()
+  <span class="ruby-identifier">time</span> = <span class="ruby-ivar">@timeOrigin</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@currentTime</span> ;
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">time</span>.<span class="ruby-identifier">strftime</span>(<span class="ruby-constant">TimeStrFormat</span>) ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-eachVehicle" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">eachVehicle</span><span
+            class="method-args">(*args, &block)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>each Vehicle iteration. Usage:</p>
+
+<pre>self.eachVehicle(fooVal, barVal){|vehicle, foo, bar|
+     ... }</pre>
+<dl class="rdoc-list note-list"><dt>_*args_
+<dd>
+<p>args to pass to block.</p>
+</dd><dt>_&amp;block_ 
+<dd>
+<p>block to execute every cycle.  called with (self, *args)</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="eachVehicle-source">
+            <pre><span class="ruby-comment"># File Traci/SumoManager.rb, line 278</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">eachVehicle</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-ivar">@vehicleManager</span>.<span class="ruby-identifier">vehicleList</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">vehicle</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">block</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">vehicle</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>) ;
+  }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-fetchSimulationTimeInSec" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">fetchSimulationTimeInSec</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>fetch simulation time in sec</p>
+          
+          
+
+          
+          <div class="method-source-code" id="fetchSimulationTimeInSec-source">
+            <pre><span class="ruby-comment"># File Traci/SumoManager.rb, line 255</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">fetchSimulationTimeInSec</span>()
+  <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Util</span>.<span class="ruby-identifier">convertSimUnitsToSec</span>(<span class="ruby-ivar">@traciClient</span>.<span class="ruby-identifier">fetchSimulationTime</span>()) ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-logging" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">logging</span><span
+            class="method-args">(level, *messageList, &body)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p><a href="SumoManager.html#method-i-logging">#logging</a></p>
+          
+          
+
+          
+          <div class="method-source-code" id="logging-source">
+            <pre><span class="ruby-comment"># File Traci/SumoManager.rb, line 214</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">logging</span>(<span class="ruby-identifier">level</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">messageList</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">body</span>)
+  <span class="ruby-ivar">@traciClient</span>.<span class="ruby-identifier">logging</span>(<span class="ruby-identifier">level</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">messageList</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">body</span>) ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-run" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">run</span><span
+            class="method-args">(loopConf = {}, *args, &block)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p><a href="SumoManager.html#method-i-run">#run</a> <a
+href="../Sumo.html">Sumo</a> with block</p>
+<dl class="rdoc-list note-list"><dt><em>loopConf</em> 
+<dd>
+<p>configulation for <a href="SumoManager.html#method-i-run">#run</a> loop.</p>
+</dd><dt>_*args_ 
+<dd>
+<p>args to pass to the block.</p>
+</dd><dt>_&amp;block_ 
+<dd>
+<p>block to execute every cycle.  called with (self, *args)</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="run-source">
+            <pre><span class="ruby-comment"># File Traci/SumoManager.rb, line 224</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">run</span>(<span class="ruby-identifier">loopConf</span> = {}, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-identifier">loopConf</span> =
+    <span class="ruby-constant">DefaultLoopConf</span>.<span class="ruby-identifier">dup</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">getConf</span>(<span class="ruby-value">:loopConf</span>)).<span class="ruby-identifier">update</span>(<span class="ruby-identifier">loopConf</span>);
+  <span class="ruby-identifier">untilTime</span> = <span class="ruby-identifier">loopConf</span>[<span class="ruby-value">:until</span>] ;
+  <span class="ruby-identifier">step</span> = <span class="ruby-identifier">loopConf</span>[<span class="ruby-value">:step</span>] ;
+  <span class="ruby-identifier">delay</span> = <span class="ruby-identifier">loopConf</span>[<span class="ruby-value">:delay</span>] ;
+  <span class="ruby-identifier">interval</span> = <span class="ruby-identifier">loopConf</span>[<span class="ruby-value">:logInterval</span>].<span class="ruby-identifier">to_i</span> ;
+  
+  <span class="ruby-ivar">@cycleCount</span> = <span class="ruby-value">0</span> ;
+  <span class="ruby-ivar">@currentTime</span> = <span class="ruby-identifier">fetchSimulationTimeInSec</span>() ;
+  <span class="ruby-keyword">while</span>(<span class="ruby-identifier">untilTime</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@currentTime</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">untilTime</span>)
+    <span class="ruby-identifier">advanceTime</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Util</span>.<span class="ruby-identifier">convertSecToSimUnits</span>(<span class="ruby-ivar">@currentTime</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">step</span>) ;
+    <span class="ruby-identifier">com</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">Command_SimulationStep</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">advanceTime</span>) ;
+    <span class="ruby-ivar">@traciClient</span>.<span class="ruby-identifier">execCommands</span>(<span class="ruby-identifier">com</span>) ;
+    
+    <span class="ruby-ivar">@currentTime</span> = <span class="ruby-identifier">fetchSimulationTimeInSec</span>() ;
+    <span class="ruby-ivar">@cycleCount</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span> ;
+
+    <span class="ruby-identifier">block</span>.<span class="ruby-identifier">call</span>(<span class="ruby-keyword">self</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>) ;
+    
+    <span class="ruby-keyword">if</span>(<span class="ruby-identifier">interval</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span> <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-ivar">@cycleCount</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">interval</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>)) <span class="ruby-keyword">then</span>
+      <span class="ruby-identifier">logging</span>(<span class="ruby-value">:info</span>, <span class="ruby-string">&quot;loop count=&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@cycleCount</span>.<span class="ruby-identifier">to_s</span>) ;
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">sleep</span>(<span class="ruby-identifier">delay</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-ivar">@traciClient</span>.<span class="ruby-identifier">closeServer</span>() <span class="ruby-keyword">if</span>(<span class="ruby-identifier">loopConf</span>[<span class="ruby-value">:closeAtEnd</span>]) ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-setup" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">setup</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p><a href="SumoManager.html#method-i-setup">#setup</a></p>
+          
+          
+
+          
+          <div class="method-source-code" id="setup-source">
+            <pre><span class="ruby-comment"># File Traci/SumoManager.rb, line 96</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">setup</span>()
+  <span class="ruby-keyword">if</span>(<span class="ruby-identifier">getConf</span>(<span class="ruby-value">:openClient</span>)) <span class="ruby-keyword">then</span>
+    <span class="ruby-identifier">setupTraciClientWithServer</span>() ;
+    <span class="ruby-identifier">setupVehicleManager</span>() ;
+    <span class="ruby-identifier">setupPoiManager</span>() ;
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-ivar">@traciClient</span> = <span class="ruby-identifier">getConf</span>(<span class="ruby-value">:traciClient</span>) ;
+    <span class="ruby-ivar">@vehicleManager</span> = <span class="ruby-identifier">getConf</span>(<span class="ruby-value">:vehicleManager</span>) ;
+    <span class="ruby-ivar">@poiManager</span> = <span class="ruby-identifier">getConf</span>(<span class="ruby-value">:poiManager</span>) ;
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-ivar">@timeOrigin</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">getConf</span>(<span class="ruby-value">:timeOrigin</span>)) ;
+
+  <span class="ruby-identifier">setupMap</span>() ;
+  
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-setupMap" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">setupMap</span><span
+            class="method-args">(conf = {})</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p><a href="SumoManager.html#method-i-setup">#setup</a> <a
+href="../Sumo.html">Sumo</a> Map</p>
+<dl class="rdoc-list note-list"><dt><em>conf</em> 
+<dd>
+<p>configulation for PoiManager.</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="setupMap-source">
+            <pre><span class="ruby-comment"># File Traci/SumoManager.rb, line 173</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">setupMap</span>(<span class="ruby-identifier">conf</span> = {})
+  <span class="ruby-identifier">mapConf</span> = <span class="ruby-identifier">getConf</span>(<span class="ruby-value">:mapConf</span>).<span class="ruby-identifier">dup</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">conf</span>) ;
+  <span class="ruby-identifier">mapFile</span> = <span class="ruby-identifier">getConf</span>(<span class="ruby-value">:mapFile</span>) ;
+  <span class="ruby-identifier">dumpFile</span> = <span class="ruby-identifier">getConf</span>(<span class="ruby-value">:mapDumpFile</span>) ;
+
+  <span class="ruby-keyword">if</span>(<span class="ruby-operator">!</span><span class="ruby-identifier">dumpFile</span>.<span class="ruby-identifier">nil?</span>) <span class="ruby-keyword">then</span>
+    <span class="ruby-ivar">@map</span> = <span class="ruby-constant">SumoMap</span>.<span class="ruby-identifier">restoreFromFile</span>(<span class="ruby-identifier">dumpFile</span>) ;
+    <span class="ruby-ivar">@map</span>.<span class="ruby-identifier">setLogger</span>(<span class="ruby-keyword">self</span>) ;
+  <span class="ruby-keyword">elsif</span>(<span class="ruby-operator">!</span><span class="ruby-identifier">mapFile</span>.<span class="ruby-identifier">nil?</span>) <span class="ruby-keyword">then</span>
+    <span class="ruby-ivar">@map</span> = <span class="ruby-constant">SumoMap</span>.<span class="ruby-identifier">new</span>() ;
+    <span class="ruby-ivar">@map</span>.<span class="ruby-identifier">setLogger</span>(<span class="ruby-keyword">self</span>) ;
+    <span class="ruby-keyword">case</span>(<span class="ruby-identifier">mapFile</span>)
+    <span class="ruby-keyword">when</span>(<span class="ruby-regexp">/\.json$/</span>) ;
+      <span class="ruby-ivar">@map</span>.<span class="ruby-identifier">loadJsonFile</span>(<span class="ruby-identifier">mapFile</span>) ;
+    <span class="ruby-keyword">when</span>(<span class="ruby-regexp">/\.xml$/</span>) ;
+      <span class="ruby-ivar">@map</span>.<span class="ruby-identifier">loadXmlFile</span>(<span class="ruby-identifier">mapFile</span>) ;
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;unknown suffix for mapfile: #{mapFile}&quot;</span> ;
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-ivar">@map</span>.<span class="ruby-identifier">buildRTrees</span>() <span class="ruby-keyword">if</span>(<span class="ruby-identifier">mapConf</span>[<span class="ruby-value">:buildRTrees</span>]) ;
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-setupPoiManager" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">setupPoiManager</span><span
+            class="method-args">(conf = {})</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p><a href="SumoManager.html#method-i-setup">#setup</a> <a
+href="SumoManager.html#method-c-new">::new</a> PoI Manager.</p>
+<dl class="rdoc-list note-list"><dt><em>conf</em> 
+<dd>
+<p>configulation for PoiManager.</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="setupPoiManager-source">
+            <pre><span class="ruby-comment"># File Traci/SumoManager.rb, line 161</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">setupPoiManager</span>(<span class="ruby-identifier">conf</span> = {})
+  <span class="ruby-identifier">managerConf</span> = <span class="ruby-identifier">getConf</span>(<span class="ruby-value">:poiManagerConf</span>).<span class="ruby-identifier">dup</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">conf</span>) ;
+  <span class="ruby-identifier">managerConf</span>[<span class="ruby-value">:traciClient</span>] = <span class="ruby-ivar">@traciClient</span> ;
+  <span class="ruby-ivar">@poiManager</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">PoiManager</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">managerConf</span>) ;
+
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@poiManager</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-setupTraciClientWithServer" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">setupTraciClientWithServer</span><span
+            class="method-args">(conf = {})</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p><a href="SumoManager.html#method-i-setup">#setup</a> <a
+href="SumoManager.html#method-c-new">::new</a> TraciClient.</p>
+<dl class="rdoc-list note-list"><dt><em>conf</em> 
+<dd>
+<p>configulation for TraciClient.</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="setupTraciClientWithServer-source">
+            <pre><span class="ruby-comment"># File Traci/SumoManager.rb, line 129</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">setupTraciClientWithServer</span>(<span class="ruby-identifier">conf</span> = {})
+  <span class="ruby-identifier">clientConf</span> = <span class="ruby-identifier">getConf</span>(<span class="ruby-value">:traciClientConf</span>).<span class="ruby-identifier">dup</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">conf</span>) ;
+  <span class="ruby-identifier">sumoConfig</span> = <span class="ruby-identifier">getConf</span>(<span class="ruby-value">:sumoConfigFile</span>) ;
+  <span class="ruby-keyword">if</span>(<span class="ruby-identifier">sumoConfig</span>.<span class="ruby-identifier">nil?</span>) <span class="ruby-keyword">then</span>
+    <span class="ruby-identifier">raise</span> (<span class="ruby-string">&quot;need sumo config file to start TraciClient. conf=&quot;</span> <span class="ruby-operator">+</span>
+           <span class="ruby-identifier">clientConf</span>.<span class="ruby-identifier">inspect</span>) ;
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-ivar">@traciClient</span> = <span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">Client</span>.<span class="ruby-identifier">newWithServer</span>(<span class="ruby-identifier">sumoConfig</span>,
+                                             <span class="ruby-identifier">clientConf</span>,
+                                             <span class="ruby-identifier">getConf</span>(<span class="ruby-value">:guiMode</span>),
+                                             <span class="ruby-identifier">getConf</span>(<span class="ruby-value">:portScanFrom</span>)) ;
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@traciClient</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-setupVehicleManager" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">setupVehicleManager</span><span
+            class="method-args">(conf = {})</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p><a href="SumoManager.html#method-i-setup">#setup</a> <a
+href="SumoManager.html#method-c-new">::new</a> VehicleManager.</p>
+<dl class="rdoc-list note-list"><dt><em>conf</em> 
+<dd>
+<p>configulation for VehicleManager.</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="setupVehicleManager-source">
+            <pre><span class="ruby-comment"># File Traci/SumoManager.rb, line 148</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">setupVehicleManager</span>(<span class="ruby-identifier">conf</span> = {})
+  <span class="ruby-identifier">managerConf</span> = <span class="ruby-identifier">getConf</span>(<span class="ruby-value">:vehicleManagerConf</span>).<span class="ruby-identifier">dup</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">conf</span>) ;
+  <span class="ruby-identifier">managerConf</span>[<span class="ruby-value">:vehicleConf</span>].<span class="ruby-identifier">update</span>(<span class="ruby-identifier">getConf</span>(<span class="ruby-value">:vehicleConf</span>)) ;
+  <span class="ruby-identifier">managerConf</span>[<span class="ruby-value">:traciClient</span>] = <span class="ruby-ivar">@traciClient</span> ;
+  <span class="ruby-ivar">@vehicleManager</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">VehicleManager</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">managerConf</span>) ;
+
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@vehicleManager</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-submitNewVehicle" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">submitNewVehicle</span><span
+            class="method-args">(conf, vehicleType, route, departPos = 0.0, speed = 0.0, laneIndex = 0)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>submit <a href="SumoManager.html#method-c-new">::new</a> vehicle</p>
+<dl class="rdoc-list note-list"><dt><em>vehicleType</em> 
+<dd>
+<p>vehicle type (String)</p>
+</dd><dt><em>route</em> 
+<dd>
+<p>route ID (String)</p>
+</dd><dt><em>time</em> 
+<dd>
+<p>depart time (Integer) or Symbol (:triggered, :containerTriggered)</p>
+</dd><dt><em>departPos</em> 
+<dd>
+<p>position to depart on the lane (Double) or Symbol</p>
+</dd></dl>
+
+<pre>(:random, :free, :base, :last, :random_free)</pre>
+<dl class="rdoc-list note-list"><dt><em>speed</em> 
+<dd>
+<p>initial speed (Double)</p>
+</dd><dt><em>laneIndex</em> 
+<dd>
+<p>lane index to depar</p>
+</dd><dt><strong>return</strong> 
+<dd>
+<p><a href="SumoManager.html#method-c-new">::new</a> vehicle</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="submitNewVehicle-source">
+            <pre><span class="ruby-comment"># File Traci/SumoManager.rb, line 296</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">submitNewVehicle</span>(<span class="ruby-identifier">conf</span>, <span class="ruby-identifier">vehicleType</span>, <span class="ruby-identifier">route</span>, <span class="ruby-identifier">departPos</span> = <span class="ruby-value">0.0</span>,
+                     <span class="ruby-identifier">speed</span> = <span class="ruby-value">0.0</span>, <span class="ruby-identifier">laneIndex</span> = <span class="ruby-value">0</span>)
+  <span class="ruby-ivar">@vehicleManager</span>.<span class="ruby-identifier">submitNewVehicle</span>(<span class="ruby-identifier">conf</span>,
+                                   <span class="ruby-identifier">vehicleType</span>, <span class="ruby-identifier">route</span>, <span class="ruby-ivar">@currentTime</span>,
+                                   <span class="ruby-identifier">departPos</span>, <span class="ruby-identifier">speed</span>, <span class="ruby-identifier">laneIndex</span>) ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-vehicleList" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">vehicleList</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>access utility to vehicle list</p>
+          
+          
+
+          
+          <div class="method-source-code" id="vehicleList-source">
+            <pre><span class="ruby-comment"># File Traci/SumoManager.rb, line 200</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">vehicleList</span>()
+  <span class="ruby-ivar">@vehicleManager</span>.<span class="ruby-identifier">vehicleList</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-vehicleTable" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">vehicleTable</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>access utility to vehicle list</p>
+          
+          
+
+          
+          <div class="method-source-code" id="vehicleTable-source">
+            <pre><span class="ruby-comment"># File Traci/SumoManager.rb, line 207</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">vehicleTable</span>()
+  <span class="ruby-ivar">@vehicleManager</span>.<span class="ruby-identifier">vehicleTable</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

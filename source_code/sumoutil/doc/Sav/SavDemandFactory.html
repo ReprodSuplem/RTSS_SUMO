@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Sav::SavDemandFactory - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script src="../js/jquery.js"></script>
+<script src="../js/darkfish.js"></script>
+
+<link href="../css/fonts.css" rel="stylesheet">
+<link href="../css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../table_of_contents.html#pages">Pages</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link">WithConfParam
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li class="calls-super" ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-cycleCheckProcessingList">#cycleCheckProcessingList</a>
+    
+    <li ><a href="#method-i-inspect">#inspect</a>
+    
+    <li ><a href="#method-i-inspect_original">#inspect_original</a>
+    
+    <li ><a href="#method-i-newDemand">#newDemand</a>
+    
+    <li ><a href="#method-i-newDemandListForCycle">#newDemandListForCycle</a>
+    
+    <li ><a href="#method-i-outputDemandLogInJson">#outputDemandLogInJson</a>
+    
+    <li ><a href="#method-i-prepareLog">#prepareLog</a>
+    
+    <li ><a href="#method-i-registerNewDemandList">#registerNewDemandList</a>
+    
+    <li ><a href="#method-i-setup">#setup</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Sav::SavDemandFactory">
+  <h1 id="class-Sav::SavDemandFactory" class="class">
+    class Sav::SavDemandFactory
+  </h1>
+
+  <section class="description">
+    
+<p>class for Factory of <a href="SavDemand.html">SavDemand</a></p>
+
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+    <section class="constants-list">
+      <header>
+        <h3>Constants</h3>
+      </header>
+      <dl>
+      
+        <dt id="DefaultConf">DefaultConf
+        
+        <dd><p>description of DefaultOptsions.</p>
+        
+      
+      </dl>
+    </section>
+    
+
+    
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-cancelledList" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">cancelledList</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>cancelled demands list.</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-completedList" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">completedList</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>completed demands list.</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-logStrm" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">logStrm</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>log stream</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-newCancelledList" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">newCancelledList</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>newly cancelled demands list.</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-processingList" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">processingList</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>processing demands list.</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-simulator" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">simulator</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>link to SavSimulator</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-wholeList" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">wholeList</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>whole demands list.</p>
+        
+        </div>
+      </div>
+      
+    </section>
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(savSim, conf = {})</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>initialize</p>
+<dl class="rdoc-list note-list"><dt><em>savSim</em> 
+<dd>
+<p>parent <a href="SavDemandFactory.html#attribute-i-simulator">#simulator</a></p>
+</dd><dt><em>conf</em>
+<dd>
+<p>configuration information</p>
+</dd></dl>
+          
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              
+            </div>
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File Savs/SavDemandFactory.rb, line 67</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">savSim</span>, <span class="ruby-identifier">conf</span> = {})
+  <span class="ruby-ivar">@simulator</span> = <span class="ruby-identifier">savSim</span> ;
+  <span class="ruby-keyword">super</span>(<span class="ruby-identifier">conf</span>) ;
+  <span class="ruby-identifier">setup</span>() ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-cycleCheckProcessingList" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">cycleCheckProcessingList</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>check processing. if the demand is completed, move the demand from
+processing to completed list.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="cycleCheckProcessingList-source">
+            <pre><span class="ruby-comment"># File Savs/SavDemandFactory.rb, line 133</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">cycleCheckProcessingList</span>()
+  <span class="ruby-comment">## completed demand list.</span>
+  <span class="ruby-identifier">compList</span> = [] ;
+  <span class="ruby-ivar">@processingList</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">demand</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span>(<span class="ruby-identifier">demand</span>.<span class="ruby-identifier">getState</span>() <span class="ruby-operator">==</span> <span class="ruby-value">:afterDropOff</span>) <span class="ruby-keyword">then</span>
+      <span class="ruby-identifier">compList</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">demand</span>) ;
+      <span class="ruby-ivar">@completedList</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">demand</span>) ;
+      <span class="ruby-identifier">outputDemandLogInJson</span>(<span class="ruby-identifier">demand</span>) ;
+    <span class="ruby-keyword">end</span>
+  }
+  <span class="ruby-identifier">compList</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">demand</span><span class="ruby-operator">|</span>
+    <span class="ruby-ivar">@processingList</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">demand</span>) ;
+  }
+  
+  <span class="ruby-comment">## cancelled demand list.</span>
+  <span class="ruby-ivar">@newCancelledList</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">demand</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">outputDemandLogInJson</span>(<span class="ruby-identifier">demand</span>) ;
+    <span class="ruby-identifier">compList</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">demand</span>) ;
+  }
+  <span class="ruby-ivar">@newCancelledList</span>.<span class="ruby-identifier">clear</span>() ;
+  
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">compList</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-inspect" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">inspect</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="inspect-source">
+            <pre><span class="ruby-comment"># File Savs/SavDemandFactory.rb, line 170</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">inspect</span>() ;
+  <span class="ruby-identifier">dummy</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">dup</span> ;
+  <span class="ruby-identifier">dummy</span>.<span class="ruby-identifier">simulator</span> = <span class="ruby-keyword">nil</span> ;
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">dummy</span>.<span class="ruby-identifier">inspect_original</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+        <div class="aliases">
+          Also aliased as: <a href="SavDemandFactory.html#method-i-inspect_original">inspect_original</a>
+        </div>
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-inspect_original" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">inspect_original</span><span
+            class="method-args">()</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>for inspect()</p>
+          
+          
+
+          
+        </div>
+
+        
+
+        
+        <div class="aliases">
+          Alias for: <a href="SavDemandFactory.html#method-i-inspect">inspect</a>
+        </div>
+        
+      </div>
+
+    
+      <div id="method-i-newDemand" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">newDemand</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>generate <a href="SavDemandFactory.html#method-c-new">::new</a> demand() ;</p>
+          
+          
+
+          
+          <div class="method-source-code" id="newDemand-source">
+            <pre><span class="ruby-comment"># File Savs/SavDemandFactory.rb, line 103</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">newDemand</span>()
+  <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;newDemand() should be defined in class :#{self.class}.&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-newDemandListForCycle" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">newDemandListForCycle</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>generate <a href="SavDemandFactory.html#method-c-new">::new</a> demands in
+a cycle</p>
+          
+          
+
+          
+          <div class="method-source-code" id="newDemandListForCycle-source">
+            <pre><span class="ruby-comment"># File Savs/SavDemandFactory.rb, line 110</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">newDemandListForCycle</span>()
+  <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;newDemandListForCycle() should be defined in class :#{self.class}.&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-outputDemandLogInJson" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">outputDemandLogInJson</span><span
+            class="method-args">(demand)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>output demand JSON to log file</p>
+          
+          
+
+          
+          <div class="method-source-code" id="outputDemandLogInJson-source">
+            <pre><span class="ruby-comment"># File Savs/SavDemandFactory.rb, line 160</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">outputDemandLogInJson</span>(<span class="ruby-identifier">demand</span>)
+  <span class="ruby-identifier">jsonHash</span> = <span class="ruby-identifier">demand</span>.<span class="ruby-identifier">toJson</span>() ;
+  <span class="ruby-identifier">jsonStr</span> = <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">generate</span>(<span class="ruby-identifier">jsonHash</span>) ;
+  <span class="ruby-ivar">@logStrm</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">jsonStr</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;\n&quot;</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-prepareLog" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">prepareLog</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>prepare log stream</p>
+          
+          
+
+          
+          <div class="method-source-code" id="prepareLog-source">
+            <pre><span class="ruby-comment"># File Savs/SavDemandFactory.rb, line 94</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">prepareLog</span>()
+  <span class="ruby-identifier">file</span> = <span class="ruby-identifier">getConf</span>(<span class="ruby-value">:logFile</span>) ;
+  <span class="ruby-constant">Util</span>.<span class="ruby-identifier">ensureDir</span>(<span class="ruby-identifier">file</span>) ;
+  <span class="ruby-ivar">@logStrm</span> = <span class="ruby-identifier">open</span>(<span class="ruby-identifier">file</span>, <span class="ruby-string">&quot;w&quot;</span>) ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-registerNewDemandList" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">registerNewDemandList</span><span
+            class="method-args">(demandList, cancelList, processing = true)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p><a
+href="SavDemandFactory.html#method-i-registerNewDemandList">#registerNewDemandList</a></p>
+          
+          
+
+          
+          <div class="method-source-code" id="registerNewDemandList-source">
+            <pre><span class="ruby-comment"># File Savs/SavDemandFactory.rb, line 117</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">registerNewDemandList</span>(<span class="ruby-identifier">demandList</span>, <span class="ruby-identifier">cancelList</span>, <span class="ruby-identifier">processing</span> = <span class="ruby-keyword">true</span>)
+  <span class="ruby-identifier">demandList</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">demand</span><span class="ruby-operator">|</span>
+    <span class="ruby-ivar">@wholeList</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">demand</span>) ;
+    <span class="ruby-ivar">@processingList</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">demand</span>) <span class="ruby-keyword">if</span>(<span class="ruby-identifier">processing</span>) ;
+  }
+  <span class="ruby-identifier">cancelList</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">demand</span><span class="ruby-operator">|</span>
+    <span class="ruby-ivar">@cancelledList</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">demand</span>) ;
+    <span class="ruby-ivar">@newCancelledList</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">demand</span>) ;
+  }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-setup" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">setup</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p><a href="SavDemandFactory.html#method-i-setup">#setup</a>. should be
+re-defined in subclass if needed.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="setup-source">
+            <pre><span class="ruby-comment"># File Savs/SavDemandFactory.rb, line 77</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">setup</span>()
+  <span class="ruby-ivar">@wholeList</span> = [] ;
+  <span class="ruby-ivar">@processingList</span> = [] ;
+  <span class="ruby-ivar">@completedList</span> = [] ;
+  <span class="ruby-ivar">@cancelledList</span> = [] ;
+  <span class="ruby-ivar">@newCancelledList</span> = [] ;
+
+  <span class="ruby-ivar">@demandConf</span> = <span class="ruby-identifier">getConf</span>(<span class="ruby-value">:demandConf</span>) ;
+
+  <span class="ruby-identifier">prepareLog</span>() <span class="ruby-keyword">if</span>(<span class="ruby-identifier">getConf</span>(<span class="ruby-value">:logFile</span>));
+
+  <span class="ruby-keyword">self</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

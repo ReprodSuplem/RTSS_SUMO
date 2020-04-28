@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>module Doc_runSavSimRandom - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="module">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+<div class="nav-section">
+  <h3>Table of Contents</h3>
+
+  <ul class="link-list" role="directory">
+    <li><a href="#module-Doc_runSavSimRandom-label-runSavSimRandom">runSavSimRandom</a>
+    <li><a href="#module-Doc_runSavSimRandom-label-E6-A6-82-E8-A6-81">概要</a>
+    <li><a href="#module-Doc_runSavSimRandom-label-E3-83-87-E3-83-9E-E3-83-B3-E3-83-89-E7-99-BA-E7-94-9F">デマンド発生</a>
+    <li><a href="#module-Doc_runSavSimRandom-label-E9-85-8D-E8-BB-8A">配車</a>
+    <li><a href="#module-Doc_runSavSimRandom-label-E8-B5-B0-E8-A1-8C">走行</a>
+    <li><a href="#module-Doc_runSavSimRandom-label-E7-B5-90-E6-9E-9C-E5-87-BA-E5-8A-9B">結果出力</a>
+    <li><a href="#module-Doc_runSavSimRandom-label-E4-BD-BF-E3-81-84-E6-96-B9">使い方</a>
+    <li><a href="#module-Doc_runSavSimRandom-label-E8-A6-8F-E5-AE-9A-E5-80-A4">規定値</a>
+    <li><a href="#module-Doc_runSavSimRandom-label-E3-82-AA-E3-83-97-E3-82-B7-E3-83-A7-E3-83-B3-E3-81-8A-E3-82-88-E3-81-B3-E6-A9-9F-E8-83-BD">オプションおよび機能</a>
+    <li><a href="#module-Doc_runSavSimRandom-label-E3-82-B7-E3-83-9F-E3-83-A5-E3-83-AC-E3-83-BC-E3-82-B7-E3-83-A7-E3-83-B3-E5-AE-9F-E8-A1-8C-E5-88-B6-E5-BE-A1-E9-96-A2-E4-BF-82">シミュレーション実行制御関係</a>
+    <li><a href="#module-Doc_runSavSimRandom-label-E3-83-87-E3-83-9E-E3-83-B3-E3-83-89-E7-94-9F-E6-88-90-E9-96-A2-E9-80-A3">デマンド生成関連</a>
+    <li><a href="#module-Doc_runSavSimRandom-label-SAV-E9-85-8D-E8-BB-8A-E3-83-BB-E8-B5-B0-E8-A1-8C-E9-96-A2-E9-80-A3">SAV配車・走行関連</a>
+    <li><a href="#module-Doc_runSavSimRandom-label-GUI+-E9-96-A2-E9-80-A3">GUI 関連</a>
+    <li><a href="#module-Doc_runSavSimRandom-label-E3-83-AD-E3-82-B0-E5-87-BA-E5-8A-9B-E9-96-A2-E9-80-A3">ログ出力関連</a>
+  </ul>
+</div>
+
+
+  <div id="class-metadata">
+    
+    
+    
+    
+    
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="module-Doc_runSavSimRandom">
+  <h1 id="module-Doc_runSavSimRandom" class="module">
+    module Doc_runSavSimRandom
+  </h1>
+
+  <section class="description">
+    
+<h1 id="module-Doc_runSavSimRandom-label-runSavSimRandom">runSavSimRandom<span><a href="#module-Doc_runSavSimRandom-label-runSavSimRandom">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<p>一様ランダムなデマンドを仮定して、SAVの運行シミュレーションを行う。</p>
+
+<h2 id="module-Doc_runSavSimRandom-label-E6-A6-82-E8-A6-81">概要<span><a href="#module-Doc_runSavSimRandom-label-E6-A6-82-E8-A6-81">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>runSavSimRandom では、 地図上のある矩形領域において一様にデマンドを発生させ、
+そのデマンドをさばくように決められたポリシーでSAVの配車計画を行い、 その配車計画どおりの運行をsumo を用いて求めるものである。</p>
+
+<h3 id="module-Doc_runSavSimRandom-label-E3-83-87-E3-83-9E-E3-83-B3-E3-83-89-E7-99-BA-E7-94-9F">デマンド発生<span><a href="#module-Doc_runSavSimRandom-label-E3-83-87-E3-83-9E-E3-83-B3-E3-83-89-E7-99-BA-E7-94-9F">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>デマンドの発生は以下のように行う。 まず、デマンドの発生のタイミングは、 各時刻毎(毎秒)に 指定された頻度(デマンド発生間隔の逆数)に応じて生じる。
+ある時刻にデマンドが発生した場合、 決められた矩形領域において、ランダムに仮出発地と仮目的地を決める。 この仮出発地/目的地は x,y
+座標系の値として求める。 次に、このx,y座標をもとに、地図よりその地点に最も近い道路と、
+その道路への垂線の足を求め、その地点を実出発地/目的地とする。 また、このデマンドの時刻制約は、
+乗車時刻については指定なし(デマンド発生時刻以降の任意の時刻)とし、 降車時刻(締め切り時刻)については、目的地まで徒歩で行った場合の時刻以前という
+制約を用いる。 ただし、徒歩の速度については、2km/h (オプションにより変更可能)とする。</p>
+
+<h3 id="module-Doc_runSavSimRandom-label-E9-85-8D-E8-BB-8A">配車<span><a href="#module-Doc_runSavSimRandom-label-E9-85-8D-E8-BB-8A">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>このデマンドに対して、random もしくは seqOpt いずれかの配車ポリシーで SAV配車を行う。</p>
+<dl class="rdoc-list label-list"><dt>random
+<dd>
+<p>新しいデマンドが送られてきた時、N台あるSAVから均等に1台を選び、 そのデマンドを選ばれたSAVを配車する。
+配車されたSAVは、現在の待ち行列の最後尾にそのデマンドを追加する。 ただし、配車にあたって、
+新しいデマンド追加によりそのSAVの最大の待ち行列数を超える場合、 配車失敗の回答を返し、配車を行わない。</p>
+</dd><dt>seqOpt
+<dd>
+<p>新しいデマンドが送られてきた時、 各々のSAVに対し、以下の評価値を求める。</p>
+<ol><li>
+<p>現在の経由点待ち行列(配分されている既存のデマンドの乗車・降車地点の列) に対し、新しいデマンドの乗車・降車地点を挿入する。
+挿入する箇所は、乗車・降車の順を保ちながら、乗車・降車の各々の地点を、 すべての可能な箇所に挿入を試みる。</p>
+</li><li>
+<p>新しいデマンドの乗降車地点のある挿入の組み合わせについて、 既存のデマンドが、挿入によりどれだけ時間的ロスが起きるかを求める。
+また、新しいデマンドについて、降車時刻を求める。 その際、既存及び新しいデマンドのいずれかで締め切り時刻を過ぎる場合、 その挿入方法は候補から省く。</p>
+</li><li>
+<p>すべての挿入方法について、2. で求めた時間的ロスの総和と降車時刻を足しあわせ、 その値が最小となる組み合わせを求め、それを最終的な配車とする。</p>
+</li><li>
+<p>もし2. においてすべての挿入方法が棄却された場合、 新しいデマンドについては配車失敗の回答を返し、配車を行わない。</p>
+</li></ol>
+</dd></dl>
+
+<p>以上のいずれかの配車の手順を、新規のデマンドが発生する毎に行い、 配車計画及び走行計画を策定する。</p>
+
+<h3 id="module-Doc_runSavSimRandom-label-E8-B5-B0-E8-A1-8C">走行<span><a href="#module-Doc_runSavSimRandom-label-E8-B5-B0-E8-A1-8C">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>走行については、 すべてSUMOによりシミュレーションする。</p>
+
+<p>SUMOに対しては、 各SAVについて現時点の経由点待ち行列の先頭を仮の目的地とした走行を指示する。 その仮目的地に到着した場合、
+その仮目的地に対応する経由点を待ち行列から除き、 次の経由点を借り目的地に設定する。</p>
+
+<p>経由点の待ち行列が空になった場合、 まず現地点の道路リンクの終点(交差点)を次の仮目的地とする。 その交差点に到達地した際、まだ待ち行列が空の場合、
+その交差点から伸びるリンクについて、 交差点に最も近い終点を持つリンクを選択して、 仮目的地とする。</p>
+
+<p>待ち行列が空の時に、最寄りの交差点を次々の仮目的地とするのは、 交通の障害になることを防止するためである。
+SUMOでは、道路リンク上に車両を停止させることはできるが、 その場合、その車両は障害物となり、 シミュレーションの阻害要因となる。
+また、実世界の交通においても、路上駐車と同じ状態であり、 状況としては避けるべき状態である。
+このため、SAVシミュレーションにおいては、車両は絶えず移動させる 必要が有り、上記のような形で絶えず仮目的地をもたせるようにしている。</p>
+
+<h3 id="module-Doc_runSavSimRandom-label-E7-B5-90-E6-9E-9C-E5-87-BA-E5-8A-9B">結果出力<span><a href="#module-Doc_runSavSimRandom-label-E7-B5-90-E6-9E-9C-E5-87-BA-E5-8A-9B">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>シミュレーションの結果はログ出力として記録される。</p>
+
+<p>本シミュレータのログ出力は以下の4種類である。</p>
+<dl class="rdoc-list label-list"><dt>config.json
+<dd>
+<p>シミュレーションの設定を JSON 形式で記録する。 以下で述べる各種設定を含め、 すべてのシミュレーションパラメータについて、 その値等を JSON
+のオブジェクト形式で記録したものである。 以下はそのログのサンプルである。</p>
+
+<pre class="ruby">  {
+  <span class="ruby-string">&quot;openClient&quot;</span><span class="ruby-operator">:</span> <span class="ruby-keyword">true</span>,
+  <span class="ruby-string">&quot;sumoConfigFile&quot;</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;foo.sumocfg&quot;</span>,
+  <span class="ruby-string">&quot;guiMode&quot;</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;cui&quot;</span>,
+  <span class="ruby-string">&quot;portScanFrom&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">12345</span>,
+  <span class="ruby-string">&quot;traciClient&quot;</span><span class="ruby-operator">:</span> <span class="ruby-identifier">null</span>,
+  <span class="ruby-string">&quot;traciClientConf&quot;</span><span class="ruby-operator">:</span> {
+    <span class="ruby-string">&quot;logDev&quot;</span><span class="ruby-operator">:</span> [
+      <span class="ruby-string">&quot;stdout&quot;</span>,
+      <span class="ruby-string">&quot;file&quot;</span>
+    ],
+    <span class="ruby-string">&quot;logLevel&quot;</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;info&quot;</span>,
+    <span class="ruby-string">&quot;logDir&quot;</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;.&quot;</span>,
+    <span class="ruby-string">&quot;logFilename&quot;</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;,Log/foo/savSim_.traci.log&quot;</span>
+  },
+  <span class="ruby-string">&quot;vehicleManager&quot;</span><span class="ruby-operator">:</span> <span class="ruby-identifier">null</span>,
+  <span class="ruby-string">&quot;vehicleManagerConf&quot;</span><span class="ruby-operator">:</span> {
+    <span class="ruby-string">&quot;defaultVehicleClass&quot;</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;Sav::SavVehicle&quot;</span>,
+    <span class="ruby-string">&quot;vehicleIdPrefix&quot;</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;sav&quot;</span>,
+    <span class="ruby-string">&quot;vehicleConf&quot;</span><span class="ruby-operator">:</span> {
+      <span class="ruby-string">&quot;color&quot;</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;DodgerBlue&quot;</span>,
+      <span class="ruby-string">&quot;capacity&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">3</span>
+    }
+  },
+  <span class="ruby-string">&quot;vehicleConf&quot;</span><span class="ruby-operator">:</span> {
+    <span class="ruby-string">&quot;capacity&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">3</span>
+  },
+  <span class="ruby-string">&quot;poiManager&quot;</span><span class="ruby-operator">:</span> <span class="ruby-identifier">null</span>,
+  <span class="ruby-string">&quot;poiManagerConf&quot;</span><span class="ruby-operator">:</span> {
+    <span class="ruby-string">&quot;defaultPoiClass&quot;</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;Sumo::Traci::GroundedPoi&quot;</span>
+  },
+  <span class="ruby-string">&quot;mapFile&quot;</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;./foo.net.json&quot;</span>,
+  <span class="ruby-string">&quot;mapConf&quot;</span><span class="ruby-operator">:</span> {
+    <span class="ruby-string">&quot;buildRTrees&quot;</span><span class="ruby-operator">:</span> <span class="ruby-keyword">true</span>
+  },
+  <span class="ruby-string">&quot;loopConf&quot;</span><span class="ruby-operator">:</span> {
+    <span class="ruby-string">&quot;until&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">36000</span>
+  },
+  <span class="ruby-string">&quot;timeOrigin&quot;</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;00:00:00&quot;</span>,
+  <span class="ruby-string">&quot;vehicleType&quot;</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;savBase&quot;</span>,
+  <span class="ruby-string">&quot;demandFactoryClass&quot;</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;Sav::SavDemandFactoryRandom&quot;</span>,
+  <span class="ruby-string">&quot;demandFactoryConf&quot;</span><span class="ruby-operator">:</span> {
+    <span class="ruby-string">&quot;center&quot;</span><span class="ruby-operator">:</span> <span class="ruby-node">&quot;#Point[2850.0,7800.0]&quot;</span>,
+    <span class="ruby-string">&quot;offset&quot;</span><span class="ruby-operator">:</span> <span class="ruby-node">&quot;#V[0,0]&quot;</span>,
+    <span class="ruby-string">&quot;rangeSize&quot;</span><span class="ruby-operator">:</span> <span class="ruby-node">&quot;#V[1100.0,700.0]&quot;</span>,
+    <span class="ruby-string">&quot;frequency&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">0.05</span>,
+    <span class="ruby-string">&quot;walkSpeed&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">0.0027777777777777775</span>,
+    <span class="ruby-string">&quot;demandConf&quot;</span><span class="ruby-operator">:</span> {
+      <span class="ruby-string">&quot;tripGapDuration&quot;</span><span class="ruby-operator">:</span> <span class="ruby-node">&quot;#&lt;Sav::Trip&gt;&quot;</span>
+    },
+    <span class="ruby-string">&quot;logFile&quot;</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;,Log/foo/savSim_.demandLog.json&quot;</span>
+  },
+  <span class="ruby-string">&quot;allocatorClass&quot;</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;Sav::SavAllocatorSeqOpt&quot;</span>,
+  <span class="ruby-string">&quot;allocatorConf&quot;</span><span class="ruby-operator">:</span> {
+  },
+  <span class="ruby-string">&quot;reporterClass&quot;</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;Sav::SavReporter&quot;</span>,
+  <span class="ruby-string">&quot;reporterConf&quot;</span><span class="ruby-operator">:</span> {
+    <span class="ruby-string">&quot;reportInterval&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">60000</span>
+  },
+  <span class="ruby-string">&quot;trailLogFile&quot;</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;,Log/foo/savSim_.trailLog.json&quot;</span>,
+  <span class="ruby-string">&quot;configLogFile&quot;</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;,Log/foo/savSim_.config.json&quot;</span>,
+}
+</pre>
+</dd><dt>demandLog.json
+<dd>
+<p>デマンド毎に、 デマンドのIDや発生時刻、乗降車地点、 配車結果、実際の乗降車時刻、 および降車までの計画変更履歴を記録したものである。
+1デマンドにつき一行、1つのJSONオブジェクトとして出力される 計画変更履歴は、配車時点での予定乗降車時刻から始まり、
+降車までに同じ配車SAVが受け取った別のデマンドにより変更された予定乗降車時刻を 並べたものである。 これにより、1つのデマンドを処理する間に、
+どれくらい遅延が生じたかなどを調べることができる。 いかがその1デマンド分のサンプルである。</p>
+
+<pre class="ruby">  {
+  <span class="ruby-string">&quot;id&quot;</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;demand_00000030_foo&quot;</span>,
+  <span class="ruby-string">&quot;passenger&quot;</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;foo&quot;</span>,
+  <span class="ruby-string">&quot;numPassenger&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">1</span>,
+  <span class="ruby-string">&quot;status&quot;</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;afterDropOff&quot;</span>,
+  <span class="ruby-string">&quot;sav&quot;</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;sav_00006&quot;</span>,
+  <span class="ruby-string">&quot;arisedTime&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">556.0</span>,
+  <span class="ruby-string">&quot;sharedWithList&quot;</span><span class="ruby-operator">:</span> [<span class="ruby-string">&quot;demand_00000013_foo&quot;</span>,<span class="ruby-string">&quot;demand_00000031_foo&quot;</span>],
+  <span class="ruby-string">&quot;tripPos&quot;</span><span class="ruby-operator">:</span> {
+    <span class="ruby-string">&quot;pickUp&quot;</span><span class="ruby-operator">:</span> { <span class="ruby-string">&quot;x&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">2405.30</span>, <span class="ruby-string">&quot;y&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">7706.78</span> },
+    <span class="ruby-string">&quot;dropOff&quot;</span><span class="ruby-operator">:</span> { <span class="ruby-string">&quot;x&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">2601.21</span>, <span class="ruby-string">&quot;y&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">7708.64</span> }
+  },
+  <span class="ruby-string">&quot;tripViaPoint&quot;</span><span class="ruby-operator">:</span> {
+    <span class="ruby-string">&quot;pickUp&quot;</span><span class="ruby-operator">:</span> { <span class="ruby-string">&quot;pos&quot;</span><span class="ruby-operator">:</span> { <span class="ruby-string">&quot;x&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">2405.30</span>, <span class="ruby-string">&quot;y&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">7706.78</span> } },
+    <span class="ruby-string">&quot;dropOff&quot;</span><span class="ruby-operator">:</span> { <span class="ruby-string">&quot;pos&quot;</span><span class="ruby-operator">:</span> { <span class="ruby-string">&quot;x&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">2601.21</span>, <span class="ruby-string">&quot;y&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">7708.64</span> } }
+  },
+  <span class="ruby-string">&quot;tripTime&quot;</span><span class="ruby-operator">:</span> { <span class="ruby-string">&quot;pickUp&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">1022.0</span>, <span class="ruby-string">&quot;dropOff&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">1258.0</span> },
+  <span class="ruby-string">&quot;tripRequiredTime&quot;</span><span class="ruby-operator">:</span> { <span class="ruby-string">&quot;pickUp&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">556.0</span>, <span class="ruby-string">&quot;dropOff&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">9357.44</span> },
+  <span class="ruby-string">&quot;tripPlannedTimeList&quot;</span><span class="ruby-operator">:</span> [
+    { <span class="ruby-string">&quot;pickUp&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">578.24</span> },
+    { <span class="ruby-string">&quot;pickUp&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">578.24</span>, <span class="ruby-string">&quot;dropOff&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">608.17</span> },
+    { <span class="ruby-string">&quot;pickUp&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">621.83</span>, <span class="ruby-string">&quot;dropOff&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">608.17</span> },
+    { <span class="ruby-string">&quot;pickUp&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">621.83</span>, <span class="ruby-string">&quot;dropOff&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">672.15</span> },
+    { <span class="ruby-string">&quot;pickUp&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">624.83</span>, <span class="ruby-string">&quot;dropOff&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">672.15</span> },
+    { <span class="ruby-string">&quot;pickUp&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">624.83</span>, <span class="ruby-string">&quot;dropOff&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">675.15</span> },
+    { <span class="ruby-string">&quot;pickUp&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">639.57</span>, <span class="ruby-string">&quot;dropOff&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">675.15</span> },
+    { <span class="ruby-string">&quot;pickUp&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">639.57</span>, <span class="ruby-string">&quot;dropOff&quot;</span><span class="ruby-operator">:</span> <span class="ruby-value">689.89</span> }
+  ]
+}
+</pre>
+</dd><dt>trailLog.json
+<dd>
+<p>SAV毎に、 そのSAVの基本情報と共に、 経由点にたどり着く毎に、 時刻、その場所、処理したデマンドのID等をJSON
+オブジェクト形式で記録したものである。 1SAVあたり、一行のJSONで出力される。 以下はそのSAV1台分のサンプル。</p>
+
+<pre>{
+  &quot;id&quot;: &quot;sav_00000&quot;,
+  &quot;base&quot;: &quot;SavBase_00000&quot;,
+  &quot;capacity&quot;: 3,
+  &quot;viaPointIndex&quot;: 323,
+  &quot;viaPointList&quot;: [
+    { &quot;pos&quot;: { &quot;x&quot;: 2838.84, &quot;y&quot;: 7890.29 },
+      &quot;demandId&quot;: null,
+      &quot;mode&quot;: &quot;dummy&quot;,
+      &quot;duration&quot;: 0,
+      &quot;time&quot;: 16.0
+    },
+    { &quot;pos&quot;: { &quot;x&quot;: 3358.65, &quot;y&quot;: 7966.16 },
+      &quot;demandId&quot;: &quot;demand_00000001_foo&quot;,
+      &quot;mode&quot;: &quot;pickUp&quot;,
+      &quot;duration&quot;: 0.0,
+      &quot;time&quot;: 204.0
+    },
+    { &quot;pos&quot;: { &quot;x&quot;: 2757.98, &quot;y&quot;: 7926.43 },
+      &quot;demandId&quot;: &quot;demand_00000011_foo&quot;,
+      &quot;mode&quot;: &quot;pickUp&quot;,
+      &quot;duration&quot;: 0.0,
+      &quot;time&quot;: 549.0
+    },
+    ...
+  ],
+  &quot;onBoardList&quot;: [&quot;demand_00000702_foo&quot;, ...],
+  &quot;assignedDemandList&quot;: [
+    { &quot;id&quot;: &quot;demand_00000001_foo&quot;,
+      &quot;passenger&quot;: &quot;foo&quot;,
+      &quot;numPassenger&quot;: 1,
+      &quot;tripPos&quot;: {
+        &quot;pickUp&quot;: { &quot;x&quot;: 3358.65, &quot;y&quot;: 7966.16 },
+        &quot;dropOff&quot;: { &quot;x&quot;: 2439.76, &quot;y&quot;: 7766.37 }
+      },
+      &quot;arisedTime&quot;: 26.0,
+      &quot;tripRequiredTime&quot;: { &quot;pickUp&quot;: 26.0, &quot;dropOff&quot;: 1053.05 },
+      &quot;tripTime&quot;: { &quot;pickUp&quot;: 204.0, &quot;dropOff&quot;: 673.0 }
+    },
+    { &quot;id&quot;: &quot;demand_00000011_foo&quot;,
+      &quot;passenger&quot;: &quot;foo&quot;,
+      &quot;numPassenger&quot;: 1,
+      &quot;tripPos&quot;: {
+        &quot;pickUp&quot;: { &quot;x&quot;: 2757.98, &quot;y&quot;: 7926.43 },
+        &quot;dropOff&quot;: { &quot;x&quot;: 2341.81, &quot;y&quot;: 8010.95 }
+      },
+      &quot;arisedTime&quot;: 256.0,
+      &quot;tripRequiredTime&quot;: { &quot;pickUp&quot;: 256.0, &quot;dropOff&quot;: 4908.02 },
+      &quot;tripTime&quot;: { &quot;pickUp&quot;: 549.0, &quot;dropOff&quot;: 914.0 }
+    },
+    ...
+  ],
+}</pre>
+</dd><dt>traci.json
+<dd>
+<p>SUMO に対する制御コマンドを記録したもの。 主として debug のために用いる。</p>
+</dd></dl>
+
+<h2 id="module-Doc_runSavSimRandom-label-E4-BD-BF-E3-81-84-E6-96-B9">使い方<span><a href="#module-Doc_runSavSimRandom-label-E4-BD-BF-E3-81-84-E6-96-B9">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p><code>runSavSimRandom</code> は、コマンドラインより以下のように指定して起動する。</p>
+
+<pre>$ ./runSavSimRandom [Options]* SumoConfigFile JsonMapFile [DumpMapFile]
+
+Options:
+  , --[no-]gui                                               
+                switch gui mode.
+-q, --guiQuit                                                
+                switch guiQuit mode.
+  , --logLevel Level                                         
+                bar int value.
+-u, --until NumCycle                                         
+                max cycle.
+-r, --range SizeOrVector                                     
+                set range size. &#39;Size&#39; or &#39;SizeX:SizeY&#39;
+-o, --offset Offset                                          
+                offset of range in &#39;dX:dY&#39;
+-c, --center Pos                                             
+                center pos in &#39;X:Y&#39;
+-i, --interval Interval                                      
+                demand interval
+-g, --tripGap Gaps                                           
+                time gap sec. at pick-up/drop-off in &#39;Pick:Drop&#39;
+-b, --basePos XYPos                                          
+                SAV base pos in &#39;X:Y&#39;
+-m, --maxQ MaxQueueSize                                      
+                max via queue size
+-p, --report Interval in sec                                 
+                report interval in sec
+-n, --savN NumberOfSav                                       
+                number of sav
+-a, --addInterval Interval                                   
+                interval to add sav in cycle
+-l, --allocMode Mode                                         
+                allocation mode (random / seqOpt)
+-C, --capacity Capacity                                      
+                capacity of SAV
+-w, --walkSpeed Speed                                        
+                walk speed in km/h.
+  , --logDir LogDir                                          
+                specify log dir
+  , --logBase LogBase                                        
+                specify log file basename
+-t, --withTimestamp                                          
+                to include timestamp in log filename.
+  , --help                                                   
+                show this message.</pre>
+
+<p>引数には以下のようなファイル名を指定する。</p>
+<ul><li>
+<p><em>SumoConfigFile</em> には、sumo を起動する際の設定ファイルを指定する。</p>
+</li><li>
+<p><em>JsonMapFile</em> には、Sumo Map を、<code>Traci/convSumoMapXml2Json</code>
+で変換した json ファイルを指定する。</p>
+</li></ul>
+
+<h2 id="module-Doc_runSavSimRandom-label-E8-A6-8F-E5-AE-9A-E5-80-A4">規定値<span><a href="#module-Doc_runSavSimRandom-label-E8-A6-8F-E5-AE-9A-E5-80-A4">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<pre>{:configFile=&gt;nil,
+ :mapFile=&gt;nil,
+ :until=&gt;nil,
+ :guiMode=&gt;:gui,
+ :logLevel=&gt;:info,
+ :rangeSize=&gt;#&lt;Geo2D::Vector:0x00000001ebb558 @x=1000.0, @y=1000.0&gt;,
+ :rangeOffset=&gt;#&lt;Geo2D::Vector:0x00000001ebb530 @x=0, @y=0&gt;,
+ :rangeCenter=&gt;:midPoint,
+ :demandFrequency=&gt;1.0,
+ :tripGap=&gt;#&lt;Sav::Trip:0x000000015d6c80 @dropOff=60, @pickUp=30&gt;,
+ :viaQueueMax=&gt;10,
+ :reportInterval=&gt;30,
+ :savBasePos=&gt;:midPoint,
+ :savN=&gt;10,
+ :savCapacity=&gt;4,
+ :walkSpeed=&gt;0.5555555555555556,
+ :addSavInterval=&gt;10,
+ :allocMode=&gt;:random,
+ :logDir=&gt;&quot;,Log&quot;,
+ :logBaseName=&gt;&quot;savSim&quot;,
+ :logWithTimestamp=&gt;false}</pre>
+
+<h2 id="module-Doc_runSavSimRandom-label-E3-82-AA-E3-83-97-E3-82-B7-E3-83-A7-E3-83-B3-E3-81-8A-E3-82-88-E3-81-B3-E6-A9-9F-E8-83-BD">オプションおよび機能<span><a href="#module-Doc_runSavSimRandom-label-E3-82-AA-E3-83-97-E3-82-B7-E3-83-A7-E3-83-B3-E3-81-8A-E3-82-88-E3-81-B3-E6-A9-9F-E8-83-BD">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<h3 id="module-Doc_runSavSimRandom-label-E3-82-B7-E3-83-9F-E3-83-A5-E3-83-AC-E3-83-BC-E3-82-B7-E3-83-A7-E3-83-B3-E5-AE-9F-E8-A1-8C-E5-88-B6-E5-BE-A1-E9-96-A2-E4-BF-82">シミュレーション実行制御関係<span><a href="#module-Doc_runSavSimRandom-label-E3-82-B7-E3-83-9F-E3-83-A5-E3-83-AC-E3-83-BC-E3-82-B7-E3-83-A7-E3-83-B3-E5-AE-9F-E8-A1-8C-E5-88-B6-E5-BE-A1-E9-96-A2-E4-BF-82">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<dl class="rdoc-list label-list"><dt>-u, –until <em>NumCycle</em>
+<dd>
+<p>シミュレーション実行のサイクル数(=秒数)を指定する。 規定値は nil (無限に実行)である。</p>
+</dd></dl>
+
+<h3 id="module-Doc_runSavSimRandom-label-E3-83-87-E3-83-9E-E3-83-B3-E3-83-89-E7-94-9F-E6-88-90-E9-96-A2-E9-80-A3">デマンド生成関連<span><a href="#module-Doc_runSavSimRandom-label-E3-83-87-E3-83-9E-E3-83-B3-E3-83-89-E7-94-9F-E6-88-90-E9-96-A2-E9-80-A3">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<dl class="rdoc-list label-list"><dt>-c, –center <em>Pos</em>
+<dd>
+<p>シミュレーション領域の中心点の絶対位置(地図上の位置)を “X:Y” の形で指定する。 X,Y は実数値で、単位は m として扱われる。
+規定値は地図の中央が計算され、用いられる。</p>
+</dd><dt>-r, –range <em>SizeOrVector</em>
+<dd>
+<p>デマンドの発生領域の大きさを指定する。 <em>SizeOrVector</em> は、“SizeX:SizeY” の形式(領域が長方形)、
+または、“Size” の形式(領域が正方形)で指定する。 SizeX, SizeY, Size, は実数値であり、単位は m として扱われる。
+規定値は、1000m の正方形である。</p>
+</dd><dt>-o, –offset <em>Offset</em>
+<dd>
+<p>デマンド発生領域の中心が、 上記のシミュレーション領域の中心からどれだけずれているかを、 “X:Y” の形で指定する。 X,Y は実数値で、単位は m
+として扱われる。 規定値は 0:0 である。</p>
+</dd><dt>-i, –interval <em>Interval</em>
+<dd>
+<p>デマンドの発生間隔を秒数で指定する。 実際のデマンドは等間隔に発生するのではなく、 1秒間に 1/<em>Interval</em>
+の確率で発生するよう、制御される。 1/<em>Interval</em> が1より大きい場合は、 1秒間に1/<em>Interval</em>
+個のデマンドが発生する。 規定値は 1.0(秒)である。</p>
+</dd><dt>-w, –walkSpeed <em>Speed</em>
+<dd>
+<p>人が歩くスピードを指定する。 <em>Speed</em> は実数値で、 単位は km/時 として扱われる。
+この値は、配車にあたり、デマンドの締切時間(到着時刻の最大許容時刻)を 求める際に利用する。
+配車成立の割合をあげるため、通常の歩行より遅めにしておいたほうが良い。 規定値は2(km/時)である。</p>
+</dd></dl>
+
+<h3 id="module-Doc_runSavSimRandom-label-SAV-E9-85-8D-E8-BB-8A-E3-83-BB-E8-B5-B0-E8-A1-8C-E9-96-A2-E9-80-A3">SAV配車・走行関連<span><a href="#module-Doc_runSavSimRandom-label-SAV-E9-85-8D-E8-BB-8A-E3-83-BB-E8-B5-B0-E8-A1-8C-E9-96-A2-E9-80-A3">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<dl class="rdoc-list label-list"><dt>-n, –savN <em>NumberOfSav</em>
+<dd>
+<p>運行するSAVの台数(正の整数値)を指定する。 規定値は10(台)。</p>
+</dd><dt>-a, –addInterval <em>Interval</em>
+<dd>
+<p>SAV を投入していく際の時間間隔を秒数で指定する。 SUMO のシミュレーションでは同時にSAVを同じ地点に発生させると、 全車衝突状態になるため、
+一定間隔でSAVを投入するようにしている。 規定値は10(秒)である。</p>
+</dd><dt>-b, –basePos <em>XYPos</em>
+<dd>
+<p>SAV の基地(SAV が最初に出発する場所)を、“X:Y” の形式で指定する。 X,Y はシミュレーション領域の中心からの相対位置で、
+単位はmである。 規定値は地図中央である。</p>
+</dd><dt>-g, –tripGap <em>Gaps</em>
+<dd>
+<p>乗車・降車にかかる時間(秒数)を、“PickUp:DropOff” の形式で指定する。 PickUp は乗車にかかる時間、 DropOff
+は降車にかかる時間、 単位は各々秒である。 規定値は、PickUp=30(秒)、DropOff=60(秒)である。</p>
+</dd><dt>-l, –allocMode <em>Mode</em>
+<dd>
+<p>配車ポリシーを指定する。 現在、指定できるのは以下のポリシーである。</p>
+<dl class="rdoc-list label-list"><dt>random
+<dd>
+<p>新しいデマンドに対して、ランダムにSAVを選び、配車する。</p>
+</dd><dt>seqOpt
+<dd>
+<p>逐次最適挿入法に基づき、配車を決定する。</p>
+</dd></dl>
+
+<p>規定値は<strong>random</strong>である。</p>
+</dd><dt>-C, –capacity <em>Capacity</em>
+<dd>
+<p>一台あたりのSAVの最大乗客数を整数値で指定する。</p>
+</dd><dt>-m, –maxQ <em>MaxQueueSize</em>
+<dd>
+<p>各SAVにおける経由点の待ち行列の上限値(正の整数値)を指定する。 待ち行列の増大によるシミュレーション時間の爆発を抑える場合に用いる。
+規定値は10である。</p>
+</dd></dl>
+
+<h3 id="module-Doc_runSavSimRandom-label-GUI+-E9-96-A2-E9-80-A3">GUI 関連<span><a href="#module-Doc_runSavSimRandom-label-GUI+-E9-96-A2-E9-80-A3">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<dl class="rdoc-list label-list"><dt>–[no-]gui
+<dd>
+<p>sumo の gui モードのON/OFFを指定する。 --gui で GUI を起動、–no-gui で CUI のみとなる。 規定値は gui
+モードである。</p>
+</dd><dt>-q, –guiQuit
+<dd>
+<p>GUI モードの場合、シミュレーション終了後、自動でGUIを終了させる。 指定しないと、シミュレーションの最終ステップ状態で中断状態となる。</p>
+</dd></dl>
+
+<h3 id="module-Doc_runSavSimRandom-label-E3-83-AD-E3-82-B0-E5-87-BA-E5-8A-9B-E9-96-A2-E9-80-A3">ログ出力関連<span><a href="#module-Doc_runSavSimRandom-label-E3-83-AD-E3-82-B0-E5-87-BA-E5-8A-9B-E9-96-A2-E9-80-A3">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<dl class="rdoc-list label-list"><dt>–logLevel <em>Level</em>
+<dd>
+<p>ログ出力のレベルを指定する。 <em>Level</em> は、重要度順に、</p>
+<dl class="rdoc-list label-list"><dt>top
+<dd>
+<p>最重要の出力のみ。</p>
+</dd><dt>fatal
+<dd>
+<p>致命的なエラーの場合のエラーメッセージ。</p>
+</dd><dt>error
+<dd>
+<p>一般のエラーのメッセージ。</p>
+</dd><dt>warn
+<dd>
+<p>警告レベルのメッセージ。</p>
+</dd><dt>info
+<dd>
+<p>シミュレーション実行の確認用のメッセージ。</p>
+</dd><dt>debug
+<dd>
+<p>シミュレータのデバッグ用メッセージ。</p>
+</dd></dl>
+
+<p>規定値は <strong>info</strong> である。</p>
+</dd><dt>-p, –report <em>Interval</em>
+<dd>
+<p>SAVが状況を記録していくインターバルを指定する。 <em>Interval</em> は秒数(=サイクル数)である。 規定値は 30(秒)である。</p>
+</dd><dt>–logDir <em>LogDir</em>
+<dd>
+<p>ログの directory を指定する。 規定値は “,Log” である。</p>
+</dd><dt>-t, –withTimestamp
+<dd>
+<p>ログのファイル名にシミュレーション起動時のタイムスタンプを加えるかどうかを指定する。 指定しない場合、タイムスタンプの代わりに空文字列が使われる。</p>
+</dd><dt>–logBase <em>LogBase</em>
+<dd>
+<p>ログの basename を指定する。 実際のログは、
+“<em>LogDir</em>/<em>LogBase_TimeStamp</em>.config.json”,
+“<em>LogDir</em>/<em>LogBase_TimeStamp</em>.demandLog.json”,
+“<em>LogDir</em>/<em>LogBase_TimeStamp</em>.trailLog.json”,
+“<em>LogDir</em>/<em>LogBase_TimeStamp</em>.traci.json”, となる。 規定値は “savSim”
+である。</p>
+</dd></dl>
+
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

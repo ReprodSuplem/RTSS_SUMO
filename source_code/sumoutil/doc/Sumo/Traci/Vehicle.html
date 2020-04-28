@@ -1,0 +1,2161 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Sumo::Traci::Vehicle - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+</script>
+
+<script src="../../js/jquery.js"></script>
+<script src="../../js/darkfish.js"></script>
+
+<link href="../../css/fonts.css" rel="stylesheet">
+<link href="../../css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../table_of_contents.html#pages">Pages</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link">WithConfParam
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li class="calls-super" ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-comAddVehicle">#comAddVehicle</a>
+    
+    <li ><a href="#method-i-comAddVehicleByInitArgs">#comAddVehicleByInitArgs</a>
+    
+    <li ><a href="#method-i-ensureTraciClient">#ensureTraciClient</a>
+    
+    <li ><a href="#method-i-fetchAllDynamic">#fetchAllDynamic</a>
+    
+    <li ><a href="#method-i-fetchAllStatic">#fetchAllStatic</a>
+    
+    <li ><a href="#method-i-fetchEdgeList">#fetchEdgeList</a>
+    
+    <li ><a href="#method-i-fetchLength">#fetchLength</a>
+    
+    <li ><a href="#method-i-fetchLocation">#fetchLocation</a>
+    
+    <li ><a href="#method-i-fetchPosition">#fetchPosition</a>
+    
+    <li ><a href="#method-i-fetchRouteIndex">#fetchRouteIndex</a>
+    
+    <li ><a href="#method-i-fetchSpeed">#fetchSpeed</a>
+    
+    <li ><a href="#method-i-fetchStopState">#fetchStopState</a>
+    
+    <li ><a href="#method-i-fetchType">#fetchType</a>
+    
+    <li ><a href="#method-i-fetchWidth">#fetchWidth</a>
+    
+    <li ><a href="#method-i-inspect">#inspect</a>
+    
+    <li ><a href="#method-i-inspect_original">#inspect_original</a>
+    
+    <li ><a href="#method-i-isAlive">#isAlive</a>
+    
+    <li ><a href="#method-i-isFinished-3F">#isFinished?</a>
+    
+    <li ><a href="#method-i-isOnRoad-3F">#isOnRoad?</a>
+    
+    <li ><a href="#method-i-isStopped">#isStopped</a>
+    
+    <li ><a href="#method-i-letFinished">#letFinished</a>
+    
+    <li ><a href="#method-i-letRunning">#letRunning</a>
+    
+    <li ><a href="#method-i-logging">#logging</a>
+    
+    <li ><a href="#method-i-postSetupAfterAdd">#postSetupAfterAdd</a>
+    
+    <li ><a href="#method-i-renewId">#renewId</a>
+    
+    <li ><a href="#method-i-resubmitAddVehicle">#resubmitAddVehicle</a>
+    
+    <li ><a href="#method-i-setup">#setup</a>
+    
+    <li ><a href="#method-i-submitAddVehicle">#submitAddVehicle</a>
+    
+    <li ><a href="#method-i-submitAll">#submitAll</a>
+    
+    <li ><a href="#method-i-submitChangeTarget">#submitChangeTarget</a>
+    
+    <li ><a href="#method-i-submitColor">#submitColor</a>
+    
+    <li ><a href="#method-i-submitMoveTo">#submitMoveTo</a>
+    
+    <li ><a href="#method-i-submitRemove">#submitRemove</a>
+    
+    <li ><a href="#method-i-submitResume">#submitResume</a>
+    
+    <li ><a href="#method-i-submitSlowDown">#submitSlowDown</a>
+    
+    <li ><a href="#method-i-submitStop">#submitStop</a>
+    
+    <li ><a href="#method-i-submitStopAtEdge">#submitStopAtEdge</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Sumo::Traci::Vehicle">
+  <h1 id="class-Sumo::Traci::Vehicle" class="class">
+    class Sumo::Traci::Vehicle
+  </h1>
+
+  <section class="description">
+    
+<p><a href="Vehicle.html">Traci::Vehicle</a></p>
+
+<p><a href="Vehicle.html">Traci::Vehicle</a></p>
+
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+    <section class="constants-list">
+      <header>
+        <h3>Constants</h3>
+      </header>
+      <dl>
+      
+        <dt id="DefaultConf">DefaultConf
+        
+        <dd><p>description of DefaultOptsions.</p>
+        
+      
+        <dt id="LaneIndexMax">LaneIndexMax
+        
+        <dd><p>maximum of lane index to search in <a
+href="Vehicle.html#method-i-submitStopAtEdge">#submitStopAtEdge</a>.</p>
+        
+      
+        <dt id="NewVehicleSpecialParam_DepartPos">NewVehicleSpecialParam_DepartPos
+        
+        <dd><p>departPos</p>
+        
+      
+        <dt id="NewVehicleSpecialParam_Speed">NewVehicleSpecialParam_Speed
+        
+        <dd><p><a href="Vehicle.html#attribute-i-speed">#speed</a></p>
+        
+      
+        <dt id="NewVehicleSpecialParam_Time">NewVehicleSpecialParam_Time
+        
+        <dd><p>params used in submitNewVehicle. time param.</p>
+        
+      
+        <dt id="RemoveReasonTable">RemoveReasonTable
+        
+        <dd><p>reason table</p>
+        
+      
+      </dl>
+    </section>
+    
+
+    
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-color" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">color</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p><a href="Vehicle.html#attribute-i-color">#color</a></p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-edgeList" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">edgeList</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p><a href="Vehicle.html#attribute-i-edgeList">#edgeList</a> (route)</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-edgeListIdx" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">edgeListIdx</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>index of <a href="Vehicle.html#attribute-i-edgeList">#edgeList</a> (current
+edge index)</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-id" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">id</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p><a href="Vehicle.html#attribute-i-id">#id</a> of vehicle</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-length" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">length</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p><a href="Vehicle.html#attribute-i-length">#length</a></p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-location" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">location</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p><a href="Vehicle.html#attribute-i-location">#location</a></p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-manager" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">manager</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p><a href="Vehicle.html#attribute-i-manager">#manager</a> (instance of
+TraciVehicleManager)</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-pos" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">pos</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>position</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-speed" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">speed</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p><a href="Vehicle.html#attribute-i-speed">#speed</a></p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-status" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">status</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p><a href="Vehicle.html#attribute-i-status">#status</a>: { :running,
+:finished }</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-stopState" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">stopState</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>stop state</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-width" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">width</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p><a href="Vehicle.html#attribute-i-width">#width</a></p>
+        
+        </div>
+      </div>
+      
+    </section>
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(manager, id = nil, conf = {})</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>description of method initialize</p>
+<dl class="rdoc-list note-list"><dt><em>conf</em>
+<dd>
+<p>configulation</p>
+</dd></dl>
+          
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              
+            </div>
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File Traci/TraciVehicle.rb, line 84</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">manager</span>, <span class="ruby-identifier">id</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">conf</span> = {})
+  <span class="ruby-keyword">super</span>(<span class="ruby-identifier">conf</span>) ;
+  <span class="ruby-identifier">setup</span>(<span class="ruby-identifier">manager</span>, <span class="ruby-identifier">id</span>) ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-comAddVehicle" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">comAddVehicle</span><span
+            class="method-args">(vehicleType, route, time = nil, departPos = 0.0, speed = 0.0, laneIndex = 0)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>fetch all static parameters via client</p>
+<dl class="rdoc-list note-list"><dt><em>vehicleType</em> 
+<dd>
+<p>vehicle type (String)</p>
+</dd><dt><em>route</em> 
+<dd>
+<p>route ID (String)</p>
+</dd><dt><em>time</em> 
+<dd>
+<p>depart time (Integer) or Symbol (:triggered, :containerTriggered)</p>
+</dd><dt><em>departPos</em> 
+<dd>
+<p>position to depart on the lane (Double) or Symbol</p>
+</dd></dl>
+
+<pre>(:random, :free, :base, :last, :random_free)</pre>
+<dl class="rdoc-list note-list"><dt><em>speed</em> 
+<dd>
+<p>initial <a href="Vehicle.html#attribute-i-speed">#speed</a> (Double)</p>
+</dd><dt><em>laneIndex</em> 
+<dd>
+<p>lane index to depar</p>
+</dd><dt><strong>return</strong> 
+<dd>
+<p><a href="Vehicle.html#method-c-new">::new</a> vehicle</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="comAddVehicle-source">
+            <pre><span class="ruby-comment"># File Traci/TraciVehicle.rb, line 140</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">comAddVehicle</span>(<span class="ruby-identifier">vehicleType</span>, <span class="ruby-identifier">route</span>, <span class="ruby-identifier">time</span> = <span class="ruby-keyword">nil</span>,
+                  <span class="ruby-identifier">departPos</span> = <span class="ruby-value">0.0</span>, <span class="ruby-identifier">speed</span> = <span class="ruby-value">0.0</span>, <span class="ruby-identifier">laneIndex</span> = <span class="ruby-value">0</span>)
+  <span class="ruby-comment"># time</span>
+  <span class="ruby-keyword">if</span>(<span class="ruby-identifier">time</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Symbol</span>))
+    <span class="ruby-identifier">time</span> = <span class="ruby-constant">NewVehicleSpecialParam_Time</span>[<span class="ruby-identifier">time</span>] ;
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">time</span> = <span class="ruby-value">0</span> <span class="ruby-keyword">if</span>(<span class="ruby-identifier">time</span>.<span class="ruby-identifier">nil?</span>) ;
+  <span class="ruby-comment"># departPos</span>
+  <span class="ruby-keyword">if</span>(<span class="ruby-identifier">departPos</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Symbol</span>))
+    <span class="ruby-identifier">departPos</span> = <span class="ruby-constant">NewVehicleSpecialParam_DepartPos</span>[<span class="ruby-identifier">departPos</span>] ;
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">departPos</span> = <span class="ruby-value">0.0</span> <span class="ruby-keyword">if</span>(<span class="ruby-identifier">departPos</span>.<span class="ruby-identifier">nil?</span>) ;
+  <span class="ruby-comment"># speed</span>
+  <span class="ruby-keyword">if</span>(<span class="ruby-identifier">speed</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Symbol</span>))
+    <span class="ruby-identifier">speed</span> = <span class="ruby-constant">NewVehicleSpecialParam_Speed</span>[<span class="ruby-identifier">speed</span>] ;
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">speed</span> = <span class="ruby-value">0.0</span> <span class="ruby-keyword">if</span>(<span class="ruby-identifier">speed</span>.<span class="ruby-identifier">nil?</span>);
+
+  <span class="ruby-ivar">@initArgs</span> = { <span class="ruby-value">:vehicleTypeId</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">vehicleType</span>,
+                <span class="ruby-value">:routeId</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">route</span>,
+                <span class="ruby-value">:departTime</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">time</span>,
+                <span class="ruby-value">:departPosition</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">departPos</span>,
+                <span class="ruby-value">:departSpeed</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">speed</span>,
+                <span class="ruby-value">:departLane</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">laneIndex</span> } ;
+  
+  <span class="ruby-identifier">com</span> = <span class="ruby-identifier">comAddVehicleByInitArgs</span>() ;
+  
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">com</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-comAddVehicleByInitArgs" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">comAddVehicleByInitArgs</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>再度 add する時用。</p>
+          
+          
+
+          
+          <div class="method-source-code" id="comAddVehicleByInitArgs-source">
+            <pre><span class="ruby-comment"># File Traci/TraciVehicle.rb, line 197</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">comAddVehicleByInitArgs</span>()
+  <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">Command_SetVariable</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:vehicle</span>, <span class="ruby-value">:addVehicle</span>,
+                                       <span class="ruby-ivar">@id</span>, 
+                                       <span class="ruby-ivar">@initArgs</span>);
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-ensureTraciClient" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">ensureTraciClient</span><span
+            class="method-args">(client)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>make sure the client</p>
+<dl class="rdoc-list note-list"><dt><em>client</em>
+<dd>
+<p>TraciClient</p>
+</dd><dt><strong>return</strong>
+<dd>
+<p>TraciClient</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="ensureTraciClient-source">
+            <pre><span class="ruby-comment"># File Traci/TraciVehicle.rb, line 301</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">ensureTraciClient</span>(<span class="ruby-identifier">client</span>)
+  <span class="ruby-keyword">if</span>(<span class="ruby-identifier">client</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@manager</span>.<span class="ruby-identifier">nil?</span>) <span class="ruby-keyword">then</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-ivar">@manager</span>.<span class="ruby-identifier">traciClient</span> ;
+  <span class="ruby-keyword">elsif</span>(<span class="ruby-identifier">client</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">TraciClient</span>)) <span class="ruby-keyword">then</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">client</span> ;
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Illegal client: #{client.inspect} in Vehicle:#{self.inspect}.&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-fetchAllDynamic" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">fetchAllDynamic</span><span
+            class="method-args">(client = nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>fetch all dynamic parameters via client</p>
+          
+          
+
+          
+          <div class="method-source-code" id="fetchAllDynamic-source">
+            <pre><span class="ruby-comment"># File Traci/TraciVehicle.rb, line 274</span>
+      <span class="ruby-keyword">def</span> <span class="ruby-identifier">fetchAllDynamic</span>(<span class="ruby-identifier">client</span> = <span class="ruby-keyword">nil</span>)
+        <span class="ruby-identifier">fetchEdgeList</span>(<span class="ruby-identifier">client</span>) ;
+        <span class="ruby-identifier">fetchRouteIndex</span>(<span class="ruby-identifier">client</span>) ;
+        <span class="ruby-identifier">fetchSpeed</span>(<span class="ruby-identifier">client</span>) ;
+        <span class="ruby-identifier">fetchPosition</span>(<span class="ruby-identifier">client</span>) ;
+        <span class="ruby-identifier">fetchLocation</span>(<span class="ruby-identifier">client</span>) ;
+        <span class="ruby-identifier">fetchStopState</span>(<span class="ruby-identifier">client</span>) ;
+<span class="ruby-comment">#        pp [[:edgeList, @routeIndex, @edgeList],</span>
+<span class="ruby-comment">#            [:speed, @speed],</span>
+<span class="ruby-comment">#            [:position, @pos],</span>
+<span class="ruby-comment">#            [:location, @location],</span>
+<span class="ruby-comment">#           ]</span>
+      <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-fetchAllStatic" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">fetchAllStatic</span><span
+            class="method-args">(client = nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>fetch all static parameters via client</p>
+          
+          
+
+          
+          <div class="method-source-code" id="fetchAllStatic-source">
+            <pre><span class="ruby-comment"># File Traci/TraciVehicle.rb, line 265</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">fetchAllStatic</span>(<span class="ruby-identifier">client</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">fetchLength</span>(<span class="ruby-identifier">client</span>) ;
+  <span class="ruby-identifier">fetchWidth</span>(<span class="ruby-identifier">client</span>) ;
+  <span class="ruby-identifier">fetchType</span>(<span class="ruby-identifier">client</span>) ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-fetchEdgeList" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">fetchEdgeList</span><span
+            class="method-args">(client = nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>fetch edge list</p>
+<dl class="rdoc-list note-list"><dt><em>client</em>
+<dd>
+<p>TraciClient</p>
+</dd><dt><strong>return</strong>
+<dd>
+<p><a href="Vehicle.html#attribute-i-length">#length</a></p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="fetchEdgeList-source">
+            <pre><span class="ruby-comment"># File Traci/TraciVehicle.rb, line 358</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">fetchEdgeList</span>(<span class="ruby-identifier">client</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">client</span> = <span class="ruby-identifier">ensureTraciClient</span>(<span class="ruby-identifier">client</span>) ;
+
+  <span class="ruby-identifier">com</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">Command_GetVariable</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:vehicle</span>, <span class="ruby-value">:edges</span>, <span class="ruby-ivar">@id</span>) ;
+  <span class="ruby-identifier">client</span>.<span class="ruby-identifier">execCommands</span>(<span class="ruby-identifier">com</span>) ;
+  <span class="ruby-ivar">@edgeList</span> = <span class="ruby-identifier">com</span>.<span class="ruby-identifier">responseValue</span>() ;
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@edgeList</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-fetchLength" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">fetchLength</span><span
+            class="method-args">(client = nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>fetch <a href="Vehicle.html#attribute-i-length">#length</a> value via
+server</p>
+<dl class="rdoc-list note-list"><dt><em>client</em>
+<dd>
+<p>TraciClient</p>
+</dd><dt><strong>return</strong>
+<dd>
+<p><a href="Vehicle.html#attribute-i-length">#length</a></p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="fetchLength-source">
+            <pre><span class="ruby-comment"># File Traci/TraciVehicle.rb, line 316</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">fetchLength</span>(<span class="ruby-identifier">client</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">client</span> = <span class="ruby-identifier">ensureTraciClient</span>(<span class="ruby-identifier">client</span>) ;
+
+  <span class="ruby-identifier">com</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">Command_GetVariable</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:vehicle</span>, <span class="ruby-value">:length</span>, <span class="ruby-ivar">@id</span>) ;
+  <span class="ruby-identifier">client</span>.<span class="ruby-identifier">execCommands</span>(<span class="ruby-identifier">com</span>) ;
+  <span class="ruby-ivar">@length</span> = <span class="ruby-identifier">com</span>.<span class="ruby-identifier">responseValue</span>() ;
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@length</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-fetchLocation" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">fetchLocation</span><span
+            class="method-args">(client = nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>fetch <a href="Vehicle.html#attribute-i-location">#location</a> in map
+(edgeID, lane index, <a
+href="Vehicle.html#attribute-i-location">#location</a> on the lane)</p>
+<dl class="rdoc-list note-list"><dt><em>client</em>
+<dd>
+<p>TraciClient</p>
+</dd><dt><strong>return</strong>
+<dd>
+<p><a href="Vehicle.html#attribute-i-location">#location</a> (Location
+instance)</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="fetchLocation-source">
+            <pre><span class="ruby-comment"># File Traci/TraciVehicle.rb, line 415</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">fetchLocation</span>(<span class="ruby-identifier">client</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">client</span> = <span class="ruby-identifier">ensureTraciClient</span>(<span class="ruby-identifier">client</span>) ;
+
+  <span class="ruby-identifier">com0</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">Command_GetVariable</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:vehicle</span>, <span class="ruby-value">:roadId</span>, <span class="ruby-ivar">@id</span>) ;
+  <span class="ruby-identifier">com1</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">Command_GetVariable</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:vehicle</span>, <span class="ruby-value">:laneIndex</span>, <span class="ruby-ivar">@id</span>) ;
+  <span class="ruby-identifier">com2</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">Command_GetVariable</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:vehicle</span>, <span class="ruby-value">:lanePosition</span>, <span class="ruby-ivar">@id</span>) ;
+  <span class="ruby-identifier">client</span>.<span class="ruby-identifier">execCommands</span>(<span class="ruby-identifier">com0</span>, <span class="ruby-identifier">com1</span>, <span class="ruby-identifier">com2</span>) ;
+  <span class="ruby-identifier">edge</span> = <span class="ruby-identifier">com0</span>.<span class="ruby-identifier">responseValue</span>() ;
+  <span class="ruby-identifier">laneIdx</span> = <span class="ruby-identifier">com1</span>.<span class="ruby-identifier">responseValue</span>() ;
+  <span class="ruby-identifier">posOnLane</span> = <span class="ruby-identifier">com2</span>.<span class="ruby-identifier">responseValue</span>() ;
+  <span class="ruby-ivar">@location</span> = <span class="ruby-constant">Location</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">edge</span>, <span class="ruby-identifier">laneIdx</span>, <span class="ruby-identifier">posOnLane</span>) ;
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@location</span> ;
+  
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-fetchPosition" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">fetchPosition</span><span
+            class="method-args">(client = nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>fetch 2D position</p>
+<dl class="rdoc-list note-list"><dt><em>client</em>
+<dd>
+<p>TraciClient</p>
+</dd><dt><strong>return</strong>
+<dd>
+<p>position in Geo2D::Point.</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="fetchPosition-source">
+            <pre><span class="ruby-comment"># File Traci/TraciVehicle.rb, line 400</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">fetchPosition</span>(<span class="ruby-identifier">client</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">client</span> = <span class="ruby-identifier">ensureTraciClient</span>(<span class="ruby-identifier">client</span>) ;
+
+  <span class="ruby-identifier">com</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">Command_GetVariable</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:vehicle</span>, <span class="ruby-value">:position</span>, <span class="ruby-ivar">@id</span>) ;
+  <span class="ruby-identifier">client</span>.<span class="ruby-identifier">execCommands</span>(<span class="ruby-identifier">com</span>) ;
+  <span class="ruby-identifier">val</span> = <span class="ruby-identifier">com</span>.<span class="ruby-identifier">responseValue</span>() ;
+  <span class="ruby-ivar">@pos</span> = <span class="ruby-constant">Geo2D</span><span class="ruby-operator">::</span><span class="ruby-constant">Point</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">val</span>[<span class="ruby-value">:x</span>], <span class="ruby-identifier">val</span>[<span class="ruby-value">:y</span>]) ;
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@pos</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-fetchRouteIndex" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">fetchRouteIndex</span><span
+            class="method-args">(client = nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>fetch edge list</p>
+<dl class="rdoc-list note-list"><dt><em>client</em>
+<dd>
+<p>TraciClient</p>
+</dd><dt><strong>return</strong>
+<dd>
+<p>route index</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="fetchRouteIndex-source">
+            <pre><span class="ruby-comment"># File Traci/TraciVehicle.rb, line 372</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">fetchRouteIndex</span>(<span class="ruby-identifier">client</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">client</span> = <span class="ruby-identifier">ensureTraciClient</span>(<span class="ruby-identifier">client</span>) ;
+
+  <span class="ruby-identifier">com</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">Command_GetVariable</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:vehicle</span>, <span class="ruby-value">:routeIndex</span>, <span class="ruby-ivar">@id</span>) ;
+  <span class="ruby-identifier">client</span>.<span class="ruby-identifier">execCommands</span>(<span class="ruby-identifier">com</span>) ;
+  <span class="ruby-ivar">@routeIndex</span> = <span class="ruby-identifier">com</span>.<span class="ruby-identifier">responseValue</span>() ;
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@routeIndex</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-fetchSpeed" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">fetchSpeed</span><span
+            class="method-args">(client = nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>fetch <a href="Vehicle.html#attribute-i-speed">#speed</a></p>
+<dl class="rdoc-list note-list"><dt><em>client</em>
+<dd>
+<p>TraciClient</p>
+</dd><dt><strong>return</strong>
+<dd>
+<p><a href="Vehicle.html#attribute-i-speed">#speed</a></p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="fetchSpeed-source">
+            <pre><span class="ruby-comment"># File Traci/TraciVehicle.rb, line 386</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">fetchSpeed</span>(<span class="ruby-identifier">client</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">client</span> = <span class="ruby-identifier">ensureTraciClient</span>(<span class="ruby-identifier">client</span>) ;
+
+  <span class="ruby-identifier">com</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">Command_GetVariable</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:vehicle</span>, <span class="ruby-value">:speed</span>, <span class="ruby-ivar">@id</span>) ;
+  <span class="ruby-identifier">client</span>.<span class="ruby-identifier">execCommands</span>(<span class="ruby-identifier">com</span>) ;
+  <span class="ruby-ivar">@speed</span> = <span class="ruby-identifier">com</span>.<span class="ruby-identifier">responseValue</span>() ;
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@speed</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-fetchStopState" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">fetchStopState</span><span
+            class="method-args">(client = nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>fetch stop <a href="Vehicle.html#attribute-i-status">#status</a></p>
+<dl class="rdoc-list note-list"><dt><em>client</em>
+<dd>
+<p>TraciClient</p>
+</dd><dt><strong>return</strong>
+<dd>
+<p>list of stop state.  return nil of vehicle is not exists.</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="fetchStopState-source">
+            <pre><span class="ruby-comment"># File Traci/TraciVehicle.rb, line 435</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">fetchStopState</span>(<span class="ruby-identifier">client</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">client</span> = <span class="ruby-identifier">ensureTraciClient</span>(<span class="ruby-identifier">client</span>) ;
+
+  <span class="ruby-identifier">com</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">Command_GetVariable</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:vehicle</span>, <span class="ruby-value">:stopState</span>, <span class="ruby-ivar">@id</span>) ;
+
+  <span class="ruby-keyword">begin</span>
+    <span class="ruby-identifier">client</span>.<span class="ruby-identifier">execCommands</span>(<span class="ruby-identifier">com</span>) ;
+
+    <span class="ruby-identifier">flagBits</span> = <span class="ruby-identifier">com</span>.<span class="ruby-identifier">responseValue</span>() ;
+    <span class="ruby-ivar">@stopState</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-identifier">formStopFlagList</span>(<span class="ruby-identifier">flagBits</span>) ;
+    <span class="ruby-keyword">return</span> <span class="ruby-ivar">@stopState</span> ;
+  <span class="ruby-keyword">rescue</span> <span class="ruby-constant">SumoException</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">ex</span>
+      <span class="ruby-identifier">code</span> = <span class="ruby-identifier">ex</span>.<span class="ruby-identifier">param</span>[<span class="ruby-value">:resultCode</span>] ;
+      <span class="ruby-keyword">if</span>(<span class="ruby-identifier">code</span>[<span class="ruby-value">:message</span>] <span class="ruby-operator">=~</span> <span class="ruby-regexp">/^Vehicle .* is not known$/</span>) <span class="ruby-keyword">then</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> ;
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-identifier">raise</span> ;
+  <span class="ruby-keyword">end</span>
+  
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-fetchType" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">fetchType</span><span
+            class="method-args">(client = nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>fetch vehicle type</p>
+<dl class="rdoc-list note-list"><dt><em>client</em>
+<dd>
+<p>TraciClient</p>
+</dd><dt><strong>return</strong>
+<dd>
+<p><a href="Vehicle.html#attribute-i-length">#length</a></p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="fetchType-source">
+            <pre><span class="ruby-comment"># File Traci/TraciVehicle.rb, line 344</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">fetchType</span>(<span class="ruby-identifier">client</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">client</span> = <span class="ruby-identifier">ensureTraciClient</span>(<span class="ruby-identifier">client</span>) ;
+
+  <span class="ruby-identifier">com</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">Command_GetVariable</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:vehicle</span>, <span class="ruby-value">:type</span>, <span class="ruby-ivar">@id</span>) ;
+  <span class="ruby-identifier">client</span>.<span class="ruby-identifier">execCommands</span>(<span class="ruby-identifier">com</span>) ;
+  <span class="ruby-ivar">@type</span> = <span class="ruby-identifier">com</span>.<span class="ruby-identifier">responseValue</span>() ;
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@type</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-fetchWidth" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">fetchWidth</span><span
+            class="method-args">(client = nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>fetch <a href="Vehicle.html#attribute-i-width">#width</a> value via server</p>
+<dl class="rdoc-list note-list"><dt><em>client</em>
+<dd>
+<p>TraciClient</p>
+</dd><dt><strong>return</strong>
+<dd>
+<p><a href="Vehicle.html#attribute-i-length">#length</a></p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="fetchWidth-source">
+            <pre><span class="ruby-comment"># File Traci/TraciVehicle.rb, line 330</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">fetchWidth</span>(<span class="ruby-identifier">client</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">client</span> = <span class="ruby-identifier">ensureTraciClient</span>(<span class="ruby-identifier">client</span>) ;
+
+  <span class="ruby-identifier">com</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">Command_GetVariable</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:vehicle</span>, <span class="ruby-value">:width</span>, <span class="ruby-ivar">@id</span>) ;
+  <span class="ruby-identifier">client</span>.<span class="ruby-identifier">execCommands</span>(<span class="ruby-identifier">com</span>) ;
+  <span class="ruby-ivar">@width</span> = <span class="ruby-identifier">com</span>.<span class="ruby-identifier">responseValue</span>() ;
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@width</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-inspect" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">inspect</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="inspect-source">
+            <pre><span class="ruby-comment"># File Traci/TraciVehicle.rb, line 712</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">inspect</span>()
+  <span class="ruby-identifier">dummy</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">dup</span> ;
+  <span class="ruby-identifier">dummy</span>.<span class="ruby-identifier">remove_instance_variable</span>(<span class="ruby-string">&#39;@manager&#39;</span>) ;
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">dummy</span>.<span class="ruby-identifier">inspect_original</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+        <div class="aliases">
+          Also aliased as: <a href="Vehicle.html#method-i-inspect_original">inspect_original</a>
+        </div>
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-inspect_original" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">inspect_original</span><span
+            class="method-args">()</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>re-define <a href="Vehicle.html#method-i-inspect">#inspect</a></p>
+          
+          
+
+          
+        </div>
+
+        
+
+        
+        <div class="aliases">
+          Alias for: <a href="Vehicle.html#method-i-inspect">inspect</a>
+        </div>
+        
+      </div>
+
+    
+      <div id="method-i-isAlive" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">isAlive</span><span
+            class="method-args">(client = nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>check vehicle is alive.</p>
+<dl class="rdoc-list note-list"><dt><em>client</em>
+<dd>
+<p>TraciClient</p>
+</dd><dt><strong>return</strong>
+<dd>
+<p>true if vehicle is alive.</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="isAlive-source">
+            <pre><span class="ruby-comment"># File Traci/TraciVehicle.rb, line 477</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">isAlive</span>(<span class="ruby-identifier">client</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-operator">!</span><span class="ruby-identifier">fetchStopState</span>(<span class="ruby-identifier">client</span>).<span class="ruby-identifier">nil?</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-isFinished-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">isFinished?</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>check <a href="Vehicle.html#attribute-i-status">#status</a> is finished</p>
+          
+          
+
+          
+          <div class="method-source-code" id="isFinished-3F-source">
+            <pre><span class="ruby-comment"># File Traci/TraciVehicle.rb, line 117</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">isFinished?</span>()
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@status</span> <span class="ruby-operator">==</span> <span class="ruby-value">:finished</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-isOnRoad-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">isOnRoad?</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>check <a href="Vehicle.html#attribute-i-status">#status</a> is running</p>
+          
+          
+
+          
+          <div class="method-source-code" id="isOnRoad-3F-source">
+            <pre><span class="ruby-comment"># File Traci/TraciVehicle.rb, line 103</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">isOnRoad?</span>()
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@status</span> <span class="ruby-operator">==</span> <span class="ruby-value">:running</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-isStopped" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">isStopped</span><span
+            class="method-args">(client = nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>check vehicle is stopped.</p>
+<dl class="rdoc-list note-list"><dt><em>client</em>
+<dd>
+<p>TraciClient</p>
+</dd><dt><strong>return</strong>
+<dd>
+<p>true if vehicle is stopped.</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="isStopped-source">
+            <pre><span class="ruby-comment"># File Traci/TraciVehicle.rb, line 461</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">isStopped</span>(<span class="ruby-identifier">client</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">state</span> = <span class="ruby-identifier">fetchStopState</span>(<span class="ruby-identifier">client</span>) ;
+  <span class="ruby-keyword">if</span>(<span class="ruby-identifier">state</span>.<span class="ruby-identifier">nil?</span>) <span class="ruby-keyword">then</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> ;
+  <span class="ruby-keyword">elsif</span>(<span class="ruby-identifier">state</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>) <span class="ruby-keyword">then</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span> ;
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> ;
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-letFinished" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">letFinished</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>make <a href="Vehicle.html#attribute-i-status">#status</a> is running</p>
+          
+          
+
+          
+          <div class="method-source-code" id="letFinished-source">
+            <pre><span class="ruby-comment"># File Traci/TraciVehicle.rb, line 124</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">letFinished</span>()
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@status</span> = <span class="ruby-value">:finished</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-letRunning" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">letRunning</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>make <a href="Vehicle.html#attribute-i-status">#status</a> is running</p>
+          
+          
+
+          
+          <div class="method-source-code" id="letRunning-source">
+            <pre><span class="ruby-comment"># File Traci/TraciVehicle.rb, line 110</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">letRunning</span>()
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@status</span> = <span class="ruby-value">:running</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-logging" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">logging</span><span
+            class="method-args">(level, *messageList, &body)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p><a href="Vehicle.html#method-i-logging">#logging</a></p>
+          
+          
+
+          
+          <div class="method-source-code" id="logging-source">
+            <pre><span class="ruby-comment"># File Traci/TraciVehicle.rb, line 704</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">logging</span>(<span class="ruby-identifier">level</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">messageList</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">body</span>)
+  <span class="ruby-identifier">ensureTraciClient</span>(<span class="ruby-keyword">nil</span>).<span class="ruby-identifier">logging</span>(<span class="ruby-identifier">level</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">messageList</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">body</span>) ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-postSetupAfterAdd" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">postSetupAfterAdd</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>add vehicle の後処理</p>
+          
+          
+
+          
+          <div class="method-source-code" id="postSetupAfterAdd-source">
+            <pre><span class="ruby-comment"># File Traci/TraciVehicle.rb, line 256</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">postSetupAfterAdd</span>()
+  <span class="ruby-identifier">letRunning</span>() ;
+  <span class="ruby-identifier">fetchAllStatic</span>();
+  <span class="ruby-identifier">submitColor</span>() ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-renewId" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">renewId</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p><a href="Vehicle.html#method-i-renewId">#renewId</a></p>
+          
+          
+
+          
+          <div class="method-source-code" id="renewId-source">
+            <pre><span class="ruby-comment"># File Traci/TraciVehicle.rb, line 246</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">renewId</span>()
+  <span class="ruby-identifier">newId</span> = <span class="ruby-ivar">@id</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;_&quot;</span> ;
+  <span class="ruby-ivar">@manager</span>.<span class="ruby-identifier">vehicleTable</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-ivar">@id</span>) ;
+  <span class="ruby-ivar">@id</span> = <span class="ruby-identifier">newId</span> ;
+  <span class="ruby-ivar">@manager</span>.<span class="ruby-identifier">vehicleTable</span>[<span class="ruby-ivar">@id</span>] = <span class="ruby-keyword">self</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-resubmitAddVehicle" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">resubmitAddVehicle</span><span
+            class="method-args">(currentTime, useLastLoc = false)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>re-submit add vehicle</p>
+          
+          
+
+          
+          <div class="method-source-code" id="resubmitAddVehicle-source">
+            <pre><span class="ruby-comment"># File Traci/TraciVehicle.rb, line 227</span>
+      <span class="ruby-keyword">def</span> <span class="ruby-identifier">resubmitAddVehicle</span>(<span class="ruby-identifier">currentTime</span>, <span class="ruby-identifier">useLastLoc</span> = <span class="ruby-keyword">false</span>)
+<span class="ruby-comment">#        renewId() ;</span>
+        
+        <span class="ruby-ivar">@initArgs</span>[<span class="ruby-value">:departTime</span>] = <span class="ruby-identifier">currentTime</span> ;
+        
+        <span class="ruby-identifier">com</span> = <span class="ruby-identifier">comAddVehicleByInitArgs</span>() ;
+        <span class="ruby-identifier">ensureTraciClient</span>(<span class="ruby-keyword">nil</span>).<span class="ruby-identifier">execCommands</span>(<span class="ruby-identifier">com</span>) ;
+
+        <span class="ruby-keyword">if</span>(<span class="ruby-identifier">useLastLoc</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@location</span>.<span class="ruby-identifier">nil?</span>) <span class="ruby-keyword">then</span>
+          <span class="ruby-identifier">submitChangeTarget</span>(<span class="ruby-ivar">@location</span>.<span class="ruby-identifier">edge</span>);
+          <span class="ruby-identifier">submitMoveTo</span>(<span class="ruby-ivar">@location</span>.<span class="ruby-identifier">laneId</span>(),<span class="ruby-ivar">@location</span>.<span class="ruby-identifier">posOnLane</span>) ;
+        <span class="ruby-keyword">end</span>
+        
+        <span class="ruby-identifier">postSetupAfterAdd</span>() ;
+      <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-setup" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">setup</span><span
+            class="method-args">(manager, id)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p><a href="Vehicle.html#method-i-setup">#setup</a> parameters</p>
+          
+          
+
+          
+          <div class="method-source-code" id="setup-source">
+            <pre><span class="ruby-comment"># File Traci/TraciVehicle.rb, line 92</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">setup</span>(<span class="ruby-identifier">manager</span>, <span class="ruby-identifier">id</span>)
+  <span class="ruby-ivar">@manager</span> = <span class="ruby-identifier">manager</span> ;
+  <span class="ruby-ivar">@id</span> = <span class="ruby-identifier">id</span> ;
+  <span class="ruby-ivar">@length</span> = <span class="ruby-identifier">getConf</span>(<span class="ruby-value">:length</span>) ;
+  <span class="ruby-ivar">@width</span> = <span class="ruby-identifier">getConf</span>(<span class="ruby-value">:width</span>) ;
+  <span class="ruby-ivar">@color</span> = <span class="ruby-constant">Util</span>.<span class="ruby-identifier">getColorValue</span>(<span class="ruby-identifier">getConf</span>(<span class="ruby-value">:color</span>)) ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-submitAddVehicle" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">submitAddVehicle</span><span
+            class="method-args">(vehicleType, route, time = nil, departPos = 0.0, speed = 0.0, laneIndex = 0)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>submit add vehicle</p>
+<dl class="rdoc-list note-list"><dt><em>vehicleType</em> 
+<dd>
+<p>vehicle type (String)</p>
+</dd><dt><em>route</em> 
+<dd>
+<p>route ID (String)</p>
+</dd><dt><em>time</em> 
+<dd>
+<p>depart time (Integer) or Symbol (:triggered, :containerTriggered)</p>
+</dd><dt><em>departPos</em> 
+<dd>
+<p>position to depart on the lane (Double) or Symbol</p>
+</dd></dl>
+
+<pre>(:random, :free, :base, :last, :random_free)</pre>
+<dl class="rdoc-list note-list"><dt><em>speed</em> 
+<dd>
+<p>initial <a href="Vehicle.html#attribute-i-speed">#speed</a> (Double)</p>
+</dd><dt><em>laneIndex</em> 
+<dd>
+<p>lane index to depar</p>
+</dd><dt><strong>return</strong> 
+<dd>
+<p><a href="Vehicle.html#method-c-new">::new</a> vehicle</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="submitAddVehicle-source">
+            <pre><span class="ruby-comment"># File Traci/TraciVehicle.rb, line 215</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">submitAddVehicle</span>(<span class="ruby-identifier">vehicleType</span>, <span class="ruby-identifier">route</span>, <span class="ruby-identifier">time</span> = <span class="ruby-keyword">nil</span>,
+                     <span class="ruby-identifier">departPos</span> = <span class="ruby-value">0.0</span>, <span class="ruby-identifier">speed</span> = <span class="ruby-value">0.0</span>, <span class="ruby-identifier">laneIndex</span> = <span class="ruby-value">0</span>)
+  <span class="ruby-identifier">com</span> = <span class="ruby-identifier">comAddVehicle</span>(<span class="ruby-identifier">vehicleType</span>, <span class="ruby-identifier">route</span>, <span class="ruby-identifier">time</span>, <span class="ruby-identifier">departPos</span>,
+                      <span class="ruby-identifier">speed</span>, <span class="ruby-identifier">laneIndex</span>);
+  <span class="ruby-identifier">ensureTraciClient</span>(<span class="ruby-keyword">nil</span>).<span class="ruby-identifier">execCommands</span>(<span class="ruby-identifier">com</span>) ;
+
+  <span class="ruby-identifier">postSetupAfterAdd</span>() ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-submitAll" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">submitAll</span><span
+            class="method-args">(client = nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>submit values via client</p>
+          
+          
+
+          
+          <div class="method-source-code" id="submitAll-source">
+            <pre><span class="ruby-comment"># File Traci/TraciVehicle.rb, line 292</span>
+      <span class="ruby-keyword">def</span> <span class="ruby-identifier">submitAll</span>(<span class="ruby-identifier">client</span> = <span class="ruby-keyword">nil</span>)
+<span class="ruby-comment">#        submitColor(nil, client) ;</span>
+      <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-submitChangeTarget" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">submitChangeTarget</span><span
+            class="method-args">(targetEdge, client = nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>submit change target</p>
+<dl class="rdoc-list note-list"><dt><em>edgeId</em>
+<dd>
+<p>target edge</p>
+</dd><dt><strong>return</strong>
+<dd>
+<p>true if succeed to change the target</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="submitChangeTarget-source">
+            <pre><span class="ruby-comment"># File Traci/TraciVehicle.rb, line 632</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">submitChangeTarget</span>(<span class="ruby-identifier">targetEdge</span>, <span class="ruby-identifier">client</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">client</span> = <span class="ruby-identifier">ensureTraciClient</span>(<span class="ruby-identifier">client</span>) ;
+  
+  <span class="ruby-identifier">com</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">Command_SetVariable</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:vehicle</span>, <span class="ruby-value">:changeTarget</span>,
+                                             <span class="ruby-ivar">@id</span>,
+                                             <span class="ruby-identifier">targetEdge</span>) ;
+  <span class="ruby-keyword">begin</span>
+    <span class="ruby-identifier">client</span>.<span class="ruby-identifier">execCommands</span>(<span class="ruby-identifier">com</span>) ;
+  <span class="ruby-keyword">rescue</span> <span class="ruby-constant">SumoException</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">ex</span> ;
+    <span class="ruby-identifier">code</span> = <span class="ruby-identifier">ex</span>.<span class="ruby-identifier">param</span>[<span class="ruby-value">:resultCode</span>]
+    <span class="ruby-keyword">if</span>(<span class="ruby-identifier">code</span>[<span class="ruby-value">:message</span>] <span class="ruby-operator">=~</span> <span class="ruby-regexp">/^Route replacement failed/</span>) <span class="ruby-keyword">then</span>
+      <span class="ruby-identifier">logging</span>(<span class="ruby-value">:warn</span>,
+              <span class="ruby-node">&quot;Can not change target to #{targetEdge} &quot;</span> <span class="ruby-operator">+</span>
+              <span class="ruby-node">&quot;for vehicle #{@id}.&quot;</span>) ;
+      <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> ;
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">raise</span> ;
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span> ;
+  
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-submitColor" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">submitColor</span><span
+            class="method-args">(color = nil, client = nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>submit <a href="Vehicle.html#attribute-i-color">#color</a></p>
+<dl class="rdoc-list note-list"><dt><em>color</em>
+<dd>
+<p>Symbol, or String of <a href="Vehicle.html#attribute-i-color">#color</a>,
+or Hash to specify RGBA.</p>
+</dd><dt><strong>return</strong>
+<dd>
+<p><a href="Vehicle.html#attribute-i-color">#color</a> value in Hash.</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="submitColor-source">
+            <pre><span class="ruby-comment"># File Traci/TraciVehicle.rb, line 486</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">submitColor</span>(<span class="ruby-identifier">color</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">client</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">client</span> = <span class="ruby-identifier">ensureTraciClient</span>(<span class="ruby-identifier">client</span>) ;
+  
+  <span class="ruby-ivar">@color</span> = <span class="ruby-constant">Util</span>.<span class="ruby-identifier">getColorValue</span>(<span class="ruby-identifier">color</span>) <span class="ruby-keyword">if</span> (<span class="ruby-operator">!</span><span class="ruby-identifier">color</span>.<span class="ruby-identifier">nil?</span>) ;
+  
+  <span class="ruby-identifier">com</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">Command_SetVariable</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:vehicle</span>, <span class="ruby-value">:color</span>, 
+                                             <span class="ruby-ivar">@id</span>, <span class="ruby-ivar">@color</span>) ;
+  <span class="ruby-identifier">client</span>.<span class="ruby-identifier">execCommands</span>(<span class="ruby-identifier">com</span>) ;
+
+  <span class="ruby-identifier">com</span>.<span class="ruby-identifier">checkResultCodeIsOk</span>() ;
+  
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@color</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-submitMoveTo" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">submitMoveTo</span><span
+            class="method-args">(laneId, posInLane = 0.0, client = nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>submit move to</p>
+<dl class="rdoc-list note-list"><dt><em>laneId</em>
+<dd>
+<p>lane ID (String) or [&lt;edgeId&gt;, &lt;laneIndex&gt;] lane ID must be
+included in the current route.</p>
+</dd><dt><em>posInLane</em> 
+<dd>
+<p>position in the lane</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="submitMoveTo-source">
+            <pre><span class="ruby-comment"># File Traci/TraciVehicle.rb, line 662</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">submitMoveTo</span>(<span class="ruby-identifier">laneId</span>, <span class="ruby-identifier">posInLane</span> = <span class="ruby-value">0.0</span>, <span class="ruby-identifier">client</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">client</span> = <span class="ruby-identifier">ensureTraciClient</span>(<span class="ruby-identifier">client</span>) ;
+
+  <span class="ruby-identifier">laneId</span> = <span class="ruby-ivar">@manager</span>.<span class="ruby-identifier">generateLaneId</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">laneId</span>) <span class="ruby-keyword">if</span>(<span class="ruby-identifier">laneId</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Array</span>)) ;
+  
+  <span class="ruby-identifier">com</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">Command_SetVariable</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:vehicle</span>, <span class="ruby-value">:moveTo</span>,
+                                             <span class="ruby-ivar">@id</span>,
+                                             { <span class="ruby-value">:laneId</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">laneId</span>,
+                                               <span class="ruby-value">:position</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">posInLane</span> }) ;
+  <span class="ruby-identifier">client</span>.<span class="ruby-identifier">execCommands</span>(<span class="ruby-identifier">com</span>) ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-submitRemove" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">submitRemove</span><span
+            class="method-args">(reasonCode = :teleport, client = nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>submit remove.</p>
+<dl class="rdoc-list note-list"><dt><em>reasonCode</em> 
+<dd>
+<p>one of {:teleport, :parking, :arrived,</p>
+
+<pre>:vaporized, :teleport_arrived}.</pre>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="submitRemove-source">
+            <pre><span class="ruby-comment"># File Traci/TraciVehicle.rb, line 679</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">submitRemove</span>(<span class="ruby-identifier">reasonCode</span> = <span class="ruby-value">:teleport</span>, <span class="ruby-identifier">client</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">client</span> = <span class="ruby-identifier">ensureTraciClient</span>(<span class="ruby-identifier">client</span>) ;
+
+  <span class="ruby-identifier">reason</span> = <span class="ruby-constant">RemoveReasonTable</span>[<span class="ruby-identifier">reasonCode</span>]
+  <span class="ruby-identifier">com</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">Command_SetVariable</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:vehicle</span>, <span class="ruby-value">:remove</span>,
+                                             <span class="ruby-ivar">@id</span>,
+                                             { <span class="ruby-value">:reason</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">reason</span> }) ;
+  
+  <span class="ruby-identifier">client</span>.<span class="ruby-identifier">execCommands</span>(<span class="ruby-identifier">com</span>) ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-submitResume" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">submitResume</span><span
+            class="method-args">(client = nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>submit resume</p>
+          
+          
+
+          
+          <div class="method-source-code" id="submitResume-source">
+            <pre><span class="ruby-comment"># File Traci/TraciVehicle.rb, line 600</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">submitResume</span>(<span class="ruby-identifier">client</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">client</span> = <span class="ruby-identifier">ensureTraciClient</span>(<span class="ruby-identifier">client</span>) ;
+  
+  <span class="ruby-identifier">com</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">Command_SetVariable</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:vehicle</span>, <span class="ruby-value">:resume</span>,
+                                             <span class="ruby-ivar">@id</span>, {}) ;
+  <span class="ruby-identifier">client</span>.<span class="ruby-identifier">execCommands</span>(<span class="ruby-identifier">com</span>) ;
+  
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-submitSlowDown" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">submitSlowDown</span><span
+            class="method-args">(speed, duration, client = nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>submit slow down</p>
+<dl class="rdoc-list note-list"><dt><em>speed</em>
+<dd>
+<p><a href="Vehicle.html#attribute-i-speed">#speed</a> value</p>
+</dd><dt><em>duration</em>
+<dd>
+<p>duration in sec (Float)</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="submitSlowDown-source">
+            <pre><span class="ruby-comment"># File Traci/TraciVehicle.rb, line 614</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">submitSlowDown</span>(<span class="ruby-identifier">speed</span>, <span class="ruby-identifier">duration</span>, <span class="ruby-identifier">client</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">client</span> = <span class="ruby-identifier">ensureTraciClient</span>(<span class="ruby-identifier">client</span>) ;
+
+  <span class="ruby-identifier">_duration</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Util</span>.<span class="ruby-identifier">convertSecToSimUnits</span>(<span class="ruby-identifier">duration</span>) ;
+  
+  <span class="ruby-identifier">com</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">Command_SetVariable</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:vehicle</span>, <span class="ruby-value">:slowDown</span>,
+                                             <span class="ruby-ivar">@id</span>,
+                                             { <span class="ruby-value">:speed</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">speed</span>,
+                                               <span class="ruby-value">:duration</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">_duration</span> }) ;
+  <span class="ruby-identifier">client</span>.<span class="ruby-identifier">execCommands</span>(<span class="ruby-identifier">com</span>) ;
+  
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-submitStop" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">submitStop</span><span
+            class="method-args">(edge, position, laneIndex, duration, option = {}, client = nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>submit add stop.</p>
+
+<pre>&lt;Flags&gt; are:
+   1 : parking
+   2 : triggered
+   4 : containerTriggered
+   8 : busStop (Edge ID is re-purposed as busStop ID)
+  16 : containerStop (Edge ID is re-purposed as containerStop ID)
+  32 : chargingStation (Edge ID is re-purposed as chargingStation ID)
+  64 : parkingArea (Edge ID is re-purposed as parkingArea ID)</pre>
+<dl class="rdoc-list note-list"><dt><em>edge</em>
+<dd>
+<p>edge ID to stop. (String)</p>
+</dd><dt><em>position</em>
+<dd>
+<p>position on the edge. (Float)</p>
+</dd><dt><em>laneIndex</em>
+<dd>
+<p>lane index in the edge. (Int)</p>
+</dd><dt><em>duration</em>
+<dd>
+<p>duration in sec (Float)</p>
+</dd><dt><em>option</em> 
+<dd>
+<p>a hash of option. one of follows:</p>
+
+<pre>{} or nil or { :mode =&gt; :none }
+{ :mode =&gt; :flag, :flags =&gt; &lt;ArrayOfFlags&gt; }
+{ :mode =&gt; :startPosition, :position =&gt; &lt;Float&gt; }
+{ :mode =&gt; :until, :until =&gt; &lt;MSecInt&gt; }</pre>
+
+<p>&lt;ArrayOfFlags&gt; is an Array consists of</p>
+
+<pre class="ruby">[ :<span class="ruby-identifier">parking</span>, :<span class="ruby-identifier">triggered</span>, :<span class="ruby-identifier">containerTriggered</span>, :<span class="ruby-identifier">busStop</span>,
+  :<span class="ruby-identifier">containerStop</span>, :<span class="ruby-identifier">chargingStation</span>, :<span class="ruby-identifier">parkingArea</span> ]
+</pre>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="submitStop-source">
+            <pre><span class="ruby-comment"># File Traci/TraciVehicle.rb, line 523</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">submitStop</span>(<span class="ruby-identifier">edge</span>, <span class="ruby-identifier">position</span>, <span class="ruby-identifier">laneIndex</span>, <span class="ruby-identifier">duration</span>, <span class="ruby-identifier">option</span> = {},
+               <span class="ruby-identifier">client</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">client</span> = <span class="ruby-identifier">ensureTraciClient</span>(<span class="ruby-identifier">client</span>) ;
+
+  <span class="ruby-identifier">mode</span> = (<span class="ruby-identifier">option</span>.<span class="ruby-identifier">nil?</span>() <span class="ruby-operator">?</span> <span class="ruby-value">:none</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">option</span>[<span class="ruby-value">:mode</span>]) ;
+  <span class="ruby-identifier">mode</span> = <span class="ruby-value">:none</span> <span class="ruby-keyword">if</span>(<span class="ruby-identifier">mode</span>.<span class="ruby-identifier">nil?</span>) ;
+
+  <span class="ruby-identifier">args</span> = { <span class="ruby-value">:edgeId</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">edge</span>, <span class="ruby-value">:position</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">position</span>,
+           <span class="ruby-value">:laneIndex</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">laneIndex</span>,
+           <span class="ruby-value">:duration</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Util</span>.<span class="ruby-identifier">convertSecToSimUnits</span>(<span class="ruby-identifier">duration</span>) } ;
+
+  <span class="ruby-keyword">case</span>(<span class="ruby-identifier">mode</span>)
+  <span class="ruby-keyword">when</span> <span class="ruby-value">:none</span> ;
+    <span class="ruby-identifier">com</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">Command_SetVariable</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:vehicle</span>, <span class="ruby-value">:stop0</span>,
+                                               <span class="ruby-ivar">@id</span>, <span class="ruby-identifier">args</span>) ;
+  <span class="ruby-keyword">when</span> <span class="ruby-value">:flag</span> ;
+    <span class="ruby-identifier">flag</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-identifier">formStopFlagBits</span>(<span class="ruby-identifier">option</span>[<span class="ruby-value">:flags</span>]) ;
+    <span class="ruby-identifier">args</span>[<span class="ruby-value">:stopFlag</span>] = <span class="ruby-identifier">flag</span> ;
+    <span class="ruby-identifier">com</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">Command_SetVariable</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:vehicle</span>, <span class="ruby-value">:stop1</span>,
+                                               <span class="ruby-ivar">@id</span>, <span class="ruby-identifier">args</span>) ;
+  <span class="ruby-keyword">when</span> <span class="ruby-value">:startPosition</span> ; <span class="ruby-comment">## not work in SUMO V.0.32</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;this stop facility is not supported: #{mode}&quot;</span> ;
+    <span class="ruby-identifier">args</span>[<span class="ruby-value">:startPosition</span>] = <span class="ruby-identifier">option</span>[<span class="ruby-value">:position</span>] ;
+    <span class="ruby-identifier">com</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">Command_SetVariable</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:vehicle</span>, <span class="ruby-value">:stop2</span>,
+                                               <span class="ruby-ivar">@id</span>, <span class="ruby-identifier">args</span>) ;
+  <span class="ruby-keyword">when</span> <span class="ruby-value">:until</span> ; <span class="ruby-comment">## not work in SUMO V.0.32</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;this stop facility is not supported: #{mode}&quot;</span> ;
+    <span class="ruby-identifier">args</span>[<span class="ruby-value">:until</span>] = <span class="ruby-identifier">option</span>[<span class="ruby-value">:until</span>] ;
+    <span class="ruby-identifier">com</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">Command_SetVariable</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:vehicle</span>, <span class="ruby-value">:stop3</span>,
+                                               <span class="ruby-ivar">@id</span>, <span class="ruby-identifier">args</span>) ;
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;unknown stop mode : #{mode}&quot;</span> ;
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">client</span>.<span class="ruby-identifier">execCommands</span>(<span class="ruby-identifier">com</span>) ;
+ 
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-submitStopAtEdge" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">submitStopAtEdge</span><span
+            class="method-args">(edge, position, duration, option = {}, client = nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>submit add stop on the edge. the most syntax is the same as <a
+href="Vehicle.html#method-i-submitStop">#submitStop</a>, but search
+available laneIndex.</p>
+<dl class="rdoc-list note-list"><dt><em>edge</em>
+<dd>
+<p>edge ID to stop. (String)</p>
+</dd><dt><em>position</em>
+<dd>
+<p>position on the edge. (Float)</p>
+</dd><dt><em>duration</em>
+<dd>
+<p>duration in sec (Float)</p>
+</dd><dt><em>option</em> 
+<dd>
+<p>a hash of option. one of follows</p>
+</dd><dt><strong>return</strong> 
+<dd>
+<p>true if succeed to submit.</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="submitStopAtEdge-source">
+            <pre><span class="ruby-comment"># File Traci/TraciVehicle.rb, line 571</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">submitStopAtEdge</span>(<span class="ruby-identifier">edge</span>, <span class="ruby-identifier">position</span>, <span class="ruby-identifier">duration</span>, <span class="ruby-identifier">option</span> = {},
+                     <span class="ruby-identifier">client</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">laneIndex</span> = <span class="ruby-value">0</span> ;
+  <span class="ruby-identifier">succeedP</span> = <span class="ruby-keyword">false</span> ;
+  <span class="ruby-keyword">until</span>(<span class="ruby-identifier">succeedP</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">laneIndex</span> <span class="ruby-operator">&gt;</span> <span class="ruby-constant">LaneIndexMax</span>)
+    <span class="ruby-keyword">begin</span>
+      <span class="ruby-identifier">submitStop</span>(<span class="ruby-identifier">edge</span>, <span class="ruby-identifier">position</span>, <span class="ruby-identifier">laneIndex</span>, <span class="ruby-identifier">duration</span>, <span class="ruby-identifier">option</span>, <span class="ruby-identifier">client</span>) ;
+      <span class="ruby-identifier">succeedP</span> = <span class="ruby-keyword">true</span> ;
+    <span class="ruby-keyword">rescue</span> <span class="ruby-constant">SumoException</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">ex</span>
+      <span class="ruby-identifier">code</span> = <span class="ruby-identifier">ex</span>.<span class="ruby-identifier">param</span>[<span class="ruby-value">:resultCode</span>] ;
+      <span class="ruby-keyword">if</span>(<span class="ruby-identifier">code</span>[<span class="ruby-value">:message</span>] <span class="ruby-operator">=~</span> <span class="ruby-regexp">/^stop for vehicle .* is not downstream/</span>) <span class="ruby-keyword">then</span>
+        <span class="ruby-identifier">logging</span>(<span class="ruby-value">:warn</span>,
+                <span class="ruby-node">&quot;laneIndex #{laneIndex} of edge &quot;</span> <span class="ruby-operator">+</span>
+                <span class="ruby-string">&quot;does not in the route.&quot;</span>) ;
+        <span class="ruby-identifier">laneIndex</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span> ;
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-identifier">raise</span> ;
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">succeedP</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

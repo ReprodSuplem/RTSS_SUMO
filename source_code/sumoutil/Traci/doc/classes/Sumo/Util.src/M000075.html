@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>octalDump (Sumo::Util)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File TraciUtil.rb, line 41</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">octalDump</span>(<span class="ruby-identifier">data</span>)
+      <span class="ruby-identifier">byteL</span> = <span class="ruby-identifier">data</span>.<span class="ruby-identifier">length</span>() ;
+      <span class="ruby-identifier">byteM</span> = <span class="ruby-value">16</span> ;
+      <span class="ruby-comment cmt"># get hex numbers</span>
+      <span class="ruby-identifier">hex</span> = [] ;
+      <span class="ruby-constant">IO</span>.<span class="ruby-identifier">popen</span>(<span class="ruby-value str">&quot;od -txC&quot;</span>,<span class="ruby-value str">&quot;r+&quot;</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">strm</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">strm</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">data</span>) ;
+        <span class="ruby-identifier">strm</span>.<span class="ruby-identifier">close_write</span>() ;
+        <span class="ruby-keyword kw">while</span>(<span class="ruby-identifier">l</span> = <span class="ruby-identifier">strm</span>.<span class="ruby-identifier">gets</span>)
+          <span class="ruby-identifier">hexList</span> = <span class="ruby-identifier">l</span>.<span class="ruby-identifier">chomp</span>().<span class="ruby-identifier">split</span>() ;
+          <span class="ruby-identifier">hex</span>.<span class="ruby-identifier">push</span>(<span class="ruby-operator">*</span>(<span class="ruby-identifier">hexList</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>])) ;
+        <span class="ruby-keyword kw">end</span>
+      }
+      <span class="ruby-comment cmt"># flag to swich ascii display</span>
+      <span class="ruby-identifier">useSimpleAscii</span> = <span class="ruby-keyword kw">true</span> ;
+      <span class="ruby-comment cmt"># get ascii</span>
+      <span class="ruby-identifier">ascii</span> = [] ;
+      <span class="ruby-keyword kw">if</span>(<span class="ruby-operator">!</span><span class="ruby-identifier">useSimpleAscii</span>) <span class="ruby-comment cmt"># not used</span>
+        <span class="ruby-constant">IO</span>.<span class="ruby-identifier">popen</span>(<span class="ruby-value str">&quot;od -ta&quot;</span>,<span class="ruby-value str">&quot;r+&quot;</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">strm</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">strm</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">data</span>) ;
+          <span class="ruby-identifier">strm</span>.<span class="ruby-identifier">close_write</span>() ;
+          <span class="ruby-keyword kw">while</span>(<span class="ruby-identifier">l</span> = <span class="ruby-identifier">strm</span>.<span class="ruby-identifier">gets</span>)
+            <span class="ruby-identifier">asciiList</span> = <span class="ruby-identifier">l</span>.<span class="ruby-identifier">chomp</span>().<span class="ruby-identifier">split</span>() ;
+            <span class="ruby-identifier">ascii</span>.<span class="ruby-identifier">push</span>(<span class="ruby-operator">*</span>(<span class="ruby-identifier">asciiList</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>])) ;
+          <span class="ruby-keyword kw">end</span>
+        }
+      <span class="ruby-keyword kw">else</span> <span class="ruby-comment cmt"># use simple ASCII chars</span>
+        (<span class="ruby-value">0</span><span class="ruby-operator">...</span>(<span class="ruby-identifier">byteL</span>.<span class="ruby-identifier">to_f</span><span class="ruby-operator">/</span><span class="ruby-identifier">byteM</span>).<span class="ruby-identifier">ceil</span>).<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">asciiList</span> = <span class="ruby-identifier">data</span>.<span class="ruby-identifier">slice</span>(<span class="ruby-identifier">k</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">byteM</span>, <span class="ruby-identifier">byteM</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/[\x00-\x1F\x7F-\xFF]/n</span>,
+                                                        <span class="ruby-value str">'.'</span>) ;
+          <span class="ruby-identifier">ascii</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">asciiList</span>)
+        }
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-identifier">dumpStr</span> = <span class="ruby-value str">&quot;&quot;</span> ;
+      (<span class="ruby-value">0</span><span class="ruby-operator">...</span>(<span class="ruby-identifier">byteL</span>.<span class="ruby-identifier">to_f</span><span class="ruby-operator">/</span><span class="ruby-identifier">byteM</span>).<span class="ruby-identifier">ceil</span>()).<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">hexStr</span> = <span class="ruby-identifier">hex</span>[<span class="ruby-identifier">k</span><span class="ruby-operator">*</span><span class="ruby-identifier">byteM</span>,<span class="ruby-identifier">byteM</span>].<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot; &quot;</span>) ;
+        <span class="ruby-keyword kw">if</span>(<span class="ruby-operator">!</span><span class="ruby-identifier">useSimpleAscii</span>)
+          <span class="ruby-identifier">ascStr</span> = <span class="ruby-identifier">ascii</span>[<span class="ruby-identifier">k</span><span class="ruby-operator">*</span><span class="ruby-identifier">byteM</span>,<span class="ruby-identifier">byteM</span>].<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span> <span class="ruby-value str">&quot;%3s&quot;</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">c</span>}.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot; &quot;</span>) ;
+          <span class="ruby-identifier">dumpStr</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;%-#{byteM*3}s : %-#{byteM*4}s\n&quot;</span> <span class="ruby-operator">%</span> [<span class="ruby-identifier">hexStr</span>,<span class="ruby-identifier">ascStr</span>] ;
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-identifier">ascStr</span> = <span class="ruby-identifier">ascii</span>[<span class="ruby-identifier">k</span>] ;
+          <span class="ruby-identifier">dumpStr</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;%-#{byteM*3}s : %-#{byteM}s\n&quot;</span> <span class="ruby-operator">%</span> [<span class="ruby-identifier">hexStr</span>,<span class="ruby-identifier">ascStr</span>] ;
+        <span class="ruby-keyword kw">end</span>
+      }
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">dumpStr</span> ;
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

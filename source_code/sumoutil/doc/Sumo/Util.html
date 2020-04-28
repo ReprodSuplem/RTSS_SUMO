@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>module Sumo::Util - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script src="../js/jquery.js"></script>
+<script src="../js/darkfish.js"></script>
+
+<link href="../css/fonts.css" rel="stylesheet">
+<link href="../css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="module">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../table_of_contents.html#pages">Pages</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-i-convertSecToSimUnits">#convertSecToSimUnits</a>
+    
+    <li ><a href="#method-i-convertSimUnitsToSec">#convertSimUnitsToSec</a>
+    
+    <li ><a href="#method-i-getColorValue">#getColorValue</a>
+    
+    <li ><a href="#method-i-isTcpPortInUse">#isTcpPortInUse</a>
+    
+    <li ><a href="#method-i-octalDump">#octalDump</a>
+    
+    <li ><a href="#method-i-scanFreeTcpPort">#scanFreeTcpPort</a>
+    
+    <li ><a href="#method-i-waitTcpPortIsFree">#waitTcpPortIsFree</a>
+    
+    <li ><a href="#method-i-waitTcpPortIsReady">#waitTcpPortIsReady</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="module-Sumo::Util">
+  <h1 id="module-Sumo::Util" class="module">
+    module Sumo::Util
+  </h1>
+
+  <section class="description">
+    
+<p><a href="Util.html">Util</a> module</p>
+
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+    <section class="constants-list">
+      <header>
+        <h3>Constants</h3>
+      </header>
+      <dl>
+      
+        <dt id="ColorTable">ColorTable
+        
+        <dd><p>Color Table</p>
+        
+      
+        <dt id="Color_X11ColorFile">Color_X11ColorFile
+        
+        <dd><pre class="ruby"><span class="ruby-constant">X11</span> <span class="ruby-constant">Color</span> <span class="ruby-constant">File</span>
+</pre>
+
+<p><a href="Util.html#Color_X11ColorFile">Color_X11ColorFile</a> =
+“/usr/share/X11/rgb.txt” ;</p>
+        
+      
+        <dt id="DefaultAlpha">DefaultAlpha
+        
+        <dd>
+        
+      
+        <dt id="FullAlphaValue">FullAlphaValue
+        
+        <dd><p>default alpha value</p>
+        
+      
+        <dt id="SimUnitsPerSec">SimUnitsPerSec
+        
+        <dd><p>simulation unit steps per seconds (SUMO&#39;s default)</p>
+        
+      
+      </dl>
+    </section>
+    
+
+    
+
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-convertSecToSimUnits" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">convertSecToSimUnits</span><span
+            class="method-args">(sec)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>convert time in sec to SUMO&#39;s simulation units</p>
+          
+          
+
+          
+          <div class="method-source-code" id="convertSecToSimUnits-source">
+            <pre><span class="ruby-comment"># File Traci/TraciUtil.rb, line 58</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">convertSecToSimUnits</span>(<span class="ruby-identifier">sec</span>)
+  (<span class="ruby-identifier">sec</span> <span class="ruby-operator">*</span> <span class="ruby-constant">SimUnitsPerSec</span>).<span class="ruby-identifier">to_i</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-convertSimUnitsToSec" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">convertSimUnitsToSec</span><span
+            class="method-args">(simUnits)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>convert SUMO&#39;s simulation units to time in sec</p>
+          
+          
+
+          
+          <div class="method-source-code" id="convertSimUnitsToSec-source">
+            <pre><span class="ruby-comment"># File Traci/TraciUtil.rb, line 51</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">convertSimUnitsToSec</span>(<span class="ruby-identifier">simUnits</span>)
+  <span class="ruby-identifier">simUnits</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">/</span> <span class="ruby-constant">SimUnitsPerSec</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-getColorValue" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getColorValue</span><span
+            class="method-args">(colorName, alpha = nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>get color value.</p>
+<dl class="rdoc-list note-list"><dt><em>colorName</em> 
+<dd>
+<p>String or Symbol of color name or Hash of color value</p>
+</dd><dt><strong>return</strong> 
+<dd>
+<p>{ :r =&gt; rVal, :g =&gt; gVal, :b =&gt; bVal, :a =&gt; aVal }</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="getColorValue-source">
+            <pre><span class="ruby-comment"># File Traci/TraciUtil.rb, line 404</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">getColorValue</span>(<span class="ruby-identifier">colorName</span>, <span class="ruby-identifier">alpha</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">value</span> = <span class="ruby-keyword">nil</span> ;
+  <span class="ruby-keyword">if</span>(<span class="ruby-identifier">colorName</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Symbol</span>))
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">getColorValue</span>(<span class="ruby-identifier">colorName</span>.<span class="ruby-identifier">to_s</span>) ;
+  <span class="ruby-keyword">elsif</span>(<span class="ruby-identifier">colorName</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">String</span>))
+    <span class="ruby-identifier">value</span> = <span class="ruby-constant">ColorTable</span>[<span class="ruby-identifier">colorName</span>] ;
+    <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Unknown color name: #{colorName}&quot;</span> <span class="ruby-keyword">if</span>(<span class="ruby-identifier">value</span>.<span class="ruby-identifier">nil?</span>) ;
+  <span class="ruby-keyword">elsif</span>(<span class="ruby-identifier">colorName</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>)) ;
+    <span class="ruby-identifier">value</span> = <span class="ruby-identifier">colorName</span> ;
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Illegal color specification: #{colorName.inspect}&quot;</span> ;
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">if</span>(<span class="ruby-operator">!</span><span class="ruby-identifier">alpha</span>.<span class="ruby-identifier">nil?</span>) <span class="ruby-keyword">then</span>
+    <span class="ruby-identifier">value</span> = <span class="ruby-identifier">value</span>.<span class="ruby-identifier">dup</span> ;
+    <span class="ruby-identifier">value</span>[<span class="ruby-value">:alpha</span>] = <span class="ruby-identifier">alpha</span> ;
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">value</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-isTcpPortInUse" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">isTcpPortInUse</span><span
+            class="method-args">(port)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>check TCP port is used</p>
+<dl class="rdoc-list note-list"><dt><em>port</em>
+<dd>
+<p>port number to check</p>
+</dd><dt><strong>return</strong> 
+<dd>
+<p>true if the port is used</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="isTcpPortInUse-source">
+            <pre><span class="ruby-comment"># File Traci/TraciUtil.rb, line 119</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">isTcpPortInUse</span>(<span class="ruby-identifier">port</span>)
+  <span class="ruby-identifier">infoPath</span> = <span class="ruby-string">&quot;/proc/net/tcp&quot;</span> ;
+  <span class="ruby-identifier">open</span>(<span class="ruby-identifier">infoPath</span>,<span class="ruby-string">&quot;r&quot;</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">strm</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">while</span>(<span class="ruby-identifier">info</span> = <span class="ruby-identifier">strm</span>.<span class="ruby-identifier">gets</span>())
+      <span class="ruby-identifier">cols</span> = <span class="ruby-identifier">info</span>.<span class="ruby-identifier">split</span> ;
+      <span class="ruby-keyword">if</span>(<span class="ruby-identifier">cols</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">=~</span> <span class="ruby-regexp">/^[0-9]+\:/</span>) <span class="ruby-keyword">then</span>
+        (<span class="ruby-identifier">addrStr</span>, <span class="ruby-identifier">portStr</span>) = <span class="ruby-identifier">cols</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;:&quot;</span>) ;
+        <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span> <span class="ruby-keyword">if</span> (<span class="ruby-identifier">portStr</span>.<span class="ruby-identifier">hex</span>() <span class="ruby-operator">==</span> <span class="ruby-identifier">port</span>) ;
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> ;
+  }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-octalDump" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">octalDump</span><span
+            class="method-args">(data)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>octal dump</p>
+<dl class="rdoc-list note-list"><dt><em>str</em>
+<dd>
+<p>binary string</p>
+</dd><dt><strong>return</strong> 
+<dd>
+<p>dumped string</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="octalDump-source">
+            <pre><span class="ruby-comment"># File Traci/TraciUtil.rb, line 67</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">octalDump</span>(<span class="ruby-identifier">data</span>)
+  <span class="ruby-identifier">byteL</span> = <span class="ruby-identifier">data</span>.<span class="ruby-identifier">length</span>() ;
+  <span class="ruby-identifier">byteM</span> = <span class="ruby-value">16</span> ;
+  <span class="ruby-comment"># get hex numbers</span>
+  <span class="ruby-identifier">hex</span> = [] ;
+  <span class="ruby-constant">IO</span>.<span class="ruby-identifier">popen</span>(<span class="ruby-string">&quot;od -txC&quot;</span>,<span class="ruby-string">&quot;r+&quot;</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">strm</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">strm</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">data</span>) ;
+    <span class="ruby-identifier">strm</span>.<span class="ruby-identifier">close_write</span>() ;
+    <span class="ruby-keyword">while</span>(<span class="ruby-identifier">l</span> = <span class="ruby-identifier">strm</span>.<span class="ruby-identifier">gets</span>)
+      <span class="ruby-identifier">hexList</span> = <span class="ruby-identifier">l</span>.<span class="ruby-identifier">chomp</span>().<span class="ruby-identifier">split</span>() ;
+      <span class="ruby-identifier">hex</span>.<span class="ruby-identifier">push</span>(<span class="ruby-operator">*</span>(<span class="ruby-identifier">hexList</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>])) ;
+    <span class="ruby-keyword">end</span>
+  }
+  <span class="ruby-comment"># flag to swich ascii display</span>
+  <span class="ruby-identifier">useSimpleAscii</span> = <span class="ruby-keyword">true</span> ;
+  <span class="ruby-comment"># get ascii</span>
+  <span class="ruby-identifier">ascii</span> = [] ;
+  <span class="ruby-keyword">if</span>(<span class="ruby-operator">!</span><span class="ruby-identifier">useSimpleAscii</span>) <span class="ruby-comment"># not used</span>
+    <span class="ruby-constant">IO</span>.<span class="ruby-identifier">popen</span>(<span class="ruby-string">&quot;od -ta&quot;</span>,<span class="ruby-string">&quot;r+&quot;</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">strm</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">strm</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">data</span>) ;
+      <span class="ruby-identifier">strm</span>.<span class="ruby-identifier">close_write</span>() ;
+      <span class="ruby-keyword">while</span>(<span class="ruby-identifier">l</span> = <span class="ruby-identifier">strm</span>.<span class="ruby-identifier">gets</span>)
+        <span class="ruby-identifier">asciiList</span> = <span class="ruby-identifier">l</span>.<span class="ruby-identifier">chomp</span>().<span class="ruby-identifier">split</span>() ;
+        <span class="ruby-identifier">ascii</span>.<span class="ruby-identifier">push</span>(<span class="ruby-operator">*</span>(<span class="ruby-identifier">asciiList</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>])) ;
+      <span class="ruby-keyword">end</span>
+    }
+  <span class="ruby-keyword">else</span> <span class="ruby-comment"># use simple ASCII chars</span>
+    (<span class="ruby-value">0</span><span class="ruby-operator">...</span>(<span class="ruby-identifier">byteL</span>.<span class="ruby-identifier">to_f</span><span class="ruby-operator">/</span><span class="ruby-identifier">byteM</span>).<span class="ruby-identifier">ceil</span>).<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">asciiList</span> = <span class="ruby-identifier">data</span>.<span class="ruby-identifier">slice</span>(<span class="ruby-identifier">k</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">byteM</span>, <span class="ruby-identifier">byteM</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/[\x00-\x1F\x7F-\xFF]/n</span>,
+                                                    <span class="ruby-string">&#39;.&#39;</span>) ;
+      <span class="ruby-identifier">ascii</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">asciiList</span>)
+    }
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">dumpStr</span> = <span class="ruby-string">&quot;&quot;</span> ;
+  (<span class="ruby-value">0</span><span class="ruby-operator">...</span>(<span class="ruby-identifier">byteL</span>.<span class="ruby-identifier">to_f</span><span class="ruby-operator">/</span><span class="ruby-identifier">byteM</span>).<span class="ruby-identifier">ceil</span>()).<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">hexStr</span> = <span class="ruby-identifier">hex</span>[<span class="ruby-identifier">k</span><span class="ruby-operator">*</span><span class="ruby-identifier">byteM</span>,<span class="ruby-identifier">byteM</span>].<span class="ruby-identifier">join</span>(<span class="ruby-string">&quot; &quot;</span>) ;
+    <span class="ruby-keyword">if</span>(<span class="ruby-operator">!</span><span class="ruby-identifier">useSimpleAscii</span>)
+      <span class="ruby-identifier">ascStr</span> = <span class="ruby-identifier">ascii</span>[<span class="ruby-identifier">k</span><span class="ruby-operator">*</span><span class="ruby-identifier">byteM</span>,<span class="ruby-identifier">byteM</span>].<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span> <span class="ruby-string">&quot;%3s&quot;</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">c</span>}.<span class="ruby-identifier">join</span>(<span class="ruby-string">&quot; &quot;</span>) ;
+      <span class="ruby-identifier">dumpStr</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;%-#{byteM*3}s : %-#{byteM*4}s\n&quot;</span> <span class="ruby-operator">%</span> [<span class="ruby-identifier">hexStr</span>,<span class="ruby-identifier">ascStr</span>] ;
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">ascStr</span> = <span class="ruby-identifier">ascii</span>[<span class="ruby-identifier">k</span>] ;
+      <span class="ruby-identifier">dumpStr</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;%-#{byteM*3}s : %-#{byteM}s\n&quot;</span> <span class="ruby-operator">%</span> [<span class="ruby-identifier">hexStr</span>,<span class="ruby-identifier">ascStr</span>] ;
+    <span class="ruby-keyword">end</span>
+  }
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">dumpStr</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-scanFreeTcpPort" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">scanFreeTcpPort</span><span
+            class="method-args">(originPort, max = 10000)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>scan free TCP port</p>
+<dl class="rdoc-list note-list"><dt><em>originPort</em>
+<dd>
+<p>port number to start scan</p>
+</dd><dt><em>max</em>
+<dd>
+<p>max count to scan</p>
+</dd><dt><strong>return</strong> 
+<dd>
+<p>a free port number</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="scanFreeTcpPort-source">
+            <pre><span class="ruby-comment"># File Traci/TraciUtil.rb, line 159</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">scanFreeTcpPort</span>(<span class="ruby-identifier">originPort</span>, <span class="ruby-identifier">max</span> = <span class="ruby-value">10000</span>)
+  (<span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-identifier">max</span>).<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">port</span> = <span class="ruby-identifier">originPort</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">c</span> ;
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">port</span> <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">isTcpPortInUse</span>(<span class="ruby-identifier">port</span>) ;
+  }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-waitTcpPortIsFree" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">waitTcpPortIsFree</span><span
+            class="method-args">(port, interval = 0.1)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>wait until TCP port is free</p>
+<dl class="rdoc-list note-list"><dt><em>port</em>
+<dd>
+<p>port number to check</p>
+</dd><dt><em>interval</em>
+<dd>
+<p>interval of sleep</p>
+</dd><dt><strong>return</strong> 
+<dd>
+<p>true if the port is used</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="waitTcpPortIsFree-source">
+            <pre><span class="ruby-comment"># File Traci/TraciUtil.rb, line 149</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">waitTcpPortIsFree</span>(<span class="ruby-identifier">port</span>, <span class="ruby-identifier">interval</span> = <span class="ruby-value">0.1</span>)
+  <span class="ruby-identifier">sleep</span>(<span class="ruby-identifier">interval</span>) <span class="ruby-keyword">until</span> <span class="ruby-operator">!</span><span class="ruby-identifier">isTcpPortInUse</span>(<span class="ruby-identifier">port</span>) ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-waitTcpPortIsReady" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">waitTcpPortIsReady</span><span
+            class="method-args">(port, interval = 0.1)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>wait until TCP port is ready</p>
+<dl class="rdoc-list note-list"><dt><em>port</em>
+<dd>
+<p>port number to check</p>
+</dd><dt><em>interval</em>
+<dd>
+<p>interval of sleep</p>
+</dd><dt><strong>return</strong> 
+<dd>
+<p>true if the port is used</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="waitTcpPortIsReady-source">
+            <pre><span class="ruby-comment"># File Traci/TraciUtil.rb, line 139</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">waitTcpPortIsReady</span>(<span class="ruby-identifier">port</span>, <span class="ruby-identifier">interval</span> = <span class="ruby-value">0.1</span>)
+  <span class="ruby-identifier">sleep</span>(<span class="ruby-identifier">interval</span>) <span class="ruby-keyword">until</span> <span class="ruby-identifier">isTcpPortInUse</span>(<span class="ruby-identifier">port</span>) ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

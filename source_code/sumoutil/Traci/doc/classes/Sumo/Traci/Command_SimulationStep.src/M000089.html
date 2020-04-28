@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>scanSubscriptionResponse (Sumo::Traci::Command_SimulationStep)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File TraciCommand.rb, line 440</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">scanSubscriptionResponse</span>(<span class="ruby-identifier">buffer</span>)
+        <span class="ruby-identifier">len</span> = <span class="ruby-constant">DataType_UByte</span>.<span class="ruby-identifier">unpack!</span>(<span class="ruby-identifier">buffer</span>) ; <span class="ruby-comment cmt">## length of the subsc.</span>
+        <span class="ruby-identifier">len</span> = <span class="ruby-constant">DataType_Integer</span>.<span class="ruby-identifier">unpack!</span>(<span class="ruby-identifier">buffer</span>) <span class="ruby-keyword kw">if</span>(<span class="ruby-identifier">len</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>) ;
+
+        <span class="ruby-identifier">subscriptionType</span> = <span class="ruby-constant">DataType_UByte</span>.<span class="ruby-identifier">unpack!</span>(<span class="ruby-identifier">buffer</span>) ; <span class="ruby-comment cmt">## type of subsc.</span>
+        <span class="ruby-identifier">isVariable</span> = ((<span class="ruby-identifier">subscriptionType</span> <span class="ruby-operator">&gt;=</span>
+                       <span class="ruby-constant">Constant</span>[<span class="ruby-value str">&quot;RESPONSE_SUBSCRIBE_INDUCTIONLOOP_VARIABLE&quot;</span>])<span class="ruby-operator">&amp;&amp;</span>
+                      (<span class="ruby-identifier">subscriptionType</span> <span class="ruby-operator">&lt;=</span>
+                       <span class="ruby-constant">Constant</span>[<span class="ruby-value str">&quot;RESPONSE_SUBSCRIBE_GUI_CONTEXT&quot;</span>])) ;
+        <span class="ruby-identifier">objectId</span> = <span class="ruby-constant">DataType_String</span>.<span class="ruby-identifier">unpack!</span>(<span class="ruby-identifier">buffer</span>) ;
+        <span class="ruby-identifier">domain</span> = <span class="ruby-constant">DataType_UByte</span>.<span class="ruby-identifier">unpack!</span>(<span class="ruby-identifier">buffer</span>) <span class="ruby-keyword kw">if</span>(<span class="ruby-operator">!</span> <span class="ruby-identifier">isVariable</span>) ;
+        <span class="ruby-identifier">numVars</span> = <span class="ruby-constant">DataType_UByte</span>.<span class="ruby-identifier">unpack!</span>(<span class="ruby-identifier">buffer</span>) ;
+        <span class="ruby-identifier">varInfoList</span> = [] ;
+        <span class="ruby-identifier">subscResponse</span> = ({ <span class="ruby-identifier">:responseCode</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">subscriptionType</span>,
+                           <span class="ruby-identifier">:varInfo</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">varInfoList</span> }) ;
+
+        <span class="ruby-keyword kw">if</span>(<span class="ruby-identifier">isVariable</span>) <span class="ruby-keyword kw">then</span> <span class="ruby-comment cmt">## when variable case</span>
+          <span class="ruby-identifier">subscResponse</span>[<span class="ruby-identifier">:type</span>] = <span class="ruby-identifier">:variable</span> ;
+          (<span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-identifier">numVars</span>).<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">varId</span> = <span class="ruby-constant">DataType_UByte</span>.<span class="ruby-identifier">unpack!</span>(<span class="ruby-identifier">buffer</span>) ;
+            <span class="ruby-identifier">status</span> = <span class="ruby-constant">DataType_UByte</span>.<span class="ruby-identifier">unpack!</span>(<span class="ruby-identifier">buffer</span>) ;
+            <span class="ruby-identifier">value</span> = <span class="ruby-constant">DataTypeTable</span>.<span class="ruby-identifier">unpack!</span>(<span class="ruby-identifier">buffer</span>) ;
+
+            <span class="ruby-comment cmt"># if status is error, raise exception.</span>
+            <span class="ruby-identifier">raise</span>(<span class="ruby-value str">&quot;Error! &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">value</span>) <span class="ruby-keyword kw">if</span>(<span class="ruby-identifier">status</span> <span class="ruby-operator">!=</span> <span class="ruby-constant">Constant</span>[<span class="ruby-value str">&quot;RTYPE_OK&quot;</span>]) ;
+
+            <span class="ruby-identifier">varInfo</span> = ({ <span class="ruby-identifier">:varId</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">varId</span>,
+                         <span class="ruby-identifier">:valueType</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">varTypeDef</span>,
+                         <span class="ruby-identifier">:value</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">value</span> }) ;
+            <span class="ruby-identifier">varInfoList</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">varInfo</span>) ;
+          }
+        <span class="ruby-keyword kw">else</span> <span class="ruby-comment cmt">## when context case</span>
+          <span class="ruby-identifier">subscResponse</span>[<span class="ruby-identifier">:type</span>] = <span class="ruby-identifier">:context</span> ;
+          <span class="ruby-identifier">numObjs</span> = <span class="ruby-constant">DataType_Integer</span>.<span class="ruby-identifier">unpack!</span>(<span class="ruby-identifier">buffer</span>) ;
+          (<span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-identifier">numObjs</span>).<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">objectId</span> = <span class="ruby-constant">DataType_String</span>.<span class="ruby-identifier">unpack!</span>(<span class="ruby-identifier">buffer</span>) ;
+            (<span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-identifier">numVars</span>).<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+              <span class="ruby-identifier">varId</span> = <span class="ruby-constant">DataType_UByte</span>.<span class="ruby-identifier">unpack!</span>(<span class="ruby-identifier">buffer</span>) ;
+              <span class="ruby-identifier">status</span> = <span class="ruby-constant">DataType_UByte</span>.<span class="ruby-identifier">unpack!</span>(<span class="ruby-identifier">buffer</span>) ;
+              <span class="ruby-identifier">value</span> = <span class="ruby-constant">DataTypeTable</span>.<span class="ruby-identifier">unpack!</span>(<span class="ruby-identifier">buffer</span>) ;
+
+              <span class="ruby-comment cmt"># if status is error, raise exception.</span>
+              <span class="ruby-identifier">raise</span>(<span class="ruby-value str">&quot;Error! &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">value</span>) <span class="ruby-keyword kw">if</span>(<span class="ruby-identifier">status</span> <span class="ruby-operator">!=</span> <span class="ruby-constant">Constant</span>[<span class="ruby-value str">&quot;RTYPE_OK&quot;</span>]) ;
+              
+              <span class="ruby-identifier">varInfo</span> = ({ <span class="ruby-identifier">:objectId</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">objectId</span>,
+                           <span class="ruby-identifier">:varId</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">varId</span>,
+                           <span class="ruby-identifier">:valueType</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">varTypeDef</span>,
+                           <span class="ruby-identifier">:value</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">value</span> }) ;
+              <span class="ruby-identifier">varInfoList</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">varInfo</span>) ;
+            }
+          }
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">subscResponse</span> ;
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>splitResponsePack (Sumo::Traci::Client)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File TraciClient.rb, line 305</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">splitResponsePack</span>(<span class="ruby-identifier">responsePack</span>)
+        <span class="ruby-identifier">responseList</span> = [] ;
+        <span class="ruby-keyword kw">while</span>(<span class="ruby-identifier">responsePack</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>)
+          <span class="ruby-comment cmt"># get length</span>
+          <span class="ruby-identifier">len</span> = <span class="ruby-constant">DataType_UByte</span>.<span class="ruby-identifier">unpack!</span>(<span class="ruby-identifier">responsePack</span>) ;
+          <span class="ruby-identifier">len</span> <span class="ruby-operator">-=</span> <span class="ruby-constant">DataType_UByte</span>.<span class="ruby-identifier">size</span> ; <span class="ruby-comment cmt"># reduced len</span>
+          <span class="ruby-comment cmt"># in the case of long response</span>
+          <span class="ruby-keyword kw">if</span>(<span class="ruby-identifier">len</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">0</span>) <span class="ruby-comment cmt"># If the original len=0, then reduce len &lt; 0.</span>
+            <span class="ruby-identifier">len</span> = <span class="ruby-constant">DataType_Integer</span>.<span class="ruby-identifier">unpack!</span>(<span class="ruby-identifier">responsePack</span>) ;
+            <span class="ruby-identifier">len</span> <span class="ruby-operator">-=</span> <span class="ruby-constant">DataType_Integer</span>.<span class="ruby-identifier">size</span> ; <span class="ruby-comment cmt">#reduced len</span>
+          <span class="ruby-keyword kw">end</span>
+          <span class="ruby-comment cmt"># get response body</span>
+          <span class="ruby-identifier">responseBody</span> = <span class="ruby-identifier">responsePack</span>.<span class="ruby-identifier">slice!</span>(<span class="ruby-value">0</span>,<span class="ruby-identifier">len</span>) ;
+          <span class="ruby-comment cmt"># check length value</span>
+          <span class="ruby-keyword kw">if</span>(<span class="ruby-identifier">len</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">responseBody</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">len</span>)
+            <span class="ruby-identifier">$stderr</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;Exception!!\n&quot;</span> ;
+            <span class="ruby-identifier">$stderr</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;  @rawResponse=\n&quot;</span> ;
+            <span class="ruby-identifier">$stderr</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Util</span><span class="ruby-operator">::</span><span class="ruby-identifier">octalDump</span>(<span class="ruby-ivar">@rawResponse</span>) ;
+            <span class="ruby-identifier">$stderr</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;  responseBody=\n&quot;</span> ;
+            <span class="ruby-identifier">$stderr</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Util</span><span class="ruby-operator">::</span><span class="ruby-identifier">octalDump</span>(<span class="ruby-identifier">responseBody</span>) ;
+            <span class="ruby-identifier">$stderr</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;  currentResponse=\n&quot;</span> ;
+            <span class="ruby-identifier">$stderr</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Util</span><span class="ruby-operator">::</span><span class="ruby-identifier">octalDump</span>(<span class="ruby-identifier">responsePack</span>) ;
+            <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;wrong length header for response item.&quot;</span> ;
+          <span class="ruby-keyword kw">end</span>
+          <span class="ruby-comment cmt"># collect to the list</span>
+          <span class="ruby-identifier">responseList</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">responseBody</span>) ;
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-comment cmt"># return</span>
+        <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">responseList</span> ;
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

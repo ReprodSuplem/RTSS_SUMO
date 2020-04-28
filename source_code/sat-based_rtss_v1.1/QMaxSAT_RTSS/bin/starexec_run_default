@@ -1,0 +1,11 @@
+#!/bin/bash
+
+./qmaxsatNcc_g3 -card=$1 -pmodel=0 -incr=1 $2 $3 $4 > $5
+
+############################## usage ###############################
+# $1 is your set encoding method (e.g., bail, ogaw, mrwto)         #
+# $2 is your .wcnf path (default: ../../test.wcnf)                 #
+# $3 is your externality.txt path (default: ../../externality.txt) #
+# $4 is your set output answer file (default: ../../answer.txt)    #
+# $5 is your set output log file (default: ../../log.txt)          #
+####################################################################

@@ -1,0 +1,59 @@
+## 準備
+
+下記のコマンドを実行してライブラリをインストールして下さい。
+
+--------------------
+
+$ pip3 install networkx numpy progressbar2 pyproj scikit-learn scipy workdays
+$ pip3 install --egg mysql-connector-python-rf
+
+--------------------
+
+
+
+## OSMデータの加工
+
+--------------------
+
+$ python3 make_enable_osm.py -h
+usage: python3 make_enable_osm.py OSM [--degree DEGREE] [--meter METER]
+
+positional arguments:
+  osm
+
+optional arguments:
+  -h, --help       show this help message and exit
+  --degree DEGREE  Compression threshold
+  --meter METER    Compression threshold
+
+--------------------
+
+ある2つのリンクがつながっているとき、その2つのリンクがほぼ直線になっているのであれば接続点を削除します。
+DGREEは直線とみなす角度の最大値を意味しています。
+あまりにも長い道路では、削除後に誤差が大きくなるため、METERで制御しています。
+実証実験では、DGREEは170、METERは10としてOSMを加工しています。
+このスクリプトの中に、保存する道路の種別を設定している箇所があります。
+
+--------------------
+
+# 保存するhighwayキーの値を設定
+def set_highway_vals():
+    global highway_vals
+
+    #highway_vals.append("motorway")
+    highway_vals.append("trunk")
+    highway_vals.append("primary")
+    highway_vals.append("secondary")
+    highway_vals.append("tertiary")
+    highway_vals.append("unclassified")
+    highway_vals.append("residential")
+    highway_vals.append("service")
+    highway_vals.append("living_street")
+    highway_vals.append("road")
+    #highway_vals.append("motorway_link")
+    highway_vals.append("trunk_link")
+    highway_vals.append("primary_link")
+    highway_vals.append("secondary_link")
+    highway_vals.append("tertiary_link")
+
+--------------------

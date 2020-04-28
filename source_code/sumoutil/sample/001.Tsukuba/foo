@@ -1,0 +1,143 @@
+#! /usr/bin/env ruby
+# coding: utf-8
+## -*- mode: ruby -*-
+## = run Arao City's script
+## Author:: Anonymous3
+## Version:: 0.0 2018/08/16 Anonymous3
+##
+## === History
+## * [2018/08/16]: Create This File.
+## * [YYYY/MM/DD]: add more
+## == Usage
+## * ...
+
+def $LOAD_PATH.addIfNeed(path)
+  self.unshift(path) if(!self.include?(path)) ;
+end
+
+$LOAD_PATH.addIfNeed("~/lib/ruby");
+# $LOAD_PATH.addIfNeed(File.dirname(__FILE__));
+
+require 'optparse' ;
+require 'pp' ;
+require '../../Tools/SavSimBench.rb' ;
+
+#------------------------------------------------------------------------
+#++
+$conf = {
+  :mode => :sim, # one of [:sim, :map]
+#  :case => :a,
+#  :case => :b,
+  :case => :c,
+} ;
+
+#----------------------------------------------------------------------
+#++
+## help
+def help()
+  puts($op) ;
+  puts("Defaults:") ;
+  pp $conf ;
+  exit(1) ;
+end
+
+#------------------------------------------------------------------------
+#++
+$op = OptionParser.new() {|op|
+  op.banner = <<_END_
+  Usage: #{$0} [Options]*
+    Cases: a
+_END_
+
+  op.separator("Options:") ;
+  op.set_summary_indent("") ;
+  op.set_summary_width(60) ;
+  sep = "\n\t\t" ;
+
+  op.on("-m","--map", sep + "map conversion.") {
+    $conf[:mode] = :map ;
+  }
+  op.on("-c","--case Case", String, sep + "specify case.") {|caseStr|
+    $conf[:case] = caseStr.intern ;
+  }
+  op.on_tail("--help", sep + "show this message.") { |h|
+    help() ;
+  }
+}
+
+#----------------------------------------------------------------------
+#++
+## arg processing
+$op.parse!(ARGV) ;
+$restArg = ARGV ;
+p [:rest, ARGV], [:conf,$conf] ;
+help() if(ARGV.length > 0) ;
+
+
+
+########################################################################
+########################################################################
+########################################################################
+
+#----------------------------------------------------------------------
+#++
+## setup cases
+def setCase(_case)
+  case(_case)
+  ## ------------------------------
+  when(:a) ;
+    # random allocation.  use runSavSimRandom.
+    $simBench =
+      SavSimBench.new("TsukubaCentral.01.marked.osm",
+                      { :simType => :random,
+                        :comDirBase => "../../",
+                        :osmSuffix => ".osm",
+                        :sumoConf => "tsukuba.00.sumocfg",
+                        :simOpts => ["-r 2000:2000",
+                                     "-o -600:500",
+#                                     "-i 30",
+                                     "-i 60",
+                                     "--maxViaPoints 20",
+                                    ] }) ;
+  ## ------------------------------
+  when(:b) ;
+    # normal seq. opt. allocation. use runSavSimMixture.
+    $simBench =
+      SavSimBench.new("TsukubaCentral.01.marked.osm",
+                      { :simType => :mixture,
+                        :comDirBase => "../../",
+                        :simConf => "tsukuba.00.savSimConf.json" });
+  ## ------------------------------
+  when(:c) ;
+    # allocator guild.  
+    $simBench =
+      SavSimBench.new("TsukubaCentral.01.marked.osm",
+                      { :simType => :mixture,
+                        :comDirBase => "../../",
+                        :simConf => "tsukuba.01.savSimConf.json" });
+  ## ------------------------------
+  ## ------------------------------
+  ## ------------------------------
+  else
+    help() ;
+  ## ------------------------------
+  end
+end
+
+
+#----------------------------------------------------------------------
+#++
+## main
+
+setCase($conf[:case]) ;
+if($conf[:mode] == :map) then
+  $simBench.runMapConv() ;
+elsif($conf[:mode] == :sim) then
+  $simBench.runSavSim() ;
+end
+  
+      
+            
+           
+           
+           

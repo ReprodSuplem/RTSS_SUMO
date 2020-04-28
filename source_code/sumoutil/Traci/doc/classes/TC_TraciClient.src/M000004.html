@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>test_b (TC_TraciClient)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File TraciClient.rb, line 457</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_b</span>
+      <span class="ruby-comment cmt">## SUMO を TraCI モードで立ち上げ。TraCI サーバのポートは port</span>
+      <span class="ruby-identifier">port</span> = <span class="ruby-identifier">prepareServer</span>()
+      <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Util</span><span class="ruby-operator">::</span><span class="ruby-identifier">waitTcpPortIsReady</span>(<span class="ruby-identifier">port</span>) ;
+
+      <span class="ruby-comment cmt">## クライアント作成。TraCI サーバのポートは port</span>
+      <span class="ruby-comment cmt">## ログは、$stdout に吐き出す。</span>
+      <span class="ruby-identifier">traci</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">Client</span>.<span class="ruby-identifier">new</span>({ <span class="ruby-identifier">:port</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">port</span>, 
+                                        <span class="ruby-identifier">:logLevel</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:debug</span>,
+<span class="ruby-comment cmt">#                                        :logLevel =&gt; :info,</span>
+                                        <span class="ruby-identifier">:logDev</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-identifier">:stdout</span>,<span class="ruby-identifier">:file</span>] }) ;
+
+      <span class="ruby-comment cmt">## ジャンクションの ID リストを取ってきてみる。</span>
+      <span class="ruby-identifier">com</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">Command_GetVariable</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">:junction</span>, <span class="ruby-identifier">:idList</span>, <span class="ruby-value str">&quot;&quot;</span>) ;
+      <span class="ruby-identifier">traci</span>.<span class="ruby-identifier">execCommands</span>(<span class="ruby-identifier">com</span>) ;
+      <span class="ruby-identifier">p</span> [<span class="ruby-identifier">:junctionList</span>, <span class="ruby-identifier">com</span>.<span class="ruby-identifier">responseValue</span>()]
+      <span class="ruby-comment cmt">## ジャンクションの最初の1つを取り出す。</span>
+      <span class="ruby-identifier">juncName</span> = <span class="ruby-identifier">com</span>.<span class="ruby-identifier">responseValue</span>()[<span class="ruby-value">0</span>] ;
+
+      <span class="ruby-comment cmt">## あるジャンクションの位置を取り出す。</span>
+      <span class="ruby-identifier">com</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">Command_GetVariable</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">:junction</span>, <span class="ruby-identifier">:position</span>, <span class="ruby-identifier">juncName</span>);
+      <span class="ruby-identifier">traci</span>.<span class="ruby-identifier">execCommands</span>(<span class="ruby-identifier">com</span>) ;
+      <span class="ruby-identifier">p</span> [<span class="ruby-identifier">:junctionPos</span>, <span class="ruby-identifier">com</span>.<span class="ruby-identifier">responseValue</span>()]
+
+      <span class="ruby-comment cmt">## シミュレーションすすめてみる。</span>
+      <span class="ruby-identifier">com</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">Command_SimulationStep</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">200000</span>) ;
+      <span class="ruby-identifier">traci</span>.<span class="ruby-identifier">execCommands</span>(<span class="ruby-identifier">com</span>) ;
+
+      <span class="ruby-comment cmt">## 車のIDリストを取り出す。</span>
+      <span class="ruby-identifier">com</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">Command_GetVariable</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">:vehicle</span>, <span class="ruby-identifier">:idList</span>, <span class="ruby-value str">&quot;&quot;</span>) ;
+      <span class="ruby-identifier">traci</span>.<span class="ruby-identifier">execCommands</span>(<span class="ruby-identifier">com</span>) ;
+      <span class="ruby-identifier">p</span> [<span class="ruby-identifier">:vehicleList</span>, <span class="ruby-identifier">com</span>.<span class="ruby-identifier">responseValue</span>()]
+      <span class="ruby-comment cmt">## vehicle list のはず</span>
+      <span class="ruby-identifier">vList</span> = <span class="ruby-identifier">com</span>.<span class="ruby-identifier">responseValue</span>() ;
+
+      <span class="ruby-comment cmt">## 最初の車の色を変えてみる。</span>
+      <span class="ruby-identifier">com</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">Command_SetVariable</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">:vehicle</span>, <span class="ruby-identifier">:color</span>, <span class="ruby-identifier">vList</span>[<span class="ruby-value">0</span>],
+                                                 { <span class="ruby-identifier">:r</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">100</span>,
+                                                   <span class="ruby-identifier">:g</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">100</span>,
+                                                   <span class="ruby-identifier">:b</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">255</span>,
+                                                   <span class="ruby-identifier">:a</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">255</span> }) ;
+      <span class="ruby-identifier">traci</span>.<span class="ruby-identifier">execCommands</span>(<span class="ruby-identifier">com</span>) ;
+
+      <span class="ruby-comment cmt">## 最初の車の大きさの値</span>
+      <span class="ruby-identifier">com</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">Command_GetVariable</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">:vehicle</span>, <span class="ruby-identifier">:length</span>, <span class="ruby-identifier">vList</span>[<span class="ruby-value">0</span>]) ;
+      <span class="ruby-identifier">traci</span>.<span class="ruby-identifier">execCommands</span>(<span class="ruby-identifier">com</span>) ;
+      <span class="ruby-identifier">p</span> [<span class="ruby-identifier">:vehicleLength</span>, <span class="ruby-identifier">com</span>.<span class="ruby-identifier">responseValue</span>()] ;
+      <span class="ruby-identifier">vLength</span> = <span class="ruby-identifier">com</span>.<span class="ruby-identifier">responseValue</span>() ;
+
+      <span class="ruby-comment cmt">## 最初の車の大きさを変えてみる。</span>
+      <span class="ruby-identifier">com</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">Command_SetVariable</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">:vehicle</span>, <span class="ruby-identifier">:length</span>, <span class="ruby-identifier">vList</span>[<span class="ruby-value">0</span>],
+                                                 <span class="ruby-identifier">vLength</span> <span class="ruby-operator">*</span> <span class="ruby-value">10</span>) ;
+      <span class="ruby-identifier">com2</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">Command_SetVariable</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">:vehicle</span>, <span class="ruby-identifier">:width</span>, <span class="ruby-identifier">vList</span>[<span class="ruby-value">0</span>],
+                                                  <span class="ruby-identifier">vLength</span> <span class="ruby-operator">*</span> <span class="ruby-value">4</span>) ;
+      <span class="ruby-identifier">traci</span>.<span class="ruby-identifier">execCommands</span>(<span class="ruby-identifier">com</span>,<span class="ruby-identifier">com2</span>) ;
+
+      <span class="ruby-comment cmt">## 終了</span>
+      <span class="ruby-identifier">traci</span>.<span class="ruby-identifier">execCommands</span>(<span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">Command_Close</span>.<span class="ruby-identifier">new</span>()) ;
+      <span class="ruby-identifier">traci</span>.<span class="ruby-identifier">close</span>() ;
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

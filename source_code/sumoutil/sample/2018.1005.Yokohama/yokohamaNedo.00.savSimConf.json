@@ -1,0 +1,21 @@
+{
+  "sumoConfig": "yokohamaNedo.00.sumocfg",
+  "jsonMap": "YokohamaMinatoMirai.01.stops.net.json",
+  "dumpedMap": "YokohamaMinatoMirai.01.stops.net.dump",
+  "featureTable": "YokohamaMinatoMirai.01.stops.feature.json",
+  "demandConfig": "yokohamaNedo.00.demandConf.json",
+
+  "savN": 10,
+  "savCapacity": 8,
+  "_walkSpeed": 0.8,
+  "walkSpeed": 0.1,
+  "_until": null,
+  "until":43200,
+  "allocMode": "seqOpt",
+  "tripGap": { "pickUp": 20, "dropOff": 10 },
+  "stopMargin": 12,
+
+  "savBase": "ai-bus-base",
+
+  "___" : null
+}

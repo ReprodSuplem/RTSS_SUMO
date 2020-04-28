@@ -1,0 +1,36 @@
+[
+  {
+    "type": "directed",
+    "from": {
+      "type": "circle",
+      "center": "p001",
+      "radius": 100
+    },
+    "to": {
+      "type": "circle",
+      "center": "p029",
+      "radius": 100
+    },
+    "since": 100,
+    "until": 11000,
+    "interval": 50,
+    "___":null
+  },
+  {
+    "type": "directed",
+    "from": {
+      "type": "circle",
+      "center": "p029",
+      "radius": 100
+    },
+    "to": {
+      "type": "circle",
+      "center": "p001",
+      "radius": 100
+    },
+    "since": 100,
+    "until": 11000,
+    "interval": 50,
+    "___":null
+  }
+]

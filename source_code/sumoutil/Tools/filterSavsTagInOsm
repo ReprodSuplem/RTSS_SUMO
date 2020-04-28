@@ -1,0 +1,140 @@
+#! /usr/bin/env ruby
+# coding: utf-8
+## -*- mode: ruby -*-
+## = scan and filter OSM file to pick up SAVS tags.
+## Author:: Anonymous3
+## Version:: 0.0 2018/08/16 Anonymous3
+##
+## === History
+## * [2018/08/16]: Create This File.
+## * [YYYY/MM/DD]: add more
+## == Usage
+## * ...
+
+def $LOAD_PATH.addIfNeed(path)
+  self.unshift(path) if(!self.include?(path)) ;
+end
+
+$LOAD_PATH.addIfNeed("~/lib/ruby");
+$LOAD_PATH.addIfNeed(File.dirname(__FILE__));
+
+require 'optparse' ;
+require 'pp' ;
+require 'ox' ;
+require 'json' ;
+
+require 'OsmMap.rb' ;
+
+#--######################################################################
+#--######################################################################
+#++
+=begin rdoc
+= filterSavsTagInOsm
+OSM のマップデータを読み、そこに付与されたSAVS用のFeature(POIやZone)の情報の取得、
+あるいは、削除すべきwayのIDのリストをファイルに出力する。
+
+== 概要
+Featureの情報を出力するモード(feature モード)と、
+削除すべきwayのリストを出力するモード(trouble モード)がある。
+
+=== feature モード
+OSMのマップデータに付与された、
+"savs:poi" タグを持つ node や、
+"savs:zone" タグを持つ relation (polygon) を集め、
+JSON 形式で出力する。
+
+これは、SAVS シミュレータの設定を決めるのに参照することを想定している。
+
+=== trouble モード
+行き止まりや歩道など、SUMO でのシミュレーションでトラブルのもととなる
+way の ID の一覧を出力する。
+この出力は、SUMO の +netconvert+ の +--remove-edges.input-file+ で
+用いることができる。
+
+出力形式は、
+各行にwayのIDが1つづつである。
+
+=end
+module Doc_filterSavsTagInOsm ; end ;
+#--######################################################################
+#--######################################################################
+
+#------------------------------------------------------------------------
+#++
+$conf = {
+  :mode => :feature,  # or :trouble
+  :troubleFile => nil,
+  :featureFile => nil,
+} ;
+
+#----------------------------------------------------------------------
+#++
+## help
+def help()
+  puts($op) ;
+  puts("Defaults:") ;
+  pp $conf ;
+  exit(1) ;
+end
+
+#------------------------------------------------------------------------
+#++
+$op = OptionParser.new() {|op|
+  op.banner = <<_END_
+  Usage: #{$0} [Options]* OsmFile
+_END_
+
+  op.separator("Options:") ;
+  op.set_summary_indent("") ;
+  op.set_summary_width(60) ;
+  sep = "\n\t\t" ;
+
+  op.on("-t","--trouble OutFile", String, sep + "output trouble way list.") {
+    |file|
+    $conf[:mode] = :trouble ;
+    $conf[:troubleFile] = file ;
+  }
+  op.on("-f","--feature OutFile", String, sep + "output feature file.") {
+    |file|
+    $conf[:mode] = :feature ;
+    $conf[:featureFile] = file ;
+  }
+  op.on_tail("--help", sep + "show this message.") { |h|
+    help() ;
+  }
+}
+
+$op.parse!(ARGV) ;
+$restArg = ARGV ;
+p [:rest, ARGV], [:conf,$conf] ;
+help() if($restArg.size < 1)  ;
+
+########################################################################
+########################################################################
+########################################################################
+
+map = OsmMap.new() ;
+
+map.readXmlFile($restArg[0]) ;
+map.scanXml() ;
+map.scanSavsTags() ;
+
+case($conf[:mode])
+when(:feature) ;
+  json = map.toJson_Savs ;
+  open($conf[:featureFile],"w"){|strm|
+    strm << JSON.pretty_generate(json) << "\n" ;
+  }
+when(:trouble) ;
+  map.removeTroublesomeWays() ;
+  open($conf[:troubleFile],"w"){|strm|
+    map.removedWayList.each{|way|
+      strm.puts(way.id) ;
+    }
+  }
+else
+  raise "unknown mode:" + $conf[:mode] ;
+end
+
+
+

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>logging (Sumo::Traci::Client)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File TraciClient.rb, line 171</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">logging</span>(<span class="ruby-identifier">level</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">messageList</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">body</span>)
+        <span class="ruby-identifier">tagInfo</span> = <span class="ruby-constant">LoggingTag</span>[<span class="ruby-identifier">level</span>] ;
+        <span class="ruby-keyword kw">if</span>(<span class="ruby-identifier">tagInfo</span>[<span class="ruby-value">1</span>] <span class="ruby-operator">&gt;=</span> <span class="ruby-ivar">@logLevel</span>) <span class="ruby-keyword kw">then</span>
+          <span class="ruby-identifier">loggingBody</span>(<span class="ruby-identifier">tagInfo</span>[<span class="ruby-value">0</span>], <span class="ruby-operator">*</span><span class="ruby-identifier">messageList</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">body</span>) ;
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

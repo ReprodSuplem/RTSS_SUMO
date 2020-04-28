@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Sumo::Traci::Poi - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+</script>
+
+<script src="../../js/jquery.js"></script>
+<script src="../../js/darkfish.js"></script>
+
+<link href="../../css/fonts.css" rel="stylesheet">
+<link href="../../css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../table_of_contents.html#pages">Pages</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link">WithConfParam
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li class="calls-super" ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-ensureTraciClient">#ensureTraciClient</a>
+    
+    <li ><a href="#method-i-inspect">#inspect</a>
+    
+    <li ><a href="#method-i-inspect_original">#inspect_original</a>
+    
+    <li ><a href="#method-i-setup">#setup</a>
+    
+    <li ><a href="#method-i-submitAdd">#submitAdd</a>
+    
+    <li ><a href="#method-i-submitColor">#submitColor</a>
+    
+    <li ><a href="#method-i-submitRemove">#submitRemove</a>
+    
+    <li ><a href="#method-i-to_s">#to_s</a>
+    
+    <li ><a href="#method-i-traciCom_Add">#traciCom_Add</a>
+    
+    <li ><a href="#method-i-traciCom_Remove">#traciCom_Remove</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Sumo::Traci::Poi">
+  <h1 id="class-Sumo::Traci::Poi" class="class">
+    class Sumo::Traci::Poi
+  </h1>
+
+  <section class="description">
+    
+<p>PoI class</p>
+
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+    <section class="constants-list">
+      <header>
+        <h3>Constants</h3>
+      </header>
+      <dl>
+      
+        <dt id="DefaultConf">DefaultConf
+        
+        <dd><p>description of DefaultOptsions.</p>
+        
+      
+      </dl>
+    </section>
+    
+
+    
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-color" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">color</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p><a href="Poi.html#attribute-i-color">#color</a></p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-colorAlpha" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">colorAlpha</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p><a href="Poi.html#attribute-i-colorAlpha">#colorAlpha</a></p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-id" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">id</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p><a href="Poi.html#attribute-i-id">#id</a></p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-layer" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">layer</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p><a href="Poi.html#attribute-i-layer">#layer</a></p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-manager" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">manager</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p><a href="Poi.html#attribute-i-manager">#manager</a></p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-pos" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">pos</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>position</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-type" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">type</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p><a href="Poi.html#attribute-i-type">#type</a></p>
+        
+        </div>
+      </div>
+      
+    </section>
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(manager, id, position, conf = {})</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>description of method initialize</p>
+<dl class="rdoc-list note-list"><dt><em>manager</em>
+<dd>
+<p><a href="PoiManager.html">PoiManager</a></p>
+</dd><dt><em>id</em>
+<dd>
+<p>ID of PoI.</p>
+</dd><dt><em>position</em>
+<dd>
+<p>position of PoI. a Geo2D::Point or [x, y]</p>
+</dd><dt><em>conf</em>
+<dd>
+<p>configulation</p>
+</dd></dl>
+          
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              
+            </div>
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File Traci/TraciPoi.rb, line 72</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">manager</span>, <span class="ruby-identifier">id</span>, <span class="ruby-identifier">position</span>, <span class="ruby-identifier">conf</span> = {})
+  <span class="ruby-keyword">super</span>(<span class="ruby-identifier">conf</span>) ;
+  <span class="ruby-identifier">setup</span>(<span class="ruby-identifier">manager</span>, <span class="ruby-identifier">id</span>, <span class="ruby-identifier">position</span>) ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-ensureTraciClient" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">ensureTraciClient</span><span
+            class="method-args">(client)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>make sure the client</p>
+<dl class="rdoc-list note-list"><dt><em>client</em>
+<dd>
+<p>TraciClient</p>
+</dd><dt><strong>return</strong>
+<dd>
+<p>TraciClient</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="ensureTraciClient-source">
+            <pre><span class="ruby-comment"># File Traci/TraciPoi.rb, line 99</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">ensureTraciClient</span>(<span class="ruby-identifier">client</span>)
+  <span class="ruby-keyword">if</span>(<span class="ruby-identifier">client</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@manager</span>.<span class="ruby-identifier">nil?</span>) <span class="ruby-keyword">then</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-ivar">@manager</span>.<span class="ruby-identifier">traciClient</span> ;
+  <span class="ruby-keyword">elsif</span>(<span class="ruby-identifier">client</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">TraciClient</span>)) <span class="ruby-keyword">then</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">client</span> ;
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Illegal client: #{client.inspect} in Vehicle:#{self.inspect}.&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-inspect" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">inspect</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="inspect-source">
+            <pre><span class="ruby-comment"># File Traci/TraciPoi.rb, line 171</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">inspect</span>()
+  <span class="ruby-identifier">dummy</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">dup</span> ;
+  <span class="ruby-identifier">dummy</span>.<span class="ruby-identifier">remove_instance_variable</span>(<span class="ruby-string">&#39;@manager&#39;</span>) <span class="ruby-keyword">if</span>(<span class="ruby-identifier">dummy</span>.<span class="ruby-identifier">manager</span>) ;
+  <span class="ruby-identifier">dummy</span>.<span class="ruby-identifier">remove_instance_variable</span>(<span class="ruby-string">&#39;@conf&#39;</span>) <span class="ruby-keyword">if</span>(<span class="ruby-identifier">dummy</span>.<span class="ruby-identifier">conf</span>) ;
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">dummy</span>.<span class="ruby-identifier">inspect_original</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+        <div class="aliases">
+          Also aliased as: <a href="Poi.html#method-i-inspect_original">inspect_original</a>
+        </div>
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-inspect_original" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">inspect_original</span><span
+            class="method-args">()</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>re-define <a href="Poi.html#method-i-inspect">#inspect</a></p>
+          
+          
+
+          
+        </div>
+
+        
+
+        
+        <div class="aliases">
+          Alias for: <a href="Poi.html#method-i-inspect">inspect</a>
+        </div>
+        
+      </div>
+
+    
+      <div id="method-i-setup" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">setup</span><span
+            class="method-args">(manager, id, position)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p><a href="Poi.html#method-i-setup">#setup</a> configuration</p>
+<dl class="rdoc-list note-list"><dt><em>manager</em>
+<dd>
+<p><a href="PoiManager.html">PoiManager</a></p>
+</dd><dt><em>id</em>
+<dd>
+<p>ID of PoI.</p>
+</dd><dt><em>position</em>
+<dd>
+<p>position of PoI. a Geo2D::Point or [x, y]</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="setup-source">
+            <pre><span class="ruby-comment"># File Traci/TraciPoi.rb, line 83</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">setup</span>(<span class="ruby-identifier">manager</span>, <span class="ruby-identifier">id</span>, <span class="ruby-identifier">position</span>)
+  <span class="ruby-ivar">@manager</span> = <span class="ruby-identifier">manager</span> ;
+  <span class="ruby-ivar">@id</span> = <span class="ruby-identifier">id</span> ;
+  <span class="ruby-ivar">@pos</span> = <span class="ruby-constant">Geo2D</span><span class="ruby-operator">::</span><span class="ruby-constant">Point</span>.<span class="ruby-identifier">sureGeoObj</span>(<span class="ruby-identifier">position</span>) ;
+  <span class="ruby-ivar">@type</span> = <span class="ruby-identifier">getConf</span>(<span class="ruby-value">:type</span>) ;
+  <span class="ruby-ivar">@color</span> = <span class="ruby-identifier">getConf</span>(<span class="ruby-value">:color</span>) ;
+  <span class="ruby-ivar">@colorAlpha</span> = <span class="ruby-identifier">getConf</span>(<span class="ruby-value">:colorAlpha</span>) ;
+  <span class="ruby-ivar">@layer</span> = <span class="ruby-identifier">getConf</span>(<span class="ruby-value">:layer</span>) ;
+  <span class="ruby-keyword">self</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-submitAdd" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">submitAdd</span><span
+            class="method-args">(client = nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>submit Add command</p>
+          
+          
+
+          
+          <div class="method-source-code" id="submitAdd-source">
+            <pre><span class="ruby-comment"># File Traci/TraciPoi.rb, line 125</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">submitAdd</span>(<span class="ruby-identifier">client</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">client</span> = <span class="ruby-identifier">ensureTraciClient</span>(<span class="ruby-identifier">client</span>) ;
+  <span class="ruby-identifier">com</span> = <span class="ruby-identifier">traciCom_Add</span>() ;
+  <span class="ruby-identifier">client</span>.<span class="ruby-identifier">execCommands</span>(<span class="ruby-identifier">com</span>) ;
+  <span class="ruby-identifier">com</span>.<span class="ruby-identifier">checkResultCodeIsOk</span>() ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-submitColor" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">submitColor</span><span
+            class="method-args">(color, alpha = @colorAlpha, client = nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>submit change Color</p>
+          
+          
+
+          
+          <div class="method-source-code" id="submitColor-source">
+            <pre><span class="ruby-comment"># File Traci/TraciPoi.rb, line 155</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">submitColor</span>(<span class="ruby-identifier">color</span>, <span class="ruby-identifier">alpha</span> = <span class="ruby-ivar">@colorAlpha</span>, <span class="ruby-identifier">client</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">client</span> = <span class="ruby-identifier">ensureTraciClient</span>(<span class="ruby-identifier">client</span>) ;
+
+  <span class="ruby-ivar">@color</span> = <span class="ruby-identifier">color</span> ;
+  <span class="ruby-ivar">@colorAlpha</span> = <span class="ruby-identifier">alpha</span> ;
+  <span class="ruby-identifier">colVal</span> = <span class="ruby-constant">Util</span>.<span class="ruby-identifier">getColorValue</span>(<span class="ruby-ivar">@color</span>, <span class="ruby-ivar">@colorAlpha</span>) ;
+  <span class="ruby-identifier">com</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">Command_SetVariable</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:poi</span>, <span class="ruby-value">:color</span>,
+                                             <span class="ruby-ivar">@id</span>, <span class="ruby-identifier">colVal</span>) ;
+  <span class="ruby-identifier">client</span>.<span class="ruby-identifier">execCommands</span>(<span class="ruby-identifier">com</span>) ;
+  <span class="ruby-identifier">com</span>.<span class="ruby-identifier">checkResultCodeIsOk</span>() ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-submitRemove" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">submitRemove</span><span
+            class="method-args">(client = nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>submit Remove command</p>
+          
+          
+
+          
+          <div class="method-source-code" id="submitRemove-source">
+            <pre><span class="ruby-comment"># File Traci/TraciPoi.rb, line 145</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">submitRemove</span>(<span class="ruby-identifier">client</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">client</span> = <span class="ruby-identifier">ensureTraciClient</span>(<span class="ruby-identifier">client</span>) ;
+  <span class="ruby-identifier">com</span> = <span class="ruby-identifier">traciCom_Remove</span>() ;
+  <span class="ruby-identifier">client</span>.<span class="ruby-identifier">execCommands</span>(<span class="ruby-identifier">com</span>) ;
+  <span class="ruby-identifier">com</span>.<span class="ruby-identifier">checkResultCodeIsOk</span>() ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-to_s" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">to_s</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p><a href="Poi.html#method-i-to_s">#to_s</a></p>
+          
+          
+
+          
+          <div class="method-source-code" id="to_s-source">
+            <pre><span class="ruby-comment"># File Traci/TraciPoi.rb, line 181</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">to_s</span>()
+  <span class="ruby-node">&quot;#&lt;#{self.class}: @id=#{@id}, @pos=#{@pos}&gt;&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-traciCom_Add" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">traciCom_Add</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>create Add command</p>
+          
+          
+
+          
+          <div class="method-source-code" id="traciCom_Add-source">
+            <pre><span class="ruby-comment"># File Traci/TraciPoi.rb, line 112</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">traciCom_Add</span>()
+  <span class="ruby-identifier">args</span> = { <span class="ruby-value">:type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@type</span>,
+           <span class="ruby-value">:color</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Util</span>.<span class="ruby-identifier">getColorValue</span>(<span class="ruby-ivar">@color</span>, <span class="ruby-ivar">@colorAlpha</span>),
+           <span class="ruby-value">:layer</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@layer</span>,
+           <span class="ruby-value">:position</span> =<span class="ruby-operator">&gt;</span> {<span class="ruby-value">:x</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@pos</span>.<span class="ruby-identifier">x</span>, <span class="ruby-value">:y</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@pos</span>.<span class="ruby-identifier">y</span>} } ;
+  <span class="ruby-identifier">com</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">Command_SetVariable</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:poi</span>, <span class="ruby-value">:addPoi</span>,
+                                             <span class="ruby-ivar">@id</span>, <span class="ruby-identifier">args</span>) ;
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">com</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-traciCom_Remove" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">traciCom_Remove</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>description of method initialize</p>
+<dl class="rdoc-list note-list"><dt><em>conf</em>
+<dd>
+<p>configulation</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="traciCom_Remove-source">
+            <pre><span class="ruby-comment"># File Traci/TraciPoi.rb, line 136</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">traciCom_Remove</span>()
+  <span class="ruby-identifier">com</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">Command_SetVariable</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:poi</span>, <span class="ruby-value">:removePoi</span>,
+                                             <span class="ruby-ivar">@id</span>, <span class="ruby-ivar">@layer</span>) ;
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">com</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

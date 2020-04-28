@@ -1,0 +1,1665 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Sumo::SumoMap - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script src="../js/jquery.js"></script>
+<script src="../js/darkfish.js"></script>
+
+<link href="../css/fonts.css" rel="stylesheet">
+<link href="../css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../table_of_contents.html#pages">Pages</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link">WithConfParam
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-dumpToFile">::dumpToFile</a>
+    
+    <li ><a href="#method-c-getAttrVal">::getAttrVal</a>
+    
+    <li class="calls-super" ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-c-restoreFromFile">::restoreFromFile</a>
+    
+    <li ><a href="#method-i-bbox">#bbox</a>
+    
+    <li ><a href="#method-i-buildRTrees">#buildRTrees</a>
+    
+    <li ><a href="#method-i-disposeMapComponents">#disposeMapComponents</a>
+    
+    <li ><a href="#method-i-dumpToFile">#dumpToFile</a>
+    
+    <li ><a href="#method-i-findNearestEdgeFrom">#findNearestEdgeFrom</a>
+    
+    <li ><a href="#method-i-findNearestEdgeFromLonLat">#findNearestEdgeFromLonLat</a>
+    
+    <li ><a href="#method-i-findNearestJunctionFrom">#findNearestJunctionFrom</a>
+    
+    <li ><a href="#method-i-findNearestJunctionFromLonLat">#findNearestJunctionFromLonLat</a>
+    
+    <li ><a href="#method-i-findNearestLaneFrom">#findNearestLaneFrom</a>
+    
+    <li ><a href="#method-i-findNearestLaneFromLonLat">#findNearestLaneFromLonLat</a>
+    
+    <li ><a href="#method-i-findNearestOnEdgeFrom">#findNearestOnEdgeFrom</a>
+    
+    <li ><a href="#method-i-findNearestOnEdgeFromLonLat">#findNearestOnEdgeFromLonLat</a>
+    
+    <li ><a href="#method-i-findNearestOnLaneFrom">#findNearestOnLaneFrom</a>
+    
+    <li ><a href="#method-i-findNearestOnLaneFromLonLat">#findNearestOnLaneFromLonLat</a>
+    
+    <li ><a href="#method-i-inspect">#inspect</a>
+    
+    <li ><a href="#method-i-inspect_original">#inspect_original</a>
+    
+    <li ><a href="#method-i-loadJsonFile">#loadJsonFile</a>
+    
+    <li ><a href="#method-i-loadXmlFile">#loadXmlFile</a>
+    
+    <li ><a href="#method-i-logging">#logging</a>
+    
+    <li ><a href="#method-i-saveJsonFile">#saveJsonFile</a>
+    
+    <li ><a href="#method-i-scanJson">#scanJson</a>
+    
+    <li ><a href="#method-i-setLogger">#setLogger</a>
+    
+    <li ><a href="#method-i-setup">#setup</a>
+    
+    <li ><a href="#method-i-toJson">#toJson</a>
+    
+    <li ><a href="#method-i-transformLonLat2XY">#transformLonLat2XY</a>
+    
+    <li ><a href="#method-i-transformXY2LonLat">#transformXY2LonLat</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Sumo::SumoMap">
+  <h1 id="class-Sumo::SumoMap" class="class">
+    class Sumo::SumoMap
+  </h1>
+
+  <section class="description">
+    
+<p>description of class Foo.</p>
+
+<p>description of class Foo.</p>
+
+<p>description of class Foo.</p>
+
+<p>description of class Foo.</p>
+
+<p>description of class Foo.</p>
+
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+    <section class="constants-list">
+      <header>
+        <h3>Constants</h3>
+      </header>
+      <dl>
+      
+        <dt id="DefaultConf">DefaultConf
+        
+        <dd><p>description of DefaultOptsions.</p>
+        
+      
+      </dl>
+    </section>
+    
+
+    
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-coordSystem" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">coordSystem</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>coordination system</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-edgeRTree" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">edgeRTree</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>edge rtree</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-edgeTable" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">edgeTable</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>edge table</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-junctionRTree" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">junctionRTree</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>junction rtree</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-junctionTable" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">junctionTable</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>junction table</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-laneRTree" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">laneRTree</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>lane rtree</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-laneTable" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">laneTable</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>lane table</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-logger" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">logger</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p><a href="SumoMap.html#attribute-i-logger">#logger</a></p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-originalIdTable" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">originalIdTable</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p><a href="SumoMap.html#attribute-i-originalIdTable">#originalIdTable</a> ;</p>
+        
+        </div>
+      </div>
+      
+    </section>
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-dumpToFile" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">dumpToFile</span><span
+            class="method-args">(map, file)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>dump <a href="SumoMap.html">SumoMap</a> to a file. (class method)</p>
+<dl class="rdoc-list note-list"><dt><em>map</em>
+<dd>
+<p>object to dump</p>
+</dd><dt><em>file</em>
+<dd>
+<p>dump file name.</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="dumpToFile-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMap.rb, line 320</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">dumpToFile</span>(<span class="ruby-identifier">map</span>, <span class="ruby-identifier">file</span>)
+  <span class="ruby-identifier">map</span>.<span class="ruby-identifier">dumpToFile</span>(<span class="ruby-identifier">file</span>) ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-getAttrVal" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getAttrVal</span><span
+            class="method-args">(xml, attr)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="getAttrVal-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMap.rb, line 55</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">getAttrVal</span>(<span class="ruby-identifier">xml</span>, <span class="ruby-identifier">attr</span>)
+  <span class="ruby-identifier">val</span> = <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">attribute</span>(<span class="ruby-identifier">attr</span>) ;
+  <span class="ruby-keyword">return</span> (<span class="ruby-identifier">val</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">val</span>.<span class="ruby-identifier">to_s</span>) ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(conf = {})</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>initialize</p>
+          
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              
+            </div>
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMap.rb, line 89</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">conf</span> = {})
+  <span class="ruby-keyword">super</span>(<span class="ruby-identifier">conf</span>) ;
+  <span class="ruby-identifier">setup</span>() ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-restoreFromFile" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">restoreFromFile</span><span
+            class="method-args">(file)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>restore <a href="SumoMap.html">SumoMap</a> from a file. (class method)</p>
+<dl class="rdoc-list note-list"><dt><em>file</em>
+<dd>
+<p>dump file name.</p>
+</dd><dt><strong>return</strong>
+<dd>
+<p>a <a href="SumoMap.html">SumoMap</a></p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="restoreFromFile-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMap.rb, line 330</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">restoreFromFile</span>(<span class="ruby-identifier">file</span>)
+  <span class="ruby-identifier">open</span>(<span class="ruby-identifier">file</span>,<span class="ruby-string">&quot;r&quot;</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">strm</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">map</span> = <span class="ruby-constant">Marshal</span><span class="ruby-operator">::</span><span class="ruby-identifier">restore</span>(<span class="ruby-identifier">strm</span>) ;
+    <span class="ruby-keyword">if</span>(<span class="ruby-operator">!</span><span class="ruby-identifier">map</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-keyword">self</span>)) <span class="ruby-keyword">then</span>
+      <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;not a SumoMap dump file:&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">file</span> ;
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">map</span> ;
+  }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-bbox" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">bbox</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>get <a href="SumoMap.html#method-i-bbox">#bbox</a> value of the map.</p>
+<dl class="rdoc-list note-list"><dt>*return_ 
+<dd>
+<p>Box instance</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="bbox-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMap.rb, line 480</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">bbox</span>()
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@coordSystem</span>.<span class="ruby-identifier">bboxXY</span>() ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-buildRTrees" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">buildRTrees</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>build rtree</p>
+<dl class="rdoc-list note-list"><dt><strong>return</strong>
+<dd>
+<p>self</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="buildRTrees-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMap.rb, line 171</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">buildRTrees</span>()
+  <span class="ruby-identifier">logging</span>(<span class="ruby-value">:info</span>, <span class="ruby-string">&quot;building Rtrees.&quot;</span>) ;
+  <span class="ruby-comment">## edge</span>
+  <span class="ruby-identifier">nEdge</span> = <span class="ruby-ivar">@edgeTable</span>.<span class="ruby-identifier">size</span>() ;
+  <span class="ruby-identifier">cEdge</span> = <span class="ruby-value">0</span> ;
+  <span class="ruby-identifier">logging</span>(<span class="ruby-value">:info</span>, <span class="ruby-string">&quot;building edge RTree: total=&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">nEdge</span>.<span class="ruby-identifier">to_s</span>) ;
+  <span class="ruby-ivar">@edgeRTree</span> = <span class="ruby-constant">Geo2D</span><span class="ruby-operator">::</span><span class="ruby-constant">RTree</span>.<span class="ruby-identifier">new</span>() ;
+  <span class="ruby-ivar">@edgeTable</span>.<span class="ruby-identifier">values</span>.<span class="ruby-identifier">shuffle</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">edge</span><span class="ruby-operator">|</span>
+    <span class="ruby-ivar">@edgeRTree</span>.<span class="ruby-identifier">insert</span>(<span class="ruby-identifier">edge</span>) ;
+    <span class="ruby-identifier">cEdge</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span> ;
+    <span class="ruby-identifier">logging</span>(<span class="ruby-value">:info</span>, <span class="ruby-string">&quot;insert edges:&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">cEdge</span>.<span class="ruby-identifier">to_s</span>) <span class="ruby-keyword">if</span>(<span class="ruby-identifier">cEdge</span> <span class="ruby-operator">%</span> <span class="ruby-value">2000</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>) ;
+  }
+
+  <span class="ruby-comment">## lane</span>
+  <span class="ruby-identifier">nLane</span> = <span class="ruby-ivar">@laneTable</span>.<span class="ruby-identifier">size</span>() ;
+  <span class="ruby-identifier">cLane</span> = <span class="ruby-value">0</span> ;
+  <span class="ruby-identifier">logging</span>(<span class="ruby-value">:info</span>, <span class="ruby-string">&quot;building lane RTree: total=&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">nLane</span>.<span class="ruby-identifier">to_s</span>) ;
+  <span class="ruby-ivar">@laneRTree</span> = <span class="ruby-constant">Geo2D</span><span class="ruby-operator">::</span><span class="ruby-constant">RTree</span>.<span class="ruby-identifier">new</span>() ;
+  <span class="ruby-ivar">@laneTable</span>.<span class="ruby-identifier">values</span>.<span class="ruby-identifier">shuffle</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">lane</span><span class="ruby-operator">|</span>
+    <span class="ruby-ivar">@laneRTree</span>.<span class="ruby-identifier">insert</span>(<span class="ruby-identifier">lane</span>) ;
+    <span class="ruby-identifier">cLane</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span> ;
+    <span class="ruby-identifier">logging</span>(<span class="ruby-value">:info</span>, <span class="ruby-string">&quot;insert lanes:&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">cLane</span>.<span class="ruby-identifier">to_s</span>) <span class="ruby-keyword">if</span>(<span class="ruby-identifier">cLane</span> <span class="ruby-operator">%</span> <span class="ruby-value">2000</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>) ;
+  }
+  
+  <span class="ruby-comment">## junction</span>
+  <span class="ruby-identifier">nJunc</span> = <span class="ruby-ivar">@junctionTable</span>.<span class="ruby-identifier">size</span>() ;
+  <span class="ruby-identifier">cJunc</span> = <span class="ruby-value">0</span> ;
+  <span class="ruby-identifier">logging</span>(<span class="ruby-value">:info</span>, <span class="ruby-string">&quot;building junction RTree: total=&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">nJunc</span>.<span class="ruby-identifier">to_s</span>) ;
+  <span class="ruby-ivar">@junctionRTree</span> = <span class="ruby-constant">Geo2D</span><span class="ruby-operator">::</span><span class="ruby-constant">RTree</span>.<span class="ruby-identifier">new</span>() ;
+  <span class="ruby-ivar">@junctionTable</span>.<span class="ruby-identifier">values</span>.<span class="ruby-identifier">shuffle</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">junction</span><span class="ruby-operator">|</span>
+    <span class="ruby-ivar">@junctionRTree</span>.<span class="ruby-identifier">insert</span>(<span class="ruby-identifier">junction</span>) ;
+    <span class="ruby-identifier">cJunc</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span> ;
+    <span class="ruby-identifier">logging</span>(<span class="ruby-value">:info</span>, <span class="ruby-string">&quot;insert junctions:&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">cJunc</span>.<span class="ruby-identifier">to_s</span>) <span class="ruby-keyword">if</span>(<span class="ruby-identifier">cJunc</span> <span class="ruby-operator">%</span> <span class="ruby-value">5000</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>) ;
+  }
+
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-disposeMapComponents" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">disposeMapComponents</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>dispose and reallange parts of the network.</p>
+<dl class="rdoc-list note-list"><dt><strong>return</strong>
+<dd>
+<p>self</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="disposeMapComponents-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMap.rb, line 143</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">disposeMapComponents</span>()
+  <span class="ruby-ivar">@edgeTable</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">id</span>, <span class="ruby-identifier">edge</span><span class="ruby-operator">|</span>
+    <span class="ruby-comment">## construct lane table</span>
+    <span class="ruby-identifier">edge</span>.<span class="ruby-identifier">laneList</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">lane</span><span class="ruby-operator">|</span>
+      <span class="ruby-ivar">@laneTable</span>[<span class="ruby-identifier">lane</span>.<span class="ruby-identifier">id</span>] = <span class="ruby-identifier">lane</span> ;
+    }
+
+    <span class="ruby-comment">## registr originalId table</span>
+    <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@originalIdTable</span>[<span class="ruby-identifier">edge</span>.<span class="ruby-identifier">originalId</span>].<span class="ruby-identifier">nil?</span>) <span class="ruby-keyword">then</span>
+      <span class="ruby-ivar">@originalIdTable</span>[<span class="ruby-identifier">edge</span>.<span class="ruby-identifier">originalId</span>] = [] ;
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-ivar">@originalIdTable</span>[<span class="ruby-identifier">edge</span>.<span class="ruby-identifier">originalId</span>].<span class="ruby-identifier">push</span>(<span class="ruby-identifier">edge</span>) ;
+
+    <span class="ruby-comment">## link junctions</span>
+    <span class="ruby-identifier">junctionFrom</span> = <span class="ruby-ivar">@junctionTable</span>[<span class="ruby-identifier">edge</span>.<span class="ruby-identifier">fromId</span>] ;
+    <span class="ruby-identifier">junctionTo</span> = <span class="ruby-ivar">@junctionTable</span>[<span class="ruby-identifier">edge</span>.<span class="ruby-identifier">toId</span>] ;
+    <span class="ruby-identifier">edge</span>.<span class="ruby-identifier">from</span> = <span class="ruby-identifier">junctionFrom</span> ;
+    <span class="ruby-identifier">edge</span>.<span class="ruby-identifier">to</span> = <span class="ruby-identifier">junctionTo</span> ;
+    <span class="ruby-identifier">junctionFrom</span>.<span class="ruby-identifier">edgeIdListOut</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">edge</span>.<span class="ruby-identifier">id</span>) ;
+    <span class="ruby-identifier">junctionTo</span>.<span class="ruby-identifier">edgeIdListIn</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">edge</span>.<span class="ruby-identifier">id</span>) ;
+  }
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-dumpToFile" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">dumpToFile</span><span
+            class="method-args">(file)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>dump <a href="SumoMap.html">SumoMap</a> to a file.</p>
+<dl class="rdoc-list note-list"><dt><em>file</em>
+<dd>
+<p>dump file name.</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="dumpToFile-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMap.rb, line 308</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">dumpToFile</span>(<span class="ruby-identifier">file</span>)
+  <span class="ruby-identifier">open</span>(<span class="ruby-identifier">file</span>,<span class="ruby-string">&quot;w&quot;</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">strm</span><span class="ruby-operator">|</span>
+    <span class="ruby-constant">Marshal</span><span class="ruby-operator">::</span><span class="ruby-identifier">dump</span>(<span class="ruby-keyword">self</span>, <span class="ruby-identifier">strm</span>) ;
+  }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-findNearestEdgeFrom" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">findNearestEdgeFrom</span><span
+            class="method-args">(reference)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>find nearest edge from a reference geo object</p>
+<dl class="rdoc-list note-list"><dt><em>reference</em> 
+<dd>
+<p><a href="../Geo2D.html">Geo2D</a> objects (Point, LineString, Box, …)</p>
+</dd><dt>*return_ 
+<dd>
+<p>an edge</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="findNearestEdgeFrom-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMap.rb, line 365</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">findNearestEdgeFrom</span>(<span class="ruby-identifier">reference</span>)
+  <span class="ruby-ivar">@edgeRTree</span>.<span class="ruby-identifier">findNearestFrom</span>(<span class="ruby-identifier">reference</span>) ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-findNearestEdgeFromLonLat" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">findNearestEdgeFromLonLat</span><span
+            class="method-args">(reference)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>find nearest edge from a reference geo object</p>
+<dl class="rdoc-list note-list"><dt><em>reference</em> 
+<dd>
+<p>lon-lat by Geo2D::Point.</p>
+</dd><dt>*return_ 
+<dd>
+<p>an edge</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="findNearestEdgeFromLonLat-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMap.rb, line 392</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">findNearestEdgeFromLonLat</span>(<span class="ruby-identifier">reference</span>)
+  <span class="ruby-identifier">ref</span> = <span class="ruby-identifier">transformLonLat2XY</span>(<span class="ruby-identifier">reference</span>)
+  <span class="ruby-identifier">p</span> [<span class="ruby-identifier">reference</span>, <span class="ruby-identifier">ref</span>] ;
+  <span class="ruby-identifier">findNearestEdgeFrom</span>(<span class="ruby-identifier">ref</span>) ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-findNearestJunctionFrom" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">findNearestJunctionFrom</span><span
+            class="method-args">(reference)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>find nearest junction from a reference geo object</p>
+<dl class="rdoc-list note-list"><dt><em>reference</em> 
+<dd>
+<p><a href="../Geo2D.html">Geo2D</a> objects (Point, LineString, Box, …)</p>
+</dd><dt>*return_ 
+<dd>
+<p>a junction</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="findNearestJunctionFrom-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMap.rb, line 383</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">findNearestJunctionFrom</span>(<span class="ruby-identifier">reference</span>)
+  <span class="ruby-ivar">@junctionRTree</span>.<span class="ruby-identifier">findNearestFrom</span>(<span class="ruby-identifier">reference</span>) ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-findNearestJunctionFromLonLat" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">findNearestJunctionFromLonLat</span><span
+            class="method-args">(reference)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>find nearest junction from a reference geo object</p>
+<dl class="rdoc-list note-list"><dt><em>reference</em> 
+<dd>
+<p>lon-lat by Geo2D::Point.</p>
+</dd><dt>*return_ 
+<dd>
+<p>a junction</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="findNearestJunctionFromLonLat-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMap.rb, line 413</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">findNearestJunctionFromLonLat</span>(<span class="ruby-identifier">reference</span>)
+  <span class="ruby-identifier">ref</span> = <span class="ruby-identifier">transformLonLat2XY</span>(<span class="ruby-identifier">reference</span>)
+  <span class="ruby-identifier">findNearestJunctionFrom</span>(<span class="ruby-identifier">ref</span>) ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-findNearestLaneFrom" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">findNearestLaneFrom</span><span
+            class="method-args">(reference)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>find nearest lane from a reference geo object</p>
+<dl class="rdoc-list note-list"><dt><em>reference</em> 
+<dd>
+<p><a href="../Geo2D.html">Geo2D</a> objects (Point, LineString, Box, …)</p>
+</dd><dt>*return_ 
+<dd>
+<p>a lane</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="findNearestLaneFrom-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMap.rb, line 374</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">findNearestLaneFrom</span>(<span class="ruby-identifier">reference</span>)
+  <span class="ruby-ivar">@laneRTree</span>.<span class="ruby-identifier">findNearestFrom</span>(<span class="ruby-identifier">reference</span>) ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-findNearestLaneFromLonLat" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">findNearestLaneFromLonLat</span><span
+            class="method-args">(reference)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>find nearest lane from a reference geo object</p>
+<dl class="rdoc-list note-list"><dt><em>reference</em> 
+<dd>
+<p>lon-lat by Geo2D::Point.</p>
+</dd><dt>*return_ 
+<dd>
+<p>a lane</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="findNearestLaneFromLonLat-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMap.rb, line 403</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">findNearestLaneFromLonLat</span>(<span class="ruby-identifier">reference</span>)
+  <span class="ruby-identifier">ref</span> = <span class="ruby-identifier">transformLonLat2XY</span>(<span class="ruby-identifier">reference</span>)
+  <span class="ruby-identifier">findNearestLaneFrom</span>(<span class="ruby-identifier">ref</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-findNearestOnEdgeFrom" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">findNearestOnEdgeFrom</span><span
+            class="method-args">(reference)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>find nearest edge from a reference geo object</p>
+<dl class="rdoc-list note-list"><dt><em>reference</em> 
+<dd>
+<p><a href="../Geo2D.html">Geo2D</a> objects (Point, LineString, Box, …)</p>
+</dd><dt>*return_ 
+<dd><dl class="rdoc-list label-list"><dt>edge, spanOnEdge, footPoint, distance
+<dd></dd></dl>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="findNearestOnEdgeFrom-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMap.rb, line 423</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">findNearestOnEdgeFrom</span>(<span class="ruby-identifier">reference</span>)
+  <span class="ruby-identifier">edge</span> = <span class="ruby-identifier">findNearestEdgeFrom</span>(<span class="ruby-identifier">reference</span>) ;
+  <span class="ruby-identifier">span</span> = <span class="ruby-identifier">edge</span>.<span class="ruby-identifier">footPointSpanFrom</span>(<span class="ruby-identifier">reference</span>) ;
+  <span class="ruby-identifier">foot</span> = <span class="ruby-identifier">edge</span>.<span class="ruby-identifier">footPointFrom</span>(<span class="ruby-identifier">reference</span>) ;
+  <span class="ruby-identifier">dist</span> = <span class="ruby-identifier">edge</span>.<span class="ruby-identifier">shape</span>.<span class="ruby-identifier">distanceFrom</span>(<span class="ruby-identifier">reference</span>) ;
+
+  <span class="ruby-keyword">return</span> [<span class="ruby-identifier">edge</span>, <span class="ruby-identifier">span</span>, <span class="ruby-identifier">foot</span>, <span class="ruby-identifier">dist</span>] ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-findNearestOnEdgeFromLonLat" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">findNearestOnEdgeFromLonLat</span><span
+            class="method-args">(reference)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>find nearest edge from a reference geo object</p>
+<dl class="rdoc-list note-list"><dt><em>reference</em> 
+<dd>
+<p><a href="../Geo2D.html">Geo2D</a> objects (Point, LineString, Box, …)</p>
+</dd><dt>*return_ 
+<dd><dl class="rdoc-list label-list"><dt>edge, spanOnEdge, footPoint, distance
+<dd></dd></dl>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="findNearestOnEdgeFromLonLat-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMap.rb, line 451</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">findNearestOnEdgeFromLonLat</span>(<span class="ruby-identifier">reference</span>)
+  <span class="ruby-identifier">ref</span> = <span class="ruby-identifier">transformLonLat2XY</span>(<span class="ruby-identifier">reference</span>)
+  <span class="ruby-identifier">edge</span> = <span class="ruby-identifier">findNearestEdgeFrom</span>(<span class="ruby-identifier">ref</span>) ;
+  <span class="ruby-identifier">span</span> = <span class="ruby-identifier">edge</span>.<span class="ruby-identifier">footPointSpanFrom</span>(<span class="ruby-identifier">ref</span>)
+  <span class="ruby-identifier">foot</span> = <span class="ruby-identifier">edge</span>.<span class="ruby-identifier">footPointFrom</span>(<span class="ruby-identifier">ref</span>) ;
+  <span class="ruby-identifier">dist</span> = <span class="ruby-identifier">edge</span>.<span class="ruby-identifier">shape</span>.<span class="ruby-identifier">distanceFrom</span>(<span class="ruby-identifier">ref</span>) ;
+
+  <span class="ruby-keyword">return</span> [<span class="ruby-identifier">edge</span>, <span class="ruby-identifier">span</span>, <span class="ruby-identifier">foot</span>, <span class="ruby-identifier">dist</span>] ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-findNearestOnLaneFrom" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">findNearestOnLaneFrom</span><span
+            class="method-args">(reference)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>find nearest edge from a reference geo object</p>
+<dl class="rdoc-list note-list"><dt><em>reference</em> 
+<dd>
+<p><a href="../Geo2D.html">Geo2D</a> objects (Point, LineString, Box, …)</p>
+</dd><dt>*return_ 
+<dd><dl class="rdoc-list label-list"><dt>edge, spanOnEdge, footPoint, distance
+<dd></dd></dl>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="findNearestOnLaneFrom-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMap.rb, line 437</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">findNearestOnLaneFrom</span>(<span class="ruby-identifier">reference</span>)
+  <span class="ruby-identifier">lane</span> = <span class="ruby-identifier">findNearestLaneFrom</span>(<span class="ruby-identifier">reference</span>) ;
+  <span class="ruby-identifier">span</span> = <span class="ruby-identifier">lane</span>.<span class="ruby-identifier">footPointSpanFrom</span>(<span class="ruby-identifier">reference</span>) ;
+  <span class="ruby-identifier">foot</span> = <span class="ruby-identifier">lane</span>.<span class="ruby-identifier">footPointFrom</span>(<span class="ruby-identifier">reference</span>) ;
+  <span class="ruby-identifier">dist</span> = <span class="ruby-identifier">lane</span>.<span class="ruby-identifier">shape</span>.<span class="ruby-identifier">distanceFrom</span>(<span class="ruby-identifier">reference</span>) ;
+
+  <span class="ruby-keyword">return</span> [<span class="ruby-identifier">lane</span>, <span class="ruby-identifier">span</span>, <span class="ruby-identifier">foot</span>, <span class="ruby-identifier">dist</span>] ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-findNearestOnLaneFromLonLat" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">findNearestOnLaneFromLonLat</span><span
+            class="method-args">(reference)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>find nearest edge from a reference geo object</p>
+<dl class="rdoc-list note-list"><dt><em>reference</em> 
+<dd>
+<p><a href="../Geo2D.html">Geo2D</a> objects (Point, LineString, Box, …)</p>
+</dd><dt>*return_ 
+<dd><dl class="rdoc-list label-list"><dt>edge, spanOnEdge, footPoint, distance
+<dd></dd></dl>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="findNearestOnLaneFromLonLat-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMap.rb, line 466</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">findNearestOnLaneFromLonLat</span>(<span class="ruby-identifier">reference</span>)
+  <span class="ruby-identifier">ref</span> = <span class="ruby-identifier">transformLonLat2XY</span>(<span class="ruby-identifier">reference</span>) ;
+  <span class="ruby-identifier">lane</span> = <span class="ruby-identifier">findNearestLaneFrom</span>(<span class="ruby-identifier">ref</span>) ;
+  <span class="ruby-identifier">span</span> = <span class="ruby-identifier">lane</span>.<span class="ruby-identifier">footPointSpanFrom</span>(<span class="ruby-identifier">ref</span>) ;
+  <span class="ruby-identifier">foot</span> = <span class="ruby-identifier">lane</span>.<span class="ruby-identifier">footPointFrom</span>(<span class="ruby-identifier">ref</span>) ;
+  <span class="ruby-identifier">dist</span> = <span class="ruby-identifier">lane</span>.<span class="ruby-identifier">shape</span>.<span class="ruby-identifier">distanceFrom</span>(<span class="ruby-identifier">ref</span>) ;
+
+  <span class="ruby-keyword">return</span> [<span class="ruby-identifier">lane</span>, <span class="ruby-identifier">span</span>, <span class="ruby-identifier">foot</span>, <span class="ruby-identifier">dist</span>] ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-inspect" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">inspect</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="inspect-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMap.rb, line 510</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">inspect</span>()
+  <span class="ruby-identifier">dummy</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">new</span>() ;
+  <span class="ruby-identifier">dummy</span>.<span class="ruby-identifier">coordSystem</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">coordSystem</span> ;
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">dummy</span>.<span class="ruby-identifier">inspect_original</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+        <div class="aliases">
+          Also aliased as: <a href="SumoMap.html#method-i-inspect_original">inspect_original</a>
+        </div>
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-inspect_original" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">inspect_original</span><span
+            class="method-args">()</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>re-define <a href="SumoMap.html#method-i-inspect">#inspect</a></p>
+          
+          
+
+          
+        </div>
+
+        
+
+        
+        <div class="aliases">
+          Alias for: <a href="SumoMap.html#method-i-inspect">inspect</a>
+        </div>
+        
+      </div>
+
+    
+      <div id="method-i-loadJsonFile" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">loadJsonFile</span><span
+            class="method-args">(jsonFile, vehicleType = nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>load Json file</p>
+<dl class="rdoc-list note-list"><dt><em>jsonFile</em> 
+<dd>
+<p>JSON for one <a href="SumoMap/Edge.html">Edge</a>.</p>
+</dd><dt><em>vehicleType</em> 
+<dd>
+<p>if non-nil, scan only permitted edge for the type.</p>
+</dd></dl>
+
+<pre class="ruby"><span class="ruby-identifier">typical</span> <span class="ruby-identifier">value</span> <span class="ruby-identifier">is</span> :<span class="ruby-identifier">private</span> <span class="ruby-keyword">or</span> :<span class="ruby-identifier">taxi</span> <span class="ruby-keyword">or</span> :<span class="ruby-identifier">bus</span> <span class="ruby-keyword">or</span> :<span class="ruby-identifier">delivery</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="loadJsonFile-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMap.rb, line 292</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">loadJsonFile</span>(<span class="ruby-identifier">jsonFile</span>, <span class="ruby-identifier">vehicleType</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">open</span>(<span class="ruby-identifier">jsonFile</span>,<span class="ruby-string">&#39;r&#39;</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">strm</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">logging</span>(<span class="ruby-value">:info</span>, <span class="ruby-string">&quot;loading map file (json):&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">jsonFile</span>) ;
+    <span class="ruby-identifier">json</span> = <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">load</span>(<span class="ruby-identifier">strm</span>) ;
+    <span class="ruby-identifier">logging</span>(<span class="ruby-value">:info</span>, <span class="ruby-string">&quot;scan json map&quot;</span>) ;
+    <span class="ruby-identifier">scanJson</span>(<span class="ruby-identifier">json</span>, <span class="ruby-identifier">vehicleType</span>) ;
+  }
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-loadXmlFile" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">loadXmlFile</span><span
+            class="method-args">(netFile, vehicleType = nil, excludeTypeList = [])</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>load XML file.</p>
+<dl class="rdoc-list note-list"><dt><em>netFile</em>
+<dd>
+<p>MapNet XML file.</p>
+</dd><dt><em>vehicleType</em> 
+<dd>
+<p>if non-nil, scan only permitted edge for the type.</p>
+</dd></dl>
+
+<pre class="ruby"><span class="ruby-identifier">typical</span> <span class="ruby-identifier">value</span> <span class="ruby-identifier">is</span> :<span class="ruby-identifier">private</span> <span class="ruby-keyword">or</span> :<span class="ruby-identifier">taxi</span> <span class="ruby-keyword">or</span> :<span class="ruby-identifier">bus</span> <span class="ruby-keyword">or</span> :<span class="ruby-identifier">delivery</span>
+</pre>
+<dl class="rdoc-list note-list"><dt><strong>return</strong>
+<dd></dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="loadXmlFile-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMap.rb, line 111</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">loadXmlFile</span>(<span class="ruby-identifier">netFile</span>, <span class="ruby-identifier">vehicleType</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">excludeTypeList</span> = [])
+  <span class="ruby-identifier">fparser</span> = <span class="ruby-constant">ItkXml</span><span class="ruby-operator">::</span><span class="ruby-constant">FilterParser</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">netFile</span>)) ;
+
+  <span class="ruby-identifier">fparser</span>.<span class="ruby-identifier">listenQName</span>(<span class="ruby-string">&quot;location&quot;</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">xml</span>, <span class="ruby-identifier">str</span><span class="ruby-operator">|</span>
+    <span class="ruby-ivar">@coordSystem</span> = <span class="ruby-constant">CoordSystem</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml</span>) ;
+  }
+  
+  <span class="ruby-identifier">fparser</span>.<span class="ruby-identifier">listenQName</span>(<span class="ruby-string">&quot;edge&quot;</span>, {<span class="ruby-string">&#39;type&#39;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-regexp">//</span>}){<span class="ruby-operator">|</span><span class="ruby-identifier">xml</span>, <span class="ruby-identifier">str</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">edge</span> = <span class="ruby-constant">Edge</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml</span>) ;
+    <span class="ruby-comment">#non-permitted type is not scanned.</span>
+    <span class="ruby-keyword">if</span>((<span class="ruby-identifier">vehicleType</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span><span class="ruby-identifier">edge</span>.<span class="ruby-identifier">checkPermissionFor</span>(<span class="ruby-identifier">vehicleType</span>)) <span class="ruby-operator">&amp;&amp;</span>
+       (<span class="ruby-operator">!</span><span class="ruby-identifier">edge</span>.<span class="ruby-identifier">shouldBeExcluded</span>(<span class="ruby-identifier">excludeTypeList</span>))) <span class="ruby-keyword">then</span>
+      <span class="ruby-ivar">@edgeTable</span>[<span class="ruby-identifier">edge</span>.<span class="ruby-identifier">id</span>] = <span class="ruby-identifier">edge</span> ;
+    <span class="ruby-keyword">end</span>
+  }
+  
+  <span class="ruby-identifier">fparser</span>.<span class="ruby-identifier">listenQName</span>(<span class="ruby-string">&quot;junction&quot;</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">xml</span>, <span class="ruby-identifier">str</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">junction</span> = <span class="ruby-constant">Junction</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml</span>) ;
+    <span class="ruby-ivar">@junctionTable</span>[<span class="ruby-identifier">junction</span>.<span class="ruby-identifier">id</span>] = <span class="ruby-identifier">junction</span> ;
+  }
+  
+  <span class="ruby-identifier">fparser</span>.<span class="ruby-identifier">parse</span> ;
+
+  <span class="ruby-identifier">disposeMapComponents</span>() ;
+  
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-logging" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">logging</span><span
+            class="method-args">(level, *messageList, &body)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p><a href="SumoMap.html#method-i-logging">#logging</a></p>
+          
+          
+
+          
+          <div class="method-source-code" id="logging-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMap.rb, line 498</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">logging</span>(<span class="ruby-identifier">level</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">messageList</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">body</span>)
+  <span class="ruby-keyword">if</span>(<span class="ruby-operator">!</span><span class="ruby-ivar">@logger</span>.<span class="ruby-identifier">nil?</span>) <span class="ruby-keyword">then</span>
+    <span class="ruby-ivar">@logger</span>.<span class="ruby-identifier">logging</span>(<span class="ruby-identifier">level</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">messageList</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">body</span>) ;
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-constant">STDERR</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">level</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">messageList</span> ;
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-saveJsonFile" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">saveJsonFile</span><span
+            class="method-args">(jsonFile, prettyP = true)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>save to Json file</p>
+<dl class="rdoc-list note-list"><dt><em>jsonFile</em> 
+<dd>
+<p>JSON for one <a href="SumoMap/Edge.html">Edge</a>.</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="saveJsonFile-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMap.rb, line 239</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">saveJsonFile</span>(<span class="ruby-identifier">jsonFile</span>, <span class="ruby-identifier">prettyP</span> = <span class="ruby-keyword">true</span>)
+  <span class="ruby-identifier">json</span> = <span class="ruby-identifier">toJson</span>() ;
+  <span class="ruby-identifier">jsonStr</span> = (<span class="ruby-identifier">prettyP</span> <span class="ruby-operator">?</span>
+               <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">pretty_generate</span>(<span class="ruby-identifier">json</span>) <span class="ruby-operator">:</span>
+               <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">generate</span>(<span class="ruby-identifier">json</span>)) ;
+  <span class="ruby-identifier">open</span>(<span class="ruby-identifier">jsonFile</span>,<span class="ruby-string">&quot;w&quot;</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">strm</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">strm</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">jsonStr</span> ;
+  }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-scanJson" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">scanJson</span><span
+            class="method-args">(json, vehicleType = nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>scan JSON object (hash)</p>
+<dl class="rdoc-list note-list"><dt><em>vehicleType</em> 
+<dd>
+<p>if non-nil, scan only permitted edge for the type.</p>
+</dd></dl>
+
+<pre class="ruby"><span class="ruby-identifier">typical</span> <span class="ruby-identifier">value</span> <span class="ruby-identifier">is</span> :<span class="ruby-identifier">private</span> <span class="ruby-keyword">or</span> :<span class="ruby-identifier">taxi</span> <span class="ruby-keyword">or</span> :<span class="ruby-identifier">bus</span> <span class="ruby-keyword">or</span> :<span class="ruby-identifier">delivery</span>
+</pre>
+<dl class="rdoc-list note-list"><dt><em>json</em> 
+<dd>
+<p>JSON for one <a href="SumoMap/Edge.html">Edge</a>.</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="scanJson-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMap.rb, line 255</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">scanJson</span>(<span class="ruby-identifier">json</span>, <span class="ruby-identifier">vehicleType</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-comment">## coord system</span>
+  <span class="ruby-ivar">@coordSystem</span> = <span class="ruby-constant">CoordSystem</span>.<span class="ruby-identifier">new</span>() ;
+  <span class="ruby-ivar">@coordSystem</span>.<span class="ruby-identifier">scanJson</span>(<span class="ruby-identifier">json</span>[<span class="ruby-string">&#39;location&#39;</span>]) ;
+  
+  <span class="ruby-comment">## scan edge</span>
+  <span class="ruby-identifier">_edgeList</span> = <span class="ruby-identifier">json</span>[<span class="ruby-string">&#39;edgeList&#39;</span>] ;
+  <span class="ruby-ivar">@edgeTable</span> = {} ;
+  <span class="ruby-identifier">_edgeList</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">edgeJson</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">edge</span> = <span class="ruby-constant">Edge</span>.<span class="ruby-identifier">new</span>() ;
+    <span class="ruby-identifier">edge</span>.<span class="ruby-identifier">scanJson</span>(<span class="ruby-identifier">edgeJson</span>) ;
+    <span class="ruby-comment">#non-permitted type is not scanned.</span>
+    <span class="ruby-keyword">if</span>(<span class="ruby-identifier">vehicleType</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">edge</span>.<span class="ruby-identifier">checkPermissionFor</span>(<span class="ruby-identifier">vehicleType</span>)) <span class="ruby-keyword">then</span>
+      <span class="ruby-ivar">@edgeTable</span>[<span class="ruby-identifier">edge</span>.<span class="ruby-identifier">id</span>] = <span class="ruby-identifier">edge</span> ;
+    <span class="ruby-keyword">end</span>
+  }
+
+  <span class="ruby-comment">## scan junction</span>
+  <span class="ruby-identifier">_junctionList</span> = <span class="ruby-identifier">json</span>[<span class="ruby-string">&#39;junctionList&#39;</span>] ;
+  <span class="ruby-ivar">@junctionTable</span> = {} ;
+  <span class="ruby-identifier">_junctionList</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">junctionJson</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">junction</span> = <span class="ruby-constant">Junction</span>.<span class="ruby-identifier">new</span>() ;
+    <span class="ruby-identifier">junction</span>.<span class="ruby-identifier">scanJson</span>(<span class="ruby-identifier">junctionJson</span>) ;
+    <span class="ruby-ivar">@junctionTable</span>[<span class="ruby-identifier">junction</span>.<span class="ruby-identifier">id</span>] = <span class="ruby-identifier">junction</span> ;
+  }
+  
+  <span class="ruby-identifier">disposeMapComponents</span>() ;
+  
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-setLogger" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">setLogger</span><span
+            class="method-args">(_logger = nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>set <a href="SumoMap.html#attribute-i-logger">#logger</a></p>
+          
+          
+
+          
+          <div class="method-source-code" id="setLogger-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMap.rb, line 487</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">setLogger</span>(<span class="ruby-identifier">_logger</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-keyword">if</span>(<span class="ruby-identifier">_logger</span>.<span class="ruby-identifier">nil?</span>) <span class="ruby-keyword">then</span>
+    <span class="ruby-ivar">@logger</span> = <span class="ruby-constant">Itk</span><span class="ruby-operator">::</span><span class="ruby-constant">ExpLogger</span>.<span class="ruby-identifier">new</span>() ;
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-ivar">@logger</span> = <span class="ruby-identifier">_logger</span> ;
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-setup" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">setup</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p><a href="SumoMap.html#method-i-setup">#setup</a></p>
+          
+          
+
+          
+          <div class="method-source-code" id="setup-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMap.rb, line 97</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">setup</span>()
+  <span class="ruby-ivar">@edgeTable</span> = {} ;
+  <span class="ruby-ivar">@laneTable</span> = {} ;
+  <span class="ruby-ivar">@junctionTable</span> = {} ;
+  <span class="ruby-ivar">@originalIdTable</span> = {} ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-toJson" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">toJson</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>convert to JSON object (hash)</p>
+          
+          
+
+          
+          <div class="method-source-code" id="toJson-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMap.rb, line 212</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">toJson</span>()
+  <span class="ruby-identifier">json</span> = { <span class="ruby-string">&#39;class&#39;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">to_s</span> } ;
+
+  <span class="ruby-comment">## coord system</span>
+  <span class="ruby-identifier">json</span>[<span class="ruby-string">&#39;location&#39;</span>] = <span class="ruby-ivar">@coordSystem</span>.<span class="ruby-identifier">toJson</span>() ;
+
+  <span class="ruby-comment">## edge list</span>
+  <span class="ruby-identifier">_edgeList</span> = [] ;
+  <span class="ruby-ivar">@edgeTable</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">id</span>, <span class="ruby-identifier">edge</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">_edgeList</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">edge</span>.<span class="ruby-identifier">toJson</span>()) ;
+  }
+  <span class="ruby-identifier">json</span>[<span class="ruby-string">&#39;edgeList&#39;</span>] = <span class="ruby-identifier">_edgeList</span> ;
+
+  <span class="ruby-comment">## junction list</span>
+  <span class="ruby-identifier">_junctionList</span> = [] ;
+  <span class="ruby-ivar">@junctionTable</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">id</span>, <span class="ruby-identifier">junction</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">_junctionList</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">junction</span>.<span class="ruby-identifier">toJson</span>()) ;
+  }
+  <span class="ruby-identifier">json</span>[<span class="ruby-string">&#39;junctionList&#39;</span>] = <span class="ruby-identifier">_junctionList</span> ;
+
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">json</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-transformLonLat2XY" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">transformLonLat2XY</span><span
+            class="method-args">(lonlat)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>transpormation of coordinate system from LonLat to X-Y</p>
+<dl class="rdoc-list note-list"><dt><em>lonlat</em> 
+<dd>
+<p>longitude and latitude in Geo2D::Point object</p>
+</dd><dt>*return_ 
+<dd>
+<p>X-Y position in Geo2D::Point object</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="transformLonLat2XY-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMap.rb, line 347</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">transformLonLat2XY</span>(<span class="ruby-identifier">lonlat</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@coordSystem</span>.<span class="ruby-identifier">transformLonLat2XY</span>(<span class="ruby-identifier">lonlat</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-transformXY2LonLat" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">transformXY2LonLat</span><span
+            class="method-args">(xyPos)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>transpormation of coordinate system from X-Y to LonLat</p>
+<dl class="rdoc-list note-list"><dt><em>xyPos</em> 
+<dd>
+<p>X-Y position in Geo2D::Point object</p>
+</dd><dt>*return_ 
+<dd>
+<p>Lon-Lat position in Geo2D::Point object</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="transformXY2LonLat-source">
+            <pre><span class="ruby-comment"># File Traci/SumoMap.rb, line 356</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">transformXY2LonLat</span>(<span class="ruby-identifier">xyPos</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@coordSystem</span>.<span class="ruby-identifier">transformXY2LonLat</span>(<span class="ruby-identifier">xyPos</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

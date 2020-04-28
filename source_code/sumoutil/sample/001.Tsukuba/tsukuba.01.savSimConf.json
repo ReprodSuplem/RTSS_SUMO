@@ -1,0 +1,49 @@
+{ "_comment_" : "AllocatorGuild テスト用",
+  
+  "sumoConfig": "tsukuba.00.sumocfg",
+  "jsonMap": "TsukubaCentral.01.marked.net.json",
+  "dumpedMap": "TsukubaCentral.01.marked.net.dump",
+  "featureTable": "TsukubaCentral.01.marked.feature.json",
+  "demandConfig": "tsukuba.01.demandConf.json",
+
+  "_walkSpeed": 0.8,
+  "walkSpeed": 0.1,
+  "_until": null,
+  "until":43200,
+    
+  "_savN": 30,
+  "savCapacity": 5,
+  "savBase": "TsukubaBusCenter",
+  
+  "_allocMode": "guild",
+  "allocatorConf": {
+      "type": "guild",
+      "corpConf": [
+	  { "class": "SavServiceCorp",
+	    "name": "foo",
+	    "savN": 10,
+	    "allocatorConf": { "type" : "seqOpt" },
+	    "price": { "constant": 300,
+		       "distance": 0.2,
+		       "delay": 0.2 }},
+	  { "class": "SavServiceCorp",
+	    "name": "bar",
+	    "savN": 10,
+	    "allocatorConf": { "type" : "seqOpt" },
+	    "price": { "constant": 100,
+		       "distance": 0.4,
+		       "delay": 0.1 }},
+	  { "class": "SavServiceCorp",
+	    "name": "baz",
+	    "savN": 10,
+	    "allocatorConf": { "type" : "seqOpt" },
+	    "price": { "constant": 2000,
+		       "distance": 0.2,
+		       "delay": 0.1 }}
+      ]},
+
+  "tripGap": { "pickUp": 20, "dropOff": 10 },
+  "stopMargin": 12,
+
+  "___" : null
+}

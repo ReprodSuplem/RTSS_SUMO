@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"edgeListIdx:ETI"%Sumo::Traci::Vehicle#edgeListIdx;TI"RW;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"+index of edgeList (current edge index);T:
+@fileI"Traci/TraciVehicle.rb;T:0@omit_headings_from_table_of_contents_below0F@I"Sumo::Traci::Vehicle;TcRDoc::NormalClass0

@@ -1,0 +1,9 @@
+nOfTaxi 3
+newDemandSize 2
+capacityOfEachTaxi 3 3 3
+noListOfCarried 0 2 3
+noListOfAcceptedPoint 2 3 1
+noListOfPickDrop 1 -1 1 -1 -2 -3
+currenTime 10
+deadlineList 10 40 10 30 60 20
+deadlineOfNewDemand 10 90

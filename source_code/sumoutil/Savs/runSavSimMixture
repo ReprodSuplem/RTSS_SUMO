@@ -1,0 +1,601 @@
+#! /usr/bin/env ruby
+# coding: utf-8
+## -*- mode: ruby -*-
+## = run SavSimulator with Demand Factory Config
+## Author:: Anonymous3
+## Version:: 0.0 2018/08/25 Anonymous3
+##
+## === History
+## * [2018/08/25]: Create This File.
+## * [YYYY/MM/DD]: add more
+## == Usage
+##   % ../Savs/runSavSimByConfig araoCity.00.sumocfg AraoCity.2018.0816b.forTest.net.json AraoCity.2018.0816b.forTest.feature.json
+
+def $LOAD_PATH.addIfNeed(path)
+  self.unshift(path) if(!self.include?(path)) ;
+end
+
+$LOAD_PATH.addIfNeed("~/lib/ruby");
+$LOAD_PATH.addIfNeed(File.dirname(__FILE__));
+
+require 'json' ;
+require 'optparse' ;
+require 'pp' ;
+
+require 'SavSimulator.rb' ;
+require 'SavDemandFactoryMixture.rb' ;
+require 'SavAllocatorRandom.rb' ;
+require 'SavAllocatorSeqOpt.rb' ;
+require 'SavAllocatorGuild.rb' ;
+require 'SavGeoFeature.rb' ;
+
+
+#--######################################################################
+#--######################################################################
+#++
+=begin rdoc
+= runSavSimMixture
+指定された混合分布をデマンド発生分布として、SAVの運行シミュレーションを行う。
+
+== 概要
++runSavSimMixture+ では、
+第一引数で指定された _SavsConfigFile_ に従い、
+地図、デマンド分布、運行規模などを設定し、
+指定されたポリシーでSAVの配車計画を行い、
+その配車計画どおりの運行を SUMO を用いて求めるものである。
+
+=== SavsConfigFile
+
+_SavConfigFile_ には
+シミュレーション条件を設定するパラメータを記述する。
+記述は以下のような JSON 形式を用いる。
+
+	{
+	  "sumoConfig": "foo.bar.sumocfg",
+	  "jsonMap": "Foo.Bar.net.json",
+	  "dumpedMap": "Foo.Bar.net.dump",
+	  "featureTable": "Foo.Bar.feature.json",
+	  "demandConfig": "foo.bar.demandConf.json",
+	
+	  "savN": 10,
+	  "savCapacity": 5,
+	  "walkSpeed": 0.1,
+	  "until":43200,
+	  "allocMode": "seqOpt",
+	  "tripGap": { "pickUp": 20, "dropOff": 10 },
+	  "stopMargin": 12,
+	
+	  "savBase": "MWS_Hidaka_Ohta_DayTrainCenter_Parking"
+	}
+
+JSON の各キー・バリュー対の意味は以下のとおりである。
+"sumoConfig"::
+	SUMO の設定ファイルを指定する。
+"jsonMap":: 
+	JSON 形式で記述された地図ファイルを指定する。
+	この地図ファイルは +Traci/convSumoMapXml2Json+ により作成する。
+	+SumoMap+ において、R-Tree を作成するのに使われる。
+"dumpedMap":: 
+	+SumoMap+ で用いる R-tree をダンプした地図データファイルを指定する。
+	この地図ファイルは +Traci/convSumoMapXml2Json+ により作成する。
+	これを指定されたとき、"jsonMap" は用いられなくなる。
+"featureTable":: 
+	地図中の地物(feature)を記述したファイルを指定する。
+	+Tool/filterSavsTagInOsm+ を用いてOSMファイルから作成する。
+	+Tool/filterSavsTagInOsm+ は、
+	OSM ファイル中の、
+	"savs:poi" というタグを持つ点地物 (node) と、
+	"savs:zone" というタグを持つ面地物 (閉じた way) を抜き出し、
+	JSON形式で出力する。
+"demandConfig":: 
+	デマンド発生を、混合分布の形式で記述したファイルを指定する。
+	( Sav::SavDemandFactoryMixture 参照)
+"savN":: 
+	運行するSAVの台数を指定する。
+"savCapacity":: 
+	一台のSAVの乗車人数を指定する。
+"walkSpeed":: 
+	利用者の歩行速度を指定する。
+	締め切り時刻を決める際に用いる。
+"until"::
+	シミュレーションの時間を秒数で指定する。
+"allocMode"::
+	配車アルゴリズムを指定する。
+	現状では、+"seqOpt"+ , +"random"+ が指定できる。
+"tripGap"::
+	乗車、降車にかかる時間を秒数で指定する。
+	指定の形式は、以下の通り。
+  	  { "pickUp": 20, "dropOff": 10 }
+"stopMargin"::
+	乗車・降車位置に対し、どこまで誤差を許すかを m で指定する。
+"savBase"::
+	SAV の基地を地物名で指定する。
+	この地物は "featureTable" に含まれていないといけない。
+
+
+=== デマンド発生
+デマンドの発生条件は
+"demandConfig" で指定したファイルに記載する。
+Sav::SavDemandFactoryMixture 参照。
+
+=== 配車
+このデマンドに対して、random もしくは seqOpt いずれかの配車ポリシーで
+SAV配車を行う。
+[random]
+  新しいデマンドが送られてきた時、N台あるSAVから均等に1台を選び、
+  そのデマンドを選ばれたSAVを配車する。
+  配車されたSAVは、現在の待ち行列の最後尾にそのデマンドを追加する。
+  ただし、配車にあたって、
+  新しいデマンド追加によりそのSAVの最大の待ち行列数を超える場合、
+  配車失敗の回答を返し、配車を行わない。
+[seqOpt]
+  新しいデマンドが送られてきた時、
+  各々のSAVに対し、以下の評価値を求める。
+  1. 現在の経由点待ち行列(配分されている既存のデマンドの乗車・降車地点の列)
+     に対し、新しいデマンドの乗車・降車地点を挿入する。
+     挿入する箇所は、乗車・降車の順を保ちながら、乗車・降車の各々の地点を、
+     すべての可能な箇所に挿入を試みる。
+  2. 新しいデマンドの乗降車地点のある挿入の組み合わせについて、
+     既存のデマンドが、挿入によりどれだけ時間的ロスが起きるかを求める。
+     また、新しいデマンドについて、降車時刻を求める。
+     その際、既存及び新しいデマンドのいずれかで締め切り時刻を過ぎる場合、
+     その挿入方法は候補から省く。
+  3. すべての挿入方法について、2. で求めた時間的ロスの総和と降車時刻を足しあわせ、
+     その値が最小となる組み合わせを求め、それを最終的な配車とする。
+  4. もし2. においてすべての挿入方法が棄却された場合、
+     新しいデマンドについては配車失敗の回答を返し、配車を行わない。
+以上のいずれかの配車の手順を、新規のデマンドが発生する毎に行い、
+配車計画及び走行計画を策定する。
+
+=== 走行
+走行については、
+すべてSUMOによりシミュレーションする。
+
+SUMOに対しては、
+各SAVについて現時点の経由点待ち行列の先頭を仮の目的地とした走行を指示する。
+その仮目的地に到着した場合、
+その仮目的地に対応する経由点を待ち行列から除き、
+次の経由点を借り目的地に設定する。
+
+経由点の待ち行列が空になった場合、
+まず現地点の道路リンクの終点(交差点)を次の仮目的地とする。
+その交差点に到達地した際、まだ待ち行列が空の場合、
+その交差点から伸びるリンクについて、
+交差点に最も近い終点を持つリンクを選択して、
+仮目的地とする。
+
+待ち行列が空の時に、最寄りの交差点を次々の仮目的地とするのは、
+交通の障害になることを防止するためである。
+SUMOでは、道路リンク上に車両を停止させることはできるが、
+その場合、その車両は障害物となり、
+シミュレーションの阻害要因となる。
+また、実世界の交通においても、路上駐車と同じ状態であり、
+状況としては避けるべき状態である。
+このため、SAVシミュレーションにおいては、車両は絶えず移動させる
+必要が有り、上記のような形で絶えず仮目的地をもたせるようにしている。
+
+=== 結果出力
+シミュレーションの結果はログ出力として記録される。
+
+本シミュレータのログ出力は以下の4種類である。
+[config.json]
+  シミュレーションの設定を JSON 形式で記録する。
+  以下で述べる各種設定を含め、
+  すべてのシミュレーションパラメータについて、
+  その値等を JSON のオブジェクト形式で記録したものである。
+  以下はそのログのサンプルである。
+          {
+          "openClient": true,
+          "sumoConfigFile": "foo.sumocfg",
+          "guiMode": "cui",
+          "portScanFrom": 12345,
+          "traciClient": null,
+          "traciClientConf": {
+            "logDev": [
+              "stdout",
+              "file"
+            ],
+            "logLevel": "info",
+            "logDir": ".",
+            "logFilename": ",Log/foo/savSim_.traci.log"
+          },
+          "vehicleManager": null,
+          "vehicleManagerConf": {
+            "defaultVehicleClass": "Sav::SavVehicle",
+            "vehicleIdPrefix": "sav",
+            "vehicleConf": {
+              "color": "DodgerBlue",
+              "capacity": 3
+            }
+          },
+          "vehicleConf": {
+            "capacity": 3
+          },
+          "poiManager": null,
+          "poiManagerConf": {
+            "defaultPoiClass": "Sumo::Traci::GroundedPoi"
+          },
+          "mapFile": "./foo.net.json",
+          "mapConf": {
+            "buildRTrees": true
+          },
+          "loopConf": {
+            "until": 36000
+          },
+          "timeOrigin": "00:00:00",
+          "vehicleType": "savBase",
+          "demandFactoryClass": "Sav::SavDemandFactoryRandom",
+          "demandFactoryConf": {
+            "center": "#Point[2850.0,7800.0]",
+            "offset": "#V[0,0]",
+            "rangeSize": "#V[1100.0,700.0]",
+            "frequency": 0.05,
+            "walkSpeed": 0.0027777777777777775,
+            "demandConf": {
+              "tripGapDuration": "#<Sav::Trip>"
+            },
+            "logFile": ",Log/foo/savSim_.demandLog.json"
+          },
+          "allocatorClass": "Sav::SavAllocatorSeqOpt",
+          "allocatorConf": {
+          },
+          "reporterClass": "Sav::SavReporter",
+          "reporterConf": {
+            "reportInterval": 60000
+          },
+          "trailLogFile": ",Log/foo/savSim_.trailLog.json",
+          "configLogFile": ",Log/foo/savSim_.config.json",
+        }
+[demandLog.json]
+  デマンド毎に、
+  デマンドのIDや発生時刻、乗降車地点、
+  配車結果、実際の乗降車時刻、
+  および降車までの計画変更履歴を記録したものである。
+  1デマンドにつき一行、1つのJSONオブジェクトとして出力される
+  計画変更履歴は、配車時点での予定乗降車時刻から始まり、
+  降車までに同じ配車SAVが受け取った別のデマンドにより変更された予定乗降車時刻を
+  並べたものである。
+  これにより、1つのデマンドを処理する間に、
+  どれくらい遅延が生じたかなどを調べることができる。
+  いかがその1デマンド分のサンプルである。
+          {
+          "id": "demand_00000030_foo",
+          "passenger": "foo",
+          "numPassenger": 1,
+          "status": "afterDropOff",
+          "sav": "sav_00006",
+          "arisedTime": 556.0,
+          "sharedWithList": ["demand_00000013_foo","demand_00000031_foo"],
+          "tripPos": {
+            "pickUp": { "x": 2405.30, "y": 7706.78 },
+            "dropOff": { "x": 2601.21, "y": 7708.64 }
+          },
+          "tripViaPoint": {
+            "pickUp": { "pos": { "x": 2405.30, "y": 7706.78 } },
+            "dropOff": { "pos": { "x": 2601.21, "y": 7708.64 } }
+          },
+          "tripTime": { "pickUp": 1022.0, "dropOff": 1258.0 },
+          "tripRequiredTime": { "pickUp": 556.0, "dropOff": 9357.44 },
+          "tripPlannedTimeList": [
+            { "pickUp": 578.24 },
+            { "pickUp": 578.24, "dropOff": 608.17 },
+            { "pickUp": 621.83, "dropOff": 608.17 },
+            { "pickUp": 621.83, "dropOff": 672.15 },
+            { "pickUp": 624.83, "dropOff": 672.15 },
+            { "pickUp": 624.83, "dropOff": 675.15 },
+            { "pickUp": 639.57, "dropOff": 675.15 },
+            { "pickUp": 639.57, "dropOff": 689.89 }
+          ]
+        }
+[trailLog.json]
+  SAV毎に、
+  そのSAVの基本情報と共に、
+  経由点にたどり着く毎に、
+  時刻、その場所、処理したデマンドのID等をJSON オブジェクト形式で記録したものである。
+  1SAVあたり、一行のJSONで出力される。
+  以下はそのSAV1台分のサンプル。
+        {
+          "id": "sav_00000",
+          "base": "SavBase_00000",
+          "capacity": 3,
+          "viaPointIndex": 323,
+          "viaPointList": [
+            { "pos": { "x": 2838.84, "y": 7890.29 },
+              "demandId": null,
+              "mode": "dummy",
+              "duration": 0,
+              "time": 16.0
+            },
+            { "pos": { "x": 3358.65, "y": 7966.16 },
+              "demandId": "demand_00000001_foo",
+              "mode": "pickUp",
+              "duration": 0.0,
+              "time": 204.0
+            },
+            { "pos": { "x": 2757.98, "y": 7926.43 },
+              "demandId": "demand_00000011_foo",
+              "mode": "pickUp",
+              "duration": 0.0,
+              "time": 549.0
+            },
+	    ...
+	  ],
+          "onBoardList": ["demand_00000702_foo", ...],
+          "assignedDemandList": [
+            { "id": "demand_00000001_foo",
+              "passenger": "foo",
+              "numPassenger": 1,
+              "tripPos": {
+                "pickUp": { "x": 3358.65, "y": 7966.16 },
+                "dropOff": { "x": 2439.76, "y": 7766.37 }
+              },
+              "arisedTime": 26.0,
+              "tripRequiredTime": { "pickUp": 26.0, "dropOff": 1053.05 },
+              "tripTime": { "pickUp": 204.0, "dropOff": 673.0 }
+            },
+            { "id": "demand_00000011_foo",
+              "passenger": "foo",
+              "numPassenger": 1,
+              "tripPos": {
+                "pickUp": { "x": 2757.98, "y": 7926.43 },
+                "dropOff": { "x": 2341.81, "y": 8010.95 }
+              },
+              "arisedTime": 256.0,
+              "tripRequiredTime": { "pickUp": 256.0, "dropOff": 4908.02 },
+              "tripTime": { "pickUp": 549.0, "dropOff": 914.0 }
+            },
+            ...
+	  ],
+	}
+[traci.json]
+  SUMO に対する制御コマンドを記録したもの。
+  主として debug のために用いる。
+
+
+== 使い方
++runSavSimMixture+ は、コマンドラインより以下のように指定して起動する。
+
+        $ ./runSavSimMixture [Options]* SavsConfigFile 
+	Options:
+	-u, --[no-]gui                                               
+			switch gui mode.
+	-q, --guiQuit                                                
+			switch guiQuit mode.
+	-l, --logLevel Level                                         
+			bar int value.
+	    --tripGap Gaps                                           
+			time gap sec. at pick-up/drop-off in 'Pick:Drop'
+	-p, --report Interval in sec                                 
+			report interval in sec
+	    --logDir LogDir                                          
+			specify log dir
+	    --logBase LogBase                                        
+			specify log file basename
+	-t, --withTimestamp                                          
+			to include timestamp in log filename.
+	    --trailLog                                                  
+			save trail log.
+	    --help                                                   
+		show this message.
+== 規定値
+
+	{:configFile=>nil,
+	 :guiMode=>:gui,
+	 :logLevel=>:info,
+	 :tripGap=>#<Sav::Trip:0x00000002c72228 @dropOff=60, @pickUp=30>,
+	 :viaQueueMax=>10,
+	 :addSavInterval=>10,
+	 :reportInterval=>30,
+	 :logDir=>",Log",
+	 :logBaseName=>"savSim",
+	 :logWithTimestamp=>false,
+         :trailLog=>false}
+
+== オプションおよび機能
+
+=== GUI 関連
+[--[no-]gui]
+  sumo の gui モードのON/OFFを指定する。
+  \--gui で GUI を起動、--no-gui で CUI のみとなる。
+  規定値は gui モードである。
+[-q, --guiQuit]
+  GUI モードの場合、シミュレーション終了後、自動でGUIを終了させる。
+  指定しないと、シミュレーションの最終ステップ状態で中断状態となる。
+
+=== ログ出力関連
+[--logLevel _Level_]
+  ログ出力のレベルを指定する。
+  _Level_ は、重要度順に、
+  [top] 最重要の出力のみ。
+  [fatal] 致命的なエラーの場合のエラーメッセージ。
+  [error] 一般のエラーのメッセージ。
+  [warn]  警告レベルのメッセージ。
+  [info]  シミュレーション実行の確認用のメッセージ。
+  [debug] シミュレータのデバッグ用メッセージ。
+  規定値は *info* である。
+[-p, --report _Interval_]
+  SAVが状況を記録していくインターバルを指定する。
+  _Interval_ は秒数(=サイクル数)である。
+  規定値は 30(秒)である。
+[--logDir _LogDir_]
+  ログの directory を指定する。
+  規定値は ",Log" である。
+[-t, --withTimestamp]                                          
+  ログのファイル名にシミュレーション起動時のタイムスタンプを加えるかどうかを指定する。
+  指定しない場合、タイムスタンプの代わりに空文字列が使われる。
+[--logBase _LogBase_]                                        
+  ログの basename を指定する。
+  実際のログは、
+  "_LogDir_/_LogBase_\__TimeStamp_.config.json",
+  "_LogDir_/_LogBase_\__TimeStamp_.demandLog.json",
+  "_LogDir_/_LogBase_\__TimeStamp_.trailLog.json",
+  "_LogDir_/_LogBase_\__TimeStamp_.allocLog.json",
+  "_LogDir_/_LogBase_\__TimeStamp_.patryLog.json",
+  "_LogDir_/_LogBase_\__TimeStamp_.traci.json",
+  となる。
+  規定値は "savSim" である。
+[--trailLog]
+  trailLog を出力する。
+
+=end
+module Doc_runSavSimMixture ; end ;
+#--######################################################################
+#--######################################################################
+
+#------------------------------------------------------------------------
+#++
+$conf = {
+  :configFile => nil,
+  :guiMode => :gui, # :cui, :gui or :guiQuit
+  :logLevel => :info, # or :warn or :debug
+  :tripGap => Sav::SavDemand::DefaultConf[:tripGapDuration],
+  :viaQueueMax => 10,
+  :addSavInterval => 10,
+  :reportInterval => 30,
+  :logDir => ",Log",
+  :logBaseName => "savSim",
+  :logWithTimestamp => false,  # if false, no timestamp in log file name.
+  :trailLog => false,  # if true, save Traci log.
+} ;
+
+#------------------------------------------------------------------------
+#++
+$op = OptionParser.new() {|op|
+  op.banner = <<_END_
+  Usage: #{$0} [Options]* SavsConfigFile 
+_END_
+
+  op.separator("Options:") ;
+  op.set_summary_indent("") ;
+  op.set_summary_width(60) ;
+  sep = "\n\t\t" ;
+
+  op.on("-u","--[no-]gui", sep + "switch gui mode.") {|flag|
+    $conf[:guiMode] = (flag ? :gui : :cui) ;
+  }
+  op.on("-q","--guiQuit", sep + "switch guiQuit mode.") {
+    $conf[:guiMode] = :guiQuit ;
+  }
+  op.on("-l","--logLevel Level", String, sep + "bar int value.") {|levelStr|
+    level = levelStr.intern ;
+    if(![:error, :warn, :info, :debug].member?(level)) then
+      puts(op) ;
+      exit(1) ;
+    end
+    $conf[:logLevel] = level ;
+  }
+  op.on("-g","--tripGap Gaps", String, sep + "time gap sec. at pick-up/drop-off in 'Pick:Drop'") {
+    |gapStr|
+    (pickTime,dropTime) = gapStr.split(":").map{|v| v.to_f} ;
+    $conf[:tripGap] = Sav::Trip.new(pickTime,dropTime) ;
+  }
+  op.on("-p","--report Interval in sec", Float, sep + "report interval in sec"){
+    |sec|
+    $conf[:reportInterval] = (sec * 1000).to_i ;
+  }
+  op.on("--logDir LogDir", String, sep + "specify log dir"){|dir|
+    $conf[:logDir] = dir ;
+  }
+  op.on("--logBase LogBase", String, sep + "specify log file basename"){|base|
+    $conf[:logBase] = base ;
+  }
+  op.on("-t","--withTimestamp", sep + "to include timestamp in log filename."){
+    $conf[:logWithTimestamp] = true ;
+  }
+  op.on("--trailLog", sep + "debug mode (save Traci log)."){
+    $conf[:trailLog] = true ;
+  }
+  op.on_tail("--help", sep + "show this message.") { |h|
+    puts(op)
+    puts("Defaults:")
+    pp $conf ;
+    exit(1)
+  }
+}
+
+$op.parse!(ARGV) ;
+$restArg = ARGV ;
+p [:rest, ARGV], [:conf,$conf] ;
+
+if(ARGV.size != 1) then
+  puts($op) ;
+  exit(1) ;
+end
+
+$conf[:configFile] = ARGV[0] ;
+
+########################################################################
+########################################################################
+########################################################################
+
+open($conf[:configFile],"r"){|strm|
+  $savConfig = JSON.parse(strm.read(),{:symbolize_names => true}) ;
+}
+
+open($savConfig[:demandConfig],"r"){|strm|
+  $demandConfig = JSON.parse(strm.read(),{:symbolize_names => true}) ;
+}
+
+timestamp = ($conf[:logWithTimestamp] ?
+               Time::now.strftime("%Y-%m%d-%H%M%S") :
+               "") ;
+
+logFilePrefix = "#{$conf[:logDir]}/#{$conf[:logBaseName]}_#{timestamp}." ;
+
+savSim =
+  Sav::SavSimulator.new(
+  { :sumoConfigFile => $savConfig[:sumoConfig],
+    :guiMode => $conf[:guiMode],
+    :traciClientConf => {
+      :logDev => [:stdout, :file],
+      :logLevel => $conf[:logLevel],
+      :logDir => ".",
+      :logFilename => logFilePrefix + "traci.log",
+    },
+    :loopConf => { :until => $savConfig[:until] },
+    :mapFile => $savConfig[:jsonMap],
+    :mapDumpFile => $savConfig[:dumpedMap],
+    :featureTableFile => $savConfig[:featureTable],
+    :vehicleConf => { :capacity => $savConfig[:savCapacity] },
+    :demandFactoryClass => Sav::SavDemandFactoryMixture,
+    :demandFactoryConf => { :configList => $demandConfig,
+                            :walkSpeed => $savConfig[:walkSpeed],
+                            :logFile => (logFilePrefix + "demandLog.json"),
+                          },
+    :nSavMax => $savConfig[:savN],
+    :addSavInterval => $conf[:addSavInterval],
+    :stopMargin => $savConfig[:stopMargin],
+    :allocatorClass => $savConfig[:allocMode],
+    :allocatorConf => $savConfig[:allocatorConf] || {},
+    :reporterClass => Sav::SavReporter,
+    :reporterConf => { :reportInterval => $conf[:reportInterval],
+#                       :reportLogLevel => :info,
+                     },
+    :trailLogFile => ($conf[:trailLog] ?
+                        (logFilePrefix + "trailLog.json") :
+                        nil),
+    :allocLogFile => (logFilePrefix + "allocLog.json"),
+    :partyLogFile => (logFilePrefix + "partyLog.json"),
+    :configLogFile => (logFilePrefix + "config.json"),
+  }) ;
+
+savBasePos = $savConfig[:savBase] ;
+if(savBasePos == :midPoint) then
+  mapBBox = savSim.map.bbox() ;
+  savBasePos = Geo2D::Point.new(mapBBox.midX(), mapBBox.midY()) ;
+elsif(savBasePos.is_a?(String)) then
+  poi = savSim.featureTable[savBasePos] ;
+  if(!poi.is_a?(Sav::GeoFeature::PoI)) then
+    raise "savBase is not a PoI: #{$savConfig[:savBase]}, #{poi}" ;
+  end
+  savBasePos = poi.pos ;
+end
+savBase = savSim.addNewSavBaseByPos(savBasePos) if(savBasePos) ;
+
+savSim.run({ :delay => 0.0 }){|sim|}
+
+
+
+
+
+  

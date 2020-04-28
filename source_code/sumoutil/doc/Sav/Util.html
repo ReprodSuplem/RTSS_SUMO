@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>module Sav::Util - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script src="../js/jquery.js"></script>
+<script src="../js/darkfish.js"></script>
+
+<link href="../css/fonts.css" rel="stylesheet">
+<link href="../css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="module">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../table_of_contents.html#pages">Pages</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-i-averageManhattanDistance">#averageManhattanDistance</a>
+    
+    <li ><a href="#method-i-ensureDir">#ensureDir</a>
+    
+    <li ><a href="#method-i-storeToJson">#storeToJson</a>
+    
+    <li ><a href="#method-i-toJson">#toJson</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="module-Sav::Util">
+  <h1 id="module-Sav::Util" class="module">
+    module Sav::Util
+  </h1>
+
+  <section class="description">
+    
+<p>Utility Module</p>
+
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-averageManhattanDistance" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">averageManhattanDistance</span><span
+            class="method-args">(pos0, pos1)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>average manhattan distance. Average Manhattan distance can be calculated
+the following form. ave® = r * (1 / (pi / 2)) * int_{0}^{pi/2} sin(x) +
+cos(x) dx</p>
+
+<pre>= (4 / \pi) * r</pre>
+
+<p><em>pos0</em>, <em>pos1</em> : two pos.  should be an instance of <a
+href="../Geo2D/Vector.html">Geo2D::Vector</a>.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="averageManhattanDistance-source">
+            <pre><span class="ruby-comment"># File Savs/SavUtil.rb, line 70</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">averageManhattanDistance</span>(<span class="ruby-identifier">pos0</span>, <span class="ruby-identifier">pos1</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">pos0</span>.<span class="ruby-identifier">distanceTo</span>(<span class="ruby-identifier">pos1</span>) <span class="ruby-operator">*</span> (<span class="ruby-value">4.0</span> <span class="ruby-operator">/</span> <span class="ruby-constant">Math</span><span class="ruby-operator">::</span><span class="ruby-constant">PI</span>) ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-ensureDir" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">ensureDir</span><span
+            class="method-args">(filename)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>make sure the directory exists.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="ensureDir-source">
+            <pre><span class="ruby-comment"># File Savs/SavUtil.rb, line 77</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">ensureDir</span>(<span class="ruby-identifier">filename</span>)
+  <span class="ruby-identifier">dir</span> = <span class="ruby-constant">File</span><span class="ruby-operator">::</span><span class="ruby-identifier">dirname</span>(<span class="ruby-identifier">filename</span>) ;
+  <span class="ruby-identifier">system</span>(<span class="ruby-node">&quot;mkdir -p #{dir}&quot;</span>) ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-storeToJson" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">storeToJson</span><span
+            class="method-args">(json, key, obj, ignoreNil = true)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>store to JSON. <em>json</em> : json hash to store. <em>key</em> : json key.
+<em>obj</em> : value object to convert. <em>ignoreNil</em> : if true do not
+store if the obj is nil.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="storeToJson-source">
+            <pre><span class="ruby-comment"># File Savs/SavUtil.rb, line 59</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">storeToJson</span>(<span class="ruby-identifier">json</span>, <span class="ruby-identifier">key</span>, <span class="ruby-identifier">obj</span>, <span class="ruby-identifier">ignoreNil</span> = <span class="ruby-keyword">true</span>)
+  <span class="ruby-identifier">json</span>[<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">toJson</span>(<span class="ruby-identifier">obj</span>) <span class="ruby-keyword">if</span> (<span class="ruby-operator">!</span><span class="ruby-identifier">ignoreNil</span> <span class="ruby-operator">||</span> <span class="ruby-operator">!</span><span class="ruby-identifier">obj</span>.<span class="ruby-identifier">nil?</span>) ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-toJson" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">toJson</span><span
+            class="method-args">(obj)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>to JSON. <em>obj</em> : object to convert.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="toJson-source">
+            <pre><span class="ruby-comment"># File Savs/SavUtil.rb, line 38</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">toJson</span>(<span class="ruby-identifier">obj</span>)
+  <span class="ruby-keyword">if</span>(<span class="ruby-identifier">obj</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Array</span>))
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">elm</span><span class="ruby-operator">|</span> <span class="ruby-identifier">toJson</span>(<span class="ruby-identifier">elm</span>)}
+  <span class="ruby-keyword">elsif</span>(<span class="ruby-identifier">obj</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>))
+    <span class="ruby-identifier">newObj</span> = {} ;
+    <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span> <span class="ruby-identifier">newObj</span>[<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">toJson</span>(<span class="ruby-identifier">value</span>)}
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">newObj</span> ;
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">return</span> (<span class="ruby-identifier">obj</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:toJson</span>) <span class="ruby-operator">?</span>
+              <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">toJson</span>() <span class="ruby-operator">:</span>
+              <span class="ruby-identifier">obj</span>) ;
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

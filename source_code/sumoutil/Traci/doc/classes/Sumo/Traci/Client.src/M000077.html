@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>sendExact (Sumo::Traci::Client)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File TraciClient.rb, line 257</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">sendExact</span>(<span class="ruby-identifier">message</span>)
+        <span class="ruby-identifier">length</span> = <span class="ruby-identifier">message</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">+</span> <span class="ruby-constant">CommandBase</span><span class="ruby-operator">::</span><span class="ruby-constant">MesssagSize_WholeLength</span> ;
+        <span class="ruby-comment cmt">## should use BigEndian (Network Byte Order)</span>
+<span class="ruby-comment cmt">#        wholeMessage = [length].pack(&quot;I&quot;) + message ;</span>
+        <span class="ruby-ivar">@rawMessage</span> = [<span class="ruby-identifier">length</span>].<span class="ruby-identifier">pack</span>(<span class="ruby-value str">&quot;N&quot;</span>) <span class="ruby-operator">+</span> <span class="ruby-identifier">message</span> ;
+        <span class="ruby-comment cmt"># send messagre</span>
+        <span class="ruby-identifier">logging</span>(<span class="ruby-identifier">:debug</span>, <span class="ruby-value str">&quot;sendExact: dump=&quot;</span>){ <span class="ruby-constant">Util</span><span class="ruby-operator">::</span><span class="ruby-identifier">octalDump</span>(<span class="ruby-ivar">@rawMessage</span>); }
+        <span class="ruby-ivar">@socket</span>.<span class="ruby-identifier">send</span>(<span class="ruby-ivar">@rawMessage</span>,<span class="ruby-value">0</span>) ;
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

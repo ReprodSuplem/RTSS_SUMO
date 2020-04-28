@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>sliceResultCodeBody (Sumo::Traci::CommandBase)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File TraciCommand.rb, line 220</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">sliceResultCodeBody</span>(<span class="ruby-identifier">buffer</span>)
+        <span class="ruby-keyword kw">begin</span>
+          <span class="ruby-comment cmt"># get length</span>
+          <span class="ruby-identifier">len</span> = <span class="ruby-constant">DataType_UByte</span>.<span class="ruby-identifier">unpack!</span>(<span class="ruby-identifier">buffer</span>)
+          <span class="ruby-identifier">len</span> <span class="ruby-operator">-=</span> <span class="ruby-constant">DataType_UByte</span>.<span class="ruby-identifier">size</span> ; <span class="ruby-comment cmt"># reduced to get body length</span>
+          <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;wrong length part&quot;</span> <span class="ruby-keyword kw">if</span>(<span class="ruby-identifier">len</span>.<span class="ruby-identifier">nil?</span>) ;
+          <span class="ruby-comment cmt"># in the case of long response</span>
+          <span class="ruby-keyword kw">if</span>(<span class="ruby-identifier">len</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">0</span>) <span class="ruby-comment cmt"># If the original len=0, then reduce len &lt; 0.</span>
+            <span class="ruby-identifier">len</span> = <span class="ruby-constant">DataType_Integer</span>.<span class="ruby-identifier">unpack!</span>(<span class="ruby-identifier">buffer</span>) ;
+            <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;wrong long length part&quot;</span> <span class="ruby-keyword kw">if</span>(<span class="ruby-identifier">len</span>.<span class="ruby-identifier">nil?</span>) ;
+            <span class="ruby-identifier">len</span> <span class="ruby-operator">-=</span> <span class="ruby-constant">DataType_Integer</span>.<span class="ruby-identifier">size</span> ; <span class="ruby-comment cmt">#reduced len</span>
+          <span class="ruby-keyword kw">end</span>
+          <span class="ruby-comment cmt"># slice result code body</span>
+          <span class="ruby-identifier">resultCodeBody</span> = <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">slice!</span>(<span class="ruby-value">0</span>,<span class="ruby-identifier">len</span>) ;
+          <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;wrong result code body&quot;</span> <span class="ruby-keyword kw">if</span> (<span class="ruby-identifier">resultCodeBody</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">len</span>) ;
+          <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">resultCodeBody</span> ;
+        <span class="ruby-keyword kw">rescue</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">ex</span>
+          <span class="ruby-identifier">$stderr</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;Exception!! &quot;</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">ex</span>.<span class="ruby-identifier">message</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;\n&quot;</span> ;
+          <span class="ruby-identifier">$stderr</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;  buffer=\n&quot;</span> ;
+          <span class="ruby-identifier">$stderr</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Util</span><span class="ruby-operator">::</span><span class="ruby-identifier">octalDump</span>(<span class="ruby-identifier">buffer</span>) ;
+          <span class="ruby-identifier">$stderr</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">ex</span>.<span class="ruby-identifier">backtrace</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;\n&quot;</span>)
+          <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;wrong result code part.&quot;</span> ;
+        <span class="ruby-keyword kw">end</span> 
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

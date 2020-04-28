@@ -1,0 +1,183 @@
+#! /usr/bin/env ruby
+# coding: utf-8
+## -*- mode: ruby -*-
+## = sample
+## Author:: Anonymous3
+## Version:: 0.0 2019/01/01 Anonymous3
+##
+## === History
+## * [2019/01/01]: Create This File.
+## * [YYYY/MM/DD]: add more
+## == Usage
+## * ...
+
+def $LOAD_PATH.addIfNeed(path)
+  self.unshift(path) if(!self.include?(path)) ;
+end
+
+$LOAD_PATH.addIfNeed("~/lib/ruby");
+$LOAD_PATH.addIfNeed(File.dirname(__FILE__));
+$LOAD_PATH.addIfNeed(File.dirname(__FILE__) + "/../lib") ;
+
+require 'optparse' ;
+require 'pp' ;
+require 'json' ;
+
+require 'SavsLog.rb' ;
+
+#------------------------------------------------------------------------
+#++
+$conf = {
+  :mode => :whole, # or :dayType or :hourTensor or :dayHourTensor
+  :inFile => nil,
+  :outFile => nil,
+} ;
+
+#----------------------------------------------------------------------
+#++
+## help
+def help(raiseOrExit=true)
+  puts($op) ;
+  puts("Defaults:") ;
+  pp $conf ;
+  if(raiseOrExit.is_a?(Exception)) then
+    puts('-' * 20) ;
+    raise raiseOrExit ;
+  elsif(raiseOrExit) then
+    exit(1) ;
+  end
+end
+
+#------------------------------------------------------------------------
+#++
+$op = OptionParser.new() {|op|
+  op.banner = <<_END_
+  Usage: #{$0} [Options]* Log.json Hist.json
+_END_
+
+  op.separator("Options:") ;
+  op.set_summary_indent("") ;
+  op.set_summary_width(60) ;
+  sep = "\n\t\t" ;
+
+  op.on("-d","--daytype", sep + "separate hist. by day types.") {
+    $conf[:mode] = :dayType ;
+  }
+  op.on("-H","--hourTensor", Integer, sep + "bar int value.") {
+    $conf[:mode] = :hourTensor ;
+  }
+  op.on("-z","--baz BazVal", String, sep + "baz str value.") {|baz|
+    $conf[:baz] = baz ;
+  }
+  op.on_tail("--help", sep + "show this message.") { |h|
+    help() ;
+  }
+}
+
+begin
+  $op.parse!(ARGV) ;
+rescue => ex
+  help(ex) ;
+end
+
+$restArg = ARGV ;
+($conf[:inFile], $conf[:outFile]) = *ARGV ;
+
+help() if($conf[:inFile].nil? ||  $conf[:outFile].nil?) ;
+
+p [:rest, ARGV], [:conf,$conf] ; 
+
+#----------------------------------------------------------------------
+#++
+## slog から解析・出力。
+## *return*: 総和。
+def outputHistgram(slog, outfile)
+  slog.buildFreqTables() ;
+
+  sum = 0 ;
+  slog.freqTable.each{|line|
+    line.each{|v|
+      sum += v ;
+    }
+  }
+
+#  p [:total, sum] ;
+
+  open(outfile,"w"){|strm|
+    strm << JSON.generate(slog.freqTable) ;
+  }
+
+  return sum ;
+end
+
+#----------------------------------------------------------------------
+#++
+## slog のテーブルから解析・出力。(Tensor type)
+## *return*: 総和。
+def outputHistgramTensor(slogTable, outfile)
+  total = 0 ;
+  totalTable = {} ;
+  tensor = {} ;
+  slogTable.each{|key, slog|
+    slog.buildFreqTables() ;
+
+    subTotal = 0 ;
+    slog.freqTable.each{|line|
+      line.each{|v|
+        subTotal += v ;
+      }
+    }
+    total += subTotal ;
+
+    tensor[key] = slog.freqTable ;
+    totalTable[key] = subTotal ;
+  }
+
+#  p [:total, sum] ;
+
+  open(outfile,"w"){|strm|
+    strm << JSON.generate(tensor) ;
+  }
+
+  return [total, totalTable] ;
+end
+
+########################################################################
+########################################################################
+########################################################################
+
+
+slog = SavsLog.new({ :name => "whole" }) ;
+slog.scanJsonFile($conf[:inFile]) ;
+
+case($conf[:mode])
+when(:whole)  
+  total = outputHistgram(slog, $conf[:outFile]) ;
+  p [:total, total] ;
+when(:dayType)
+  slogWeekday = SavsLog.new({:name => "weekday"}) ;
+  slogWeekday.filterByDayTypeFrom(slog, :weekday) ;
+  fileWeekday = $conf[:outFile].chomp('.hist.json') + "_weekday.hist.json" ;
+  totalWeekday = outputHistgram(slogWeekday, fileWeekday) ;
+  
+  
+  slogHoliday = SavsLog.new({:name => "holiday"}) ;
+  slogHoliday.filterByDayTypeFrom(slog, :holiday) ;
+  fileHoliday = $conf[:outFile].chomp('.hist.json') + "_holiday.hist.json" ;
+  totalHoliday = outputHistgram(slogHoliday, fileHoliday) ;
+
+  p [:total, { :weekday => totalWeekday, :holiday => totalHoliday}] ;
+when(:hourTensor)
+  tensor = {} ;
+  SavsLog::WorkHourList.each{|hour|
+    slogHourly = SavsLog.new({:name => ("hour_%02d" % hour)}) ;
+    slogHourly.filterByHourFrom(slog, hour) ;
+    tensor[hour] = slogHourly;
+  }
+  total = outputHistgramTensor(tensor, $conf[:outFile]) ;
+
+  p total.unshift(:total) ;
+else
+  help("unknown mode: " + $conf[:mode].to_s) ;
+end
+

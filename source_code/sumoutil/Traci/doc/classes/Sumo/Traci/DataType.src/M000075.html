@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>unpackComposedList! (Sumo::Traci::DataType)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File TraciDataType.rb, line 107</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">unpackComposedList!</span>(<span class="ruby-identifier">buffer</span>)
+        <span class="ruby-identifier">raise</span>(<span class="ruby-value str">&quot;components are not given for DataType:&quot;</span> <span class="ruby-operator">+</span>
+              <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">inspect</span>) <span class="ruby-keyword kw">if</span>(<span class="ruby-ivar">@components</span>.<span class="ruby-identifier">nil?</span>) ;
+<span class="ruby-comment cmt">#        value = { :dataType =&gt; self.class.name } ;  ## value is Array.</span>
+        <span class="ruby-identifier">value</span> = [] ;
+        <span class="ruby-identifier">value</span>.<span class="ruby-identifier">instance_eval</span>{<span class="ruby-ivar">@dataType</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">name</span>}
+        <span class="ruby-comment cmt"># here, we assume @components = [&lt;lengthDef&gt;, [&lt;slot1&gt;,&lt;slot2&gt;...]]</span>
+
+        <span class="ruby-comment cmt"># read length</span>
+        (<span class="ruby-identifier">lenName</span>,<span class="ruby-identifier">lenType</span>) = <span class="ruby-ivar">@components</span>[<span class="ruby-value">0</span>] ;
+        <span class="ruby-identifier">lenTypeDef</span> = <span class="ruby-constant">DataTypeTable</span>.<span class="ruby-identifier">getByName</span>(<span class="ruby-identifier">lenType</span>) ;
+        <span class="ruby-identifier">len</span> = <span class="ruby-identifier">lenTypeDef</span>.<span class="ruby-identifier">unpack!</span>(<span class="ruby-identifier">buffer</span>) ;
+
+        <span class="ruby-comment cmt"># read elements</span>
+        <span class="ruby-identifier">elementsDef</span> = <span class="ruby-ivar">@components</span>[<span class="ruby-value">1</span>] ;
+        (<span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-identifier">len</span>).<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">element</span> = {} ;
+          <span class="ruby-identifier">elementsDef</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">slot</span><span class="ruby-operator">|</span>
+            (<span class="ruby-identifier">slotName</span>, <span class="ruby-identifier">slotType</span>) = <span class="ruby-identifier">slot</span> ;
+            <span class="ruby-identifier">slotTypeDef</span> = <span class="ruby-constant">DataTypeTable</span>.<span class="ruby-identifier">getByName</span>(<span class="ruby-identifier">slotType</span>) ;
+            <span class="ruby-identifier">raise</span>(<span class="ruby-value str">&quot;unknown data type is specified in composed type&quot;</span> <span class="ruby-operator">+</span>
+                  [<span class="ruby-identifier">slotName</span>, <span class="ruby-identifier">slotType</span>].<span class="ruby-identifier">inspect</span>) <span class="ruby-keyword kw">if</span>(<span class="ruby-identifier">slotTypeDef</span>.<span class="ruby-identifier">nil?</span>) ;
+            <span class="ruby-identifier">element</span>[<span class="ruby-identifier">slotName</span>] = <span class="ruby-identifier">slotTypeDef</span>.<span class="ruby-identifier">unpack!</span>(<span class="ruby-identifier">buffer</span>) ;
+          }
+          <span class="ruby-identifier">value</span>.<span class="ruby-identifier">push</span>{<span class="ruby-identifier">element</span>} ;
+        }
+        <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">value</span> ;
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

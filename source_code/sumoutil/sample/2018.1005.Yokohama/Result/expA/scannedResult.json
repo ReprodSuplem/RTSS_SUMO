@@ -1,0 +1,886 @@
+[
+  {
+    "basename": "maxOpt_d1_n10/savSim_",
+    "config": {
+      "": null,
+      "openClient": true,
+      "sumoConfigFile": "yokohamaNedo.00.sumocfg",
+      "guiMode": "gui",
+      "portScanFrom": 12345,
+      "traciClient": null,
+      "traciClientConf": {
+        "logDev": [
+          "stdout",
+          "file"
+        ],
+        "logLevel": "info",
+        "logDir": ".",
+        "logFilename": ",Log/savSim_.traci.log"
+      },
+      "vehicleManager": null,
+      "vehicleManagerConf": {
+        "defaultVehicleClass": "Sav::SavVehicle",
+        "vehicleIdPrefix": "sav",
+        "vehicleConf": {
+          "color": "DodgerBlue",
+          "capacity": 8
+        }
+      },
+      "vehicleConf": {
+        "capacity": 8
+      },
+      "poiManager": null,
+      "poiManagerConf": {
+        "defaultPoiClass": "Sumo::Traci::GroundedPoi"
+      },
+      "mapFile": "YokohamaMinatoMirai.01.stops.net.json",
+      "mapConf": {
+        "buildRTrees": true
+      },
+      "loopConf": {
+        "until": 43200
+      },
+      "timeOrigin": "00:00:00",
+      "vehicleType": "savBase",
+      "demandFactoryClass": "Sav::SavDemandFactoryMixture",
+      "demandFactoryConf": {
+        "configList": [
+          {
+            "type": "literal",
+            "detaMode": "file",
+            "fileType": "json",
+            "dataFile": "RealData/Summary/delog.all.json",
+            "mapFile": "YokohamaMinatoMirai.01.stops.net.xml",
+            "defaultNumPassenger": 1,
+            "timeOrigin": "2018-12-01 09:00:00 +0900",
+            "timeUntil": "2018-12-01 22:00:00 +0900",
+            "___": null
+          }
+        ],
+        "walkSpeed": 0.1,
+        "logFile": ",Log/savSim_.demandLog.json"
+      },
+      "allocatorClass": "seqOpt",
+      "allocatorConf": {
+      },
+      "nSavMax": 10,
+      "addSavInterval": 10,
+      "reporterClass": "Sav::SavReporter",
+      "reporterConf": {
+        "reportInterval": 30
+      },
+      "trailLogFile": null,
+      "allocLogFile": ",Log/savSim_.allocLog.json",
+      "partyLogFile": ",Log/savSim_.partyLog.json",
+      "configLogFile": ",Log/savSim_.config.json",
+      "featureTableFile": "YokohamaMinatoMirai.01.stops.feature.json",
+      "stopMargin": 12,
+      "mapDumpFile": "YokohamaMinatoMirai.01.stops.net.dump",
+      "__class__": "Sav::SavSimulator",
+      "nSavs": 10
+    },
+    "demandStat": {
+      "completeCount": 643,
+      "cancelCount": 21,
+      "totalDistance": 1143414.887595739,
+      "totalTime": 1440849.0,
+      "totalSpeed": 0.7935702405982438,
+      "speedStat": {
+        "average": 1.5371955523521634,
+        "variance": 1.3459096423179955,
+        "sdev": 1.1601334588391095,
+        "n": 643,
+        "min": 0.029567318161314637,
+        "max": 6.2241688041152985
+      },
+      "waitStat": {
+        "average": 1240.099533437014,
+        "variance": 2807334.730373033,
+        "sdev": 1675.510289545556,
+        "n": 643,
+        "min": 3.0,
+        "max": 12321.0
+      },
+      "shareCountHistgram": [
+        179,
+        103,
+        83,
+        54,
+        67,
+        48,
+        30,
+        26,
+        17,
+        12,
+        11,
+        6,
+        3,
+        1,
+        2,
+        null,
+        null,
+        null,
+        1
+      ],
+      "dropOffMarginStat": {
+        "average": -106.92244927700172,
+        "variance": 5930210.134795887,
+        "sdev": 2435.2022780040033,
+        "n": 643,
+        "min": -11535.081582474366,
+        "max": 3930.2062607176085
+      }
+    }
+  },
+  {
+    "basename": "maxOpt_d2_n10/savSim_",
+    "config": {
+      "": null,
+      "openClient": true,
+      "sumoConfigFile": "yokohamaNedo.00.sumocfg",
+      "guiMode": "gui",
+      "portScanFrom": 12345,
+      "traciClient": null,
+      "traciClientConf": {
+        "logDev": [
+          "stdout",
+          "file"
+        ],
+        "logLevel": "info",
+        "logDir": ".",
+        "logFilename": ",Log/savSim_.traci.log"
+      },
+      "vehicleManager": null,
+      "vehicleManagerConf": {
+        "defaultVehicleClass": "Sav::SavVehicle",
+        "vehicleIdPrefix": "sav",
+        "vehicleConf": {
+          "color": "DodgerBlue",
+          "capacity": 8
+        }
+      },
+      "vehicleConf": {
+        "capacity": 8
+      },
+      "poiManager": null,
+      "poiManagerConf": {
+        "defaultPoiClass": "Sumo::Traci::GroundedPoi"
+      },
+      "mapFile": "YokohamaMinatoMirai.01.stops.net.json",
+      "mapConf": {
+        "buildRTrees": true
+      },
+      "loopConf": {
+        "until": 43200
+      },
+      "timeOrigin": "00:00:00",
+      "vehicleType": "savBase",
+      "demandFactoryClass": "Sav::SavDemandFactoryMixture",
+      "demandFactoryConf": {
+        "configList": [
+          {
+            "type": "literal",
+            "detaMode": "file",
+            "fileType": "json",
+            "dataFile": "RealData/Summary/delog.all.json",
+            "mapFile": "YokohamaMinatoMirai.01.stops.net.xml",
+            "defaultNumPassenger": 1,
+            "timeOrigin": "2018-12-02 09:00:00 +0900",
+            "timeUntil": "2018-12-02 22:00:00 +0900",
+            "___": null
+          }
+        ],
+        "walkSpeed": 0.1,
+        "logFile": ",Log/savSim_.demandLog.json"
+      },
+      "allocatorClass": "seqOpt",
+      "allocatorConf": {
+      },
+      "nSavMax": 10,
+      "addSavInterval": 10,
+      "reporterClass": "Sav::SavReporter",
+      "reporterConf": {
+        "reportInterval": 30
+      },
+      "trailLogFile": null,
+      "allocLogFile": ",Log/savSim_.allocLog.json",
+      "partyLogFile": ",Log/savSim_.partyLog.json",
+      "configLogFile": ",Log/savSim_.config.json",
+      "featureTableFile": "YokohamaMinatoMirai.01.stops.feature.json",
+      "stopMargin": 12,
+      "mapDumpFile": "YokohamaMinatoMirai.01.stops.net.dump",
+      "__class__": "Sav::SavSimulator",
+      "nSavs": 10
+    },
+    "demandStat": {
+      "completeCount": 699,
+      "cancelCount": 2,
+      "totalDistance": 1241837.5566921195,
+      "totalTime": 1017696.0,
+      "totalSpeed": 1.2202441168012053,
+      "speedStat": {
+        "average": 1.675634899351672,
+        "variance": 1.0671714743528287,
+        "sdev": 1.0330399190509671,
+        "n": 699,
+        "min": 0.09527152796046558,
+        "max": 6.030748531800643
+      },
+      "waitStat": {
+        "average": 736.2360515021459,
+        "variance": 546962.0458533651,
+        "sdev": 739.5688242843698,
+        "n": 699,
+        "min": 3.0,
+        "max": 3920.0
+      },
+      "shareCountHistgram": [
+        184,
+        112,
+        144,
+        85,
+        78,
+        48,
+        22,
+        15,
+        5,
+        2,
+        2,
+        2
+      ],
+      "dropOffMarginStat": {
+        "average": 675.978638098058,
+        "variance": 1716717.8122257239,
+        "sdev": 1310.235784973729,
+        "n": 699,
+        "min": -5563.805113622828,
+        "max": 3524.3849720557955
+      }
+    }
+  },
+  {
+    "basename": "maxOpt_d3_n10/savSim_",
+    "config": {
+      "": null,
+      "openClient": true,
+      "sumoConfigFile": "yokohamaNedo.00.sumocfg",
+      "guiMode": "gui",
+      "portScanFrom": 12345,
+      "traciClient": null,
+      "traciClientConf": {
+        "logDev": [
+          "stdout",
+          "file"
+        ],
+        "logLevel": "info",
+        "logDir": ".",
+        "logFilename": ",Log/savSim_.traci.log"
+      },
+      "vehicleManager": null,
+      "vehicleManagerConf": {
+        "defaultVehicleClass": "Sav::SavVehicle",
+        "vehicleIdPrefix": "sav",
+        "vehicleConf": {
+          "color": "DodgerBlue",
+          "capacity": 8
+        }
+      },
+      "vehicleConf": {
+        "capacity": 8
+      },
+      "poiManager": null,
+      "poiManagerConf": {
+        "defaultPoiClass": "Sumo::Traci::GroundedPoi"
+      },
+      "mapFile": "YokohamaMinatoMirai.01.stops.net.json",
+      "mapConf": {
+        "buildRTrees": true
+      },
+      "loopConf": {
+        "until": 43200
+      },
+      "timeOrigin": "00:00:00",
+      "vehicleType": "savBase",
+      "demandFactoryClass": "Sav::SavDemandFactoryMixture",
+      "demandFactoryConf": {
+        "configList": [
+          {
+            "type": "literal",
+            "detaMode": "file",
+            "fileType": "json",
+            "dataFile": "RealData/Summary/delog.all.json",
+            "mapFile": "YokohamaMinatoMirai.01.stops.net.xml",
+            "defaultNumPassenger": 1,
+            "timeOrigin": "2018-12-03 09:00:00 +0900",
+            "timeUntil": "2018-12-03 22:00:00 +0900",
+            "___": null
+          }
+        ],
+        "walkSpeed": 0.1,
+        "logFile": ",Log/savSim_.demandLog.json"
+      },
+      "allocatorClass": "seqOpt",
+      "allocatorConf": {
+      },
+      "nSavMax": 10,
+      "addSavInterval": 10,
+      "reporterClass": "Sav::SavReporter",
+      "reporterConf": {
+        "reportInterval": 30
+      },
+      "trailLogFile": null,
+      "allocLogFile": ",Log/savSim_.allocLog.json",
+      "partyLogFile": ",Log/savSim_.partyLog.json",
+      "configLogFile": ",Log/savSim_.config.json",
+      "featureTableFile": "YokohamaMinatoMirai.01.stops.feature.json",
+      "stopMargin": 12,
+      "mapDumpFile": "YokohamaMinatoMirai.01.stops.net.dump",
+      "__class__": "Sav::SavSimulator",
+      "nSavs": 10
+    },
+    "demandStat": {
+      "completeCount": 499,
+      "cancelCount": 0,
+      "totalDistance": 874155.7690720293,
+      "totalTime": 375562.0,
+      "totalSpeed": 2.327593763671589,
+      "speedStat": {
+        "average": 2.498739940281123,
+        "variance": 0.9964522482211082,
+        "sdev": 0.9982245479956442,
+        "n": 499,
+        "min": 0.4675659328904682,
+        "max": 6.70350235095436
+      },
+      "waitStat": {
+        "average": 276.937875751503,
+        "variance": 37521.74163155972,
+        "sdev": 193.70529582734625,
+        "n": 499,
+        "min": 3.0,
+        "max": 1070.0
+      },
+      "shareCountHistgram": [
+        329,
+        82,
+        51,
+        28,
+        9
+      ],
+      "dropOffMarginStat": {
+        "average": 1349.5489436601922,
+        "variance": 685996.6477197434,
+        "sdev": 828.2491459215297,
+        "n": 499,
+        "min": -667.59865928832,
+        "max": 3821.2062607176085
+      }
+    }
+  },
+  {
+    "basename": "maxOpt_d4_n10/savSim_",
+    "config": {
+      "": null,
+      "openClient": true,
+      "sumoConfigFile": "yokohamaNedo.00.sumocfg",
+      "guiMode": "gui",
+      "portScanFrom": 12345,
+      "traciClient": null,
+      "traciClientConf": {
+        "logDev": [
+          "stdout",
+          "file"
+        ],
+        "logLevel": "info",
+        "logDir": ".",
+        "logFilename": ",Log/savSim_.traci.log"
+      },
+      "vehicleManager": null,
+      "vehicleManagerConf": {
+        "defaultVehicleClass": "Sav::SavVehicle",
+        "vehicleIdPrefix": "sav",
+        "vehicleConf": {
+          "color": "DodgerBlue",
+          "capacity": 8
+        }
+      },
+      "vehicleConf": {
+        "capacity": 8
+      },
+      "poiManager": null,
+      "poiManagerConf": {
+        "defaultPoiClass": "Sumo::Traci::GroundedPoi"
+      },
+      "mapFile": "YokohamaMinatoMirai.01.stops.net.json",
+      "mapConf": {
+        "buildRTrees": true
+      },
+      "loopConf": {
+        "until": 43200
+      },
+      "timeOrigin": "00:00:00",
+      "vehicleType": "savBase",
+      "demandFactoryClass": "Sav::SavDemandFactoryMixture",
+      "demandFactoryConf": {
+        "configList": [
+          {
+            "type": "literal",
+            "detaMode": "file",
+            "fileType": "json",
+            "dataFile": "RealData/Summary/delog.all.json",
+            "mapFile": "YokohamaMinatoMirai.01.stops.net.xml",
+            "defaultNumPassenger": 1,
+            "timeOrigin": "2018-12-04 09:00:00 +0900",
+            "timeUntil": "2018-12-04 22:00:00 +0900",
+            "___": null
+          }
+        ],
+        "walkSpeed": 0.1,
+        "logFile": ",Log/savSim_.demandLog.json"
+      },
+      "allocatorClass": "seqOpt",
+      "allocatorConf": {
+      },
+      "nSavMax": 10,
+      "addSavInterval": 10,
+      "reporterClass": "Sav::SavReporter",
+      "reporterConf": {
+        "reportInterval": 30
+      },
+      "trailLogFile": null,
+      "allocLogFile": ",Log/savSim_.allocLog.json",
+      "partyLogFile": ",Log/savSim_.partyLog.json",
+      "configLogFile": ",Log/savSim_.config.json",
+      "featureTableFile": "YokohamaMinatoMirai.01.stops.feature.json",
+      "stopMargin": 12,
+      "mapDumpFile": "YokohamaMinatoMirai.01.stops.net.dump",
+      "__class__": "Sav::SavSimulator",
+      "nSavs": 10
+    },
+    "demandStat": {
+      "completeCount": 581,
+      "cancelCount": 0,
+      "totalDistance": 1016399.2094525754,
+      "totalTime": 527640.0,
+      "totalSpeed": 1.9263118972264714,
+      "speedStat": {
+        "average": 2.2699776004360124,
+        "variance": 1.167254581226544,
+        "sdev": 1.0803955670154075,
+        "n": 581,
+        "min": 0.23901779923819808,
+        "max": 7.607283653894091
+      },
+      "waitStat": {
+        "average": 382.50946643717725,
+        "variance": 146498.20860229706,
+        "sdev": 382.7508440255842,
+        "n": 581,
+        "min": 2.0,
+        "max": 2526.0
+      },
+      "shareCountHistgram": [
+        289,
+        118,
+        85,
+        43,
+        33,
+        11,
+        2
+      ],
+      "dropOffMarginStat": {
+        "average": 1191.1171279571265,
+        "variance": 995700.1477656586,
+        "sdev": 997.8477578096063,
+        "n": 581,
+        "min": -1827.7821484610831,
+        "max": 3701.2062607176085
+      }
+    }
+  },
+  {
+    "basename": "maxOpt_d5_n10/savSim_",
+    "config": {
+      "": null,
+      "openClient": true,
+      "sumoConfigFile": "yokohamaNedo.00.sumocfg",
+      "guiMode": "gui",
+      "portScanFrom": 12345,
+      "traciClient": null,
+      "traciClientConf": {
+        "logDev": [
+          "stdout",
+          "file"
+        ],
+        "logLevel": "info",
+        "logDir": ".",
+        "logFilename": ",Log/savSim_.traci.log"
+      },
+      "vehicleManager": null,
+      "vehicleManagerConf": {
+        "defaultVehicleClass": "Sav::SavVehicle",
+        "vehicleIdPrefix": "sav",
+        "vehicleConf": {
+          "color": "DodgerBlue",
+          "capacity": 8
+        }
+      },
+      "vehicleConf": {
+        "capacity": 8
+      },
+      "poiManager": null,
+      "poiManagerConf": {
+        "defaultPoiClass": "Sumo::Traci::GroundedPoi"
+      },
+      "mapFile": "YokohamaMinatoMirai.01.stops.net.json",
+      "mapConf": {
+        "buildRTrees": true
+      },
+      "loopConf": {
+        "until": 43200
+      },
+      "timeOrigin": "00:00:00",
+      "vehicleType": "savBase",
+      "demandFactoryClass": "Sav::SavDemandFactoryMixture",
+      "demandFactoryConf": {
+        "configList": [
+          {
+            "type": "literal",
+            "detaMode": "file",
+            "fileType": "json",
+            "dataFile": "RealData/Summary/delog.all.json",
+            "mapFile": "YokohamaMinatoMirai.01.stops.net.xml",
+            "defaultNumPassenger": 1,
+            "timeOrigin": "2018-12-05 09:00:00 +0900",
+            "timeUntil": "2018-12-05 22:00:00 +0900",
+            "___": null
+          }
+        ],
+        "walkSpeed": 0.1,
+        "logFile": ",Log/savSim_.demandLog.json"
+      },
+      "allocatorClass": "seqOpt",
+      "allocatorConf": {
+      },
+      "nSavMax": 10,
+      "addSavInterval": 10,
+      "reporterClass": "Sav::SavReporter",
+      "reporterConf": {
+        "reportInterval": 30
+      },
+      "trailLogFile": null,
+      "allocLogFile": ",Log/savSim_.allocLog.json",
+      "partyLogFile": ",Log/savSim_.partyLog.json",
+      "configLogFile": ",Log/savSim_.config.json",
+      "featureTableFile": "YokohamaMinatoMirai.01.stops.feature.json",
+      "stopMargin": 12,
+      "mapDumpFile": "YokohamaMinatoMirai.01.stops.net.dump",
+      "__class__": "Sav::SavSimulator",
+      "nSavs": 10
+    },
+    "demandStat": {
+      "completeCount": 510,
+      "cancelCount": 0,
+      "totalDistance": 901869.1719018742,
+      "totalTime": 384160.0,
+      "totalSpeed": 2.3476394520561072,
+      "speedStat": {
+        "average": 2.4962766950280217,
+        "variance": 0.9990858114282206,
+        "sdev": 0.9995428011987384,
+        "n": 510,
+        "min": 0.1671619890242566,
+        "max": 6.266450345761725
+      },
+      "waitStat": {
+        "average": 277.28627450980395,
+        "variance": 31962.729811610916,
+        "sdev": 178.78123450633996,
+        "n": 510,
+        "min": 8.0,
+        "max": 1008.0
+      },
+      "shareCountHistgram": [
+        327,
+        94,
+        48,
+        28,
+        13
+      ],
+      "dropOffMarginStat": {
+        "average": 1368.7902083965632,
+        "variance": 704592.4981135947,
+        "sdev": 839.4000822692327,
+        "n": 510,
+        "min": -561.9821460591338,
+        "max": 3666.206260717605
+      }
+    }
+  },
+  {
+    "basename": "maxOpt_d6_n10/savSim_",
+    "config": {
+      "": null,
+      "openClient": true,
+      "sumoConfigFile": "yokohamaNedo.00.sumocfg",
+      "guiMode": "gui",
+      "portScanFrom": 12345,
+      "traciClient": null,
+      "traciClientConf": {
+        "logDev": [
+          "stdout",
+          "file"
+        ],
+        "logLevel": "info",
+        "logDir": ".",
+        "logFilename": ",Log/savSim_.traci.log"
+      },
+      "vehicleManager": null,
+      "vehicleManagerConf": {
+        "defaultVehicleClass": "Sav::SavVehicle",
+        "vehicleIdPrefix": "sav",
+        "vehicleConf": {
+          "color": "DodgerBlue",
+          "capacity": 8
+        }
+      },
+      "vehicleConf": {
+        "capacity": 8
+      },
+      "poiManager": null,
+      "poiManagerConf": {
+        "defaultPoiClass": "Sumo::Traci::GroundedPoi"
+      },
+      "mapFile": "YokohamaMinatoMirai.01.stops.net.json",
+      "mapConf": {
+        "buildRTrees": true
+      },
+      "loopConf": {
+        "until": 43200
+      },
+      "timeOrigin": "00:00:00",
+      "vehicleType": "savBase",
+      "demandFactoryClass": "Sav::SavDemandFactoryMixture",
+      "demandFactoryConf": {
+        "configList": [
+          {
+            "type": "literal",
+            "detaMode": "file",
+            "fileType": "json",
+            "dataFile": "RealData/Summary/delog.all.json",
+            "mapFile": "YokohamaMinatoMirai.01.stops.net.xml",
+            "defaultNumPassenger": 1,
+            "timeOrigin": "2018-12-06 09:00:00 +0900",
+            "timeUntil": "2018-12-06 22:00:00 +0900",
+            "___": null
+          }
+        ],
+        "walkSpeed": 0.1,
+        "logFile": ",Log/savSim_.demandLog.json"
+      },
+      "allocatorClass": "seqOpt",
+      "allocatorConf": {
+      },
+      "nSavMax": 10,
+      "addSavInterval": 10,
+      "reporterClass": "Sav::SavReporter",
+      "reporterConf": {
+        "reportInterval": 30
+      },
+      "trailLogFile": null,
+      "allocLogFile": ",Log/savSim_.allocLog.json",
+      "partyLogFile": ",Log/savSim_.partyLog.json",
+      "configLogFile": ",Log/savSim_.config.json",
+      "featureTableFile": "YokohamaMinatoMirai.01.stops.feature.json",
+      "stopMargin": 12,
+      "mapDumpFile": "YokohamaMinatoMirai.01.stops.net.dump",
+      "__class__": "Sav::SavSimulator",
+      "nSavs": 10
+    },
+    "demandStat": {
+      "completeCount": 522,
+      "cancelCount": 0,
+      "totalDistance": 889312.5741788436,
+      "totalTime": 460735.0,
+      "totalSpeed": 1.9302040743135287,
+      "speedStat": {
+        "average": 2.2905066920531447,
+        "variance": 1.1579406053049972,
+        "sdev": 1.0760764867354908,
+        "n": 522,
+        "min": 0.30511069868267043,
+        "max": 7.367798626725214
+      },
+      "waitStat": {
+        "average": 349.43486590038316,
+        "variance": 114631.41433992452,
+        "sdev": 338.57261309787674,
+        "n": 522,
+        "min": 1.0,
+        "max": 2533.0
+      },
+      "shareCountHistgram": [
+        282,
+        90,
+        53,
+        53,
+        21,
+        14,
+        2,
+        6,
+        null,
+        1
+      ],
+      "dropOffMarginStat": {
+        "average": 1161.7626226333593,
+        "variance": 904008.0701251577,
+        "sdev": 950.7933898198692,
+        "n": 522,
+        "min": -1719.0307238381938,
+        "max": 3714.158927601762
+      }
+    }
+  },
+  {
+    "basename": "maxOpt_d7_n10/savSim_",
+    "config": {
+      "": null,
+      "openClient": true,
+      "sumoConfigFile": "yokohamaNedo.00.sumocfg",
+      "guiMode": "gui",
+      "portScanFrom": 12345,
+      "traciClient": null,
+      "traciClientConf": {
+        "logDev": [
+          "stdout",
+          "file"
+        ],
+        "logLevel": "info",
+        "logDir": ".",
+        "logFilename": ",Log/savSim_.traci.log"
+      },
+      "vehicleManager": null,
+      "vehicleManagerConf": {
+        "defaultVehicleClass": "Sav::SavVehicle",
+        "vehicleIdPrefix": "sav",
+        "vehicleConf": {
+          "color": "DodgerBlue",
+          "capacity": 8
+        }
+      },
+      "vehicleConf": {
+        "capacity": 8
+      },
+      "poiManager": null,
+      "poiManagerConf": {
+        "defaultPoiClass": "Sumo::Traci::GroundedPoi"
+      },
+      "mapFile": "YokohamaMinatoMirai.01.stops.net.json",
+      "mapConf": {
+        "buildRTrees": true
+      },
+      "loopConf": {
+        "until": 43200
+      },
+      "timeOrigin": "00:00:00",
+      "vehicleType": "savBase",
+      "demandFactoryClass": "Sav::SavDemandFactoryMixture",
+      "demandFactoryConf": {
+        "configList": [
+          {
+            "type": "literal",
+            "detaMode": "file",
+            "fileType": "json",
+            "dataFile": "RealData/Summary/delog.all.json",
+            "mapFile": "YokohamaMinatoMirai.01.stops.net.xml",
+            "defaultNumPassenger": 1,
+            "timeOrigin": "2018-12-07 09:00:00 +0900",
+            "timeUntil": "2018-12-07 22:00:00 +0900",
+            "___": null
+          }
+        ],
+        "walkSpeed": 0.1,
+        "logFile": ",Log/savSim_.demandLog.json"
+      },
+      "allocatorClass": "seqOpt",
+      "allocatorConf": {
+      },
+      "nSavMax": 10,
+      "addSavInterval": 10,
+      "reporterClass": "Sav::SavReporter",
+      "reporterConf": {
+        "reportInterval": 30
+      },
+      "trailLogFile": null,
+      "allocLogFile": ",Log/savSim_.allocLog.json",
+      "partyLogFile": ",Log/savSim_.partyLog.json",
+      "configLogFile": ",Log/savSim_.config.json",
+      "featureTableFile": "YokohamaMinatoMirai.01.stops.feature.json",
+      "stopMargin": 12,
+      "mapDumpFile": "YokohamaMinatoMirai.01.stops.net.dump",
+      "__class__": "Sav::SavSimulator",
+      "nSavs": 10
+    },
+    "demandStat": {
+      "completeCount": 624,
+      "cancelCount": 113,
+      "totalDistance": 1058455.8747115904,
+      "totalTime": 2867257.0,
+      "totalSpeed": 0.3691527737874876,
+      "speedStat": {
+        "average": 0.9385120029583223,
+        "variance": 1.1224114472548938,
+        "sdev": 1.0594392135723945,
+        "n": 624,
+        "min": 0.06153936361608746,
+        "max": 6.367221074503755
+      },
+      "waitStat": {
+        "average": 3524.2580128205127,
+        "variance": 11325269.636955027,
+        "sdev": 3365.3037956408966,
+        "n": 624,
+        "min": 2.0,
+        "max": 11813.0
+      },
+      "shareCountHistgram": [
+        229,
+        104,
+        75,
+        37,
+        35,
+        43,
+        23,
+        19,
+        14,
+        13,
+        6,
+        5,
+        4,
+        7,
+        2,
+        6,
+        null,
+        null,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1
+      ],
+      "dropOffMarginStat": {
+        "average": -2559.4710742725792,
+        "variance": 12427343.194892548,
+        "sdev": 3525.2437071630306,
+        "n": 624,
+        "min": -10793.702920008582,
+        "max": 3592.3849720557955
+      }
+    }
+  }
+]

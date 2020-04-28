@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Sav::SavDemandFactoryDirected - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script src="../js/jquery.js"></script>
+<script src="../js/darkfish.js"></script>
+
+<link href="../css/fonts.css" rel="stylesheet">
+<link href="../css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../table_of_contents.html#pages">Pages</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link">SavDemandFactoryRandom
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-i-formAreaShape">#formAreaShape</a>
+    
+    <li ><a href="#method-i-getGeoFeature">#getGeoFeature</a>
+    
+    <li ><a href="#method-i-newDemand">#newDemand</a>
+    
+    <li ><a href="#method-i-newDemandListForCycle">#newDemandListForCycle</a>
+    
+    <li class="calls-super" ><a href="#method-i-setup">#setup</a>
+    
+    <li ><a href="#method-i-setupRangeBox">#setupRangeBox</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Sav::SavDemandFactoryDirected">
+  <h1 id="class-Sav::SavDemandFactoryDirected" class="class">
+    class Sav::SavDemandFactoryDirected
+  </h1>
+
+  <section class="description">
+    
+<p>class for Factory of <a href="SavDemand.html">SavDemand</a>. The config
+(demandConfig) param should be in the following format:</p>
+
+<pre>&lt;Config&gt; ::= {
+               :from =&gt; &lt;Area&gt;,
+               :to   =&gt; &lt;Area&gt;,
+               :since =&gt; &lt;Time&gt;,
+               :until =&gt; &lt;Time&gt;,
+             }
+&lt;Area&gt; ::= { :type =&gt; &quot;circle&quot;,
+             :center =&gt; &lt;Point&gt;,
+             :radius =&gt; &lt;Float&gt; }
+        || { :type =&gt; &quot;polygon&quot;,
+             :shape =&gt; &lt;Polygon&gt; }
+        || { :type =&gt; &quot;list&quot;,
+             :list =&gt; [&lt;Area&gt;, &lt;Area&gt;, ...] }
+&lt;Point&gt; ::= [ longitude, latitude ]
+         || name_of_PoI
+&lt;Polygon&gt; ::= [ &lt;Point&gt;, &lt;Point&gt;, ... ]
+           || name_of_zone
+&lt;Time&gt; ::= sec_in_simulation</pre>
+
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+    <section class="constants-list">
+      <header>
+        <h3>Constants</h3>
+      </header>
+      <dl>
+      
+        <dt id="DefaultConf">DefaultConf
+        
+        <dd><p>description of DefaultOptsions.</p>
+        
+      
+      </dl>
+    </section>
+    
+
+    
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-demandConfig" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">demandConfig</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p><a
+href="SavDemandFactoryDirected.html#attribute-i-demandConfig">#demandConfig</a>.</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-destinationAreaShape" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">destinationAreaShape</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>shape of destination area</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-featureTable" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">featureTable</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>feature table</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-originAreaShape" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">originAreaShape</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>shape of origin area</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-sinceTime" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">sinceTime</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>duration to generate</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-untilTime" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">untilTime</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>duration to generate</p>
+        
+        </div>
+      </div>
+      
+    </section>
+    
+
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-formAreaShape" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">formAreaShape</span><span
+            class="method-args">(areaDef)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>form area shape from area definition.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="formAreaShape-source">
+            <pre><span class="ruby-comment"># File Savs/SavDemandFactoryDirected.rb, line 102</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">formAreaShape</span>(<span class="ruby-identifier">areaDef</span>)
+  <span class="ruby-identifier">area</span> = <span class="ruby-keyword">nil</span> ;
+  <span class="ruby-identifier">type</span> = <span class="ruby-identifier">areaDef</span>[<span class="ruby-value">:type</span>] ;
+  <span class="ruby-keyword">case</span>(<span class="ruby-identifier">type</span>)
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;circle&quot;</span> ;
+    <span class="ruby-identifier">centerName</span> = <span class="ruby-identifier">areaDef</span>[<span class="ruby-value">:center</span>] ;
+    <span class="ruby-identifier">center</span> = <span class="ruby-identifier">getGeoFeature</span>(<span class="ruby-identifier">centerName</span>) ;
+    <span class="ruby-identifier">radius</span> = <span class="ruby-identifier">areaDef</span>[<span class="ruby-value">:radius</span>] ;
+    <span class="ruby-identifier">area</span> = <span class="ruby-constant">Sav</span><span class="ruby-operator">::</span><span class="ruby-constant">GeoFeature</span><span class="ruby-operator">::</span><span class="ruby-constant">Circle</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">center</span>, <span class="ruby-identifier">radius</span>) ;
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;zone&quot;</span> ;
+    <span class="ruby-identifier">zoneName</span> = <span class="ruby-identifier">areaDef</span>[<span class="ruby-value">:zone</span>] ;
+    <span class="ruby-identifier">area</span> = <span class="ruby-identifier">getGeoFeature</span>(<span class="ruby-identifier">zoneName</span>) ;
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;list&quot;</span> ;
+    <span class="ruby-identifier">list</span> = [] ;
+    <span class="ruby-identifier">areaDef</span>[<span class="ruby-value">:list</span>].<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">subAreaDef</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">subArea</span> = <span class="ruby-identifier">formAreaShape</span>(<span class="ruby-identifier">subAreaDef</span>) ;
+      <span class="ruby-identifier">list</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">subArea</span>) ;
+    }
+    <span class="ruby-identifier">_name</span> = <span class="ruby-identifier">areaDef</span>[<span class="ruby-value">:name</span>] ;
+    <span class="ruby-identifier">area</span> = <span class="ruby-constant">Sav</span><span class="ruby-operator">::</span><span class="ruby-constant">GeoFeature</span><span class="ruby-operator">::</span><span class="ruby-constant">List</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">_name</span>, <span class="ruby-identifier">list</span>) ;
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;unknown type for Area:&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">type</span> ;
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">area</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-getGeoFeature" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getGeoFeature</span><span
+            class="method-args">(name)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>get SavGeoFeature by name</p>
+          
+          
+
+          
+          <div class="method-source-code" id="getGeoFeature-source">
+            <pre><span class="ruby-comment"># File Savs/SavDemandFactoryDirected.rb, line 131</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">getGeoFeature</span>(<span class="ruby-identifier">name</span>)
+  <span class="ruby-identifier">feature</span> = <span class="ruby-ivar">@featureTable</span>[<span class="ruby-identifier">name</span>] ;
+  <span class="ruby-identifier">raise</span> (<span class="ruby-string">&quot;unknown SavGeoFeature:&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">name</span>) <span class="ruby-keyword">if</span>(<span class="ruby-identifier">feature</span>.<span class="ruby-identifier">nil?</span>) ;
+
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">feature</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-newDemand" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">newDemand</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>generate new demand() ;</p>
+          
+          
+
+          
+          <div class="method-source-code" id="newDemand-source">
+            <pre><span class="ruby-comment"># File Savs/SavDemandFactoryDirected.rb, line 141</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">newDemand</span>()
+  <span class="ruby-identifier">pickUpPos</span> = <span class="ruby-ivar">@originAreaShape</span>.<span class="ruby-identifier">getRandomPoint</span>() ;
+  <span class="ruby-identifier">dropOffPos</span> = <span class="ruby-ivar">@destinationAreaShape</span>.<span class="ruby-identifier">getRandomPoint</span>() ;
+
+  <span class="ruby-identifier">passenger</span> = <span class="ruby-ivar">@passengerList</span>.<span class="ruby-identifier">sample</span>() ;
+  <span class="ruby-identifier">numPassenger</span> = <span class="ruby-value">1</span> ;
+
+  <span class="ruby-identifier">demand</span> = <span class="ruby-constant">Sav</span><span class="ruby-operator">::</span><span class="ruby-constant">SavDemand</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">passenger</span>, <span class="ruby-identifier">numPassenger</span>,
+                              <span class="ruby-constant">Trip</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">pickUpPos</span>, <span class="ruby-identifier">dropOffPos</span>),
+                              <span class="ruby-ivar">@simulator</span>,
+                              <span class="ruby-ivar">@demandConf</span>) ;
+
+  <span class="ruby-comment">## 締め切り時刻設定</span>
+  <span class="ruby-identifier">aveDist</span> = <span class="ruby-constant">Sav</span><span class="ruby-operator">::</span><span class="ruby-constant">Util</span>.<span class="ruby-identifier">averageManhattanDistance</span>(<span class="ruby-identifier">pickUpPos</span>, <span class="ruby-identifier">dropOffPos</span>) ;
+  <span class="ruby-identifier">deadLine</span> = <span class="ruby-ivar">@simulator</span>.<span class="ruby-identifier">currentTime</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">aveDist</span> <span class="ruby-operator">/</span> <span class="ruby-ivar">@walkSpeed</span> ;
+  <span class="ruby-identifier">demand</span>.<span class="ruby-identifier">tripRequiredTime</span>.<span class="ruby-identifier">dropOff</span> = <span class="ruby-identifier">deadLine</span> ;
+
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">demand</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-newDemandListForCycle" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">newDemandListForCycle</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>generate new demands in a cycle</p>
+          
+          
+
+          
+          <div class="method-source-code" id="newDemandListForCycle-source">
+            <pre><span class="ruby-comment"># File Savs/SavDemandFactoryDirected.rb, line 164</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">newDemandListForCycle</span>()
+  <span class="ruby-identifier">currentTime</span> = <span class="ruby-ivar">@simulator</span>.<span class="ruby-identifier">currentTime</span> ;
+  <span class="ruby-keyword">if</span>((<span class="ruby-ivar">@sinceTime</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">currentTime</span> <span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@sinceTime</span>) <span class="ruby-operator">&amp;&amp;</span>
+     (<span class="ruby-ivar">@untilTime</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">currentTime</span> <span class="ruby-operator">&lt;</span> <span class="ruby-ivar">@untilTime</span>)) <span class="ruby-keyword">then</span>
+    <span class="ruby-identifier">list</span> = [] ;
+    <span class="ruby-keyword">if</span>(<span class="ruby-identifier">rand</span>() <span class="ruby-operator">&lt;</span> <span class="ruby-ivar">@frequency</span>)
+      <span class="ruby-identifier">list</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">newDemand</span>()) ;
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">list</span> ;
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">return</span> [] ;
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-setup" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">setup</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p><a href="SavDemandFactoryDirected.html#method-i-setup">#setup</a>.</p>
+          
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              
+            </div>
+          
+
+          
+          <div class="method-source-code" id="setup-source">
+            <pre><span class="ruby-comment"># File Savs/SavDemandFactoryDirected.rb, line 80</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">setup</span>()
+  <span class="ruby-ivar">@featureTable</span> = <span class="ruby-ivar">@simulator</span>.<span class="ruby-identifier">featureTable</span> ;
+  <span class="ruby-ivar">@demandConfig</span> = <span class="ruby-identifier">getConf</span>(<span class="ruby-value">:config</span>) ;
+  <span class="ruby-keyword">super</span>() ;
+  <span class="ruby-ivar">@frequency</span> = <span class="ruby-value">1.0</span> <span class="ruby-operator">/</span> <span class="ruby-ivar">@demandConfig</span>[<span class="ruby-value">:interval</span>] ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-setupRangeBox" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">setupRangeBox</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p><a href="SavDemandFactoryDirected.html#method-i-setup">#setup</a>
+@rangeBox.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="setupRangeBox-source">
+            <pre><span class="ruby-comment"># File Savs/SavDemandFactoryDirected.rb, line 90</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">setupRangeBox</span>()
+  <span class="ruby-ivar">@originAreaShape</span> = <span class="ruby-identifier">formAreaShape</span>(<span class="ruby-ivar">@demandConfig</span>[<span class="ruby-value">:from</span>]) ;
+  <span class="ruby-ivar">@destinationAreaShape</span> = <span class="ruby-identifier">formAreaShape</span>(<span class="ruby-ivar">@demandConfig</span>[<span class="ruby-value">:to</span>]) ;
+  <span class="ruby-ivar">@sinceTime</span> = <span class="ruby-ivar">@demandConfig</span>[<span class="ruby-value">:since</span>] ;
+  <span class="ruby-ivar">@untilTime</span> = <span class="ruby-ivar">@demandConfig</span>[<span class="ruby-value">:until</span>] ;
+
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

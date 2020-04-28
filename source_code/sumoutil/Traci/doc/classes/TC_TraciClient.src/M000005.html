@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>test_c (TC_TraciClient)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File TraciClient.rb, line 521</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_c</span>
+      <span class="ruby-comment cmt">## SUMO を TraCI モードで立ち上げ。TraCI サーバのポートは port</span>
+      <span class="ruby-identifier">port</span> = <span class="ruby-identifier">prepareServer</span>()
+      <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Util</span><span class="ruby-operator">::</span><span class="ruby-identifier">waitTcpPortIsReady</span>(<span class="ruby-identifier">port</span>) ;
+
+      <span class="ruby-comment cmt">## クライアント作成。TraCI サーバのポートは port</span>
+      <span class="ruby-comment cmt">## ログは、$stdout に吐き出す。</span>
+      <span class="ruby-identifier">traci</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">Client</span>.<span class="ruby-identifier">new</span>({ <span class="ruby-identifier">:port</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">port</span>, 
+<span class="ruby-comment cmt">#                                        :logLevel =&gt; :debug,</span>
+                                        <span class="ruby-identifier">:logLevel</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:info</span>,
+                                        <span class="ruby-identifier">:logDev</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-identifier">:stdout</span>] }) ;
+
+      <span class="ruby-comment cmt">## start</span>
+      <span class="ruby-identifier">vehicleTable</span> = {} ;
+      <span class="ruby-identifier">step</span> = <span class="ruby-value">0</span> ;
+      <span class="ruby-identifier">ustep</span> = <span class="ruby-value">100</span> ;
+      <span class="ruby-identifier">delay</span> = <span class="ruby-value">0</span><span class="ruby-value">.001</span> ;
+      <span class="ruby-keyword kw">while</span>(<span class="ruby-identifier">step</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">2000</span><span class="ruby-operator">*</span><span class="ruby-value">1000</span>)
+        <span class="ruby-comment cmt"># simulation を進める。</span>
+        <span class="ruby-identifier">step</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">ustep</span>
+        <span class="ruby-identifier">com</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">Command_SimulationStep</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">step</span>) ;
+        <span class="ruby-identifier">traci</span>.<span class="ruby-identifier">execCommands</span>(<span class="ruby-identifier">com</span>) ;
+        <span class="ruby-comment cmt"># 車のリスト取得</span>
+        <span class="ruby-identifier">com</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">Command_GetVariable</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">:vehicle</span>, <span class="ruby-identifier">:idList</span>, <span class="ruby-value str">&quot;&quot;</span>) ;
+        <span class="ruby-identifier">traci</span>.<span class="ruby-identifier">execCommands</span>(<span class="ruby-identifier">com</span>) ;
+        <span class="ruby-identifier">vList</span> = <span class="ruby-identifier">com</span>.<span class="ruby-identifier">responseValue</span>() ;
+        <span class="ruby-identifier">vList</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">vId</span><span class="ruby-operator">|</span>
+          <span class="ruby-keyword kw">if</span>(<span class="ruby-identifier">vehicleTable</span>[<span class="ruby-identifier">vId</span>].<span class="ruby-identifier">nil?</span>) <span class="ruby-keyword kw">then</span>
+            <span class="ruby-comment cmt">## 元の大きさ取得。</span>
+            <span class="ruby-identifier">com</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">Command_GetVariable</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">:vehicle</span>, <span class="ruby-identifier">:length</span>, <span class="ruby-identifier">vId</span>) ;
+            <span class="ruby-identifier">traci</span>.<span class="ruby-identifier">execCommands</span>(<span class="ruby-identifier">com</span>) ;
+            <span class="ruby-identifier">vLength</span> = <span class="ruby-identifier">com</span>.<span class="ruby-identifier">responseValue</span>() ;
+            <span class="ruby-comment cmt">## 新しい車の大きさと色を変える。</span>
+            <span class="ruby-identifier">com1</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">Command_SetVariable</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">:vehicle</span>, <span class="ruby-identifier">:length</span>, <span class="ruby-identifier">vId</span>,
+                                                       <span class="ruby-identifier">vLength</span> <span class="ruby-operator">*</span> <span class="ruby-value">10</span>) ;
+            <span class="ruby-identifier">com2</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">Command_SetVariable</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">:vehicle</span>, <span class="ruby-identifier">:width</span>, <span class="ruby-identifier">vId</span>,
+                                                        <span class="ruby-identifier">vLength</span> <span class="ruby-operator">*</span> <span class="ruby-value">4</span>) ;
+            <span class="ruby-identifier">colList</span> = [{ <span class="ruby-identifier">:r</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">100</span>, <span class="ruby-identifier">:g</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">100</span>, <span class="ruby-identifier">:b</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">255</span>, <span class="ruby-identifier">:a</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">255</span> },
+                       { <span class="ruby-identifier">:r</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">100</span>, <span class="ruby-identifier">:g</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">255</span>, <span class="ruby-identifier">:b</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">100</span>, <span class="ruby-identifier">:a</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">255</span> },
+                       { <span class="ruby-identifier">:r</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">255</span>, <span class="ruby-identifier">:g</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">100</span>, <span class="ruby-identifier">:b</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">100</span>, <span class="ruby-identifier">:a</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">255</span> }] ;
+            <span class="ruby-identifier">color</span> = <span class="ruby-identifier">colList</span>[<span class="ruby-identifier">rand</span>(<span class="ruby-identifier">colList</span>.<span class="ruby-identifier">size</span>)] ;
+            <span class="ruby-identifier">com3</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">Command_SetVariable</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">:vehicle</span>, <span class="ruby-identifier">:color</span>, 
+                                                        <span class="ruby-identifier">vId</span>, <span class="ruby-identifier">color</span>) ;
+            <span class="ruby-identifier">traci</span>.<span class="ruby-identifier">execCommands</span>(<span class="ruby-identifier">com1</span>,<span class="ruby-identifier">com2</span>,<span class="ruby-identifier">com3</span>) ;
+            <span class="ruby-identifier">vehicleTable</span>[<span class="ruby-identifier">vId</span>] = <span class="ruby-identifier">vId</span> ;
+          <span class="ruby-keyword kw">end</span>
+        }
+
+        <span class="ruby-keyword kw">if</span>(<span class="ruby-identifier">vehicleTable</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">rand</span>(<span class="ruby-value">10</span>) <span class="ruby-operator">==</span> <span class="ruby-value">0</span>)
+          <span class="ruby-identifier">v</span> = <span class="ruby-identifier">vList</span>[<span class="ruby-identifier">rand</span>(<span class="ruby-identifier">vList</span>.<span class="ruby-identifier">size</span>)] ;
+          <span class="ruby-identifier">speed</span> = <span class="ruby-value">10.0</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">rand</span>() ;
+          <span class="ruby-identifier">duration</span> = <span class="ruby-value">1000</span> ;
+          <span class="ruby-identifier">com</span> = <span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">Command_SetVariable</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">:vehicle</span>, <span class="ruby-identifier">:slowDown</span>, <span class="ruby-identifier">v</span>,
+                                                     { <span class="ruby-identifier">:speed</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">speed</span>,
+                                                       <span class="ruby-identifier">:duration</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">duration</span> }) ;
+          <span class="ruby-identifier">traci</span>.<span class="ruby-identifier">execCommands</span>(<span class="ruby-identifier">com</span>) ;
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-identifier">sleep</span>(<span class="ruby-identifier">delay</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">vehicleTable</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span> ;
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-comment cmt">## 終了</span>
+      <span class="ruby-identifier">traci</span>.<span class="ruby-identifier">execCommands</span>(<span class="ruby-constant">Sumo</span><span class="ruby-operator">::</span><span class="ruby-constant">Traci</span><span class="ruby-operator">::</span><span class="ruby-constant">Command_Close</span>.<span class="ruby-identifier">new</span>()) ;
+      <span class="ruby-identifier">traci</span>.<span class="ruby-identifier">close</span>() ;
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,151 @@
+#! /usr/bin/env ruby
+# coding: utf-8
+## -*- mode: ruby -*-
+## = DirProdMixture で近似する場合に、AIC で、最適要素数を決定。
+## Author:: Anonymous3
+## Version:: 0.0 2019/02/11 Anonymous3
+##
+## === History
+## * [2019/02/11]: Create This File.
+## * [YYYY/MM/DD]: add more
+## == Usage
+## * ...
+
+def $LOAD_PATH.addIfNeed(path)
+  self.unshift(path) if(!self.include?(path)) ;
+end
+
+$LOAD_PATH.addIfNeed("~/lib/ruby");
+$LOAD_PATH.addIfNeed(File.dirname(__FILE__));
+$LOAD_PATH.addIfNeed(File.dirname(__FILE__) + "/../lib") ;
+
+require 'optparse' ;
+require 'pp' ;
+
+require 'Stat/StatInfo.rb' ;
+
+require 'ProbUtility.rb' ;
+require 'MatrixProb.rb' ;
+require 'DirProdMixture.rb' ;
+
+#------------------------------------------------------------------------
+#++
+$conf = {
+  :nComponents => 3,
+  :nLoop => 1000,
+  :nSample => 10000,
+  :nTrial => 10,
+  :targetFile => nil,
+  :resultFile => nil,
+} ;
+
+#----------------------------------------------------------------------
+#++
+## help
+def help(raiseOrExit=true)
+  puts($op) ;
+  puts("Defaults:") ;
+  pp $conf ;
+  if(raiseOrExit.is_a?(Exception)) then
+    puts('-' * 20) ;
+    raise raiseOrExit ;
+  elsif(raiseOrExit) then
+    exit(1) ;
+  end
+end
+
+#------------------------------------------------------------------------
+#++
+$op = OptionParser.new() {|op|
+  op.banner = <<_END_
+  Usage: #{$0} [Options]* TargetProb.json [Result.json]
+_END_
+
+  op.separator("Options:") ;
+  op.set_summary_indent("") ;
+  op.set_summary_width(60) ;
+  sep = "\n\t\t" ;
+
+  op.on("-c","--componentN N", Integer,
+        sep + "upper # of components to scan.") {|n|
+    $conf[:nComponents] = n ;
+  }
+  op.on("-l","--loopN N", Integer,
+        sep + "# of loop count for the approximation.") {|n|
+    $conf[:nLoop] = n ;
+  }
+  op.on("-t","--trialN N", Integer,
+        sep + "# of trial for each case.") {|n|
+    $conf[:nTrial] = n ;
+  }
+  op.on("-s","--sampleN N", Integer,
+        sep + "# of sampling in AIC calculation.") {|n|
+    $conf[:nSample] = n ;
+  }
+
+  op.on_tail("--help", sep + "show this message.") { |h|
+    help() ;
+  }
+}
+
+begin
+  $op.parse!(ARGV) ;
+rescue => ex
+  help(ex) ;
+end
+
+$restArg = ARGV ;
+help() if($restArg.size < 1 || $restArg.size > 2) ;
+($conf[:targetFile], $conf[:resultFile]) = *$restArg ;
+
+p [:rest, ARGV], [:conf,$conf] ; 
+
+
+#--============================================================
+#--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+#--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+#--------------------------------------------------------------
+########################################################################
+########################################################################
+########################################################################
+
+## read target MatrixProb.
+targetProb = MatrixProb.newByJsonFile($conf[:targetFile]) ;
+
+## start scan
+result = [] ;
+(1..$conf[:nComponents]).each{|nComp|
+  statAic = Stat::StatInfo.new() ;
+  statBic = Stat::StatInfo.new() ;
+  (0...$conf[:nTrial]).each{|k|
+    fConf = { :n => targetProb.n,
+              :m => targetProb.m,
+              :componentN => nComp } ;
+    factoredProb = DirProdMixture.new(fConf) ;
+    factoredProb.approxMatrixProb(targetProb, $conf[:nLoop], true) ;
+
+    aic = factoredProb.calcAicWith(targetProb, $conf[:nSample]) ;
+    bic = factoredProb.calcBicWith(targetProb, $conf[:nSample]) ;
+    statAic.put(aic) ;
+    statBic.put(bic) ;
+#    p [:aic, nComp, k, aic] ;
+  }
+  r = { :nComp => nComp,
+        :count => statAic.countN,
+        :aic => { :ave => statAic.average(),
+                  :sdev => statAic.sdev() },
+        :bic => { :ave => statBic.average(),
+                  :sdev => statBic.sdev() },
+      } ;
+  result.push(r) ;
+  p r ;
+}
+
+if($conf[:resultFile]) then
+  jsonStr = JSON.generate(result) ;
+  open($conf[:resultFile],"w"){|strm|
+    strm << jsonStr << "\n" ;
+  }
+else
+  pp result ;
+end

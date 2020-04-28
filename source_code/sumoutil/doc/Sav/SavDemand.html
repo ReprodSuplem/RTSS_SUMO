@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Sav::SavDemand - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script src="../js/jquery.js"></script>
+<script src="../js/darkfish.js"></script>
+
+<link href="../css/fonts.css" rel="stylesheet">
+<link href="../css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../table_of_contents.html#pages">Pages</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link">WithConfParam
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li class="calls-super" ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-addSharedWith">#addSharedWith</a>
+    
+    <li ><a href="#method-i-allocateViaPoints">#allocateViaPoints</a>
+    
+    <li ><a href="#method-i-cancel">#cancel</a>
+    
+    <li ><a href="#method-i-getDropOffTime">#getDropOffTime</a>
+    
+    <li ><a href="#method-i-getPickUpTime">#getPickUpTime</a>
+    
+    <li ><a href="#method-i-getState">#getState</a>
+    
+    <li ><a href="#method-i-getTripPlannedTime">#getTripPlannedTime</a>
+    
+    <li ><a href="#method-i-getTripTime">#getTripTime</a>
+    
+    <li ><a href="#method-i-inspect">#inspect</a>
+    
+    <li ><a href="#method-i-inspect_original">#inspect_original</a>
+    
+    <li ><a href="#method-i-joinToOnBoardList">#joinToOnBoardList</a>
+    
+    <li ><a href="#method-i-toJson">#toJson</a>
+    
+    <li ><a href="#method-i-updatePlannedDropOffTime">#updatePlannedDropOffTime</a>
+    
+    <li ><a href="#method-i-updatePlannedPickUpTime">#updatePlannedPickUpTime</a>
+    
+    <li ><a href="#method-i-updateTripPlannedTime">#updateTripPlannedTime</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Sav::SavDemand">
+  <h1 id="class-Sav::SavDemand" class="class">
+    class Sav::SavDemand
+  </h1>
+
+  <section class="description">
+    
+<p><a href="SavDemand.html">SavDemand</a></p>
+
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+    <section class="constants-list">
+      <header>
+        <h3>Constants</h3>
+      </header>
+      <dl>
+      
+        <dt id="DefaultConf">DefaultConf
+        
+        <dd><p>default config</p>
+        
+      
+        <dt id="DefaultDemandIdPrefix">DefaultDemandIdPrefix
+        
+        <dd><p>Demand ID prefix</p>
+        
+      
+      </dl>
+    </section>
+    
+
+    
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-arisedTime" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">arisedTime</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>arised time stamps</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-cancelReason" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">cancelReason</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p><a href="SavDemand.html#method-i-cancel">#cancel</a> reason (:notAssigned,
+:byUser)</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-id" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">id</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>demand <a href="SavDemand.html#attribute-i-id">#id</a></p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-numPassenger" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">numPassenger</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>number of passengers</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-passenger" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">passenger</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p><a href="SavDemand.html#attribute-i-passenger">#passenger</a></p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-sav" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">sav</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>assigned SavVehicle</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-sharedWithList" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">sharedWithList</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>list of demands shared with.</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-tripGapDuration" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">tripGapDuration</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>trip pair of trip gap duration (pickUp and dropOff time)</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-tripPlannedTimeList" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">tripPlannedTimeList</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>list of planned time (pick-up and drop-off)</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-tripPoiColor" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">tripPoiColor</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>trip pair of PoI color (pickUp and dropOff time)</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-tripPos" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">tripPos</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>trip pair of position</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-tripRequiredTime" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">tripRequiredTime</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>required time (pick-up and drop-off)</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-tripViaPoint" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">tripViaPoint</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>trip pair of <a href="ViaPoint.html">ViaPoint</a></p>
+        
+        </div>
+      </div>
+      
+    </section>
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(passenger, numPassenger, tripPos, simulator, conf = {})</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>initialize.</p>
+          
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              
+            </div>
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File Savs/SavDemand.rb, line 84</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">passenger</span>, <span class="ruby-identifier">numPassenger</span>, <span class="ruby-identifier">tripPos</span>, <span class="ruby-identifier">simulator</span>, <span class="ruby-identifier">conf</span> = {})
+  <span class="ruby-keyword">super</span>(<span class="ruby-identifier">conf</span>) ;
+  <span class="ruby-ivar">@passenger</span> = <span class="ruby-identifier">passenger</span> ;
+  <span class="ruby-ivar">@numPassenger</span> = <span class="ruby-identifier">numPassenger</span> ;
+  <span class="ruby-ivar">@tripPos</span> = <span class="ruby-identifier">tripPos</span>.<span class="ruby-identifier">ensureGeoObj</span>() ;
+  <span class="ruby-ivar">@id</span> = <span class="ruby-node">&quot;#{DefaultDemandIdPrefix}%08d_#{@passenger}&quot;</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">@@counter</span> ;
+  
+  <span class="ruby-ivar">@tripGapDuration</span> = <span class="ruby-identifier">getConf</span>(<span class="ruby-value">:tripGapDuration</span>) ;
+  <span class="ruby-ivar">@tripPoiColor</span> = <span class="ruby-identifier">getConf</span>(<span class="ruby-value">:tripPoiColor</span>) ;
+  
+  <span class="ruby-identifier">@@counter</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span> ;
+
+  <span class="ruby-keyword">if</span>(<span class="ruby-operator">!</span><span class="ruby-identifier">simulator</span>.<span class="ruby-identifier">nil?</span>) <span class="ruby-keyword">then</span>
+    <span class="ruby-identifier">allocateViaPoints</span>(<span class="ruby-identifier">simulator</span>) ;
+    <span class="ruby-ivar">@arisedTime</span> = <span class="ruby-identifier">simulator</span>.<span class="ruby-identifier">currentTime</span> ;
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-ivar">@tripRequiredTime</span> = <span class="ruby-constant">Trip</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@arisedTime</span>, <span class="ruby-keyword">nil</span>) ;
+  <span class="ruby-ivar">@tripPlannedTimeList</span> = [] ;
+
+  <span class="ruby-ivar">@sharedWithList</span> = [] ;
+  
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-addSharedWith" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">addSharedWith</span><span
+            class="method-args">(demand)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>add shared with</p>
+          
+          
+
+          
+          <div class="method-source-code" id="addSharedWith-source">
+            <pre><span class="ruby-comment"># File Savs/SavDemand.rb, line 220</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">addSharedWith</span>(<span class="ruby-identifier">demand</span>)
+  <span class="ruby-ivar">@sharedWithList</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">demand</span>) ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-allocateViaPoints" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">allocateViaPoints</span><span
+            class="method-args">(simulator)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>allocate via points</p>
+          
+          
+
+          
+          <div class="method-source-code" id="allocateViaPoints-source">
+            <pre><span class="ruby-comment"># File Savs/SavDemand.rb, line 111</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">allocateViaPoints</span>(<span class="ruby-identifier">simulator</span>)
+  <span class="ruby-identifier">_pickUpViaPoint</span> = <span class="ruby-constant">ViaPoint</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@tripPos</span>.<span class="ruby-identifier">pickUp</span>, <span class="ruby-keyword">self</span>, <span class="ruby-value">:pickUp</span>,
+                                 <span class="ruby-ivar">@tripGapDuration</span>.<span class="ruby-identifier">pickUp</span>, <span class="ruby-identifier">simulator</span>,
+                                 { <span class="ruby-value">:poiColor</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@tripPoiColor</span>.<span class="ruby-identifier">pickUp</span> }) ;
+  <span class="ruby-identifier">_dropOffViaPoint</span> = <span class="ruby-constant">ViaPoint</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@tripPos</span>.<span class="ruby-identifier">dropOff</span>, <span class="ruby-keyword">self</span>, <span class="ruby-value">:dropOff</span>,
+                                  <span class="ruby-ivar">@tripGapDuration</span>.<span class="ruby-identifier">dropOff</span>, <span class="ruby-identifier">simulator</span>,
+                                  { <span class="ruby-value">:poiColor</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@tripPoiColor</span>.<span class="ruby-identifier">dropOff</span> }) ;
+  
+  <span class="ruby-ivar">@tripViaPoint</span> = <span class="ruby-constant">Trip</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">_pickUpViaPoint</span>, <span class="ruby-identifier">_dropOffViaPoint</span>) ;
+  
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-cancel" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">cancel</span><span
+            class="method-args">(simulator, reason = :notAssigned)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p><a href="SavDemand.html#method-i-cancel">#cancel</a> the demand.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="cancel-source">
+            <pre><span class="ruby-comment"># File Savs/SavDemand.rb, line 127</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">cancel</span>(<span class="ruby-identifier">simulator</span>, <span class="ruby-identifier">reason</span> = <span class="ruby-value">:notAssigned</span>)
+  <span class="ruby-ivar">@tripViaPoint</span>.<span class="ruby-identifier">pickUp</span>.<span class="ruby-identifier">clearPoi</span>(<span class="ruby-identifier">simulator</span>) ;
+  <span class="ruby-ivar">@tripViaPoint</span>.<span class="ruby-identifier">dropOff</span>.<span class="ruby-identifier">clearPoi</span>(<span class="ruby-identifier">simulator</span>) ;
+  <span class="ruby-ivar">@sav</span> = <span class="ruby-keyword">nil</span> ;
+  <span class="ruby-ivar">@cancelReason</span> = <span class="ruby-identifier">reason</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-getDropOffTime" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getDropOffTime</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>drop-off time.</p>
+<dl class="rdoc-list note-list"><dt><strong>return</strong>
+<dd>
+<p>time of drop-off in sec</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="getDropOffTime-source">
+            <pre><span class="ruby-comment"># File Savs/SavDemand.rb, line 164</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">getDropOffTime</span>()
+  <span class="ruby-ivar">@tripViaPoint</span>.<span class="ruby-identifier">dropOff</span>.<span class="ruby-identifier">time</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-getPickUpTime" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getPickUpTime</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>pick-up time.</p>
+<dl class="rdoc-list note-list"><dt><strong>return</strong>
+<dd>
+<p>time of pick-up in sec</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="getPickUpTime-source">
+            <pre><span class="ruby-comment"># File Savs/SavDemand.rb, line 156</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">getPickUpTime</span>()
+  <span class="ruby-ivar">@tripViaPoint</span>.<span class="ruby-identifier">pickUp</span>.<span class="ruby-identifier">time</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-getState" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getState</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>state of demand.</p>
+<dl class="rdoc-list note-list"><dt><strong>return</strong>
+<dd>
+<p>one of {:notAssigned, :beforePickUp, :onBoard, :afterDropOff}</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="getState-source">
+            <pre><span class="ruby-comment"># File Savs/SavDemand.rb, line 138</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">getState</span>()
+  <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@tripViaPoint</span>.<span class="ruby-identifier">dropOff</span>.<span class="ruby-identifier">isArrived</span>()) <span class="ruby-keyword">then</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-value">:afterDropOff</span> ;
+  <span class="ruby-keyword">elsif</span>(<span class="ruby-ivar">@tripViaPoint</span>.<span class="ruby-identifier">pickUp</span>.<span class="ruby-identifier">isArrived</span>()) <span class="ruby-keyword">then</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-value">:onBoard</span> ;
+  <span class="ruby-keyword">elsif</span>(<span class="ruby-operator">!</span><span class="ruby-ivar">@sav</span>.<span class="ruby-identifier">nil?</span>) <span class="ruby-keyword">then</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-value">:beforePickUp</span> ;
+  <span class="ruby-keyword">elsif</span>(<span class="ruby-operator">!</span><span class="ruby-ivar">@cancelReason</span>.<span class="ruby-identifier">nil?</span>) <span class="ruby-keyword">then</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-value">:cancel</span> ;
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-value">:none</span> ;
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-getTripPlannedTime" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getTripPlannedTime</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>access to planned time</p>
+<dl class="rdoc-list note-list"><dt><strong>return</strong>
+<dd>
+<p>current planned time. return nil if no planned time.</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="getTripPlannedTime-source">
+            <pre><span class="ruby-comment"># File Savs/SavDemand.rb, line 180</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">getTripPlannedTime</span>()
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@tripPlannedTimeList</span>.<span class="ruby-identifier">last</span>() ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-getTripTime" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getTripTime</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>trip paier of travel time</p>
+<dl class="rdoc-list note-list"><dt><strong>return</strong>
+<dd>
+<p><a href="Trip.html">Trip</a> of pick-up and drop-off time</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="getTripTime-source">
+            <pre><span class="ruby-comment"># File Savs/SavDemand.rb, line 172</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">getTripTime</span>()
+  <span class="ruby-keyword">return</span> <span class="ruby-constant">Trip</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">getPickUpTime</span>(), <span class="ruby-identifier">getDropOffTime</span>()) ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-inspect" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">inspect</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="inspect-source">
+            <pre><span class="ruby-comment"># File Savs/SavDemand.rb, line 260</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">inspect</span>()
+  <span class="ruby-identifier">dummy</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">dup</span> ;
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">dummy</span>.<span class="ruby-identifier">inspect_original</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+        <div class="aliases">
+          Also aliased as: <a href="SavDemand.html#method-i-inspect_original">inspect_original</a>
+        </div>
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-inspect_original" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">inspect_original</span><span
+            class="method-args">()</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>re-define <a href="SavDemand.html#method-i-inspect">#inspect</a></p>
+          
+          
+
+          
+        </div>
+
+        
+
+        
+        <div class="aliases">
+          Alias for: <a href="SavDemand.html#method-i-inspect">inspect</a>
+        </div>
+        
+      </div>
+
+    
+      <div id="method-i-joinToOnBoardList" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">joinToOnBoardList</span><span
+            class="method-args">(onBoardList)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>join to the list of on-board demands.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="joinToOnBoardList-source">
+            <pre><span class="ruby-comment"># File Savs/SavDemand.rb, line 227</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">joinToOnBoardList</span>(<span class="ruby-identifier">onBoardList</span>)
+  <span class="ruby-identifier">onBoardList</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">demand</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">addSharedWith</span>(<span class="ruby-identifier">demand</span>) ;
+    <span class="ruby-identifier">demand</span>.<span class="ruby-identifier">addSharedWith</span>(<span class="ruby-keyword">self</span>) ;
+  }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-toJson" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">toJson</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>to json.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="toJson-source">
+            <pre><span class="ruby-comment"># File Savs/SavDemand.rb, line 237</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">toJson</span>()
+  <span class="ruby-identifier">sharedWithIdList</span> = <span class="ruby-ivar">@sharedWithList</span>.<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">demand</span><span class="ruby-operator">|</span> <span class="ruby-identifier">demand</span>.<span class="ruby-identifier">id</span>} ;
+  <span class="ruby-identifier">json</span> = { <span class="ruby-string">&#39;id&#39;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@id</span>,
+           <span class="ruby-string">&#39;passenger&#39;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@passenger</span>,
+           <span class="ruby-string">&#39;numPassenger&#39;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@numPassenger</span>,
+           <span class="ruby-string">&#39;status&#39;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">getState</span>().<span class="ruby-identifier">to_s</span>,
+           <span class="ruby-string">&#39;sav&#39;</span> =<span class="ruby-operator">&gt;</span> (<span class="ruby-ivar">@sav</span> <span class="ruby-operator">?</span> <span class="ruby-ivar">@sav</span>.<span class="ruby-identifier">id</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>),
+           <span class="ruby-string">&#39;arisedTime&#39;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@arisedTime</span>,
+           <span class="ruby-string">&#39;sharedWithList&#39;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">sharedWithIdList</span>,
+         } ;
+  <span class="ruby-constant">Sav</span><span class="ruby-operator">::</span><span class="ruby-constant">Util</span>.<span class="ruby-identifier">storeToJson</span>(<span class="ruby-identifier">json</span>, <span class="ruby-string">&#39;cancelReason&#39;</span>, <span class="ruby-ivar">@cancelReason</span>) ;
+  <span class="ruby-constant">Sav</span><span class="ruby-operator">::</span><span class="ruby-constant">Util</span>.<span class="ruby-identifier">storeToJson</span>(<span class="ruby-identifier">json</span>, <span class="ruby-string">&#39;tripPos&#39;</span>, <span class="ruby-ivar">@tripPos</span>) ;
+  <span class="ruby-constant">Sav</span><span class="ruby-operator">::</span><span class="ruby-constant">Util</span>.<span class="ruby-identifier">storeToJson</span>(<span class="ruby-identifier">json</span>, <span class="ruby-string">&#39;tripViaPoint&#39;</span>, <span class="ruby-ivar">@tripViaPoint</span>) ;
+  <span class="ruby-constant">Sav</span><span class="ruby-operator">::</span><span class="ruby-constant">Util</span>.<span class="ruby-identifier">storeToJson</span>(<span class="ruby-identifier">json</span>, <span class="ruby-string">&#39;tripTime&#39;</span>, <span class="ruby-identifier">getTripTime</span>()) ;
+  <span class="ruby-constant">Sav</span><span class="ruby-operator">::</span><span class="ruby-constant">Util</span>.<span class="ruby-identifier">storeToJson</span>(<span class="ruby-identifier">json</span>, <span class="ruby-string">&#39;tripRequiredTime&#39;</span>, <span class="ruby-ivar">@tripRequiredTime</span>) ;
+  <span class="ruby-constant">Sav</span><span class="ruby-operator">::</span><span class="ruby-constant">Util</span>.<span class="ruby-identifier">storeToJson</span>(<span class="ruby-identifier">json</span>, <span class="ruby-string">&#39;tripPlannedTimeList&#39;</span>, <span class="ruby-ivar">@tripPlannedTimeList</span>) ;
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">json</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-updatePlannedDropOffTime" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">updatePlannedDropOffTime</span><span
+            class="method-args">(dropOffTime)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>update planned dropOff <a href="../Time.html">Time</a></p>
+<dl class="rdoc-list note-list"><dt><em>dropOffTime</em> 
+<dd>
+<p>dropOff time.</p>
+</dd><dt><strong>return</strong>
+<dd>
+<p>current planned time.</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="updatePlannedDropOffTime-source">
+            <pre><span class="ruby-comment"># File Savs/SavDemand.rb, line 211</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">updatePlannedDropOffTime</span>(<span class="ruby-identifier">dropOffTime</span>)
+  <span class="ruby-identifier">plannedTime</span> = <span class="ruby-identifier">getTripPlannedTime</span>() ;
+  <span class="ruby-identifier">pickUpTime</span> = (<span class="ruby-identifier">plannedTime</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">plannedTime</span>.<span class="ruby-identifier">pickUp</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>) ;
+  <span class="ruby-identifier">updateTripPlannedTime</span>(<span class="ruby-constant">Trip</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">pickUpTime</span>, <span class="ruby-identifier">dropOffTime</span>)) ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-updatePlannedPickUpTime" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">updatePlannedPickUpTime</span><span
+            class="method-args">(pickUpTime)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>update planned pickUp <a href="../Time.html">Time</a></p>
+<dl class="rdoc-list note-list"><dt><em>pickUpTime</em> 
+<dd>
+<p>pickUpTime</p>
+</dd><dt><strong>return</strong>
+<dd>
+<p>current planned time.</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="updatePlannedPickUpTime-source">
+            <pre><span class="ruby-comment"># File Savs/SavDemand.rb, line 200</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">updatePlannedPickUpTime</span>(<span class="ruby-identifier">pickUpTime</span>)
+  <span class="ruby-identifier">plannedTime</span> = <span class="ruby-identifier">getTripPlannedTime</span>() ;
+  <span class="ruby-identifier">dropOffTime</span> = (<span class="ruby-identifier">plannedTime</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">plannedTime</span>.<span class="ruby-identifier">dropOff</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>) ;
+  <span class="ruby-identifier">updateTripPlannedTime</span>(<span class="ruby-constant">Trip</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">pickUpTime</span>, <span class="ruby-identifier">dropOffTime</span>)) ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-updateTripPlannedTime" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">updateTripPlannedTime</span><span
+            class="method-args">(tripPlannedTime)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>update planned time</p>
+<dl class="rdoc-list note-list"><dt><em>tripPlannedTime</em> 
+<dd>
+<p>instance of <a href="Trip.html">Trip</a> or [pickUpTime, dropOffTime]</p>
+</dd><dt><strong>return</strong>
+<dd>
+<p>current planned time.</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="updateTripPlannedTime-source">
+            <pre><span class="ruby-comment"># File Savs/SavDemand.rb, line 189</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">updateTripPlannedTime</span>(<span class="ruby-identifier">tripPlannedTime</span>)
+  <span class="ruby-identifier">tripPlannedTime</span> = <span class="ruby-constant">Trip</span>.<span class="ruby-identifier">ensureTrip</span>(<span class="ruby-identifier">tripPlannedTime</span>) ;
+  <span class="ruby-ivar">@tripPlannedTimeList</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">tripPlannedTime</span>) ;
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">getTripPlannedTime</span>() ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

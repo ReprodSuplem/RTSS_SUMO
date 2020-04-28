@@ -1,0 +1,4 @@
+U:RDoc::Attr[iI"
+speed:ETI"Sumo::SumoMap::Lane#speed;TI"RW;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"
+speed;T:
+@fileI"Traci/SumoMapLane.rb;T:0@omit_headings_from_table_of_contents_below0F@I"Sumo::SumoMap::Lane;TcRDoc::NormalClass0

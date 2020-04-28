@@ -1,0 +1,130 @@
+#! /usr/bin/env ruby
+# coding: utf-8
+## -*- mode: ruby -*-
+## = scanAic で求めた結果をグラフ化。
+## Author:: Anonymous3
+## Version:: 0.0 2019/02/11 Anonymous3
+##
+## === History
+## * [2019/02/11]: Create This File.
+## * [YYYY/MM/DD]: add more
+## == Usage
+## * ...
+
+def $LOAD_PATH.addIfNeed(path)
+  self.unshift(path) if(!self.include?(path)) ;
+end
+
+$LOAD_PATH.addIfNeed("~/lib/ruby");
+$LOAD_PATH.addIfNeed(File.dirname(__FILE__));
+
+require 'optparse' ;
+require 'pp' ;
+require 'json' ;
+
+require 'gnuplot.rb' ;
+
+#------------------------------------------------------------------------
+#++
+$conf = {
+  :inFile => nil,
+  :range => nil,
+  :aic => true,
+  :bic => true,
+  :tgif => false,
+} ;
+
+#----------------------------------------------------------------------
+#++
+## help
+def help(raiseOrExit=true)
+  puts($op) ;
+  puts("Defaults:") ;
+  pp $conf ;
+  if(raiseOrExit.is_a?(Exception)) then
+    puts('-' * 20) ;
+    raise raiseOrExit ;
+  elsif(raiseOrExit) then
+    exit(1) ;
+  end
+end
+
+#------------------------------------------------------------------------
+#++
+$op = OptionParser.new() {|op|
+  op.banner = <<_END_
+  Usage: #{$0} [Options]*
+_END_
+
+  op.separator("Options:") ;
+  op.set_summary_indent("") ;
+  op.set_summary_width(60) ;
+  sep = "\n\t\t" ;
+
+  op.on("-r","--range From:To", String,
+        sep + "specify plot range of # of components.") {|rangeStr|
+    range = rangeStr.split(":").map{|str| str.to_i} ;
+    help() if(range.size != 2) ;
+    $conf[:range] = range ;
+  }
+  op.on("-a","--onlyAic", sep + "plot only AIC.") {
+    $conf[:aic] = true ;
+    $conf[:bic] = false ;
+  }
+  op.on("-b","--onlyBic", sep + "plot only BIC.") {
+    $conf[:aic] = false ;
+    $conf[:bic] = true ;
+  }
+  op.on("-t","--[no-]tgif", sep + "save result to tgif.") {|flag|
+    $conf[:tgif] = flag ;
+  }
+  
+  op.on_tail("--help", sep + "show this message.") { |h|
+    help() ;
+  }
+}
+
+begin
+  $op.parse!(ARGV) ;
+rescue => ex
+  help(ex) ;
+end
+
+$restArg = ARGV ;
+help() if($restArg.size != 1) ;
+$conf[:inFile] = $restArg[0] ;
+
+p [:rest, ARGV], [:conf,$conf] ; 
+
+########################################################################
+########################################################################
+########################################################################
+result = nil ;
+open($conf[:inFile], "r"){|strm|
+  result = JSON.parse(strm.read(),{:symbolize_names => true}) ;
+}
+
+range = $conf[:range] ;
+Gnuplot::directMultiPlot([:aic,:bic]) {|gplot|
+  gplot.setTitle("Changes of AIC/BIC") ;
+  gplot.setXYLabel("# of Components", "AIC/BIC") ;
+  if($conf[:tgif]) then
+    basepath = $conf[:inFile].chomp(".json") ;
+    basepath += "." + range.join("_") if(range) ;
+    gplot.setTerm(:tgif, basepath) ;
+  end
+
+  result.each{|r|
+    n = r[:nComp] ;
+    aic = r[:aic][:ave] ;
+    sdevAic = r[:aic][:sdev] ;
+    bic = r[:bic][:ave] ;
+    sdevBic = r[:bic][:sdev] ;
+    p [n, aic, bic]
+    if(range.nil? || (n >= range[0] && n <= range[1])) then
+      gplot.dmpXYPlot(:aic, n, [aic,sdevAic]) if($conf[:aic]) ;
+      gplot.dmpXYPlot(:bic, n, [bic,sdevBic]) if($conf[:bic]) ;
+    end
+  }
+}
+

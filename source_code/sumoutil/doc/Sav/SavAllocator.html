@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Sav::SavAllocator - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script src="../js/jquery.js"></script>
+<script src="../js/darkfish.js"></script>
+
+<link href="../css/fonts.css" rel="stylesheet">
+<link href="../css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../table_of_contents.html#pages">Pages</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link">WithConfParam
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li class="calls-super" ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-allocate">#allocate</a>
+    
+    <li ><a href="#method-i-allocateDemandToSav">#allocateDemandToSav</a>
+    
+    <li ><a href="#method-i-allocateInit">#allocateInit</a>
+    
+    <li ><a href="#method-i-estimateDistance">#estimateDistance</a>
+    
+    <li ><a href="#method-i-estimateDistanceBetweenPos_averageManhattan">#estimateDistanceBetweenPos_averageManhattan</a>
+    
+    <li ><a href="#method-i-estimateDistanceBody">#estimateDistanceBody</a>
+    
+    <li ><a href="#method-i-estimateTime">#estimateTime</a>
+    
+    <li ><a href="#method-i-estimateTimeForNewRoute">#estimateTimeForNewRoute</a>
+    
+    <li ><a href="#method-i-estimateTimeForNewRouteBody">#estimateTimeForNewRouteBody</a>
+    
+    <li ><a href="#method-i-inspect">#inspect</a>
+    
+    <li ><a href="#method-i-inspect_original">#inspect_original</a>
+    
+    <li ><a href="#method-i-logging">#logging</a>
+    
+    <li ><a href="#method-i-pushAllocatedDemand">#pushAllocatedDemand</a>
+    
+    <li ><a href="#method-i-pushCancelledDemand">#pushCancelledDemand</a>
+    
+    <li ><a href="#method-i-setup">#setup</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Sav::SavAllocator">
+  <h1 id="class-Sav::SavAllocator" class="class">
+    class Sav::SavAllocator
+  </h1>
+
+  <section class="description">
+    
+<p>class for <a href="../Sav.html">Sav</a> Allocator</p>
+
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+    <section class="constants-list">
+      <header>
+        <h3>Constants</h3>
+      </header>
+      <dl>
+      
+        <dt id="DefaultConf">DefaultConf
+        
+        <dd><p>description of DefaultOptsions.</p>
+        
+      
+      </dl>
+    </section>
+    
+
+    
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-allocatedList" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">allocatedList</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>list of allocated demands.  should be reset every allocate().</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-cancelledList" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">cancelledList</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>list of cancelled demands.  should be reset every allocate().</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-simulator" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">simulator</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>link to SavSimulator</p>
+        
+        </div>
+      </div>
+      
+    </section>
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(savSim, conf = {})</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>initialize</p>
+<dl class="rdoc-list note-list"><dt><em>savSim</em> 
+<dd>
+<p>parent <a href="SavAllocator.html#attribute-i-simulator">#simulator</a></p>
+</dd><dt><em>conf</em>
+<dd>
+<p>configuration information</p>
+</dd></dl>
+          
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              
+            </div>
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File Savs/SavAllocator.rb, line 59</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">savSim</span>, <span class="ruby-identifier">conf</span> = {})
+  <span class="ruby-ivar">@simulator</span> = <span class="ruby-identifier">savSim</span> ;
+  <span class="ruby-keyword">super</span>(<span class="ruby-identifier">conf</span>) ;
+  <span class="ruby-identifier">setup</span>() ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-allocate" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">allocate</span><span
+            class="method-args">(demandList)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p><a href="SavAllocator.html#method-i-allocate">#allocate</a> actual
+allocation should be done in this method.</p>
+<dl class="rdoc-list note-list"><dt><em>demandList</em>
+<dd>
+<p>list of <a href="SavDemand.html">SavDemand</a>.</p>
+</dd><dt><strong>return</strong> 
+<dd>
+<p>allocated demands.</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="allocate-source">
+            <pre><span class="ruby-comment"># File Savs/SavAllocator.rb, line 80</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">allocate</span>(<span class="ruby-identifier">demandList</span>)
+  <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;allocate() should be defined in class :#{self.class}.&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-allocateDemandToSav" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">allocateDemandToSav</span><span
+            class="method-args">(demand, sav, tripIndex, cancelReason = [], mode = :averageManhattan)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p><a href="SavAllocator.html#method-i-allocate">#allocate</a> a demand to a
+sav. if the sav is nil, then, cancel the demand.</p>
+<dl class="rdoc-list note-list"><dt><em>demand</em> 
+<dd>
+<p>a <a href="SavDemand.html">SavDemand</a> to <a
+href="SavAllocator.html#method-i-allocate">#allocate</a>.</p>
+</dd><dt><em>sav</em> 
+<dd>
+<p>a SavVehicle to <a href="SavAllocator.html#method-i-allocate">#allocate</a>
+the demand to. If nil, cancel the demand.</p>
+</dd><dt><em>tripIndex</em> 
+<dd>
+<p>index pair of pickUp and dropOff.</p>
+</dd><dt><em>mode</em> 
+<dd>
+<p>the mode to estimate the time and distance.</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="allocateDemandToSav-source">
+            <pre><span class="ruby-comment"># File Savs/SavAllocator.rb, line 115</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">allocateDemandToSav</span>(<span class="ruby-identifier">demand</span>, <span class="ruby-identifier">sav</span>, <span class="ruby-identifier">tripIndex</span>,
+                        <span class="ruby-identifier">cancelReason</span> = [], <span class="ruby-identifier">mode</span> = <span class="ruby-value">:averageManhattan</span>)
+  <span class="ruby-keyword">if</span>(<span class="ruby-operator">!</span><span class="ruby-identifier">sav</span>.<span class="ruby-identifier">nil?</span>) <span class="ruby-keyword">then</span>
+    <span class="ruby-identifier">estimateTimeForNewRoute</span>(<span class="ruby-identifier">sav</span>, <span class="ruby-identifier">demand</span>, <span class="ruby-identifier">tripIndex</span>, <span class="ruby-keyword">true</span>, <span class="ruby-identifier">mode</span>) ;
+    <span class="ruby-identifier">sav</span>.<span class="ruby-identifier">assignDemand</span>(<span class="ruby-identifier">demand</span>, <span class="ruby-identifier">tripIndex</span>.<span class="ruby-identifier">pickUp</span>, <span class="ruby-identifier">tripIndex</span>.<span class="ruby-identifier">dropOff</span>) ;
+    <span class="ruby-identifier">pushAllocatedDemand</span>(<span class="ruby-identifier">demand</span>) ;
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">logging</span>(<span class="ruby-value">:info</span>, <span class="ruby-string">&quot;cancel:&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">demand</span>.<span class="ruby-identifier">id</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;/&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">cancelReason</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">&quot;,&quot;</span>)) ;
+    <span class="ruby-identifier">demand</span>.<span class="ruby-identifier">cancel</span>(<span class="ruby-ivar">@simulator</span>, <span class="ruby-identifier">cancelReason</span>) ;
+    <span class="ruby-identifier">pushCancelledDemand</span>(<span class="ruby-identifier">demand</span>) ;
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-allocateInit" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">allocateInit</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>initialize step of <a
+href="SavAllocator.html#method-i-allocate">#allocate</a></p>
+          
+          
+
+          
+          <div class="method-source-code" id="allocateInit-source">
+            <pre><span class="ruby-comment"># File Savs/SavAllocator.rb, line 87</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">allocateInit</span>()
+  <span class="ruby-ivar">@allocatedList</span>.<span class="ruby-identifier">clear</span>() ;
+  <span class="ruby-ivar">@cancelledList</span>.<span class="ruby-identifier">clear</span>() ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-estimateDistance" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">estimateDistance</span><span
+            class="method-args">(from, to, mode = :averageManhattan)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>estimate distance between two viaPoint <em>from</em>, <em>to</em> : two <a
+href="ViaPoint.html">ViaPoint</a> or <a
+href="../Geo2D/Vector.html">Geo2D::Vector</a> <em>mode</em> : specify
+estimation mode.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="estimateDistance-source">
+            <pre><span class="ruby-comment"># File Savs/SavAllocator.rb, line 261</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">estimateDistance</span>(<span class="ruby-identifier">from</span>, <span class="ruby-identifier">to</span>, <span class="ruby-identifier">mode</span> = <span class="ruby-value">:averageManhattan</span>)
+  <span class="ruby-keyword">if</span>(<span class="ruby-identifier">from</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Sav</span><span class="ruby-operator">::</span><span class="ruby-constant">ViaPoint</span>)) <span class="ruby-keyword">then</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">estimateDistance</span>(<span class="ruby-identifier">from</span>.<span class="ruby-identifier">pos</span>, <span class="ruby-identifier">to</span>, <span class="ruby-identifier">mode</span>) ;
+  <span class="ruby-keyword">elsif</span>(<span class="ruby-identifier">to</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Sav</span><span class="ruby-operator">::</span><span class="ruby-constant">ViaPoint</span>)) <span class="ruby-keyword">then</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">estimateDistance</span>(<span class="ruby-identifier">from</span>, <span class="ruby-identifier">to</span>.<span class="ruby-identifier">pos</span>, <span class="ruby-identifier">mode</span>) ;
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">estimateDistanceBody</span>(<span class="ruby-identifier">from</span>, <span class="ruby-identifier">to</span>, <span class="ruby-identifier">mode</span>) ;
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-estimateDistanceBetweenPos_averageManhattan" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">estimateDistanceBetweenPos_averageManhattan</span><span
+            class="method-args">(fromPos, toPos)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>estimate distance between two position. (average Manhattan distance)
+<em>fromPos</em>, <em>toPos</em> : two pos.  should be an instance of <a
+href="../Geo2D/Vector.html">Geo2D::Vector</a>.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="estimateDistanceBetweenPos_averageManhattan-source">
+            <pre><span class="ruby-comment"># File Savs/SavAllocator.rb, line 289</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">estimateDistanceBetweenPos_averageManhattan</span>(<span class="ruby-identifier">fromPos</span>, <span class="ruby-identifier">toPos</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-constant">Sav</span><span class="ruby-operator">::</span><span class="ruby-constant">Util</span>.<span class="ruby-identifier">averageManhattanDistance</span>(<span class="ruby-identifier">fromPos</span>, <span class="ruby-identifier">toPos</span>) ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-estimateDistanceBody" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">estimateDistanceBody</span><span
+            class="method-args">(fromPos, toPos, mode = :averageManhattan)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>estimate distance between two position. <em>fromPos</em>, <em>toPos</em> :
+two pos. <em>mode</em> : specify estimation mode.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="estimateDistanceBody-source">
+            <pre><span class="ruby-comment"># File Savs/SavAllocator.rb, line 276</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">estimateDistanceBody</span>(<span class="ruby-identifier">fromPos</span>, <span class="ruby-identifier">toPos</span>, <span class="ruby-identifier">mode</span> = <span class="ruby-value">:averageManhattan</span>)
+  <span class="ruby-keyword">case</span>(<span class="ruby-identifier">mode</span>)
+  <span class="ruby-keyword">when</span> <span class="ruby-value">:averageManhattan</span> ;
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">estimateDistanceBetweenPos_averageManhattan</span>(<span class="ruby-identifier">fromPos</span>, <span class="ruby-identifier">toPos</span>) ;
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;unknown estimation mode:&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">mode</span> ;
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-estimateTime" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">estimateTime</span><span
+            class="method-args">(from, to, sav, mode = :averageManhattan)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>estimate time.  <em>from</em>, <em>to</em> : two <a
+href="ViaPoint.html">ViaPoint</a> or <a
+href="../Geo2D/Vector.html">Geo2D::Vector</a> <em>sav</em> : vehicle to
+use. <em>mode</em> : specify estimation mode.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="estimateTime-source">
+            <pre><span class="ruby-comment"># File Savs/SavAllocator.rb, line 245</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">estimateTime</span>(<span class="ruby-identifier">from</span>, <span class="ruby-identifier">to</span>, <span class="ruby-identifier">sav</span>, <span class="ruby-identifier">mode</span> = <span class="ruby-value">:averageManhattan</span>)
+  <span class="ruby-identifier">distance</span> = <span class="ruby-identifier">estimateDistance</span>(<span class="ruby-identifier">from</span>, <span class="ruby-identifier">to</span>, <span class="ruby-identifier">mode</span>) ;
+  <span class="ruby-identifier">speed</span> = <span class="ruby-identifier">sav</span>.<span class="ruby-identifier">averageSpeed</span> ;
+  <span class="ruby-identifier">time</span> = <span class="ruby-identifier">distance</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">speed</span> ;
+
+  <span class="ruby-comment">## add SavViaPoint stop duration.</span>
+  <span class="ruby-identifier">time</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">to</span>.<span class="ruby-identifier">duration</span> <span class="ruby-keyword">if</span>(<span class="ruby-identifier">to</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Sav</span><span class="ruby-operator">::</span><span class="ruby-constant">ViaPoint</span>)) ;
+
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">time</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-estimateTimeForNewRoute" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">estimateTimeForNewRoute</span><span
+            class="method-args">(sav, demand, tripIndex, storeNewPlanP = false, mode = :averageManhattan)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>estimate time for whole of a SAV route with <a
+href="SavAllocator.html#method-c-new">::new</a> demands  <em>sav</em> :
+vehicle to use. <em>demand</em> : <a
+href="SavAllocator.html#method-c-new">::new</a> demand. <em>tripIndex</em>
+: index in route to insert pickUp/dropOff ViaPoints. <em>storeNewPlanP</em>
+: if true, store <a href="SavAllocator.html#method-c-new">::new</a> planned
+time to each ViaPoints. <em>mode</em> : specify estimation mode.
+<strong>return</strong>:{:sumDelay =&gt; sumOfDelay, # total delay from
+planned time.</p>
+
+<pre>:demandTripPlan =&gt; tripTime, #planned time for the new demand.
+:violateReason =&gt; something, # non-nil when new demand violate others.
+}</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="estimateTimeForNewRoute-source">
+            <pre><span class="ruby-comment"># File Savs/SavAllocator.rb, line 140</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">estimateTimeForNewRoute</span>(<span class="ruby-identifier">sav</span>, <span class="ruby-identifier">demand</span>, <span class="ruby-identifier">tripIndex</span>,
+                            <span class="ruby-identifier">storeNewPlanP</span> = <span class="ruby-keyword">false</span>,
+                            <span class="ruby-identifier">mode</span> = <span class="ruby-value">:averageManhattan</span>)
+  <span class="ruby-identifier">viaPointIndex</span> = <span class="ruby-identifier">sav</span>.<span class="ruby-identifier">viaPointIndex</span> ;
+  <span class="ruby-identifier">pickUpIndex</span> = (<span class="ruby-identifier">tripIndex</span>.<span class="ruby-identifier">pickUp</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">0</span> <span class="ruby-operator">?</span>
+                   <span class="ruby-identifier">sav</span>.<span class="ruby-identifier">viaPointList</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">tripIndex</span>.<span class="ruby-identifier">pickUp</span> <span class="ruby-operator">:</span>
+                   <span class="ruby-identifier">tripIndex</span>.<span class="ruby-identifier">pickUp</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">viaPointIndex</span>) ;
+  <span class="ruby-identifier">dropOffIndex</span> = (<span class="ruby-identifier">tripIndex</span>.<span class="ruby-identifier">dropOff</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">0</span> <span class="ruby-operator">?</span>
+                    <span class="ruby-identifier">sav</span>.<span class="ruby-identifier">viaPointList</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">tripIndex</span>.<span class="ruby-identifier">dropOff</span> <span class="ruby-operator">:</span>
+                    <span class="ruby-identifier">tripIndex</span>.<span class="ruby-identifier">dropOff</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">viaPointIndex</span>) ;
+  <span class="ruby-identifier">insertIndex</span> = [ <span class="ruby-identifier">pickUpIndex</span>, <span class="ruby-identifier">dropOffIndex</span> ] ;
+  
+  <span class="ruby-identifier">insertObject</span> = [<span class="ruby-identifier">demand</span>.<span class="ruby-identifier">tripViaPoint</span>.<span class="ruby-identifier">pickUp</span>,
+                  <span class="ruby-identifier">demand</span>.<span class="ruby-identifier">tripViaPoint</span>.<span class="ruby-identifier">dropOff</span>] ;
+  <span class="ruby-identifier">route</span> = <span class="ruby-constant">TentativeArray</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">sav</span>.<span class="ruby-identifier">viaPointList</span>, <span class="ruby-identifier">insertIndex</span>, <span class="ruby-identifier">insertObject</span>) ;
+
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">estimateTimeForNewRouteBody</span>(<span class="ruby-identifier">sav</span>, <span class="ruby-identifier">route</span>, 
+                                     <span class="ruby-identifier">storeNewPlanP</span>, <span class="ruby-identifier">mode</span>) ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-estimateTimeForNewRouteBody" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">estimateTimeForNewRouteBody</span><span
+            class="method-args">(sav, route, storeNewPlanP = false, mode = :averageManhattan)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>estimate time for whole of a SAV route with <a
+href="SavAllocator.html#method-c-new">::new</a> demands  (body)</p>
+          
+          
+
+          
+          <div class="method-source-code" id="estimateTimeForNewRouteBody-source">
+            <pre><span class="ruby-comment"># File Savs/SavAllocator.rb, line 163</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">estimateTimeForNewRouteBody</span>(<span class="ruby-identifier">sav</span>, <span class="ruby-identifier">route</span>, 
+                                <span class="ruby-identifier">storeNewPlanP</span> = <span class="ruby-keyword">false</span>,
+                                <span class="ruby-identifier">mode</span> = <span class="ruby-value">:averageManhattan</span>)
+  <span class="ruby-identifier">violateReason</span> = <span class="ruby-keyword">nil</span> ;
+  <span class="ruby-identifier">sumDelay</span> = <span class="ruby-value">0.0</span> ;
+  <span class="ruby-identifier">demandTripPlan</span> = <span class="ruby-constant">Trip</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">nil</span>,<span class="ruby-keyword">nil</span>) ;
+
+  <span class="ruby-identifier">viaPointIndex</span> = <span class="ruby-identifier">sav</span>.<span class="ruby-identifier">viaPointIndex</span> ;
+  <span class="ruby-identifier">prevPos</span> = <span class="ruby-identifier">sav</span>.<span class="ruby-identifier">fetchPosition</span>() ;
+  <span class="ruby-identifier">currentTime</span> = <span class="ruby-ivar">@simulator</span>.<span class="ruby-identifier">currentTime</span> ;
+
+  <span class="ruby-identifier">nPass</span> = <span class="ruby-identifier">sav</span>.<span class="ruby-identifier">countNumOnBoard</span>() ; 
+  
+  (<span class="ruby-identifier">viaPointIndex</span><span class="ruby-operator">...</span><span class="ruby-identifier">route</span>.<span class="ruby-identifier">size</span>).<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">idx</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">viaPoint</span> = <span class="ruby-identifier">route</span>[<span class="ruby-identifier">idx</span>] ;
+    <span class="ruby-identifier">diffTime</span> = <span class="ruby-identifier">estimateTime</span>(<span class="ruby-identifier">prevPos</span>, <span class="ruby-identifier">viaPoint</span>, <span class="ruby-identifier">sav</span>, <span class="ruby-identifier">mode</span>) ;
+    <span class="ruby-identifier">currentTime</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">diffTime</span> ;
+
+    <span class="ruby-comment"># set trip plan or calc delay.</span>
+    <span class="ruby-keyword">if</span>(<span class="ruby-identifier">idx</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">route</span>.<span class="ruby-identifier">kthIndex</span>(<span class="ruby-value">0</span>)) <span class="ruby-keyword">then</span> <span class="ruby-comment">## pickUp index for new demand</span>
+      <span class="ruby-identifier">nPass</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span> ;
+      <span class="ruby-identifier">demandTripPlan</span>.<span class="ruby-identifier">pickUp</span> = <span class="ruby-identifier">currentTime</span> ;
+    <span class="ruby-keyword">elsif</span>(<span class="ruby-identifier">idx</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">route</span>.<span class="ruby-identifier">kthIndex</span>(<span class="ruby-value">1</span>)) <span class="ruby-keyword">then</span> <span class="ruby-comment">## dropOff index for new demand</span>
+      <span class="ruby-identifier">nPass</span> <span class="ruby-operator">-=</span> <span class="ruby-value">1</span> ;
+      <span class="ruby-identifier">demandTripPlan</span>.<span class="ruby-identifier">dropOff</span> = <span class="ruby-identifier">currentTime</span> ;
+    <span class="ruby-keyword">else</span> <span class="ruby-comment"># for old demands</span>
+      <span class="ruby-identifier">delay</span> = <span class="ruby-value">0.0</span> ;
+      <span class="ruby-keyword">if</span>(<span class="ruby-identifier">viaPoint</span>.<span class="ruby-identifier">mode</span> <span class="ruby-operator">==</span> <span class="ruby-value">:pickUp</span>) <span class="ruby-keyword">then</span>
+        <span class="ruby-identifier">nPass</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span> ;
+        <span class="ruby-identifier">delay</span> = <span class="ruby-identifier">currentTime</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">viaPoint</span>.<span class="ruby-identifier">demand</span>.<span class="ruby-identifier">getTripPlannedTime</span>.<span class="ruby-identifier">pickUp</span> ;
+      <span class="ruby-keyword">elsif</span>(<span class="ruby-identifier">viaPoint</span>.<span class="ruby-identifier">mode</span> <span class="ruby-operator">==</span> <span class="ruby-value">:dropOff</span>) <span class="ruby-keyword">then</span>
+        <span class="ruby-identifier">nPass</span> <span class="ruby-operator">-=</span> <span class="ruby-value">1</span> ;
+        <span class="ruby-identifier">delay</span> = <span class="ruby-identifier">currentTime</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">viaPoint</span>.<span class="ruby-identifier">demand</span>.<span class="ruby-identifier">getTripPlannedTime</span>.<span class="ruby-identifier">dropOff</span> ;
+      <span class="ruby-keyword">end</span>
+      
+      <span class="ruby-comment"># sum-up delay</span>
+      <span class="ruby-identifier">sumDelay</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">delay</span> <span class="ruby-keyword">if</span> (<span class="ruby-identifier">delay</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0.0</span>) ;
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-comment"># check dropOff deadline</span>
+    <span class="ruby-keyword">if</span>(<span class="ruby-identifier">viaPoint</span>.<span class="ruby-identifier">mode</span> <span class="ruby-operator">==</span> <span class="ruby-value">:dropOff</span> <span class="ruby-operator">&amp;&amp;</span>
+       <span class="ruby-identifier">viaPoint</span>.<span class="ruby-identifier">demand</span>.<span class="ruby-identifier">tripRequiredTime</span>.<span class="ruby-identifier">dropOff</span> <span class="ruby-operator">&amp;&amp;</span>
+       <span class="ruby-identifier">currentTime</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">viaPoint</span>.<span class="ruby-identifier">demand</span>.<span class="ruby-identifier">tripRequiredTime</span>.<span class="ruby-identifier">dropOff</span>) <span class="ruby-keyword">then</span>
+      <span class="ruby-identifier">violateReason</span> = <span class="ruby-value">:exceedDropOffTime</span> ;
+      <span class="ruby-keyword">break</span> ; <span class="ruby-comment"># exit from loop</span>
+    <span class="ruby-keyword">end</span>
+    
+    <span class="ruby-comment"># check capacity</span>
+    <span class="ruby-keyword">if</span>(<span class="ruby-identifier">nPass</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">sav</span>.<span class="ruby-identifier">capacity</span>) <span class="ruby-keyword">then</span>
+      <span class="ruby-identifier">violateReason</span> = <span class="ruby-value">:exceedCapacity</span> ;
+      <span class="ruby-keyword">break</span> ;
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-comment"># store new plan</span>
+    <span class="ruby-keyword">if</span>(<span class="ruby-identifier">storeNewPlanP</span>) <span class="ruby-keyword">then</span>
+      <span class="ruby-keyword">if</span>(<span class="ruby-identifier">viaPoint</span>.<span class="ruby-identifier">mode</span> <span class="ruby-operator">==</span> <span class="ruby-value">:pickUp</span>) <span class="ruby-keyword">then</span>
+        <span class="ruby-identifier">viaPoint</span>.<span class="ruby-identifier">demand</span>.<span class="ruby-identifier">updatePlannedPickUpTime</span>(<span class="ruby-identifier">currentTime</span>) ;
+      <span class="ruby-keyword">elsif</span>(<span class="ruby-identifier">viaPoint</span>.<span class="ruby-identifier">mode</span> <span class="ruby-operator">==</span> <span class="ruby-value">:dropOff</span>) <span class="ruby-keyword">then</span>
+        <span class="ruby-identifier">viaPoint</span>.<span class="ruby-identifier">demand</span>.<span class="ruby-identifier">updatePlannedDropOffTime</span>(<span class="ruby-identifier">currentTime</span>) ;
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+          
+    <span class="ruby-identifier">prevPos</span> = <span class="ruby-identifier">viaPoint</span>.<span class="ruby-identifier">pos</span> ;
+  }
+
+  <span class="ruby-comment">## add travel time for the new demand</span>
+
+  <span class="ruby-keyword">if</span>(<span class="ruby-operator">!</span><span class="ruby-identifier">violateReason</span>.<span class="ruby-identifier">nil?</span>) <span class="ruby-keyword">then</span>
+    <span class="ruby-keyword">return</span> { <span class="ruby-value">:violateReason</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">violateReason</span> }
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">sumDelay</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">demandTripPlan</span>.<span class="ruby-identifier">dropOff</span> <span class="ruby-operator">-</span> <span class="ruby-ivar">@simulator</span>.<span class="ruby-identifier">currentTime</span> ;
+    <span class="ruby-keyword">return</span> { <span class="ruby-value">:sumDelay</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">sumDelay</span>,
+             <span class="ruby-value">:demandTripPlan</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">demandTripPlan</span> } ;
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-inspect" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">inspect</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="inspect-source">
+            <pre><span class="ruby-comment"># File Savs/SavAllocator.rb, line 304</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">inspect</span>() ;
+  <span class="ruby-identifier">dummy</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">dup</span> ;
+  <span class="ruby-identifier">dummy</span>.<span class="ruby-identifier">simulator</span> = <span class="ruby-keyword">nil</span> ;
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">dummy</span>.<span class="ruby-identifier">inspect_original</span> ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+        <div class="aliases">
+          Also aliased as: <a href="SavAllocator.html#method-i-inspect_original">inspect_original</a>
+        </div>
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-inspect_original" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">inspect_original</span><span
+            class="method-args">()</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>for inspect()</p>
+          
+          
+
+          
+        </div>
+
+        
+
+        
+        <div class="aliases">
+          Alias for: <a href="SavAllocator.html#method-i-inspect">inspect</a>
+        </div>
+        
+      </div>
+
+    
+      <div id="method-i-logging" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">logging</span><span
+            class="method-args">(level, *messageList, &body)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p><a href="SavAllocator.html#method-i-logging">#logging</a></p>
+          
+          
+
+          
+          <div class="method-source-code" id="logging-source">
+            <pre><span class="ruby-comment"># File Savs/SavAllocator.rb, line 296</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">logging</span>(<span class="ruby-identifier">level</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">messageList</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">body</span>)
+  <span class="ruby-ivar">@simulator</span>.<span class="ruby-identifier">logging</span>(<span class="ruby-identifier">level</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">messageList</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">body</span>) ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-pushAllocatedDemand" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">pushAllocatedDemand</span><span
+            class="method-args">(demand)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>push allocated demand to the result list.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="pushAllocatedDemand-source">
+            <pre><span class="ruby-comment"># File Savs/SavAllocator.rb, line 95</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">pushAllocatedDemand</span>(<span class="ruby-identifier">demand</span>)
+  <span class="ruby-ivar">@allocatedList</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">demand</span>) ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-pushCancelledDemand" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">pushCancelledDemand</span><span
+            class="method-args">(demand)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>push canceled demand to the result list.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="pushCancelledDemand-source">
+            <pre><span class="ruby-comment"># File Savs/SavAllocator.rb, line 102</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">pushCancelledDemand</span>(<span class="ruby-identifier">demand</span>)
+  <span class="ruby-ivar">@cancelledList</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">demand</span>) ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-setup" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">setup</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p><a href="SavAllocator.html#method-i-setup">#setup</a>. should be re-defined
+in subclass if needed.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="setup-source">
+            <pre><span class="ruby-comment"># File Savs/SavAllocator.rb, line 69</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">setup</span>() 
+  <span class="ruby-ivar">@allocatedList</span> = [] ;
+  <span class="ruby-ivar">@cancelledList</span> = [] ;
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+
