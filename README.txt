@@ -73,4 +73,4 @@ We can change any test value (integer) in the following files:
 
 ===== Part D =====
 A detected algorithm core with a sample initialization is given in directory
- ./source_code/sat-based_rtss_v1.1
+ ./source_code/sat-based_rtss_v1.1/
