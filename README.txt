@@ -1,4 +1,9 @@
-This is an instruction for reproducing the experiments described in our submission. 
+#############################################################
+	Note that, this version is for the reproducibility of 
+	our preprint, not for that of the newest submission. 
+#############################################################
+
+This is an instruction for reproducing the experiments described in our preprint. 
 A video demonstration of our simulation is available at https://youtu.be/f2FpVc17SBA.
 
 ===== Part A =====
